@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternal Universe</title>
+    <title>Eternal Universe — static</title>
 <style>
 .eternal-universe-wrapper {
     display: flex;
@@ -33,7 +33,8 @@
     overflow: hidden;
     box-shadow: 0 0 10px rgba(255, 255, 255, 1);
     margin: 0 auto;
-    cursor: pointer;
+    /* cursor default – no interaction */
+    cursor: default;
 }
 #eu-graphCanvas {
     display: block;
@@ -41,6 +42,7 @@
     height: 100%;
     background-color: transparent;
 }
+/* container kept only for structural completeness – empty */
 .eu-bolts {
     position: absolute;
     top: 0;
@@ -48,25 +50,6 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-}
-.eu-bolt {
-    stroke-width: 2;
-    stroke-linecap: round;
-    fill: none;
-    filter: drop-shadow(0 0 5px currentColor);
-    opacity: 0;
-    animation: eu-boltFade 1s ease-out forwards;
-    width: 100%;
-    height: 100%;
-}
-.eu-bolt path {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-@keyframes eu-boltFade {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    100% { opacity: 0; }
 }
 .eu-caption {
     font-size: min(24px, 5vw);
@@ -79,9 +62,9 @@
 }
 </style>
 </head>
-<body bgcolor=”#000000” text="#00ffff">
+<body bgcolor="#000000" text="#00ffff">
 <div class="eternal-universe-wrapper">
-    <div class="eu-image-container" id="eu-clickArea">
+    <div class="eu-image-container">
         <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         <div class="eu-bolts" id="eu-bolts"></div>
     </div>
@@ -92,22 +75,15 @@
     <center><p><a style="color: #ff8000" href="tel:+38630455165">+386 30 455 165</a></p><p><a style="color: #ff8000" href="mailto:daedryk@proton.me">daedryk@proton.me</a></p><p>ⰄⰅⰡⰐ ⰋⰎⰋⰝ</p><p>Ⱗ</p><p><font style="font-size: 64px">魏魔族</font></p></center>
 <script>
 (function() {
-    const colors = ['#00ffff', '#ff00ff', '#9d00ff', '#00ffaa'];
     const centerX = 300;
     const centerY = 300;
     const canvas = document.getElementById('eu-graphCanvas');
     const boltsContainer = document.getElementById('eu-bolts');
-    const clickArea = document.getElementById('eu-clickArea');
-    let boltInterval;
-    
-    function clearEffects() {
-        if (boltInterval) {
-            clearInterval(boltInterval);
-            boltInterval = null;
-        }
-        if (boltsContainer) boltsContainer.innerHTML = '';
-    }
 
+    // ensure bolt container is permanently empty
+    if (boltsContainer) {
+        boltsContainer.innerHTML = '';
+    }
 
     function drawCosmicGraph() {
         if (!canvas) return;
@@ -115,6 +91,7 @@
         const maxRadius = 250;
         const minRadius = 50;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
         ctx.lineWidth = 1;
         for (let angle = 0; angle < 360; angle += 15) {
@@ -125,11 +102,13 @@
                        centerY + Math.sin(rad) * maxRadius * 1.1);
             ctx.stroke();
         }
+        
         for (let r = 50; r <= maxRadius; r += 50) {
             ctx.beginPath();
             ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
             ctx.stroke();
         }
+        
         const points = [];
         ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)';
         ctx.lineWidth = 2;
@@ -146,11 +125,13 @@
             points.push({x: graphX, y: graphY});
         }
         ctx.stroke();
+        
         ctx.strokeStyle = 'rgba(155, 255, 255, 0.4)';
         ctx.lineWidth = 8;
         ctx.beginPath();
         points.forEach(point => ctx.lineTo(point.x, point.y));
         ctx.stroke();
+        
         points.forEach((point, i) => {
             if (i % 20 === 0) {
                 const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 4);
@@ -164,118 +145,15 @@
         });
     }
 
-
-    function createBolt(opts = {}) {
-        if (!boltsContainer) return;
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.setAttribute('width', '600');
-        svg.setAttribute('height', '600');
-        svg.setAttribute('viewBox', '0 0 600 600');
-        svg.style.position = 'absolute';
-        svg.classList.add('eu-bolt');
-        const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        svg.appendChild(group);
-        colors.forEach(color => {
-            const {
-                startX = centerX,
-                startY = centerY,
-                maxDepth = 3,
-                branches = 3,
-                length = 100,
-                width = 2,
-                jitter = 0.3
-            } = opts;
-            function createBranch(x1, y1, angle, depth, currentLength, color) {
-                if (depth > maxDepth) return;
-                const endX = x1 + Math.cos(angle) * currentLength * (0.7 + Math.random() * 0.6);
-                const endY = y1 + Math.sin(angle) * currentLength * (0.7 + Math.random() * 0.6);
-                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                const midX = (x1 + endX) / 2 + (Math.random() - 0.5) * currentLength * jitter;
-                const midY = (y1 + endY) / 2 + (Math.random() - 0.5) * currentLength * jitter;
-                path.setAttribute('d', `M ${x1} ${y1} Q ${midX} ${midY} ${endX} ${endY}`);
-                path.setAttribute('stroke', color);
-                path.setAttribute('stroke-width', width * (0.5 + (maxDepth - depth) / maxDepth));
-                path.setAttribute('fill', 'none');
-                group.appendChild(path);
-                if (depth < maxDepth) {
-                    for (let i = 0; i < branches; i++) {
-                        const branchAngle = angle + (Math.random() - 0.5) * Math.PI * 0.7;
-                        createBranch(endX, endY, branchAngle, depth + 1, 
-                                     currentLength * (0.4 + Math.random() * 0.3), color);
-                    }
-                }
-            }
-            const initialAngle = Math.random() * Math.PI * 2;
-            createBranch(startX, startY, initialAngle, 0, length, color);
-        });
-        boltsContainer.appendChild(svg);
-        setTimeout(() => {
-            svg.style.transition = 'opacity 0.5s ease-out';
-            svg.style.opacity = '0';
-            setTimeout(() => svg.remove(), 500);
-        }, 1000);
-    }
-
-
-    function createInitialEnergy() {
-        for (let i = 0; i < 8; i++) {
-            setTimeout(() => {
-                createBolt({
-                    maxDepth: 2 + Math.floor(Math.random() * 3),
-                    branches: 2 + Math.floor(Math.random() * 3),
-                    length: 0 + Math.random() * 100,
-                    width: 1 + Math.random() * 3,
-                    jitter: 0.2 + Math.random() * 0.3
-                });
-            }, Math.random() * 1000);
-        }
-    }
-
-
-    function startContinuousBolts() {
-        if (boltInterval) clearInterval(boltInterval);
-        boltInterval = setInterval(() => { 
-            if(Math.random() > 0.3) createBolt(); 
-        }, 100);
-    }
-
-
-    function initVisualization() {
-        drawCosmicGraph();
-        createInitialEnergy();
-        startContinuousBolts();
-    }
-
-
-    function reinitializeOnClick() {
-        clearEffects();
-        initVisualization();
-    }
-
-
+    // static initialization: draw once, no events, no intervals
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            clearEffects();
-            initVisualization();
-            clickArea.addEventListener('click', reinitializeOnClick);
-            clickArea.addEventListener('touchstart', reinitializeOnClick);
+            drawCosmicGraph();
         });
     } else {
-        clearEffects();
-        initVisualization();
-        clickArea.addEventListener('click', reinitializeOnClick);
-        clickArea.addEventListener('touchstart', reinitializeOnClick);
+        drawCosmicGraph();
     }
-
-
-    window.addEventListener('beforeunload', function() {
-        clearEffects();
-    });
 })();
 </script>
 </body>
-
 </html>
-
-
-
