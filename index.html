@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extra Celestial Observatory · electric pink & purple</title>
+    <title>Extra Celestial Observatory</title>
     <style>
         * {
             margin: 0;
@@ -186,20 +186,20 @@
                         }
 
                         const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
-                        grad.addColorStop(0, colorCenter);
-                        grad.addColorStop(0.5, colorCenter + 'cc');
+                        grad.addColorStop(0, colorCenter + 'cc');
+                        grad.addColorStop(0.5, colorCenter + '80');
                         grad.addColorStop(1, 'rgba(0,0,0,0)');
                         ctx.fillStyle = grad;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 14, 0, Math.PI*2);
                         ctx.fill();
 
-                        ctx.fillStyle = colorCenter;
+                        ctx.fillStyle = colorCenter + 'cc';
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 3, 0, Math.PI*2);
                         ctx.fill();
 
-                        ctx.fillStyle = '#ffffff';
+                        ctx.fillStyle = '#ffffffcc';
                         ctx.beginPath();
                         ctx.arc(point.x-1, point.y-1, 1.2, 0, Math.PI*2);
                         ctx.fill();
@@ -208,14 +208,14 @@
                     if (i % 25 === 0) {
                         const extraColor = '#9d00ff';
                         const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
-                        grad2.addColorStop(0, extraColor);
-                        grad2.addColorStop(0.6, extraColor + 'aa');
+                        grad2.addColorStop(0, extraColor + 'cc');
+                        grad2.addColorStop(0.6, extraColor + '80');
                         grad2.addColorStop(1, 'transparent');
                         ctx.fillStyle = grad2;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 12, 0, Math.PI*2);
                         ctx.fill();
-                        ctx.fillStyle = extraColor;
+                        ctx.fillStyle = extraColor + 'cc';
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 2.8, 0, Math.PI*2);
                         ctx.fill();
@@ -227,8 +227,8 @@
                     const p = points[randIndex];
                     const pinkOrPurple = (k % 2 === 0) ? '#ff00ff' : '#9d00ff';
                     const tinyGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 8);
-                    tinyGrad.addColorStop(0, pinkOrPurple);
-                    tinyGrad.addColorStop(0.8, pinkOrPurple + '80');
+                    tinyGrad.addColorStop(0, pinkOrPurple + 'cc');
+                    tinyGrad.addColorStop(0.8, pinkOrPurple + '40');
                     tinyGrad.addColorStop(1, 'transparent');
                     ctx.fillStyle = tinyGrad;
                     ctx.beginPath();
