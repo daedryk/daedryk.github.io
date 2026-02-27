@@ -257,7 +257,6 @@
                     
                     const opacity = 1 - (age / FADE_DURATION);
                     const alpha = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
-                    const alphaStart = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
                     
                     const tinyGrad = ctx.createRadialGradient(dot.point.x, dot.point.y, 0, dot.point.x, dot.point.y, 8);
                     tinyGrad.addColorStop(0, dot.color + alpha);
@@ -270,6 +269,52 @@
                 });
             }
 
+            function drawClock(ctx) {
+                const now = new Date();
+                const hours = now.getHours() % 12;
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                
+                const hourAngle = (hours * 30 + minutes * 0.5) * Math.PI / 180;
+                const minuteAngle = (minutes * 6 + seconds * 0.1) * Math.PI / 180;
+                const secondAngle = (seconds * 6) * Math.PI / 180;
+                
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#00ffff';
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.sin(hourAngle) * 100,
+                    centerY - Math.cos(hourAngle) * 100
+                );
+                ctx.stroke();
+                
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '#ff00ff';
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.sin(minuteAngle) * 140,
+                    centerY - Math.cos(minuteAngle) * 140
+                );
+                ctx.stroke();
+                
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#9d00ff';
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.sin(secondAngle) * 160,
+                    centerY - Math.cos(secondAngle) * 160
+                );
+                ctx.stroke();
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 6, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
             function animate() {
                 if (!canvas) return;
                 const ctx = canvas.getContext('2d');
@@ -279,6 +324,7 @@
                 drawBackground(ctx);
                 drawStaticDots(ctx);
                 drawRandomDots(ctx, now);
+                drawClock(ctx);
                 
                 animationFrame = requestAnimationFrame(animate);
             }
