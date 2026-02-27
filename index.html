@@ -56,15 +56,6 @@
             background-color: transparent;
         }
 
-        .eu-bolts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
         .contact-line {
             display: flex;
             flex-wrap: wrap;
@@ -73,63 +64,49 @@
             margin: 15px 0 10px;
         }
 
-        .electric-pink-link {
-            color: #ff00ff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            text-shadow: 0 0 8px #ff00ff;
-            border-bottom: 1px dotted #ff00ff;
+        .title {
+            font-size: 24px;
+            line-height: 1.4;
+            text-align: center;
+            text-shadow: 0 0 12px #ff00ff, 0 0 24px #9d00ff;
+            color: white;
+            margin: 10px 0 5px;
+            letter-spacing: 2px;
         }
 
-        .electric-purple-link {
+        .contact-phone {
             color: #9d00ff;
             text-decoration: none;
             font-size: 1.2rem;
-            text-shadow: 0 0 8px #9d00ff;
+            text-shadow: 0 0 8px #ff00ff, 0 0 12px #ff00ff;
             border-bottom: 1px dotted #9d00ff;
-        }
-
-        .chinese-sigil {
-            font-size: 64px;
-            line-height: 1.2;
-            text-align: center;
-            text-shadow: 0 0 15px #ff00ff, 0 0 30px #9d00ff;
-            color: white;
-            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <div class="chinese-sigil">魏魔族</div>
+    <div class="title">Extra Celestial Observatory</div>
 
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
-            <div class="eu-bolts" id="eu-bolts"></div>
         </div>
     </div>
 
     <div class="contact-line">
-        <a class="electric-pink-link" href="tel:+38630455165">+386 30 455 165</a>
-        <a class="electric-purple-link" href="mailto:daedryk@proton.me">daedryk@proton.me</a>
+        <a class="contact-phone" href="tel:+38630455165">+386 30 455 165</a>
     </div>
 
     <script>
         (function() {
             const centerX = 300;
-            const centerY = 300;
+            const centerY =  300;
             const canvas = document.getElementById('eu-graphCanvas');
-            const boltsContainer = document.getElementById('eu-bolts');
             let points = [];
             let animationFrame;
             let lastUpdate = 0;
             let randomDots = [];
             const UPDATE_INTERVAL = 200;
             const FADE_DURATION = 100;
-
-            if (boltsContainer) {
-                boltsContainer.innerHTML = '';
-            }
 
             function generateBasePoints() {
                 const newPoints = [];
