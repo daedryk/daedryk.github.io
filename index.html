@@ -148,8 +148,8 @@
             function drawBackground(ctx) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                ctx.strokeStyle = 'rgba(0, 255, 255, 0.25)';
-                ctx.lineWidth = 0.8;
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 1;
                 for (let angle = 0; angle < 360; angle += 15) {
                     const rad = angle * Math.PI / 180;
                     ctx.beginPath();
@@ -161,7 +161,7 @@
                     ctx.stroke();
                 }
 
-                ctx.strokeStyle = 'rgba(220, 220, 255, 0.3)';
+                ctx.strokeStyle = '#ffffff';
                 for (let r = 50; r <= 250; r += 50) {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
@@ -290,28 +290,37 @@
                 const secondX = centerX + Math.cos(secondAngle) * secondLength;
                 const secondY = centerY + Math.sin(secondAngle) * secondLength;
                 
+                const hourGrad = ctx.createLinearGradient(centerX, centerY, hourX, hourY);
+                hourGrad.addColorStop(0, '#ffffff');
+                hourGrad.addColorStop(1, '#00ffff');
                 ctx.shadowColor = '#00ffff';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 6;
-                ctx.strokeStyle = '#00ffff';
+                ctx.strokeStyle = hourGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(hourX, hourY);
                 ctx.stroke();
                 
+                const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
+                minuteGrad.addColorStop(0, '#ffffff');
+                minuteGrad.addColorStop(1, '#ff00ff');
                 ctx.shadowColor = '#ff00ff';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 4;
-                ctx.strokeStyle = '#ff00ff';
+                ctx.strokeStyle = minuteGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(minuteX, minuteY);
                 ctx.stroke();
                 
+                const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
+                secondGrad.addColorStop(0, '#ffffff');
+                secondGrad.addColorStop(1, '#9d00ff');
                 ctx.shadowColor = '#9d00ff';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 3;
-                ctx.strokeStyle = '#9d00ff';
+                ctx.strokeStyle = secondGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(secondX, secondY);
