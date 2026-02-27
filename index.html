@@ -4,156 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Universe — static</title>
-<style>
-.eternal-universe-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background: #000;
-    font-family: 'Arial', sans-serif;
-    color: white;
-    padding: 20px 0 20px 0;
-    box-sizing: border-box;
-}
-.eternal-universe-wrapper {
-    --electric-blue: #00ffff;
-    --electric-pink: #ff00ff;
-    --electric-purple: #9d00ff;
-}
-.eu-image-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
-    margin: 0 auto;
-    /* cursor default – no interaction */
-    cursor: default;
-}
-#eu-graphCanvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-}
-/* container kept only for structural completeness – empty */
-.eu-bolts {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-.eu-caption {
-    font-size: min(24px, 5vw);
-    color: rgba(255,255,255,0.7);
-    margin-top: 25px;
-    margin-bottom: 10px;
-    text-align: center;
-    text-shadow: 0 0 5px var(--electric-blue);
-    padding: 0 15px;
-}
-</style>
+    <style>
+        .eternal-universe-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #000;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            padding: 20px 0;
+            box-sizing: border-box;
+            --electric-blue: #00ffff;
+            --electric-pink: #ff00ff;
+            --electric-purple: #9d00ff;
+        }
+
+        .eu-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+            margin: 0 auto;
+            cursor: default;
+        }
+
+        #eu-graphCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        .eu-bolts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .eu-caption {
+            font-size: min(24px, 5vw);
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 0 0 5px var(--electric-blue);
+            padding: 0 15px;
+        }
+    </style>
 </head>
 <body bgcolor="#000000" text="#00ffff">
-<div class="eternal-universe-wrapper">
-    <div class="eu-image-container">
-        <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
-        <div class="eu-bolts" id="eu-bolts"></div>
+    <div class="eternal-universe-wrapper">
+        <div class="eu-image-container">
+            <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
+            <div class="eu-bolts" id="eu-bolts"></div>
+        </div>
+        <div class="eu-caption">
+            Eternal Universe
+        </div>
     </div>
-    <div class="eu-caption">
-        Eternal Universe
-    </div>
-</div>
-    <center><p><a style="color: #ff8000" href="tel:+38630455165">+386 30 455 165</a></p><p><a style="color: #ff8000" href="mailto:daedryk@proton.me">daedryk@proton.me</a></p><p>ⰄⰅⰡⰐ ⰋⰎⰋⰝ</p><p>Ⱗ</p><p><font style="font-size: 64px">魏魔族</font></p></center>
-<script>
-(function() {
-    const centerX = 300;
-    const centerY = 300;
-    const canvas = document.getElementById('eu-graphCanvas');
-    const boltsContainer = document.getElementById('eu-bolts');
 
-    // ensure bolt container is permanently empty
-    if (boltsContainer) {
-        boltsContainer.innerHTML = '';
-    }
+    <center>
+        <p><a style="color: #ff8000" href="tel:+38630455165">+386 30 455 165</a></p>
+        <p><a style="color: #ff8000" href="mailto:daedryk@proton.me">daedryk@proton.me</a></p>
+        <p>ⰄⰅⰡⰐ ⰋⰎⰋⰝ</p>
+        <p>Ⱗ</p>
+        <p><span style="font-size: 64px">魏魔族</span></p>
+    </center>
 
-    function drawCosmicGraph() {
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        const maxRadius = 250;
-        const minRadius = 50;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-        ctx.lineWidth = 1;
-        for (let angle = 0; angle < 360; angle += 15) {
-            const rad = angle * Math.PI / 180;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(centerX + Math.cos(rad) * maxRadius * 1.1, 
-                       centerY + Math.sin(rad) * maxRadius * 1.1);
-            ctx.stroke();
-        }
-        
-        for (let r = 50; r <= maxRadius; r += 50) {
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-        
-        const points = [];
-        ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        for (let i = 0; i <= 1000; i++) {
-            const theta = (i / 1000) * Math.PI * 2;
-            const x = -180 + (360 * theta / (Math.PI * 2));
-            const y = Math.sin(x) * x * Math.cos(x);
-            const radius = minRadius + ((maxRadius - minRadius) * (y + 180) / 360);
-            const graphX = centerX + Math.cos(theta - Math.PI/2) * radius;
-            const graphY = centerY + Math.sin(theta - Math.PI/2) * radius;
-            if (i === 0) ctx.moveTo(graphX, graphY);
-            else ctx.lineTo(graphX, graphY);
-            points.push({x: graphX, y: graphY});
-        }
-        ctx.stroke();
-        
-        ctx.strokeStyle = 'rgba(155, 255, 255, 0.4)';
-        ctx.lineWidth = 8;
-        ctx.beginPath();
-        points.forEach(point => ctx.lineTo(point.x, point.y));
-        ctx.stroke();
-        
-        points.forEach((point, i) => {
-            if (i % 20 === 0) {
-                const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 4);
-                gradient.addColorStop(0, 'rgba(0, 255, 255, 1)');
-                gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
-                ctx.fill();
+    <script>
+        (function() {
+            const centerX = 300;
+            const centerY = 300;
+            const canvas = document.getElementById('eu-graphCanvas');
+            const boltsContainer = document.getElementById('eu-bolts');
+
+            // Ensure bolt container is permanently empty
+            if (boltsContainer) {
+                boltsContainer.innerHTML = '';
             }
-        });
-    }
 
-    // static initialization: draw once, no events, no intervals
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            drawCosmicGraph();
-        });
-    } else {
-        drawCosmicGraph();
-    }
-})();
-</script>
+            function drawCosmicGraph() {
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const maxRadius = 250;
+                const minRadius = 50;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw radial lines
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 1;
+                for (let angle = 0; angle < 360; angle += 15) {
+                    const rad = angle * Math.PI / 180;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY);
+                    ctx.lineTo(
+                        centerX + Math.cos(rad) * maxRadius * 1.1,
+                        centerY + Math.sin(rad) * maxRadius * 1.1
+                    );
+                    ctx.stroke();
+                }
+
+                // Draw concentric circles
+                for (let r = 50; r <= maxRadius; r += 50) {
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+
+                // Draw main cosmic graph
+                const points = [];
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+
+                for (let i = 0; i <= 1000; i++) {
+                    const theta = (i / 1000) * Math.PI * 2;
+                    const x = -180 + (360 * theta / (Math.PI * 2));
+                    const y = Math.sin(x) * x * Math.cos(x);
+                    const radius = minRadius + ((maxRadius - minRadius) * (y + 180) / 360);
+                    const graphX = centerX + Math.cos(theta - Math.PI / 2) * radius;
+                    const graphY = centerY + Math.sin(theta - Math.PI / 2) * radius;
+
+                    if (i === 0) {
+                        ctx.moveTo(graphX, graphY);
+                    } else {
+                        ctx.lineTo(graphX, graphY);
+                    }
+                    points.push({ x: graphX, y: graphY });
+                }
+                ctx.stroke();
+
+                // Draw glow effect
+                ctx.strokeStyle = 'rgba(155, 255, 255, 0.4)';
+                ctx.lineWidth = 8;
+                ctx.beginPath();
+                points.forEach(point => ctx.lineTo(point.x, point.y));
+                ctx.stroke();
+
+                // Draw glowing points
+                points.forEach((point, i) => {
+                    if (i % 20 === 0) {
+                        const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 4);
+                        gradient.addColorStop(0, 'rgba(0, 255, 255, 1)');
+                        gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+            }
+
+            // Static initialization: draw once, no events, no intervals
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', drawCosmicGraph);
+            } else {
+                drawCosmicGraph();
+            }
+        })();
+    </script>
 </body>
 </html>
