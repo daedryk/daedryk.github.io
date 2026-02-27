@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extra Celestial Observatory</title>
+    <title>Extra Celestial Observatory · electric pink & purple</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000000;
+            color: #00ffff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10px;
+        }
         .eternal-universe-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             background: #000;
-            font-family: 'Arial', sans-serif;
             color: white;
             padding: 20px 0;
-            box-sizing: border-box;
             --electric-blue: #00ffff;
             --electric-pink: #ff00ff;
             --electric-purple: #9d00ff;
         }
-
         .eu-image-container {
             position: relative;
             width: 100%;
@@ -30,18 +42,17 @@
             aspect-ratio: 1 / 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
             margin: 0 auto;
             cursor: default;
+            border: 1px solid rgba(255, 0, 255, 0.3);
         }
-
         #eu-graphCanvas {
             display: block;
             width: 100%;
             height: 100%;
             background-color: transparent;
         }
-
         .eu-bolts {
             position: absolute;
             top: 0;
@@ -50,36 +61,72 @@
             height: 100%;
             pointer-events: none;
         }
-
         .eu-caption {
             font-size: min(24px, 5vw);
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 25px;
             margin-bottom: 10px;
             text-align: center;
-            text-shadow: 0 0 5px var(--electric-blue);
+            text-shadow: 0 0 8px var(--electric-pink), 0 0 12px var(--electric-purple);
             padding: 0 15px;
+            letter-spacing: 1px;
+        }
+        .contact-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 15px 0 10px;
+        }
+        .electric-pink-link {
+            color: #ff00ff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px #ff00ff;
+            border-bottom: 1px dotted #ff00ff;
+        }
+        .electric-purple-link {
+            color: #9d00ff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px #9d00ff;
+            border-bottom: 1px dotted #9d00ff;
+        }
+        .glagolitic {
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 5px #ff00ff, 0 0 12px #9d00ff;
+            margin: 10px 0 5px;
+        }
+        .chinese-sigil {
+            font-size: 64px;
+            line-height: 1.2;
+            text-shadow: 0 0 15px #ff00ff, 0 0 30px #9d00ff;
+            color: white;
+            margin: 5px 0;
         }
     </style>
 </head>
-<body bgcolor="#000000" text="#00ffff">
+<body>
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
             <div class="eu-bolts" id="eu-bolts"></div>
         </div>
         <div class="eu-caption">
-            y = sin(x) * x * cos(x) {(r, θ); [-180, 180]}
+            y = sin(x) · x · cos(x)  {(r, θ); [-180, 180]}
         </div>
     </div>
 
-    <center>
-        <p><a style="color: #ff00ff; text-decoration: none" href="tel:+38630455165">+386 30 455 165</a></p>
-        <p><a style="color: #9d00ff; text-decoration: none" href="mailto:daedryk@proton.me">daedryk@proton.me</a></p>
-        <p>ⰄⰅⰡⰐ ⰋⰎⰋⰝ</p>
-        <p>Ⱗ</p>
-        <p><span style="font-size: 64px">魏魔族</span></p>
-    </center>
+    <div class="contact-line">
+        <a class="electric-pink-link" href="tel:+38630455165">+386 30 455 165</a>
+        <a class="electric-purple-link" href="mailto:daedryk@proton.me">daedryk@proton.me</a>
+    </div>
+
+    <div class="glagolitic">ⰄⰅⰡⰐ ⰋⰎⰋⰝ</div>
+    <div class="glagolitic" style="font-size: 2.2rem;">Ⱗ</div>
+    <div class="chinese-sigil">魏魔族</div>
 
     <script>
         (function() {
@@ -88,7 +135,6 @@
             const canvas = document.getElementById('eu-graphCanvas');
             const boltsContainer = document.getElementById('eu-bolts');
 
-            // Ensure bolt container is permanently empty
             if (boltsContainer) {
                 boltsContainer.innerHTML = '';
             }
@@ -100,9 +146,8 @@
                 const minRadius = 50;
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // Draw radial lines
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.25)';
+                ctx.lineWidth = 0.8;
                 for (let angle = 0; angle < 360; angle += 15) {
                     const rad = angle * Math.PI / 180;
                     ctx.beginPath();
@@ -114,17 +159,16 @@
                     ctx.stroke();
                 }
 
-                // Draw concentric circles
+                ctx.strokeStyle = 'rgba(220, 220, 255, 0.3)';
                 for (let r = 50; r <= maxRadius; r += 50) {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
                     ctx.stroke();
                 }
 
-                // Draw main cosmic graph
                 const points = [];
-                ctx.strokeStyle = 'rgba(0, 255, 255, 0.8)';
-                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#00ffff';
+                ctx.lineWidth = 2.5;
                 ctx.beginPath();
 
                 for (let i = 0; i <= 1000; i++) {
@@ -144,28 +188,77 @@
                 }
                 ctx.stroke();
 
-                // Draw glow effect
-                ctx.strokeStyle = 'rgba(155, 255, 255, 0.4)';
-                ctx.lineWidth = 8;
+                ctx.strokeStyle = 'rgba(0, 255, 255, 0.25)';
+                ctx.lineWidth = 10;
                 ctx.beginPath();
-                points.forEach(point => ctx.lineTo(point.x, point.y));
+                points.forEach((p, idx) => {
+                    if (idx === 0) ctx.moveTo(p.x, p.y);
+                    else ctx.lineTo(p.x, p.y);
+                });
                 ctx.stroke();
 
-                // Draw glowing points
                 points.forEach((point, i) => {
-                    if (i % 20 === 0) {
-                        const gradient = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 4);
-                        gradient.addColorStop(0, 'rgba(0, 255, 255, 1)');
-                        gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
-                        ctx.fillStyle = gradient;
+                    if (i % 10 === 0) {
+                        const usePink = (Math.floor(i / 10) % 2 === 0);
+                        let colorCenter;
+                        if (usePink) {
+                            colorCenter = '#ff00ff';
+                        } else {
+                            colorCenter = '#9d00ff';
+                        }
+
+                        const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
+                        grad.addColorStop(0, colorCenter);
+                        grad.addColorStop(0.5, colorCenter + 'cc');
+                        grad.addColorStop(1, 'rgba(0,0,0,0)');
+                        ctx.fillStyle = grad;
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+                        ctx.arc(point.x, point.y, 14, 0, Math.PI*2);
+                        ctx.fill();
+
+                        ctx.fillStyle = colorCenter;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 3, 0, Math.PI*2);
+                        ctx.fill();
+
+                        ctx.fillStyle = '#ffffff';
+                        ctx.beginPath();
+                        ctx.arc(point.x-1, point.y-1, 1.2, 0, Math.PI*2);
+                        ctx.fill();
+                    }
+
+                    if (i % 25 === 0) {
+                        const extraColor = '#9d00ff';
+                        const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
+                        grad2.addColorStop(0, extraColor);
+                        grad2.addColorStop(0.6, extraColor + 'aa');
+                        grad2.addColorStop(1, 'transparent');
+                        ctx.fillStyle = grad2;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 12, 0, Math.PI*2);
+                        ctx.fill();
+                        ctx.fillStyle = extraColor;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 2.8, 0, Math.PI*2);
                         ctx.fill();
                     }
                 });
+
+                for (let k = 0; k < 12; k++) {
+                    const randIndex = Math.floor(Math.random() * points.length);
+                    const p = points[randIndex];
+                    const pinkOrPurple = (k % 2 === 0) ? '#ff00ff' : '#9d00ff';
+                    const tinyGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 8);
+                    tinyGrad.addColorStop(0, pinkOrPurple);
+                    tinyGrad.addColorStop(0.8, pinkOrPurple + '80');
+                    tinyGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = tinyGrad;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 8, 0, Math.PI*2);
+                    ctx.fill();
+                }
             }
 
-            // Static initialization: draw once, no events, no intervals
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', drawCosmicGraph);
             } else {
