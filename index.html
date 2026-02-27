@@ -120,16 +120,32 @@
             const centerY = 300;
             const canvas = document.getElementById('eu-graphCanvas');
             const boltsContainer = document.getElementById('eu-bolts');
+            let points = [];
+            let animationFrame;
+            let lastUpdate = 0;
+            let randomDots = [];
+            const UPDATE_INTERVAL = 200;
+            const FADE_DURATION = 100;
 
             if (boltsContainer) {
                 boltsContainer.innerHTML = '';
             }
 
-            function drawCosmicGraph() {
-                if (!canvas) return;
-                const ctx = canvas.getContext('2d');
-                const maxRadius = 250;
-                const minRadius = 50;
+            function generateBasePoints() {
+                const newPoints = [];
+                for (let i = 0; i <= 1000; i++) {
+                    const theta = (i / 1000) * Math.PI * 2;
+                    const x = -180 + (360 * theta / (Math.PI * 2));
+                    const y = Math.sin(x) * x * Math.cos(x);
+                    const radius = 50 + ((200) * (y + 180) / 360);
+                    const graphX = centerX + Math.cos(theta - Math.PI / 2) * radius;
+                    const graphY = centerY + Math.sin(theta - Math.PI / 2) * radius;
+                    newPoints.push({ x: graphX, y: graphY });
+                }
+                return newPoints;
+            }
+
+            function drawBackground(ctx) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 ctx.strokeStyle = 'rgba(0, 255, 255, 0.25)';
@@ -139,39 +155,26 @@
                     ctx.beginPath();
                     ctx.moveTo(centerX, centerY);
                     ctx.lineTo(
-                        centerX + Math.cos(rad) * maxRadius * 1.1,
-                        centerY + Math.sin(rad) * maxRadius * 1.1
+                        centerX + Math.cos(rad) * 275,
+                        centerY + Math.sin(rad) * 275
                     );
                     ctx.stroke();
                 }
 
                 ctx.strokeStyle = 'rgba(220, 220, 255, 0.3)';
-                for (let r = 50; r <= maxRadius; r += 50) {
+                for (let r = 50; r <= 250; r += 50) {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
                     ctx.stroke();
                 }
 
-                const points = [];
                 ctx.strokeStyle = '#00ffff';
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
-
-                for (let i = 0; i <= 1000; i++) {
-                    const theta = (i / 1000) * Math.PI * 2;
-                    const x = -180 + (360 * theta / (Math.PI * 2));
-                    const y = Math.sin(x) * x * Math.cos(x);
-                    const radius = minRadius + ((maxRadius - minRadius) * (y + 180) / 360);
-                    const graphX = centerX + Math.cos(theta - Math.PI / 2) * radius;
-                    const graphY = centerY + Math.sin(theta - Math.PI / 2) * radius;
-
-                    if (i === 0) {
-                        ctx.moveTo(graphX, graphY);
-                    } else {
-                        ctx.lineTo(graphX, graphY);
-                    }
-                    points.push({ x: graphX, y: graphY });
-                }
+                points.forEach((p, idx) => {
+                    if (idx === 0) ctx.moveTo(p.x, p.y);
+                    else ctx.lineTo(p.x, p.y);
+                });
                 ctx.stroke();
 
                 ctx.strokeStyle = 'rgba(0, 255, 255, 0.25)';
@@ -182,16 +185,13 @@
                     else ctx.lineTo(p.x, p.y);
                 });
                 ctx.stroke();
+            }
 
+            function drawStaticDots(ctx) {
                 points.forEach((point, i) => {
                     if (i % 10 === 0) {
                         const usePink = (Math.floor(i / 10) % 2 === 0);
-                        let colorCenter;
-                        if (usePink) {
-                            colorCenter = '#ff00ff';
-                        } else {
-                            colorCenter = '#9d00ff';
-                        }
+                        let colorCenter = usePink ? '#ff00ff' : '#9d00ff';
 
                         const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
                         grad.addColorStop(0, colorCenter + '66');
@@ -229,26 +229,68 @@
                         ctx.fill();
                     }
                 });
+            }
 
-                for (let k = 0; k < 12; k++) {
-                    const randIndex = Math.floor(Math.random() * points.length);
-                    const p = points[randIndex];
-                    const pinkOrPurple = (k % 2 === 0) ? '#ff00ff' : '#9d00ff';
-                    const tinyGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 8);
-                    tinyGrad.addColorStop(0, pinkOrPurple + '66');
-                    tinyGrad.addColorStop(0.8, pinkOrPurple + '40');
-                    tinyGrad.addColorStop(1, 'transparent');
-                    ctx.fillStyle = tinyGrad;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, 8, 0, Math.PI*2);
-                    ctx.fill();
+            function generateRandomDots() {
+                const now = Date.now();
+                if (now - lastUpdate > UPDATE_INTERVAL) {
+                    const newDots = [];
+                    for (let k = 0; k < 12; k++) {
+                        const randIndex = Math.floor(Math.random() * points.length);
+                        const p = points[randIndex];
+                        const pinkOrPurple = (k % 2 === 0) ? '#ff00ff' : '#9d00ff';
+                        newDots.push({
+                            point: p,
+                            color: pinkOrPurple,
+                            birth: now
+                        });
+                    }
+                    randomDots = newDots;
+                    lastUpdate = now;
                 }
             }
 
+            function drawRandomDots(ctx, now) {
+                randomDots.forEach(dot => {
+                    const age = now - dot.birth;
+                    if (age > FADE_DURATION) return;
+                    
+                    const opacity = 1 - (age / FADE_DURATION);
+                    const alpha = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
+                    const alphaStart = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
+                    
+                    const tinyGrad = ctx.createRadialGradient(dot.point.x, dot.point.y, 0, dot.point.x, dot.point.y, 8);
+                    tinyGrad.addColorStop(0, dot.color + alpha);
+                    tinyGrad.addColorStop(0.8, dot.color + '00');
+                    tinyGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = tinyGrad;
+                    ctx.beginPath();
+                    ctx.arc(dot.point.x, dot.point.y, 8, 0, Math.PI*2);
+                    ctx.fill();
+                });
+            }
+
+            function animate() {
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const now = Date.now();
+                
+                generateRandomDots();
+                drawBackground(ctx);
+                drawStaticDots(ctx);
+                drawRandomDots(ctx, now);
+                
+                animationFrame = requestAnimationFrame(animate);
+            }
+
+            points = generateBasePoints();
+            
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', drawCosmicGraph);
+                document.addEventListener('DOMContentLoaded', () => {
+                    animate();
+                });
             } else {
-                drawCosmicGraph();
+                animate();
             }
         })();
     </script>
