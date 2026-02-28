@@ -123,16 +123,10 @@
                 if (audioContext.state === 'suspended') {
                     audioContext.resume();
                 }
-                fetch(filename)
-                    .then(response => response.arrayBuffer())
-                    .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-                    .then(audioBuffer => {
-                        const source = audioContext.createBufferSource();
-                        source.buffer = audioBuffer;
-                        source.connect(audioContext.destination);
-                        source.start();
-                    })
-                    .catch(() => {});
+                
+                const audio = new Audio();
+                audio.src = filename;
+                audio.play().catch(() => {});
             }
 
             function generateBasePoints() {
@@ -388,6 +382,11 @@
             }
 
             points = generateBasePoints();
+
+            document.body.addEventListener('click', () => {
+                audioContext.resume();
+                playSound('s.wav');
+            }, { once: true });
 
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
