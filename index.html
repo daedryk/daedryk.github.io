@@ -119,21 +119,20 @@
 
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-            async function playSound(filename) {
+            function playSound(filename) {
                 if (audioContext.state === 'suspended') {
-                    await audioContext.resume();
+                    audioContext.resume();
                 }
-                try {
-                    const response = await fetch(filename);
-                    const arrayBuffer = await response.arrayBuffer();
-                    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-                    const source = audioContext.createBufferSource();
-                    source.buffer = audioBuffer;
-                    source.connect(audioContext.destination);
-                    source.start();
-                } catch (e) {
-                    // Silently handle errors
-                }
+                fetch(filename)
+                    .then(response => response.arrayBuffer())
+                    .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+                    .then(audioBuffer => {
+                        const source = audioContext.createBufferSource();
+                        source.buffer = audioBuffer;
+                        source.connect(audioContext.destination);
+                        source.start();
+                    })
+                    .catch(() => {});
             }
 
             function generateBasePoints() {
@@ -281,23 +280,17 @@
                 const seconds = now.getSeconds();
 
                 if (seconds !== lastSecond) {
-                    if (audioContext.state === 'running') {
-                        playSound('s.wav');
-                    }
+                    playSound('s.wav');
                     lastSecond = seconds;
                 }
 
                 if (minutes !== lastMinute) {
-                    if (audioContext.state === 'running') {
-                        playSound('m.wav');
-                    }
+                    playSound('m.wav');
                     lastMinute = minutes;
                 }
 
                 if (hours !== lastHour && minutes === 0 && seconds === 0) {
-                    if (audioContext.state === 'running') {
-                        playSound('h.wav');
-                    }
+                    playSound('h.wav');
                     lastHour = hours;
                 }
 
