@@ -54,6 +54,21 @@
             width: 100%;
             height: 100%;
             background-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.5;
+            object-fit: contain;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .contact-line {
@@ -79,16 +94,13 @@
             font-size: 1.2rem;
             text-shadow: 0 0 8px #ff00ff, 0 0 12px #ff00ff;
         }
-        .img {
-            opacity: 0.5;
-        }
     </style>
 </head>
 <body>
     <div class="title">Extra Celestial Observatory</div>
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container">
-            <img src="img.png" class="img">
+            <img src="img.png" class="background-image" alt="War">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         </div>
     </div>
