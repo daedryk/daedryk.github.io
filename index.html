@@ -83,7 +83,6 @@
 </head>
 <body>
     <div class="title">Extra Celestial Observatory</div>
-
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
@@ -105,7 +104,7 @@
     <script>
         (function() {
             const centerX = 300;
-            const centerY =  300;
+            const centerY = 300;
             const canvas = document.getElementById('eu-graphCanvas');
             let points = [];
             let animationFrame;
@@ -113,6 +112,29 @@
             let randomDots = [];
             const UPDATE_INTERVAL = 100;
             const FADE_DURATION = 100;
+
+            let lastSecond = -1;
+            let lastMinute = -1;
+            let lastHour = -1;
+
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+            async function playSound(filename) {
+                if (audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                }
+                try {
+                    const response = await fetch(filename);
+                    const arrayBuffer = await response.arrayBuffer();
+                    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+                    const source = audioContext.createBufferSource();
+                    source.buffer = audioBuffer;
+                    source.connect(audioContext.destination);
+                    source.start();
+                } catch (e) {
+                    // Silently handle errors
+                }
+            }
 
             function generateBasePoints() {
                 const newPoints = [];
@@ -182,17 +204,17 @@
                         grad.addColorStop(1, 'rgba(0,0,0,0)');
                         ctx.fillStyle = grad;
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 14, 0, Math.PI*2);
+                        ctx.arc(point.x, point.y, 14, 0, Math.PI * 2);
                         ctx.fill();
 
                         ctx.fillStyle = colorCenter + '66';
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 3, 0, Math.PI*2);
+                        ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
                         ctx.fill();
 
                         ctx.fillStyle = '#ffffff66';
                         ctx.beginPath();
-                        ctx.arc(point.x-1, point.y-1, 1.2, 0, Math.PI*2);
+                        ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
                         ctx.fill();
                     }
 
@@ -204,11 +226,11 @@
                         grad2.addColorStop(1, 'transparent');
                         ctx.fillStyle = grad2;
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 12, 0, Math.PI*2);
+                        ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
                         ctx.fill();
                         ctx.fillStyle = extraColor + '66';
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 2.8, 0, Math.PI*2);
+                        ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
                         ctx.fill();
                     }
                 });
@@ -237,17 +259,17 @@
                 randomDots.forEach(dot => {
                     const age = now - dot.birth;
                     if (age > FADE_DURATION) return;
-                    
+
                     const opacity = 1 - (age / FADE_DURATION);
                     const alpha = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
-                    
+
                     const tinyGrad = ctx.createRadialGradient(dot.point.x, dot.point.y, 0, dot.point.x, dot.point.y, 8);
                     tinyGrad.addColorStop(0, dot.color + alpha);
                     tinyGrad.addColorStop(0.8, dot.color + '00');
                     tinyGrad.addColorStop(1, 'transparent');
                     ctx.fillStyle = tinyGrad;
                     ctx.beginPath();
-                    ctx.arc(dot.point.x, dot.point.y, 8, 0, Math.PI*2);
+                    ctx.arc(dot.point.x, dot.point.y, 8, 0, Math.PI * 2);
                     ctx.fill();
                 });
             }
@@ -257,22 +279,43 @@
                 const hours = now.getHours() % 12;
                 const minutes = now.getMinutes();
                 const seconds = now.getSeconds();
-                
-                const hourAngle = (hours * 30 + minutes * 0.5) * Math.PI / 180 - Math.PI/2;
-                const minuteAngle = (minutes * 6 + seconds * 0.1) * Math.PI / 180 - Math.PI/2;
-                const secondAngle = (seconds * 6) * Math.PI / 180 - Math.PI/2;
-                
+
+                if (seconds !== lastSecond) {
+                    if (audioContext.state === 'running') {
+                        playSound('s.wav');
+                    }
+                    lastSecond = seconds;
+                }
+
+                if (minutes !== lastMinute) {
+                    if (audioContext.state === 'running') {
+                        playSound('m.wav');
+                    }
+                    lastMinute = minutes;
+                }
+
+                if (hours !== lastHour && minutes === 0 && seconds === 0) {
+                    if (audioContext.state === 'running') {
+                        playSound('h.wav');
+                    }
+                    lastHour = hours;
+                }
+
+                const hourAngle = (hours * 30 + minutes * 0.5) * Math.PI / 180 - Math.PI / 2;
+                const minuteAngle = (minutes * 6 + seconds * 0.1) * Math.PI / 180 - Math.PI / 2;
+                const secondAngle = (seconds * 6) * Math.PI / 180 - Math.PI / 2;
+
                 const hourLength = 180;
                 const minuteLength = 240;
                 const secondLength = 290;
-                
+
                 const hourX = centerX + Math.cos(hourAngle) * hourLength;
                 const hourY = centerY + Math.sin(hourAngle) * hourLength;
                 const minuteX = centerX + Math.cos(minuteAngle) * minuteLength;
                 const minuteY = centerY + Math.sin(minuteAngle) * minuteLength;
                 const secondX = centerX + Math.cos(secondAngle) * secondLength;
                 const secondY = centerY + Math.sin(secondAngle) * secondLength;
-                
+
                 const hourGrad = ctx.createLinearGradient(centerX, centerY, hourX, hourY);
                 hourGrad.addColorStop(0, '#ffffff');
                 hourGrad.addColorStop(1, '#00ffff');
@@ -284,7 +327,7 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(hourX, hourY);
                 ctx.stroke();
-                
+
                 const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
                 minuteGrad.addColorStop(0, '#ffffff');
                 minuteGrad.addColorStop(1, '#ff00ff');
@@ -296,7 +339,7 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(minuteX, minuteY);
                 ctx.stroke();
-                
+
                 const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
                 secondGrad.addColorStop(0, '#ffffff');
                 secondGrad.addColorStop(1, '#9d00ff');
@@ -308,32 +351,32 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(secondX, secondY);
                 ctx.stroke();
-                
+
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.shadowColor = '#00ffff';
                 ctx.shadowBlur = 20;
                 ctx.fillStyle = '#00ffff';
                 ctx.beginPath();
                 ctx.arc(hourX, hourY, 8, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.shadowColor = '#ff00ff';
                 ctx.fillStyle = '#ff00ff';
                 ctx.beginPath();
                 ctx.arc(minuteX, minuteY, 6, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.shadowColor = '#9d00ff';
                 ctx.fillStyle = '#9d00ff';
                 ctx.beginPath();
                 ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.shadowBlur = 0;
             }
 
@@ -341,18 +384,18 @@
                 if (!canvas) return;
                 const ctx = canvas.getContext('2d');
                 const now = Date.now();
-                
+
                 generateRandomDots();
                 drawBackground(ctx);
                 drawStaticDots(ctx);
                 drawRandomDots(ctx, now);
                 drawClock(ctx);
-                
+
                 animationFrame = requestAnimationFrame(animate);
             }
 
             points = generateBasePoints();
-            
+
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
                     animate();
