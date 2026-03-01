@@ -46,7 +46,7 @@
             overflow: hidden;
             box-shadow: inset 0 0 300px rgba(255, 0, 0, 1), 0 0 10px rgba(255, 255, 255, 1);
             margin: 0 auto;
-            cursor: default;
+            cursor: pointer;
             border: 1px solid rgba(255, 0, 255, 0.3);
         }
 
@@ -57,6 +57,7 @@
             background-color: transparent;
             position: relative;
             z-index: 2;
+            pointer-events: none;
         }
 
         .background-image {
@@ -130,13 +131,15 @@
             let lastMinute = -1;
             let lastHour = -1;
 
+            let soundEnabled = false;
+
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
             function playSound(filename) {
+                if (!soundEnabled) return;
                 if (audioContext.state === 'suspended') {
                     audioContext.resume();
                 }
-                
                 const audio = new Audio();
                 audio.src = filename;
                 audio.play().catch(() => {});
@@ -286,19 +289,19 @@
                 const minutes = now.getMinutes();
                 const seconds = now.getSeconds();
 
-                if (seconds !== lastSecond) {
-                    playSound('s.wav');
-                    lastSecond = seconds;
-                }
-
-                if (minutes !== lastMinute) {
-                    playSound('m.wav');
-                    lastMinute = minutes;
-                }
-
-                if (hours !== lastHour && minutes === 0 && seconds === 0) {
-                    playSound('h.wav');
-                    lastHour = hours;
+                if (soundEnabled) {
+                    if (seconds !== lastSecond) {
+                        playSound('s.wav');
+                        lastSecond = seconds;
+                    }
+                    if (minutes !== lastMinute) {
+                        playSound('m.wav');
+                        lastMinute = minutes;
+                    }
+                    if (hours !== lastHour && minutes === 0 && seconds === 0) {
+                        playSound('h.wav');
+                        lastHour = hours;
+                    }
                 }
 
                 const hourAngle = (hours * 30 + minutes * 0.5) * Math.PI / 180 - Math.PI / 2;
@@ -396,23 +399,16 @@
 
             points = generateBasePoints();
 
-            const wrapper = document.querySelector('.eternal-universe-wrapper');
-            if (wrapper) {
-                wrapper.addEventListener('click', function(e) {
+            const imageContainer = document.querySelector('.eu-image-container');
+            if (imageContainer) {
+                imageContainer.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    audioContext.resume();
-                    playSound('s.wav');
-                    playSound('m.wav');
-                    playSound('h.wav');
+                    soundEnabled = !soundEnabled;
+                    if (soundEnabled) {
+                        audioContext.resume();
+                    }
                 });
             }
-
-            document.body.addEventListener('click', function() {
-                audioContext.resume();
-                playSound('s.wav');
-                playSound('m.wav');
-                playSound('h.wav');
-            }, { once: true });
 
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
