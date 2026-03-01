@@ -147,22 +147,23 @@
       background: none;
       border: 2px solid #ff8000;
       border-radius: 60px;
-      font-size: 2rem;
-      font-weight: bold;
       width: 60px;
       height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-family: 'Courier New', Courier, monospace;
-      line-height: 1;
-      padding-bottom: 6px;
       transition: 0.1s linear;
+      background-color: #ff8000;
+      color: transparent;
+      text-indent: -9999px;
+      font-size: 0;
+      line-height: 0;
+      padding: 0;
     }
 
     .play-pause-btn:hover {
-      background-color: #1a1a1a;
+      background-color: #ff6000;
       border-color: #ff0000;
     }
 
@@ -244,7 +245,7 @@
     <div class="player-section">
       <div class="player-title">Am i making you nervous?</div>
       <div class="player-controls">
-        <button class="play-pause-btn" id="playPauseBtn">▶</button>
+        <button class="play-pause-btn" id="playPauseBtn" aria-label="play/pause"></button>
         <div class="progress-container">
           <progress class="progress-bar" id="progressBar" value="0" max="100"></progress>
         </div>
@@ -275,7 +276,6 @@
       const whilePlaying = () => {
         if (audio.ended) {
           btn.style.backgroundColor = '#ff8000';
-          btn.textContent = '▶';
           progress.value = 0;
           if (rafId) {
             cancelAnimationFrame(rafId);
@@ -304,18 +304,15 @@
           if (playPromise !== undefined) {
             playPromise.then(() => {
               btn.style.backgroundColor = '#ff0000';
-              btn.textContent = '⏸';
               if (rafId) cancelAnimationFrame(rafId);
               rafId = requestAnimationFrame(whilePlaying);
             }).catch(() => {
               btn.style.backgroundColor = '#ff8000';
-              btn.textContent = '▶';
             });
           }
         } else {
           audio.pause();
           btn.style.backgroundColor = '#ff8000';
-          btn.textContent = '▶';
           if (rafId) {
             cancelAnimationFrame(rafId);
             rafId = null;
@@ -364,7 +361,6 @@
 
       audio.addEventListener('ended', () => {
         btn.style.backgroundColor = '#ff8000';
-        btn.textContent = '▶';
         progress.value = 0;
         if (rafId) {
           cancelAnimationFrame(rafId);
@@ -376,7 +372,6 @@
       audio.addEventListener('error', () => {});
 
       btn.style.backgroundColor = '#ff8000';
-      btn.textContent = '▶';
       progress.value = 0;
 
       window.addEventListener('beforeunload', () => {
