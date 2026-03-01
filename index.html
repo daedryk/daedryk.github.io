@@ -113,21 +113,42 @@
         .content-box a:hover {
             text-decoration: underline;
         }
+
+        .ornamental-line {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto 10px;
+            height: 4px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #9d00ff, #ff00ff, #00ffff);
+            filter: drop-shadow(0 0 8px #ffffff);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
     <div class="title">Extra Celestial Observatory</div>
+    
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container">
             <img src="img.png" class="background-image" alt="War">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         </div>
     </div>
-
-    <div class="content-box"><a href="id.html">Who is this?</a></div>
-    <div class="content-box"><a href="m.html">Glagolitic Script Crash Course</a></div>
-    <div class="content-box"><span id="soundToggle" class="sound-toggle">Turn sounds on</span></div>
-
+    
+    <div class="content-box">
+        <a href="id.html">Who is this?</a>
+    </div>
+    
+    <div class="content-box">
+        <a href="m.html">Glagolitic Script Crash Course</a>
+    </div>
+    
+    <div class="content-box">
+        <span id="soundToggle" class="sound-toggle">Turn sounds on</span>
+    </div>
+    
+    <div class="ornamental-line"></div>
+    
     <p align="center">©2026 by Daedryk. Don't mess with my code!</p>
 
     <script>
@@ -141,13 +162,10 @@
             let randomDots = [];
             const UPDATE_INTERVAL = 100;
             const FADE_DURATION = 100;
-
             let lastSecond = -1;
             let lastMinute = -1;
             let lastHour = -1;
-
             let soundEnabled = false;
-
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
             function playSound(filename) {
@@ -176,9 +194,9 @@
 
             function drawBackground(ctx) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-
                 ctx.strokeStyle = '#ffffff';
                 ctx.lineWidth = 1;
+                
                 for (let angle = 0; angle < 360; angle += 15) {
                     const rad = angle * Math.PI / 180;
                     ctx.beginPath();
@@ -221,7 +239,6 @@
                     if (i % 10 === 0) {
                         const usePink = (Math.floor(i / 10) % 2 === 0);
                         let colorCenter = usePink ? '#ff00ff' : '#9d00ff';
-
                         const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
                         grad.addColorStop(0, colorCenter + '66');
                         grad.addColorStop(0.5, colorCenter + '40');
@@ -252,6 +269,7 @@
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
                         ctx.fill();
+
                         ctx.fillStyle = extraColor + '66';
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
@@ -268,11 +286,7 @@
                         const randIndex = Math.floor(Math.random() * points.length);
                         const p = points[randIndex];
                         const pinkOrPurple = (k % 2 === 0) ? '#ff00ff' : '#9d00ff';
-                        newDots.push({
-                            point: p,
-                            color: pinkOrPurple,
-                            birth: now
-                        });
+                        newDots.push({ point: p, color: pinkOrPurple, birth: now });
                     }
                     randomDots = newDots;
                     lastUpdate = now;
@@ -283,10 +297,8 @@
                 randomDots.forEach(dot => {
                     const age = now - dot.birth;
                     if (age > FADE_DURATION) return;
-
                     const opacity = 1 - (age / FADE_DURATION);
                     const alpha = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
-
                     const tinyGrad = ctx.createRadialGradient(dot.point.x, dot.point.y, 0, dot.point.x, dot.point.y, 8);
                     tinyGrad.addColorStop(0, dot.color + alpha);
                     tinyGrad.addColorStop(0.8, dot.color + '00');
@@ -402,13 +414,13 @@
                 if (!canvas) return;
                 const ctx = canvas.getContext('2d');
                 const now = Date.now();
-
+                
                 generateRandomDots();
                 drawBackground(ctx);
                 drawStaticDots(ctx);
                 drawRandomDots(ctx, now);
                 drawClock(ctx);
-
+                
                 animationFrame = requestAnimationFrame(animate);
             }
 
