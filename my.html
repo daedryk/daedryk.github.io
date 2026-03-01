@@ -13,10 +13,9 @@
 
         body {
             min-height: 100vh;
-            /* left-to-right gradient (same colors) + vertical darkening overlay */
             background: linear-gradient(90deg, #00ffff, #ff00ff, #9d00ff, #ff00ff, #00ffff),
                         linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-            background-blend-mode: normal;  /* stack darkening on top of color gradient */
+            background-blend-mode: normal;
             background-attachment: fixed;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -43,10 +42,9 @@
             word-wrap: break-word;
         }
 
-        /* outlined text instead of box outline */
         .ritual-link {
             display: inline-block;
-            color: transparent;                  /* transparent fill */
+            color: transparent;
             font-size: 1.5rem;
             text-decoration: none;
             padding: 8px 16px;
@@ -54,7 +52,7 @@
             font-weight: bold;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            -webkit-text-stroke: 2px #ff0000;    /* red outline */
+            -webkit-text-stroke: 2px #ff0000;
             text-stroke: 2px #ff0000;
             border: none;
             outline: none;
