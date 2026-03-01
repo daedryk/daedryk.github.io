@@ -396,9 +396,22 @@
 
             points = generateBasePoints();
 
-            document.body.addEventListener('click', () => {
+            const wrapper = document.querySelector('.eternal-universe-wrapper');
+            if (wrapper) {
+                wrapper.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    audioContext.resume();
+                    playSound('s.wav');
+                    playSound('m.wav');
+                    playSound('h.wav');
+                });
+            }
+
+            document.body.addEventListener('click', function() {
                 audioContext.resume();
                 playSound('s.wav');
+                playSound('m.wav');
+                playSound('h.wav');
             }, { once: true });
 
             if (document.readyState === 'loading') {
