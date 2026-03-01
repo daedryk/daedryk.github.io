@@ -13,12 +13,10 @@
 
         body {
             min-height: 100vh;
-            /* changed gradient direction: left to right, same colors */
-            background: linear-gradient(90deg, 
-                #00ffff 0%, 
-                #ff00ff 30%, 
-                #9d00ff 60%, 
-                #000000 100%);
+            /* left-to-right gradient (same colors) + vertical darkening overlay */
+            background: linear-gradient(90deg, #00ffff 0%, #ff00ff 30%, #9d00ff 60%, #000000 100%),
+                        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            background-blend-mode: normal;  /* stack darkening on top of color gradient */
             background-attachment: fixed;
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -45,29 +43,29 @@
             word-wrap: break-word;
         }
 
-        /* transformed from box outline to outlined text */
+        /* outlined text instead of box outline */
         .ritual-link {
             display: inline-block;
-            color: transparent;                  /* make fill transparent to show stroke */
+            color: transparent;                  /* transparent fill */
             font-size: 1.5rem;
             text-decoration: none;
-            padding: 8px 16px;                   /* refined padding, no border */
+            padding: 8px 16px;
             background: transparent;
             font-weight: bold;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            -webkit-text-stroke: 2px #ff0000;    /* red outline around letters */
-            text-stroke: 2px #ff0000;             /* for non-webkit (if supported) */
-            border: none;                          /* remove any border */
-            box-shadow: none;
+            -webkit-text-stroke: 2px #ff0000;    /* red outline */
+            text-stroke: 2px #ff0000;
+            border: none;
             outline: none;
+            box-shadow: none;
         }
 
         .ritual-link:hover {
-            -webkit-text-stroke-color: #ff4444;   /* lighter red on hover */
+            -webkit-text-stroke-color: #ff4444;
             text-stroke-color: #ff4444;
-            transform: scale(1.05);                /* subtle pop instead of bg change */
-            background: transparent;                /* keep background transparent */
+            transform: scale(1.05);
+            background: transparent;
         }
     </style>
 </head>
