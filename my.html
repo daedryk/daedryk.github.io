@@ -13,7 +13,8 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(180deg, 
+            /* changed gradient direction: left to right, same colors */
+            background: linear-gradient(90deg, 
                 #00ffff 0%, 
                 #ff00ff 30%, 
                 #9d00ff 60%, 
@@ -44,23 +45,29 @@
             word-wrap: break-word;
         }
 
+        /* transformed from box outline to outlined text */
         .ritual-link {
             display: inline-block;
-            color: #000000;
+            color: transparent;                  /* make fill transparent to show stroke */
             font-size: 1.5rem;
             text-decoration: none;
-            padding: 12px 24px;
-            border: 2px solid #ff0000;
+            padding: 8px 16px;                   /* refined padding, no border */
             background: transparent;
-            text-shadow: none;
             font-weight: bold;
             letter-spacing: 2px;
             transition: all 0.3s ease;
+            -webkit-text-stroke: 2px #ff0000;    /* red outline around letters */
+            text-stroke: 2px #ff0000;             /* for non-webkit (if supported) */
+            border: none;                          /* remove any border */
+            box-shadow: none;
+            outline: none;
         }
 
         .ritual-link:hover {
-            background: rgba(255, 0, 0, 0.1);
-            border-color: #ff4444;
+            -webkit-text-stroke-color: #ff4444;   /* lighter red on hover */
+            text-stroke-color: #ff4444;
+            transform: scale(1.05);                /* subtle pop instead of bg change */
+            background: transparent;                /* keep background transparent */
         }
     </style>
 </head>
