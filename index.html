@@ -184,7 +184,7 @@
             let lastHour = -1;
             let soundEnabled = false;
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            
+
             let audioElement = null;
             let isPlaying = false;
             let progressInterval = null;
@@ -336,12 +336,14 @@
             }
 
             function drawClock(ctx) {
+                if (isPlaying) return;
+
                 const now = new Date();
                 const hours = now.getHours() % 12;
                 const minutes = now.getMinutes();
                 const seconds = now.getSeconds();
 
-                if (soundEnabled && !isPlaying) {
+                if (soundEnabled) {
                     if (seconds !== lastSecond) {
                         playSound('s.wav');
                         lastSecond = seconds;
