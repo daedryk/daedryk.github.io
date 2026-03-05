@@ -3,22 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>cyber weierstrass · static</title>
+    <title>cyber weierstrass · amstrad stripes</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
-            background: #0a0c0f;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Courier New', monospace;
             padding: 12px;
+            position: relative;
+            background: #000;
         }
+        
+        .stripe-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .stripe {
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background: #00ffff;
+            opacity: 0.7;
+            box-shadow: 0 0 10px #00ffff;
+            animation: moveStripe 3s linear infinite;
+        }
+        
+        @keyframes moveStripe {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+        
         .cyber-frame {
             background: #030507;
             padding: 1.2rem 1.2rem 0.8rem 1.2rem;
@@ -28,7 +60,10 @@
             position: relative;
             width: 100%;
             max-width: 1000px;
+            z-index: 1;
+            backdrop-filter: blur(2px);
         }
+        
         .cyber-frame::before {
             content: "";
             position: absolute;
@@ -38,10 +73,12 @@
             z-index: 2;
             border-radius: 2px;
         }
+        
         .canvas-wrapper {
             position: relative;
             width: 100%;
         }
+        
         canvas {
             display: block;
             width: 100%;
@@ -51,6 +88,7 @@
             box-shadow: 0 0 30px #00ffc355;
             image-rendering: crisp-edges;
         }
+        
         .function-display {
             color: #ffff00;
             font-size: clamp(0.8rem, 4vw, 1.2rem);
@@ -66,6 +104,7 @@
             background: #03050780;
             backdrop-filter: blur(2px);
         }
+        
         .home-button {
             display: inline-block;
             background: transparent;
@@ -85,17 +124,20 @@
             backdrop-filter: blur(3px);
             text-decoration: none;
         }
+        
         .home-button:hover {
             background: #00ffc3;
             color: #030507;
             box-shadow: 0 0 30px #00ffc3;
         }
+        
         .footer {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
         }
+        
         .signature {
             color: #00ffc3aa;
             font-size: 0.7rem;
@@ -105,6 +147,8 @@
     </style>
 </head>
 <body>
+    <div class="stripe-bg" id="stripeBg"></div>
+    
     <div class="cyber-frame">
         <div class="canvas-wrapper">
             <canvas id="weierCanvas" width="800" height="450"></canvas>
@@ -117,6 +161,7 @@
             <span class="signature">⚡ STATIC ∞</span>
         </div>
     </div>
+    
     <script>
         (function() {
             const canvas = document.getElementById('weierCanvas');
@@ -144,7 +189,7 @@
                 return sum;
             }
             
-            function draw() {
+            function drawWeierstrass() {
                 ctx.clearRect(0, 0, w, h);
                 
                 ctx.beginPath();
@@ -186,7 +231,39 @@
                 ctx.shadowBlur = 0;
             }
             
-            draw();
+            drawWeierstrass();
+            
+            const stripeBg = document.getElementById('stripeBg');
+            const amstradColors = ['#00ffff', '#ff00ff', '#ffff00', '#ffffff', '#ff8800'];
+            
+            function createStripes() {
+                stripeBg.innerHTML = '';
+                const stripeCount = 15;
+                
+                for (let i = 0; i < stripeCount; i++) {
+                    const stripe = document.createElement('div');
+                    stripe.className = 'stripe';
+                    
+                    const color = amstradColors[Math.floor(Math.random() * amstradColors.length)];
+                    const top = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = 2 + Math.random() * 4;
+                    const height = 4 + Math.floor(Math.random() * 8);
+                    
+                    stripe.style.background = color;
+                    stripe.style.boxShadow = `0 0 15px ${color}`;
+                    stripe.style.top = `${top}%`;
+                    stripe.style.animationDelay = `${delay}s`;
+                    stripe.style.animationDuration = `${duration}s`;
+                    stripe.style.height = `${height}px`;
+                    stripe.style.opacity = 0.3 + Math.random() * 0.5;
+                    
+                    stripeBg.appendChild(stripe);
+                }
+            }
+            
+            createStripes();
+            setInterval(createStripes, 8000);
         })();
     </script>
 </body>
