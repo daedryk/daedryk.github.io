@@ -83,6 +83,7 @@
             box-shadow: 0 0 15px #00ffc355, inset 0 0 10px #00ffc333;
             transition: all 0.2s ease;
             backdrop-filter: blur(3px);
+            text-decoration: none;
         }
         .home-button:hover {
             background: #00ffc3;
@@ -112,7 +113,7 @@
             f(x) = Σ aⁿ cos(π bⁿ x) &nbsp;&nbsp; a=0.5 &nbsp; b=3.2
         </div>
         <div class="footer">
-            <button class="home-button" id="homeBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">🏠 HOME</button>
+            <a href="https://daedryk.github.io/" class="home-button" id="homeBtn">🏠 HOME</a>
             <span class="signature">⚡ LIVE ∞</span>
         </div>
     </div>
@@ -124,9 +125,10 @@
             const w = 800, h = 450;
             const xMin = -2.2, xMax = 1.2;
             const yMin = -1.6, yMax = 1.6;
+            const xRange = xMax - xMin;
             
             function toScreenX(x) {
-                return ((x - xMin) / (xMax - xMin)) * w;
+                return ((x - xMin) / xRange) * w;
             }
             function toScreenY(y) {
                 return h - ((y - yMin) / (yMax - yMin)) * h;
@@ -143,10 +145,10 @@
                 return sum;
             }
             
-            let phase = 0;
-            const fadeSpeed = 0.008;
+            let offset = 0;
+            const speed = 0.004;
             
-            function drawAnimated() {
+            function drawSeamless() {
                 ctx.clearRect(0, 0, w, h);
                 
                 ctx.beginPath();
@@ -155,20 +157,23 @@
                 ctx.shadowColor = "#ffff00";
                 ctx.shadowBlur = 14;
                 
-                const steps = 4500;
+                const steps = 5000;
                 let first = true;
                 
                 for (let i = 0; i <= steps; i++) {
                     const t = i / steps;
-                    const x = xMin + t * (xMax - xMin);
+                    let x = xMin + t * xRange;
+                    x = x + offset;
+                    
+                    if (x > xMax) {
+                        x = xMin + (x - xMax);
+                    }
+                    
                     const y = weierstrass(x, 26);
                     
                     if (y >= yMin - 0.3 && y <= yMax + 0.3) {
                         const sx = toScreenX(x);
                         const sy = toScreenY(y);
-                        
-                        const fade = Math.sin(t * Math.PI + phase);
-                        const alpha = Math.max(0, Math.min(1, (fade + 1) / 2));
                         
                         if (first) {
                             ctx.beginPath();
@@ -177,8 +182,6 @@
                         } else {
                             ctx.lineTo(sx, sy);
                         }
-                        
-                        ctx.strokeStyle = `rgba(255, 255, 0, ${alpha})`;
                     } else {
                         if (!first) {
                             ctx.stroke();
@@ -191,12 +194,12 @@
                 }
                 
                 ctx.shadowBlur = 0;
-                phase = (phase + fadeSpeed) % (Math.PI * 2);
+                offset = (offset + speed) % xRange;
                 
-                requestAnimationFrame(drawAnimated);
+                requestAnimationFrame(drawSeamless);
             }
             
-            drawAnimated();
+            drawSeamless();
         })();
     </script>
 </body>
