@@ -2,68 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>cyber weierstrass frame</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        body {
-            background: #0a0c0f;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Courier New', monospace;
-        }
-        .cyber-frame {
-            background: #030507;
-            padding: 1.2rem;
-            border: 2px solid #00ffc3;
-            box-shadow: 
-                0 0 20px #00ffc366,
-                inset 0 0 15px #00ffc333;
-            border-radius: 4px;
-            position: relative;
-        }
-        .cyber-frame::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: repeating-linear-gradient(0deg, 
-                rgba(0, 255, 200, 0.03) 0px, 
-                rgba(0, 0, 0, 0.5) 1px, 
-                transparent 2px);
-            pointer-events: none;
-            z-index: 2;
-            border-radius: 2px;
-        }
-        .cyber-frame::after {
-            content: "⚡ WEIERSTRASS · FRACTAL · CORSICA ⚡";
-            position: absolute;
-            bottom: -1.8rem;
-            right: 0.5rem;
-            color: #00ffc3;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px cyan;
-            background: #030507dd;
-            padding: 0.2rem 0.8rem;
-            border: 1px solid #00ffc3;
-            border-top: none;
-            backdrop-filter: blur(2px);
-        }
-        canvas {
-            display: block;
-            width: 800px;
-            height: 450px;
-            background: #0b0f12;
-            border: 1px solid #00ffc3;
-            box-shadow: 0 0 30px #00ffc355;
-            image-rendering: crisp-edges;
-        }
     </style>
 </head>
 <body>
@@ -74,9 +19,22 @@
         (function() {
             const canvas = document.getElementById('weierCanvas');
             const ctx = canvas.getContext('2d');
+            const container = document.querySelector('.cyber-frame');
+            
+            function resizeCanvas() {
+                const containerWidth = container.clientWidth - 32;
+                const aspect = 800/450;
+                let newWidth = Math.min(800, containerWidth);
+                let newHeight = newWidth / aspect;
+                
+                canvas.style.width = newWidth + 'px';
+                canvas.style.height = newHeight + 'px';
+            }
+            
             const w = 800, h = 450;
             const xMin = -2.2, xMax = 1.2;
             const yMin = -1.6, yMax = 1.6;
+            
             function toScreenX(x) {
                 return ((x - xMin) / (xMax - xMin)) * w;
             }
@@ -176,7 +134,10 @@
                 }
                 ctx.shadowBlur = 0;
             }
+            
             drawWeierstrass();
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
         })();
     </script>
 </body>
