@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extra Celestial Observatory</title>
+    <title>Extra Celestial Observatory · stochastic dots</title>
     <link rel="icon" href="favicon.ico" />
     <style>
         * {
@@ -181,10 +181,9 @@
             const canvas = document.getElementById('eu-graphCanvas');
             let points = [];
             let animationFrame;
-            let lastUpdate = 0;
-            let randomDots = [];
-            const UPDATE_INTERVAL = 100;
-            const FADE_DURATION = 100;
+            let activeDots = [];
+            const DOT_GENERATION_INTERVAL = 500;
+            let lastDotGeneration = 0;
             let lastSecond = -1;
             let lastMinute = -1;
             let lastHour = -1;
@@ -309,35 +308,58 @@
                 });
             }
 
-            function generateRandomDots() {
-                const now = Date.now();
-                if (now - lastUpdate > UPDATE_INTERVAL) {
-                    const newDots = [];
-                    for (let k = 0; k < 12; k++) {
+            function generateRandomDots(now) {
+                if (now - lastDotGeneration > DOT_GENERATION_INTERVAL) {
+                    const count = Math.floor(Math.random() * 3) + 2;
+                    for (let k = 0; k < count; k++) {
+                        if (points.length === 0) continue;
                         const randIndex = Math.floor(Math.random() * points.length);
                         const p = points[randIndex];
-                        const pinkOrPurple = (k % 2 === 0) ? '#ff00ff' : '#9d00ff';
-                        newDots.push({ point: p, color: pinkOrPurple, birth: now });
+                        const color = (Math.random() > 0.5) ? '#ff00ff' : '#9d00ff';
+                        const lifetime = 100 + Math.random() * 9900;
+                        activeDots.push({
+                            point: p,
+                            color: color,
+                            birth: now,
+                            lifetime: lifetime
+                        });
                     }
-                    randomDots = newDots;
-                    lastUpdate = now;
+                    lastDotGeneration = now;
+                }
+
+                if (activeDots.length > 200) {
+                    activeDots = activeDots.slice(-180);
                 }
             }
 
             function drawRandomDots(ctx, now) {
-                randomDots.forEach(dot => {
+                activeDots = activeDots.filter(dot => {
                     const age = now - dot.birth;
-                    if (age > FADE_DURATION) return;
-                    const opacity = 1 - (age / FADE_DURATION);
-                    const alpha = Math.floor(opacity * 0.4 * 255).toString(16).padStart(2, '0');
-                    const tinyGrad = ctx.createRadialGradient(dot.point.x, dot.point.y, 0, dot.point.x, dot.point.y, 8);
-                    tinyGrad.addColorStop(0, dot.color + alpha);
-                    tinyGrad.addColorStop(0.8, dot.color + '00');
-                    tinyGrad.addColorStop(1, 'transparent');
-                    ctx.fillStyle = tinyGrad;
+                    return age < dot.lifetime;
+                });
+
+                activeDots.forEach(dot => {
+                    const age = now - dot.birth;
+                    const remaining = dot.lifetime - age;
+                    let opacity = 1.0;
+                    if (dot.lifetime > 0) {
+                        opacity = remaining / dot.lifetime;
+                    }
+                    const alphaHex = Math.floor(opacity * 0.6 * 255).toString(16).padStart(2, '0');
+                    const gradient = ctx.createRadialGradient(dot.point.x, dot.point.y, 0, dot.point.x, dot.point.y, 9);
+                    gradient.addColorStop(0, dot.color + alphaHex);
+                    gradient.addColorStop(0.7, dot.color + '00');
+                    ctx.fillStyle = gradient;
                     ctx.beginPath();
-                    ctx.arc(dot.point.x, dot.point.y, 8, 0, Math.PI * 2);
+                    ctx.arc(dot.point.x, dot.point.y, 9, 0, 2 * Math.PI);
                     ctx.fill();
+
+                    if (opacity > 0.3) {
+                        ctx.fillStyle = dot.color + 'aa';
+                        ctx.beginPath();
+                        ctx.arc(dot.point.x, dot.point.y, 2.2, 0, 2 * Math.PI);
+                        ctx.fill();
+                    }
                 });
             }
 
@@ -446,9 +468,9 @@
             function animate() {
                 if (!canvas) return;
                 const ctx = canvas.getContext('2d');
-                const now = Date.now();
+                const now = performance.now();
 
-                generateRandomDots();
+                generateRandomDots(now);
                 drawBackground(ctx);
                 drawStaticDots(ctx);
                 drawRandomDots(ctx, now);
