@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Amstrad CPC464 Storm</title>
+    <title>Amstrad Storm</title>
     <style>
         * {
             margin: 0;
@@ -22,14 +22,39 @@
             background: #000;
         }
         
+        .cyber-frame {
+            background: #030507;
+            padding: 1.2rem 1.2rem 0.8rem 1.2rem;
+            border: 2px solid #00ffc3;
+            box-shadow: 0 0 20px #00ffc366, inset 0 0 15px #00ffc333;
+            border-radius: 4px;
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            z-index: 1;
+            backdrop-filter: blur(2px);
+            overflow: hidden;
+        }
+        
+        .cyber-frame::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0, 255, 200, 0.03) 0px, rgba(0, 0, 0, 0.5) 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 3;
+            border-radius: 2px;
+        }
+        
         .stripe-bg {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
             overflow: hidden;
+            border-radius: 2px;
         }
         
         .stripe {
@@ -39,6 +64,7 @@
             opacity: 0.8;
             box-shadow: 0 0 20px currentColor;
             animation: moveStripe linear forwards;
+            z-index: 0;
         }
         
         @keyframes moveStripeDown {
@@ -51,33 +77,11 @@
             100% { transform: translateY(-100%); }
         }
         
-        .cyber-frame {
-            background: #030507;
-            padding: 1.2rem 1.2rem 0.8rem 1.2rem;
-            border: 2px solid #00ffc3;
-            box-shadow: 0 0 20px #00ffc366, inset 0 0 15px #00ffc333;
-            border-radius: 4px;
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            z-index: 1;
-            backdrop-filter: blur(2px);
-        }
-        
-        .cyber-frame::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: repeating-linear-gradient(0deg, rgba(0, 255, 200, 0.03) 0px, rgba(0, 0, 0, 0.5) 1px, transparent 2px);
-            pointer-events: none;
-            z-index: 2;
-            border-radius: 2px;
-        }
-        
         .canvas-wrapper {
             position: relative;
             width: 100%;
             aspect-ratio: 4 / 3;
+            z-index: 2;
         }
         
         canvas {
@@ -104,6 +108,8 @@
             font-weight: bold;
             background: #03050780;
             backdrop-filter: blur(2px);
+            position: relative;
+            z-index: 2;
         }
         
         .home-button {
@@ -124,6 +130,8 @@
             transition: all 0.2s ease;
             backdrop-filter: blur(3px);
             text-decoration: none;
+            position: relative;
+            z-index: 2;
         }
         
         .home-button:hover {
@@ -137,6 +145,8 @@
             justify-content: center;
             align-items: center;
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
         
         .signature {
@@ -148,9 +158,8 @@
     </style>
 </head>
 <body>
-    <div class="stripe-bg" id="stripeBg"></div>
-    
     <div class="cyber-frame">
+        <div class="stripe-bg" id="stripeBg"></div>
         <div class="canvas-wrapper">
             <canvas id="weierCanvas" width="800" height="600"></canvas>
         </div>
@@ -159,7 +168,7 @@
         </div>
         <div class="footer">
             <a href="https://daedryk.github.io/" class="home-button">🏠 HOME</a>
-            <span class="signature">⚡ STATIC ∞</span>
+            <span class="signature">⚡ CPC464</span>
         </div>
     </div>
     
