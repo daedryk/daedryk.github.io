@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Amstrad</title>
   <style>
-    /* ========== RESET & BASE STYLES ========== */
     * {
       margin: 0;
       padding: 0;
@@ -20,7 +19,6 @@
       background: #000;
     }
 
-    /* ========== BACKGROUND PATTERN ========== */
     .pattern-bg {
       position: fixed;
       top: 0;
@@ -41,7 +39,6 @@
       pointer-events: none;
     }
 
-    /* ========== MAIN FRAME & ANIMATIONS ========== */
     @keyframes dropFromTop {
       0% {
         transform: translateY(-100vh);
@@ -103,7 +100,6 @@
       border-radius: 2px;
     }
 
-    /* ========== STRIPE ANIMATIONS ========== */
     .stripe-bg {
       position: absolute;
       top: 0;
@@ -125,7 +121,6 @@
       z-index: 0;
     }
 
-    /* ========== IMAGE & CAPTION ========== */
     .image-wrapper {
       position: relative;
       width: 100%;
@@ -163,7 +158,6 @@
       text-transform: uppercase;
     }
 
-    /* ========== BUTTONS & FOOTER ========== */
     .home-button {
       display: inline-block;
       background: transparent;
@@ -208,7 +202,6 @@
       text-shadow: 0 0 5px #00ffc3;
     }
 
-    /* ========== FACT SHEET ========== */
     .fact-sheet {
       background: #030507;
       border: 2px solid #00ffc3;
@@ -234,10 +227,11 @@
       text-transform: uppercase;
     }
 
+    /* NEW: one fact per line, full width on mobile */
     .fact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     .fact-item {
@@ -245,15 +239,36 @@
       justify-content: space-between;
       border-bottom: 1px dotted #00ffc366;
       padding: 0.3rem 0;
+      width: 100%;
+      flex-wrap: wrap;
     }
 
     .fact-label {
       color: #ffff00;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     .fact-value {
       color: #ffffff;
+      text-align: right;
+      word-break: break-word;
+      max-width: 60%;
+    }
+
+    /* fine-tuning for very small screens */
+    @media (max-width: 400px) {
+      .fact-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .fact-label {
+        white-space: normal;
+      }
+      .fact-value {
+        text-align: left;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
