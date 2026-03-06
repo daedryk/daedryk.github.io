@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>cyber weierstrass · amstrad storm</title>
+    <title>cyber weierstrass · 4:3 aspect</title>
     <style>
         * {
             margin: 0;
@@ -42,21 +42,13 @@
         }
         
         @keyframes moveStripeDown {
-            0% {
-                transform: translateY(-100%);
-            }
-            100% {
-                transform: translateY(100vh);
-            }
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
         }
         
         @keyframes moveStripeUp {
-            0% {
-                transform: translateY(100vh);
-            }
-            100% {
-                transform: translateY(-100%);
-            }
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-100%); }
         }
         
         .cyber-frame {
@@ -67,7 +59,7 @@
             border-radius: 4px;
             position: relative;
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
             z-index: 1;
             backdrop-filter: blur(2px);
         }
@@ -85,12 +77,13 @@
         .canvas-wrapper {
             position: relative;
             width: 100%;
+            aspect-ratio: 4 / 3;
         }
         
         canvas {
             display: block;
             width: 100%;
-            height: auto;
+            height: 100%;
             background: #0000ff;
             border: 1px solid #00ffc3;
             box-shadow: 0 0 30px #00ffc355;
@@ -159,14 +152,14 @@
     
     <div class="cyber-frame">
         <div class="canvas-wrapper">
-            <canvas id="weierCanvas" width="800" height="450"></canvas>
+            <canvas id="weierCanvas" width="800" height="600"></canvas>
         </div>
         <div class="function-display">
             f(x) = Σ aⁿ cos(π bⁿ x) &nbsp;&nbsp; a=0.5 &nbsp; b=3.2
         </div>
         <div class="footer">
             <a href="https://daedryk.github.io/" class="home-button">🏠 HOME</a>
-            <span class="signature">⚡ CPC464</span>
+            <span class="signature">⚡ STATIC ∞</span>
         </div>
     </div>
     
@@ -175,7 +168,7 @@
             const canvas = document.getElementById('weierCanvas');
             const ctx = canvas.getContext('2d');
             
-            const w = 800, h = 450;
+            const w = 800, h = 600;
             const xMin = -2.2, xMax = 1.2;
             const yMin = -1.6, yMax = 1.6;
             
