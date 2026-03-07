@@ -19,7 +19,7 @@
             display: block;
             width: 100%;
             min-height: 100vh;
-            padding: 20px 10px;
+            padding: 20px 5px;
         }
 
         .eternal-universe-wrapper {
@@ -65,7 +65,7 @@
             opacity: 0 !important;
         }
 
-        .background-image {
+        .background-image-war {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -77,7 +77,7 @@
             z-index: 1;
         }
 
-        .background-image-full {
+        .background-image-map {
             position: absolute;
             top: 0;
             left: 0;
@@ -157,8 +157,8 @@
 
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container" id="visualizationClickArea">
-            <img src="map.jpeg" class="background-image-full" alt="Slovenia">
-            <img src="img.png" class="background-image" alt="War">
+            <img src="map.jpeg" class="background-image-map" alt="Slovenia">
+            <img src="img.png" class="background-image-war" alt="War">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         </div>
     </div>
