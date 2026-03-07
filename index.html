@@ -58,6 +58,11 @@
             position: relative;
             z-index: 3;
             pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .canvas-hidden {
+            opacity: 0 !important;
         }
 
         .background-image {
@@ -455,11 +460,14 @@
                         clearInterval(progressInterval);
                         progressInterval = null;
                     }
+                    canvas.classList.remove('canvas-hidden');
                 });
                 audioElement.play();
                 isPlaying = true;
                 progressInterval = setInterval(updateProgress, 100);
                 stopClockSounds();
+
+                canvas.classList.add('canvas-hidden');
             }
 
             function toggleMusic() {
@@ -470,6 +478,7 @@
                         clearInterval(progressInterval);
                         progressInterval = null;
                     }
+                    canvas.classList.remove('canvas-hidden');
                 } else {
                     playMusic();
                 }
