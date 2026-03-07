@@ -35,7 +35,7 @@
         #ffff00 8px,
         #ffff00 12px
       );
-      opacity: 0.15;
+      opacity: 0.5;
       pointer-events: none;
     }
 
@@ -77,7 +77,6 @@
       max-width: 900px;
       margin: 0 auto;
       z-index: 1;
-      backdrop-filter: blur(2px);
       overflow: hidden;
       animation: dropFromTop 0.8s ease-out;
     }
@@ -152,7 +151,6 @@
       word-break: break-word;
       font-weight: bold;
       background: #03050780;
-      backdrop-filter: blur(2px);
       position: relative;
       z-index: 2;
       text-transform: uppercase;
@@ -173,7 +171,6 @@
       text-shadow: 0 0 8px #00ffc3;
       box-shadow: 0 0 15px #00ffc355, inset 0 0 10px #00ffc333;
       transition: all 0.2s ease;
-      backdrop-filter: blur(3px);
       text-decoration: none;
       position: relative;
       z-index: 2;
@@ -227,7 +224,6 @@
       text-transform: uppercase;
     }
 
-    /* NEW: one fact per line, full width on mobile */
     .fact-grid {
       display: flex;
       flex-direction: column;
@@ -256,7 +252,6 @@
       max-width: 60%;
     }
 
-    /* fine-tuning for very small screens */
     @media (max-width: 400px) {
       .fact-item {
         flex-direction: column;
