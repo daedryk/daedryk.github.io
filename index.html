@@ -31,9 +31,9 @@
             margin: 0 auto;
             background: #ffffff;
             color: #ff8000;
-            --electric-blue: #000000;
-            --electric-pink: #ff0000;
-            --electric-purple: #0000ff;
+            --electric-red: #ff0000;
+            --electric-green: #00ff00;
+            --electric-blue: #0000ff;
         }
 
         .eu-image-container {
@@ -122,7 +122,7 @@
             max-width: 600px;
             margin: 20px auto 10px;
             height: 4px;
-            background: linear-gradient(90deg, #000000, #ff0000, #0000ff, #ff0000, #000000);
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #00ff00, #ff0000);
             filter: drop-shadow(0 0 8px #000000);
             border-radius: 2px;
             position: relative;
@@ -199,6 +199,11 @@
             const soundToggle = document.getElementById('soundToggle');
             const visualizationArea = document.getElementById('visualizationClickArea');
 
+            // Electric color constants
+            const ELECTRIC_RED = '#ff0000';
+            const ELECTRIC_GREEN = '#00ff00';
+            const ELECTRIC_BLUE = '#0000ff';
+
             function playSound(filename) {
                 if (!soundEnabled) return;
                 if (audioContext.state === 'suspended') {
@@ -249,7 +254,7 @@
 
                 ctx.save();
                 ctx.globalAlpha = 0.5;
-                ctx.strokeStyle = '#00ff00';
+                ctx.strokeStyle = ELECTRIC_GREEN;
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
@@ -274,8 +279,8 @@
                 ctx.globalAlpha = 0.5;
                 points.forEach((point, i) => {
                     if (i % 10 === 0) {
-                        const usePink = (Math.floor(i / 10) % 2 === 0);
-                        let colorCenter = usePink ? '#ff0000' : '#0000ff';
+                        const useRed = (Math.floor(i / 10) % 2 === 0);
+                        let colorCenter = useRed ? ELECTRIC_RED : ELECTRIC_BLUE;
                         const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
                         grad.addColorStop(0, colorCenter + '66');
                         grad.addColorStop(0.5, colorCenter + '40');
@@ -297,7 +302,7 @@
                     }
 
                     if (i % 25 === 0) {
-                        const extraColor = '#0000ff';
+                        const extraColor = ELECTRIC_BLUE;
                         const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
                         grad2.addColorStop(0, extraColor + '66');
                         grad2.addColorStop(0.6, extraColor + '40');
@@ -417,10 +422,10 @@
 
                 ctx.shadowBlur = 0;
 
-                ctx.shadowColor = '#00ff00';
+                ctx.shadowColor = ELECTRIC_GREEN;
                 ctx.shadowBlur = 25;
                 ctx.font = 'bold 56px "KaiTi", "楷体", "STKaiti", "华文楷体", "Microsoft YaHei", serif';
-                ctx.fillStyle = '#00ff00';
+                ctx.fillStyle = ELECTRIC_GREEN;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('道', centerX, centerY);
