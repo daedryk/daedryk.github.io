@@ -247,6 +247,8 @@
                     ctx.stroke();
                 }
 
+                ctx.save();
+                ctx.globalAlpha = 0.5;
                 ctx.strokeStyle = '#00ff00';
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
@@ -256,7 +258,7 @@
                 });
                 ctx.stroke();
 
-                ctx.strokeStyle = 'rgba(0, 255, 0, 0.25)';
+                ctx.strokeStyle = 'rgba(0, 255, 0, 0.125)';
                 ctx.lineWidth = 10;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
@@ -264,9 +266,12 @@
                     else ctx.lineTo(p.x, p.y);
                 });
                 ctx.stroke();
+                ctx.restore();
             }
 
             function drawStaticDots(ctx) {
+                ctx.save();
+                ctx.globalAlpha = 0.5;
                 points.forEach((point, i) => {
                     if (i % 10 === 0) {
                         const usePink = (Math.floor(i / 10) % 2 === 0);
@@ -308,6 +313,7 @@
                         ctx.fill();
                     }
                 });
+                ctx.restore();
             }
 
             function drawClock(ctx) {
@@ -362,8 +368,8 @@
 
                 const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
                 minuteGrad.addColorStop(0, '#ff8000');
-                minuteGrad.addColorStop(1, '#ff0000');
-                ctx.shadowColor = '#ff0000';
+                minuteGrad.addColorStop(1, '#000000');
+                ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 4;
                 ctx.strokeStyle = minuteGrad;
@@ -374,8 +380,8 @@
 
                 const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
                 secondGrad.addColorStop(0, '#ff8000');
-                secondGrad.addColorStop(1, '#0000ff');
-                ctx.shadowColor = '#0000ff';
+                secondGrad.addColorStop(1, '#000000');
+                ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 3;
                 ctx.strokeStyle = secondGrad;
@@ -397,14 +403,14 @@
                 ctx.arc(hourX, hourY, 8, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.shadowColor = '#ff0000';
-                ctx.fillStyle = '#ff0000';
+                ctx.shadowColor = '#000000';
+                ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(minuteX, minuteY, 6, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.shadowColor = '#0000ff';
-                ctx.fillStyle = '#0000ff';
+                ctx.shadowColor = '#000000';
+                ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
                 ctx.fill();
