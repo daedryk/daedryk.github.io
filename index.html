@@ -247,7 +247,7 @@
                     ctx.stroke();
                 }
 
-                ctx.strokeStyle = '#000000';
+                ctx.strokeStyle = '#00ff00';
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
@@ -256,7 +256,7 @@
                 });
                 ctx.stroke();
 
-                ctx.strokeStyle = 'rgba(0, 0, 0, 0.25)';
+                ctx.strokeStyle = 'rgba(0, 255, 0, 0.25)';
                 ctx.lineWidth = 10;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
@@ -411,10 +411,10 @@
 
                 ctx.shadowBlur = 0;
 
-                ctx.shadowColor = '#ff8000';
+                ctx.shadowColor = '#00ff00';
                 ctx.shadowBlur = 25;
                 ctx.font = 'bold 56px "KaiTi", "楷体", "STKaiti", "华文楷体", "Microsoft YaHei", serif';
-                ctx.fillStyle = '#ff8000';
+                ctx.fillStyle = '#00ff00';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('道', centerX, centerY);
