@@ -134,68 +134,8 @@
       object-position: center;
     }
 
-    .caption {
-      color: #ffff00;
-      font-size: clamp(0.9rem, 4vw, 1.3rem);
-      text-align: center;
-      margin: 12px 0 8px 0;
-      padding: 8px 0;
-      border-top: 1px dashed #00ffc3;
-      border-bottom: 1px dashed #00ffc3;
-      text-shadow: 0 0 8px #ffaa00;
-      word-break: break-word;
-      font-weight: bold;
-      background: #03050780;
-      position: relative;
-      z-index: 2;
-      text-transform: uppercase;
-    }
-
-    .home-button {
-      display: inline-block;
-      background: transparent;
-      border: 2px solid #00ffc3;
-      color: #00ffc3;
-      font-family: 'Courier New', monospace;
-      font-size: 1rem;
-      font-weight: bold;
-      padding: 8px 24px;
-      margin: 8px 0 4px 0;
-      cursor: pointer;
-      text-transform: uppercase;
-      text-shadow: 0 0 8px #00ffc3;
-      box-shadow: 0 0 15px #00ffc355, inset 0 0 10px #00ffc333;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      position: relative;
-      z-index: 2;
-    }
-
-    .home-button:hover {
-      background: #00ffc3;
-      color: #030507;
-      box-shadow: 0 0 30px #00ffc3;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      position: relative;
-      z-index: 2;
-    }
-
-    .signature {
-      color: #00ffc3aa;
-      font-size: 0.9rem;
-      margin-left: 20px;
-      font-weight: bold;
-      text-shadow: 0 0 5px #00ffc3;
-    }
-
     .fact-sheet {
-      background: #030507;
+      background: transparent;
       border: 2px solid #00ffc3;
       box-shadow: 0 0 20px #00ffc366, inset 0 0 15px #00ffc333;
       border-radius: 4px;
@@ -253,12 +193,9 @@
   <div class="cyber-frame">
     <div class="stripe-bg" id="stripeBg"></div>
     <div class="image-wrapper">
-      <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
-    </div>
-    <div class="caption">RED MOON IN SUPERNOVA</div>
-    <div class="footer">
-      <a href="https://daedryk.github.io/" class="home-button">🏠 HOME</a>
-      <span class="signature">DAEDRYK</span>
+      <a href="https://daedryk.github.io/">
+        <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
+      </a>
     </div>
   </div>
 
