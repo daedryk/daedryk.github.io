@@ -13,8 +13,8 @@
         }
 
         body {
-            background-color: #000000;
-            color: #00ffff;
+            background-color: #ffffff;
+            color: #ff8000;
             font-family: 'Arial', sans-serif;
             display: block;
             width: 100%;
@@ -29,11 +29,11 @@
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            background: #000;
-            color: white;
-            --electric-blue: #00ffff;
-            --electric-pink: #ff00ff;
-            --electric-purple: #9d00ff;
+            background: #ffffff;
+            color: #ff8000;
+            --electric-blue: #000000;
+            --electric-pink: #ff0000;
+            --electric-purple: #0000ff;
         }
 
         .eu-image-container {
@@ -99,17 +99,17 @@
             max-width: 600px;
             margin: 10px auto;
             padding: 15px 20px;
-            background: #000;
-            border: 1px solid rgba(255, 0, 255, 0.3);
+            background: #ffffff;
+            border: 1px solid rgba(255, 0, 0, 0.3);
             border-radius: 10px;
-            box-shadow: inset 0 0 10px red, 0 0 10px rgba(255, 255, 255, 1);
-            color: #00ffff;
+            box-shadow: inset 0 0 10px #ff0000, 0 0 10px rgba(0, 0, 0, 1);
+            color: #ff8000;
             text-align: center;
             font-size: 1rem;
         }
 
         .content-box a {
-            color: #00ffff;
+            color: #ff8000;
             text-decoration: none;
         }
 
@@ -122,8 +122,8 @@
             max-width: 600px;
             margin: 20px auto 10px;
             height: 4px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff, #9d00ff, #ff00ff, #00ffff);
-            filter: drop-shadow(0 0 8px #ffffff);
+            background: linear-gradient(90deg, #000000, #ff0000, #0000ff, #ff0000, #000000);
+            filter: drop-shadow(0 0 8px #000000);
             border-radius: 2px;
             position: relative;
             cursor: pointer;
@@ -132,20 +132,20 @@
         .progress-dot {
             width: 8px;
             height: 8px;
-            background: white;
+            background: #ff8000;
             border-radius: 50%;
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 12px 4px rgba(255, 0, 0, 0.9);
+            box-shadow: 0 0 12px 4px rgba(255, 128, 0, 0.9);
             pointer-events: none;
             transition: left 0.1s linear;
         }
 
         .paragraph {
             text-align: center;
-            color: #ffffff;
-            text-shadow: 0 0 8px #ff0000, 0 0 16px #ff8000;
+            color: #ff8000;
+            text-shadow: 0 0 8px #ff0000, 0 0 16px #0000ff;
             padding: 10px 10px;
         }
     </style>
@@ -225,7 +225,7 @@
 
             function drawBackground(ctx) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.strokeStyle = '#ffffff';
+                ctx.strokeStyle = '#ff8000';
                 ctx.lineWidth = 1;
 
                 for (let angle = 0; angle < 360; angle += 15) {
@@ -236,18 +236,18 @@
                         centerX + Math.cos(rad) * 275,
                         centerY + Math.sin(rad) * 275
                     );
-                    ctx.strokeStyle = '#ffffff';
+                    ctx.strokeStyle = '#ff8000';
                     ctx.stroke();
                 }
 
-                ctx.strokeStyle = '#ffffff';
+                ctx.strokeStyle = '#ff8000';
                 for (let r = 50; r <= 250; r += 50) {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
                     ctx.stroke();
                 }
 
-                ctx.strokeStyle = '#00ffff';
+                ctx.strokeStyle = '#000000';
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
@@ -256,7 +256,7 @@
                 });
                 ctx.stroke();
 
-                ctx.strokeStyle = 'rgba(0, 255, 255, 0.25)';
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.25)';
                 ctx.lineWidth = 10;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
@@ -270,7 +270,7 @@
                 points.forEach((point, i) => {
                     if (i % 10 === 0) {
                         const usePink = (Math.floor(i / 10) % 2 === 0);
-                        let colorCenter = usePink ? '#ff00ff' : '#9d00ff';
+                        let colorCenter = usePink ? '#ff0000' : '#0000ff';
                         const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
                         grad.addColorStop(0, colorCenter + '66');
                         grad.addColorStop(0.5, colorCenter + '40');
@@ -285,14 +285,14 @@
                         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
                         ctx.fill();
 
-                        ctx.fillStyle = '#ffffff66';
+                        ctx.fillStyle = '#ff800066';
                         ctx.beginPath();
                         ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
                         ctx.fill();
                     }
 
                     if (i % 25 === 0) {
-                        const extraColor = '#9d00ff';
+                        const extraColor = '#0000ff';
                         const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
                         grad2.addColorStop(0, extraColor + '66');
                         grad2.addColorStop(0.6, extraColor + '40');
@@ -349,9 +349,9 @@
                 const secondY = centerY + Math.sin(secondAngle) * secondLength;
 
                 const hourGrad = ctx.createLinearGradient(centerX, centerY, hourX, hourY);
-                hourGrad.addColorStop(0, '#ffffff');
-                hourGrad.addColorStop(1, '#00ffff');
-                ctx.shadowColor = '#00ffff';
+                hourGrad.addColorStop(0, '#ff8000');
+                hourGrad.addColorStop(1, '#000000');
+                ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 6;
                 ctx.strokeStyle = hourGrad;
@@ -361,9 +361,9 @@
                 ctx.stroke();
 
                 const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
-                minuteGrad.addColorStop(0, '#ffffff');
-                minuteGrad.addColorStop(1, '#ff00ff');
-                ctx.shadowColor = '#ff00ff';
+                minuteGrad.addColorStop(0, '#ff8000');
+                minuteGrad.addColorStop(1, '#ff0000');
+                ctx.shadowColor = '#ff0000';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 4;
                 ctx.strokeStyle = minuteGrad;
@@ -373,9 +373,9 @@
                 ctx.stroke();
 
                 const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
-                secondGrad.addColorStop(0, '#ffffff');
-                secondGrad.addColorStop(1, '#9d00ff');
-                ctx.shadowColor = '#9d00ff';
+                secondGrad.addColorStop(0, '#ff8000');
+                secondGrad.addColorStop(1, '#0000ff');
+                ctx.shadowColor = '#0000ff';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 3;
                 ctx.strokeStyle = secondGrad;
@@ -385,36 +385,36 @@
                 ctx.stroke();
 
                 ctx.shadowBlur = 0;
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = '#ff8000';
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.shadowColor = '#00ffff';
+                ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 20;
-                ctx.fillStyle = '#00ffff';
+                ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(hourX, hourY, 8, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.shadowColor = '#ff00ff';
-                ctx.fillStyle = '#ff00ff';
+                ctx.shadowColor = '#ff0000';
+                ctx.fillStyle = '#ff0000';
                 ctx.beginPath();
                 ctx.arc(minuteX, minuteY, 6, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.shadowColor = '#9d00ff';
-                ctx.fillStyle = '#9d00ff';
+                ctx.shadowColor = '#0000ff';
+                ctx.fillStyle = '#0000ff';
                 ctx.beginPath();
                 ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
                 ctx.fill();
 
                 ctx.shadowBlur = 0;
 
-                ctx.shadowColor = '#00ffb3';
+                ctx.shadowColor = '#ff8000';
                 ctx.shadowBlur = 25;
                 ctx.font = 'bold 56px "KaiTi", "楷体", "STKaiti", "华文楷体", "Microsoft YaHei", serif';
-                ctx.fillStyle = '#00fa9a';
+                ctx.fillStyle = '#ff8000';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('道', centerX, centerY);
