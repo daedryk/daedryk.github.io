@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Amstrad</title>
+  <title>Amstrad — lunar SVG moved</title>
   <style>
     * {
       margin: 0;
@@ -199,7 +199,7 @@
       border: 2px solid #00ffc3;
       box-shadow: 0 0 20px #00ffc366, inset 0 0 15px #00ffc333;
       border-radius: 4px;
-      padding: 1.5rem;
+      padding: 1.5rem 0.5rem 1rem 0.5rem;
       margin: 2rem auto 0;
       max-width: 900px;
       color: #00ffc3;
@@ -207,57 +207,41 @@
       position: relative;
       z-index: 1;
       backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .fact-sheet h2 {
       color: #ffff00;
       font-size: 1.5rem;
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       border-bottom: 1px dashed #00ffc3;
       padding-bottom: 0.5rem;
       text-transform: uppercase;
-    }
-
-    .fact-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .fact-item {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px dotted #00ffc366;
-      padding: 0.3rem 0;
       width: 100%;
-      flex-wrap: wrap;
     }
 
-    .fact-label {
-      color: #ffff00;
-      font-weight: bold;
-      white-space: nowrap;
+    .svg-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem 0 0.2rem;
     }
 
-    .fact-value {
-      color: #ffffff;
-      text-align: right;
-      word-break: break-word;
-      max-width: 60%;
+    svg {
+      max-width: 280px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 8px #00ffc3aa);
     }
 
     @media (max-width: 400px) {
-      .fact-item {
-        flex-direction: column;
-        gap: 0.2rem;
-      }
-      .fact-label {
-        white-space: normal;
-      }
-      .fact-value {
-        text-align: left;
-        max-width: 100%;
+      .fact-sheet {
+        padding: 1rem 0.2rem;
       }
     }
   </style>
@@ -279,48 +263,9 @@
   </div>
 
   <div class="fact-sheet">
-    <h2>✦ LUNAR DATA SHEET ✦</h2>
-    <div class="fact-grid">
-      <div class="fact-item">
-        <span class="fact-label">MASS:</span>
-        <span class="fact-value">7.346 × 10²² kg</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">RADIUS:</span>
-        <span class="fact-value">1,737.4 km</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">SURFACE AREA:</span>
-        <span class="fact-value">3.793 × 10⁷ km²</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">GRAVITY:</span>
-        <span class="fact-value">1.62 m/s²</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">ORBIT PERIOD:</span>
-        <span class="fact-value">27.3 days</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">DISTANCE FROM EARTH:</span>
-        <span class="fact-value">384,400 km</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">TEMPERATURE:</span>
-        <span class="fact-value">-173°C to 127°C</span>
-      </div>
-      <div class="fact-item">
-        <span class="fact-label">ESCAPE VELOCITY:</span>
-        <span class="fact-value">2.38 km/s</span>
-      </div>
-    </div>
-  </div>
-
-Made in Slovenia.
-Ready
-
-  <center>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" viewBox="-40 -102.2 80 102.2"  fill="#00f">
+    <h2>✦ MADE IN SLOVENIA ✦</h2>
+    <div class="svg-container">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-40 -102.2 80 102.2" fill="#00f">
         <path d="M-37.175342-94.368205a92.195445 92.195445 0 0 1 74.350684 0Q43-12 0-1q-43-11-37.175342-93.368205z"/>
         <path id="a" d="m0-84.5 1.125 2.551443L3.897114-82.25 2.25-80l1.647114 2.25L1.125-78.051443 0-75.5l-1.125-2.551443-2.772114.301443L-2.25-80l-1.647114-2.25 2.772114.301443" fill="#ff0"/>
         <use xlink:href="#a" x="-10.5" y="-14"/>
@@ -329,8 +274,9 @@ Ready
         <path id="b" d="M-29.615239-37.252789A10 10 0 0 0-15-31.339746a10 10 0 0 1 10 0 10 10 0 0 0 10 0 10 10 0 0 1 10 0A10 10 0 0 0 29.615239-37.252789L30-37.113249v7.320508a10 10 0 0 0-5 1.339746 10 10 0 0 1-10 0 10 10 0 0 0-10 0 10 10 0 0 1-10 0 10 10 0 0 0-10 0 10 10 0 0 1-10 0 10 10 0 0 0-5-1.339746v-7.320508"/> 
         <use xlink:href="#b" y="5.773503"/>
         <path d="M-40-93.066239a92.195445 92.195445 0 0 1 2.824658-1.301966l2.97064 47.448778A49.301041 49.301041 0 0 0 0-3.036262a49.301041 49.301041 0 0 0 34.204702-43.883164l2.97064-47.448778A92.195445 92.195445 0 0 1 40-93.066239L37.099526-46.73819A52.201533 52.201533 0 0 1 0 0a52.201533 52.201533 0 0 1-37.099526-46.738189z" fill="red"/>
-    </svg>
-  </center>
+      </svg>
+    </div>
+  </div>
 
   <script>
     (function() {
