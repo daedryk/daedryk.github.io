@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ヤマト</title>
+    <title>ヤマト · webkit player</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,7 @@
             background-size: 100px 100px;
             background-attachment: fixed;
 
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', 'Arial', system-ui, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -26,33 +26,114 @@
             padding: 20px;
         }
 
-        h1 {
+        .title-player {
             width: 100%;
             text-align: center;
             color: #000;
-            text-shadow: 0 0 10px #f00, 0 0 20px #f00;
-            font-size: 2rem;
-            margin: 20px 0;
-            padding: 12px;
+            text-shadow: 0 0 10px #c22, 0 0 20px #a00;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin: 10px 0 0 0;
+            padding: 18px 12px 8px 12px;
             background-color: rgba(30,30,30,0.15);
-            backdrop-filter: blur(1px);
-            border-radius: 4px;
+            backdrop-filter: blur(2px);
+            border-radius: 16px 16px 0 0;
+            cursor: pointer;
+            transition: text-shadow 0.15s ease, background-color 0.2s;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .title-player.playing {
+            text-shadow: 0 0 20px #ff0000, 0 0 40px #f00, 0 0 60px #c00;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.35);
+            backdrop-filter: blur(2px);
+            border-radius: 0 0 16px 16px;
+            padding: 10px 20px 16px 20px;
+            margin-bottom: 18px;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.2);
+        }
+
+        .progress-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #111;
+            text-shadow: 0 0 5px #ff7f7f, 0 0 10px #f00;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .title-progress {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 14px;
+            background: linear-gradient(90deg, #330000, #8b0000, #ff4d4d);
+            border-radius: 30px;
+            outline: none;
+            box-shadow: 0 0 15px #f002, 0 0 8px #f00;
+            border: 1px solid rgba(120, 0, 0, 0.5);
+        }
+
+        .title-progress::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #200000;
+            border: 3px solid #ff5e5e;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #f00, 0 0 40px #c00, inset 0 0 8px #f99;
+            cursor: pointer;
+            transition: 0.07s;
+        }
+
+        .title-progress::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            background: #3a0000;
+            border-color: #ffa0a0;
+        }
+
+        .title-progress::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            background: #200000;
+            border: 3px solid #ff5e5e;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #f00;
+            cursor: pointer;
+        }
+
+        #hiddenAudio {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .message {
             max-width: 600px;
             width: 100%;
-            margin: 0 auto 12px;
-            padding: 12px;
+            margin: 12px auto;
+            padding: 14px;
             color: #000;
             text-shadow: 0 0 10px #f00, 0 0 20px #f00;
-            font-size: 0.5rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
             text-align: center;
             word-wrap: break-word;
             background-color: rgba(20,20,20,0.1);
             backdrop-filter: blur(1px);
-            border-radius: 12px;
+            border-radius: 24px;
+            border: 1px solid #31000044;
         }
 
         a img {
@@ -63,25 +144,141 @@
         }
 
         a img:hover {
-            box-shadow: 0 0 27px #f00;
+            box-shadow: 0 0 27px #f00, 0 0 45px #f00;
         }
 
         .message:last-of-type {
             margin-bottom: 24px;
         }
+
+        .subnote {
+            font-size: 0.7rem;
+            margin-top: 6px;
+            color: #1a0000;
+            text-shadow: 0 0 3px #f99;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <h1>ヤマト</h1>
-    <div class="message">
-        ​やまとは大きな山に住んでいました。<br>
-        毎朝、彼は山の頂上に登って、美しい日の出を見ました。<br>
-       山々の間を流れる川も、彼の友達でした。<br>
-       ある日、やまとは山の森で新しい友達、小さなキツネに出会いました。<br>
-       キツネはやまとに山の不思議な物語を教えてくれました。<br>
-       それから、やまとは毎日新しい冒険を楽しむことができました。<br>
-        &#8472;
+    <div class="title-player" id="playPauseTitle">
+        ヤマト
     </div>
+
+    <div class="progress-bar-container">
+        <div class="progress-time">
+            <span id="currentTimeLabel">0:00</span>
+            <span id="durationLabel">0:00</span>
+        </div>
+        <input type="range" class="title-progress" id="progressBar" value="0" min="0" max="100" step="0.1">
+        <div class="subnote">⚡ webkit ·  red shadow while playing</div>
+    </div>
+
+    <audio id="hiddenAudio" preload="metadata" src="yamato.m4a"></audio>
+
+    <div class="message">
+        やまとは大きな山に住んでいました。<br>
+        毎朝、彼は山の頂上に登って、美しい日の出を見ました。<br>
+        山々の間を流れる川も、彼の友達でした。<br>
+        ある日、やまとは山の森で新しい友達、小さなキツネに出会いました。<br>
+        キツネはやまとに山の不思議な物語を教えてくれました。<br>
+        それから、やまとは毎日新しい冒険を楽しむことができました。<br>
+         &#8472;
+    </div>
+
     <a href="8472.html" title="Demo"><img height="216" width="216" src="img.gif" alt="Orb of Obsession"></a>
+
+    <script>
+        (function() {
+            const audio = document.getElementById('hiddenAudio');
+            const title = document.getElementById('playPauseTitle');
+            const progress = document.getElementById('progressBar');
+            const currentLabel = document.getElementById('currentTimeLabel');
+            const durationLabel = document.getElementById('durationLabel');
+
+            function formatTime(seconds) {
+                if (isNaN(seconds) || seconds < 0) return '0:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            function updateProgress() {
+                if (!audio.duration) return;
+                const value = (audio.currentTime / audio.duration) * 100;
+                progress.value = value || 0;
+                currentLabel.textContent = formatTime(audio.currentTime);
+                durationLabel.textContent = formatTime(audio.duration);
+            }
+
+            function updatePlayingState() {
+                if (audio.paused) {
+                    title.classList.remove('playing');
+                } else {
+                    title.classList.add('playing');
+                }
+            }
+
+            audio.addEventListener('loadedmetadata', () => {
+                durationLabel.textContent = formatTime(audio.duration);
+                progress.max = 100;
+            });
+
+            audio.addEventListener('timeupdate', updateProgress);
+
+            audio.addEventListener('ended', () => {
+                audio.currentTime = 0;
+                progress.value = 0;
+                currentLabel.textContent = '0:00';
+                title.classList.remove('playing');
+            });
+
+            audio.addEventListener('play', updatePlayingState);
+            audio.addEventListener('pause', updatePlayingState);
+            audio.addEventListener('playing', updatePlayingState);
+
+            title.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (audio.paused) {
+                    title.classList.add('playing');
+                    audio.play().catch(() => {
+                        title.classList.remove('playing');
+                    });
+                } else {
+                    title.classList.remove('playing');
+                    audio.pause();
+                }
+            });
+
+            progress.addEventListener('input', (e) => {
+                if (!audio.duration) return;
+                const seekPercent = parseFloat(progress.value) / 100;
+                const seekTime = seekPercent * audio.duration;
+                currentLabel.textContent = formatTime(seekTime);
+            });
+
+            progress.addEventListener('change', (e) => {
+                if (!audio.duration) return;
+                const seekPercent = parseFloat(progress.value) / 100;
+                const seekTime = seekPercent * audio.duration;
+                audio.currentTime = seekTime;
+                updateProgress();
+            });
+
+            if (audio.readyState >= 1) {
+                durationLabel.textContent = formatTime(audio.duration);
+            }
+
+            updatePlayingState();
+
+            audio.addEventListener('error', (e) => {
+                durationLabel.textContent = '?.??';
+            });
+
+            setInterval(() => {
+                if (!audio.paused) updateProgress();
+            }, 200);
+        })();
+    </script>
 </body>
 </html>
