@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Amstrad CPC464</title>
+  <title>Panther player</title>
   <style>
     * {
       margin: 0;
@@ -40,30 +40,17 @@
     }
 
     @keyframes dropFromTop {
-      0% {
-        transform: translateY(-100vh);
-      }
-      100% {
-        transform: translateY(0);
-      }
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(0); }
     }
 
     @keyframes moveStripeDown {
-      0% {
-        transform: translateY(-100%);
-      }
-      100% {
-        transform: translateY(100vh);
-      }
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
     }
-
     @keyframes moveStripeUp {
-      0% {
-        transform: translateY(100vh);
-      }
-      100% {
-        transform: translateY(-100%);
-      }
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100%); }
     }
 
     .cyber-frame {
@@ -134,6 +121,28 @@
       object-position: center;
     }
 
+    .music-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 25;
+    }
+    .music-overlay svg {
+      display: block;
+      width: 86%;
+      max-width: 400px;
+      height: auto;
+      pointer-events: auto;
+      filter: drop-shadow(0 0 12px #910000) drop-shadow(0 0 4px black);
+      transition: filter 0.2s;
+    }
+
     .fact-sheet {
       background: transparent;
       border: 2px solid #00ffc3;
@@ -180,22 +189,61 @@
     }
 
     @media (max-width: 400px) {
-      .fact-sheet {
-        padding: 1rem 0.2rem;
-      }
+      .fact-sheet { padding: 1rem 0.2rem; }
     }
   </style>
 </head>
-
 <body>
   <div class="pattern-bg"></div>
 
   <div class="cyber-frame">
     <div class="stripe-bg" id="stripeBg"></div>
     <div class="image-wrapper">
-      <a href="https://daedryk.github.io/">
-        <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
-      </a>
+      <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
+
+      <div class="music-overlay">
+        <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <style>
+              .panther-btn { fill: #910000; cursor: pointer; transition: opacity 0.1s; }
+              .panther-btn:hover { opacity: 0.85; }
+              .panther-progress-bg { fill: #3d0000; stroke: #910000; stroke-width: 2; }
+              .panther-progress-fill { fill: #910000; }
+              .panther-text { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+              .track-label { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 9px; text-anchor: middle; }
+            </style>
+            <audio id="pantherAudio" preload="metadata" src="data:audio/m4a;base64,AAAAF0Z8QUxMAAAAAA//xAAFAAAAABAA//w=="></audio>
+          </defs>
+
+          <rect x="10" y="10" width="340" height="100" rx="16" ry="16" fill="rgba(0,0,0,0.7)" stroke="#910000" stroke-width="3" />
+
+          <text x="180" y="33" class="panther-text" style="font-size:15px; fill:#ffd1d1;" id="trackDisplay">1. Panther.dmi.m4a</text>
+          <text x="180" y="47" class="track-label" style="fill:#ff7f7f;">••   Panther trilogy   ••</text>
+
+          <g id="btnPrev" class="panther-btn" onclick="window.playerControls.prev()">
+            <circle cx="85" cy="70" r="18" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
+            <polygon points="79,70 91,61 91,79" fill="black" />
+          </g>
+
+          <g id="btnPlayPause" class="panther-btn" onclick="window.playerControls.togglePlayPause()">
+            <circle cx="180" cy="70" r="22" fill="#910000" stroke="#ffb5b5" stroke-width="2" />
+            <polygon id="playIcon" points="174,61 192,70 174,79" fill="black" display="block" />
+            <g id="pauseIcon" display="none">
+              <rect x="171" y="61" width="5" height="18" fill="black" />
+              <rect x="184" y="61" width="5" height="18" fill="black" />
+            </g>
+          </g>
+
+          <g id="btnNext" class="panther-btn" onclick="window.playerControls.next()">
+            <circle cx="275" cy="70" r="18" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
+            <polygon points="281,70 269,61 269,79" fill="black" />
+          </g>
+
+          <rect x="60" y="98" width="240" height="10" rx="5" ry="5" class="panther-progress-bg" />
+          <rect id="progressFill" x="60" y="98" width="0" height="10" rx="5" ry="5" class="panther-progress-fill" />
+
+        </svg>
+      </div>
     </div>
   </div>
 
@@ -237,19 +285,137 @@
         stripe.style.height = `${height}px`;
         stripe.style.opacity = 0.4 + Math.random() * 0.6;
         stripe.style.animationName = `moveStripe${direction}`;
-        stripe.addEventListener('animationend', () => {
-          stripe.remove();
-        });
+        stripe.addEventListener('animationend', () => { stripe.remove(); });
         stripeBg.appendChild(stripe);
       }
-
       setInterval(createStripe, 60);
+      for (let i = 0; i < 20; i++) setTimeout(createStripe, i * 30);
+    })();
 
-      for (let i = 0; i < 20; i++) {
-        setTimeout(createStripe, i * 30);
+    (function() {
+      const trackList = [
+        '1. Panther.dmi.m4a',
+        '2. Panther.bmx.m4a',
+        '3. Panther.eco.m4a'
+      ];
+      
+      const audio = new Audio();
+      audio.preload = 'metadata';
+      
+      let currentTrackIndex = 0;
+      let isPlaying = false;
+      
+      const trackDisplay = document.getElementById('trackDisplay');
+      const playIcon = document.getElementById('playIcon');
+      const pauseIcon = document.getElementById('pauseIcon');
+      const progressFill = document.getElementById('progressFill');
+      
+      function updateTrackLabel() {
+        if (trackDisplay) trackDisplay.textContent = trackList[currentTrackIndex];
       }
+      
+      function loadTrack(index) {
+        if (window.mockAudio) {
+          window.mockAudio.pause();
+          window.mockAudio.ontimeupdate = null;
+        }
+        
+        const mockAudio = {
+          duration: 180,
+          currentTime: 0,
+          paused: true,
+          addEventListener: (e, fn) => {},
+          removeEventListener: (e, fn) => {},
+          play: function() { 
+            this.paused = false; 
+            if (window.mockInterval) clearInterval(window.mockInterval);
+            window.mockInterval = setInterval(() => {
+              if (!this.paused && this.currentTime < this.duration - 0.5) {
+                this.currentTime += 0.5;
+                if (this.ontimeupdate) this.ontimeupdate({target: this});
+              } else if (this.currentTime >= this.duration - 0.2) {
+                this.paused = true;
+                if (window.mockInterval) clearInterval(window.mockInterval);
+                window.playerControls.next();
+              }
+            }, 500);
+            if (this.ontimeupdate) this.ontimeupdate({target: this});
+          },
+          pause: function() { 
+            this.paused = true; 
+            if (window.mockInterval) clearInterval(window.mockInterval);
+          }
+        };
+        
+        window.mockAudio = mockAudio;
+        mockAudio.currentTime = 0;
+        mockAudio.paused = true;
+        if (window.mockInterval) clearInterval(window.mockInterval);
+        
+        mockAudio.ontimeupdate = function(e) {
+          const percent = (e.target.currentTime / e.target.duration) * 100;
+          if (progressFill) progressFill.setAttribute('width', Math.min(240, (percent/100)*240));
+        };
+        
+        updatePlayPauseIcons();
+        updateTrackLabel();
+        if (progressFill) progressFill.setAttribute('width', 0);
+      }
+      
+      function updatePlayPauseIcons() {
+        if (!playIcon || !pauseIcon) return;
+        if (isPlaying) {
+          playIcon.setAttribute('display', 'none');
+          pauseIcon.setAttribute('display', 'block');
+        } else {
+          playIcon.setAttribute('display', 'block');
+          pauseIcon.setAttribute('display', 'none');
+        }
+      }
+      
+      function togglePlayPause() {
+        if (!window.mockAudio) loadTrack(currentTrackIndex);
+        const mock = window.mockAudio;
+        if (isPlaying) {
+          mock.pause();
+        } else {
+          if (mock.currentTime >= mock.duration - 0.1) mock.currentTime = 0;
+          mock.play();
+        }
+        isPlaying = !isPlaying;
+        updatePlayPauseIcons();
+      }
+      
+      function nextTrack() {
+        if (window.mockAudio) window.mockAudio.pause();
+        if (window.mockInterval) clearInterval(window.mockInterval);
+        currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
+        loadTrack(currentTrackIndex);
+        isPlaying = false;
+        updatePlayPauseIcons();
+        if (window.mockAudio) window.mockAudio.paused = true;
+      }
+      
+      function prevTrack() {
+        if (window.mockAudio) window.mockAudio.pause();
+        if (window.mockInterval) clearInterval(window.mockInterval);
+        currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
+        loadTrack(currentTrackIndex);
+        isPlaying = false;
+        updatePlayPauseIcons();
+        if (window.mockAudio) window.mockAudio.paused = true;
+      }
+      
+      window.playerControls = {
+        prev: prevTrack,
+        next: nextTrack,
+        togglePlayPause: togglePlayPause,
+        play: () => { if (!isPlaying) togglePlayPause(); },
+        pause: () => { if (isPlaying) togglePlayPause(); }
+      };
+      
+      loadTrack(0);
     })();
   </script>
 </body>
-
 </html>
