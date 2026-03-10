@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Panther player</title>
+  <title>Panther - war</title>
   <style>
     * {
       margin: 0;
@@ -121,6 +121,7 @@
       object-position: center;
     }
 
+    /* transparent overlay — only buttons/progress bar have background, the rest see image */
     .music-overlay {
       position: absolute;
       top: 0;
@@ -130,7 +131,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
+      pointer-events: none;          /* container doesn't block, but svg inside has pointer-events: auto */
       z-index: 25;
     }
     .music-overlay svg {
@@ -138,9 +139,9 @@
       width: 86%;
       max-width: 400px;
       height: auto;
-      pointer-events: auto;
-      filter: drop-shadow(0 0 12px #910000) drop-shadow(0 0 4px black);
-      transition: filter 0.2s;
+      pointer-events: auto;          /* buttons clickable */
+      filter: drop-shadow(0 0 8px #910000);
+      /* background is fully transparent — only shapes inside have fill */
     }
 
     .fact-sheet {
@@ -201,6 +202,7 @@
     <div class="image-wrapper">
       <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
 
+      <!-- fully transparent background — only controls and progress bar visible -->
       <div class="music-overlay">
         <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
@@ -211,20 +213,26 @@
               .panther-progress-fill { fill: #910000; }
               .panther-text { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
               .track-label { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 9px; text-anchor: middle; }
+              /* make background panel fully transparent: remove fill, keep stroke for subtle definition */
+              .transparent-bg { fill: transparent; stroke: #910000; stroke-width: 2; stroke-dasharray: none; }
             </style>
             <audio id="pantherAudio" preload="metadata" src="data:audio/m4a;base64,AAAAF0Z8QUxMAAAAAA//xAAFAAAAABAA//w=="></audio>
           </defs>
 
-          <rect x="10" y="10" width="340" height="100" rx="16" ry="16" fill="rgba(0,0,0,0.7)" stroke="#910000" stroke-width="3" />
+          <!-- Background panel is now fully transparent (no fill) — only border hints at player area, image shows through -->
+          <rect x="10" y="10" width="340" height="100" rx="16" ry="16" fill="transparent" stroke="#910000" stroke-width="2" />
 
-          <text x="180" y="33" class="panther-text" style="font-size:15px; fill:#ffd1d1;" id="trackDisplay">1. Panther.dmi.m4a</text>
-          <text x="180" y="47" class="track-label" style="fill:#ff7f7f;">••   Panther trilogy   ••</text>
+          <!-- track text with subtle halo but no background -->
+          <text x="180" y="33" class="panther-text" style="font-size:15px; fill:#ffd1d1; paint-order: stroke; stroke: #330000; stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round;" id="trackDisplay">1. Panther.dmi.m4a</text>
+          <text x="180" y="47" class="track-label" style="fill:#ffb5b5; stroke: #330000; stroke-width: 1.5px; paint-order: stroke;">••   Panther trilogy   ••</text>
 
+          <!-- previous button (solid #910000) -->
           <g id="btnPrev" class="panther-btn" onclick="window.playerControls.prev()">
             <circle cx="85" cy="70" r="18" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
             <polygon points="79,70 91,61 91,79" fill="black" />
           </g>
 
+          <!-- play/pause button -->
           <g id="btnPlayPause" class="panther-btn" onclick="window.playerControls.togglePlayPause()">
             <circle cx="180" cy="70" r="22" fill="#910000" stroke="#ffb5b5" stroke-width="2" />
             <polygon id="playIcon" points="174,61 192,70 174,79" fill="black" display="block" />
@@ -234,13 +242,15 @@
             </g>
           </g>
 
+          <!-- next button -->
           <g id="btnNext" class="panther-btn" onclick="window.playerControls.next()">
             <circle cx="275" cy="70" r="18" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
             <polygon points="281,70 269,61 269,79" fill="black" />
           </g>
 
-          <rect x="60" y="98" width="240" height="10" rx="5" ry="5" class="panther-progress-bg" />
-          <rect id="progressFill" x="60" y="98" width="0" height="10" rx="5" ry="5" class="panther-progress-fill" />
+          <!-- progress bar (background track has semi-transparent fill, but it's minimal) -->
+          <rect x="60" y="98" width="240" height="10" rx="5" ry="5" fill="#3d0000" stroke="#910000" stroke-width="2" />
+          <rect id="progressFill" x="60" y="98" width="0" height="10" rx="5" ry="5" fill="#910000" />
 
         </svg>
       </div>
