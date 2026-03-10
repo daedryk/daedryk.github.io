@@ -136,7 +136,7 @@
     .music-overlay svg {
       display: block;
       width: 86%;
-      max-width: 400px;
+      max-width: 420px;
       height: auto;
       pointer-events: auto;
       filter: drop-shadow(0 0 8px #910000);
@@ -180,11 +180,16 @@
       padding: 0.5rem 0 0.2rem;
     }
 
-    svg {
+    .fact-sheet svg {
       max-width: 280px;
       height: auto;
       display: block;
       filter: drop-shadow(0 0 8px #00ffc3aa);
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+    .fact-sheet svg:hover {
+      filter: drop-shadow(0 0 12px #00ffc3) brightness(1.2);
     }
 
     @media (max-width: 400px) {
@@ -201,45 +206,45 @@
       <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
 
       <div class="music-overlay">
-        <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 380 140" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <style>
               .panther-btn { fill: #910000; cursor: pointer; transition: opacity 0.1s; }
               .panther-btn:hover { opacity: 0.85; }
               .panther-progress-bg { fill: #3d0000; stroke: #910000; stroke-width: 2; }
               .panther-progress-fill { fill: #910000; }
-              .panther-text { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
-              .track-label { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 9px; text-anchor: middle; }
+              .panther-artist { fill: #ffb5b5; font-family: 'Courier New', monospace; font-size: 16px; font-weight: bold; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+              .panther-track { fill: #ffd1d1; font-family: 'Courier New', monospace; font-size: 14px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
               .transparent-bg { fill: transparent; stroke: #910000; stroke-width: 2; }
             </style>
           </defs>
 
-          <rect x="10" y="10" width="340" height="100" rx="16" ry="16" fill="transparent" stroke="#910000" stroke-width="2" />
+          <rect x="10" y="10" width="360" height="120" rx="16" ry="16" fill="transparent" stroke="#910000" stroke-width="2" />
 
-          <text x="180" y="33" class="panther-text" style="font-size:15px; fill:#ffd1d1; paint-order: stroke; stroke: #330000; stroke-width: 2px;" id="trackDisplay">1.Panther.dmi.m4a</text>
-          <text x="180" y="47" class="track-label" style="fill:#ffb5b5; stroke: #330000; stroke-width: 1.5px; paint-order: stroke;">••   Panther trilogy   ••</text>
+          <text x="190" y="35" class="panther-artist" style="fill:#ffb5b5; paint-order: stroke; stroke: #330000; stroke-width: 2px;" id="artistDisplay">PANTHER</text>
+          <text x="190" y="55" class="panther-track" style="fill:#ffd1d1; paint-order: stroke; stroke: #330000; stroke-width: 1.5px;" id="trackDisplay">dmi</text>
 
           <g id="btnPrev" class="panther-btn" onclick="window.playerControls.prev()">
-            <circle cx="85" cy="70" r="18" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
-            <polygon points="79,70 91,61 91,79" fill="black" />
+            <circle cx="95" cy="85" r="20" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
+            <polygon points="89,85 101,75 101,95" fill="black" />
           </g>
 
           <g id="btnPlayPause" class="panther-btn" onclick="window.playerControls.togglePlayPause()">
-            <circle cx="180" cy="70" r="22" fill="#910000" stroke="#ffb5b5" stroke-width="2" />
-            <polygon id="playIcon" points="174,61 192,70 174,79" fill="black" display="block" />
+            <circle cx="190" cy="85" r="24" fill="#910000" stroke="#ffb5b5" stroke-width="2" />
+            <polygon id="playIcon" points="183,74 203,85 183,96" fill="black" display="block" />
             <g id="pauseIcon" display="none">
-              <rect x="171" y="61" width="5" height="18" fill="black" />
-              <rect x="184" y="61" width="5" height="18" fill="black" />
+              <rect x="180" y="74" width="6" height="22" fill="black" />
+              <rect x="194" y="74" width="6" height="22" fill="black" />
             </g>
           </g>
 
           <g id="btnNext" class="panther-btn" onclick="window.playerControls.next()">
-            <circle cx="275" cy="70" r="18" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
-            <polygon points="281,70 269,61 269,79" fill="black" />
+            <circle cx="285" cy="85" r="20" fill="#910000" stroke="#ffb5b5" stroke-width="1.5" />
+            <polygon points="291,85 279,75 279,95" fill="black" />
           </g>
 
-          <rect x="60" y="98" width="240" height="10" rx="5" ry="5" fill="#3d0000" stroke="#910000" stroke-width="2" />
-          <rect id="progressFill" x="60" y="98" width="0" height="10" rx="5" ry="5" fill="#910000" />
+          <rect x="70" y="115" width="240" height="10" rx="5" ry="5" fill="#3d0000" stroke="#910000" stroke-width="2" />
+          <rect id="progressFill" x="70" y="115" width="0" height="10" rx="5" ry="5" fill="#910000" />
         </svg>
       </div>
     </div>
@@ -248,16 +253,18 @@
   <div class="fact-sheet">
     <h2>✦ MADE IN SLOVENIA ✦</h2>
     <div class="svg-container">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-40 -102.2 80 102.2" fill="#00f">
-        <path d="M-37.175342-94.368205a92.195445 92.195445 0 0 1 74.350684 0Q43-12 0-1q-43-11-37.175342-93.368205z"/>
-        <path id="a" d="m0-84.5 1.125 2.551443L3.897114-82.25 2.25-80l1.647114 2.25L1.125-78.051443 0-75.5l-1.125-2.551443-2.772114.301443L-2.25-80l-1.647114-2.25 2.772114.301443" fill="#ff0"/>
-        <use xlink:href="#a" x="-10.5" y="-14"/>
-        <use xlink:href="#a" x="10.5" y="-14"/>
-        <path d="m0-70 9 18 6-8 15 20a10 10 0 0 1-.384761 2.747211A46.400549 46.400549 0 0 1 0-6.090878A46.400549 46.400549 0 0 1-29.615239-37.252789 10 10 0 0 1-30-40l15-20 6 8z" fill="#fff"/>
-        <path id="b" d="M-29.615239-37.252789A10 10 0 0 0-15-31.339746a10 10 0 0 1 10 0 10 10 0 0 0 10 0 10 10 0 0 1 10 0A10 10 0 0 0 29.615239-37.252789L30-37.113249v7.320508a10 10 0 0 0-5 1.339746 10 10 0 0 1-10 0 10 10 0 0 0-10 0 10 10 0 0 1-10 0 10 10 0 0 0-10 0 10 10 0 0 1-10 0 10 10 0 0 0-5-1.339746v-7.320508"/> 
-        <use xlink:href="#b" y="5.773503"/>
-        <path d="M-40-93.066239a92.195445 92.195445 0 0 1 2.824658-1.301966l2.97064 47.448778A49.301041 49.301041 0 0 0 0-3.036262a49.301041 49.301041 0 0 0 34.204702-43.883164l2.97064-47.448778A92.195445 92.195445 0 0 1 40-93.066239L37.099526-46.73819A52.201533 52.201533 0 0 1 0 0a52.201533 52.201533 0 0 1-37.099526-46.738189z" fill="red"/>
-      </svg>
+      <a href="https://daedryk.github.io/">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-40 -102.2 80 102.2" fill="#00f">
+          <path d="M-37.175342-94.368205a92.195445 92.195445 0 0 1 74.350684 0Q43-12 0-1q-43-11-37.175342-93.368205z"/>
+          <path id="a" d="m0-84.5 1.125 2.551443L3.897114-82.25 2.25-80l1.647114 2.25L1.125-78.051443 0-75.5l-1.125-2.551443-2.772114.301443L-2.25-80l-1.647114-2.25 2.772114.301443" fill="#ff0"/>
+          <use xlink:href="#a" x="-10.5" y="-14"/>
+          <use xlink:href="#a" x="10.5" y="-14"/>
+          <path d="m0-70 9 18 6-8 15 20a10 10 0 0 1-.384761 2.747211A46.400549 46.400549 0 0 1 0-6.090878A46.400549 46.400549 0 0 1-29.615239-37.252789 10 10 0 0 1-30-40l15-20 6 8z" fill="#fff"/>
+          <path id="b" d="M-29.615239-37.252789A10 10 0 0 0-15-31.339746a10 10 0 0 1 10 0 10 10 0 0 0 10 0 10 10 0 0 1 10 0A10 10 0 0 0 29.615239-37.252789L30-37.113249v7.320508a10 10 0 0 0-5 1.339746 10 10 0 0 1-10 0 10 10 0 0 0-10 0 10 10 0 0 1-10 0 10 10 0 0 0-10 0 10 10 0 0 1-10 0 10 10 0 0 0-5-1.339746v-7.320508"/> 
+          <use xlink:href="#b" y="5.773503"/>
+          <path d="M-40-93.066239a92.195445 92.195445 0 0 1 2.824658-1.301966l2.97064 47.448778A49.301041 49.301041 0 0 0 0-3.036262a49.301041 49.301041 0 0 0 34.204702-43.883164l2.97064-47.448778A92.195445 92.195445 0 0 1 40-93.066239L37.099526-46.73819A52.201533 52.201533 0 0 1 0 0a52.201533 52.201533 0 0 1-37.099526-46.738189z" fill="red"/>
+        </svg>
+      </a>
     </div>
   </div>
 
@@ -292,9 +299,9 @@
 
     (function() {
       const trackList = [
-        '1.Panther.dmi.m4a',
-        '2.Panther.bmx.m4a',
-        '3.Panther.eco.m4a'
+        { file: '1.Panther.dmi.m4a', artist: 'PANTHER', title: 'dmi' },
+        { file: '2.Panther.bmx.m4a', artist: 'PANTHER', title: 'bmx' },
+        { file: '3.Panther.eco.m4a', artist: 'PANTHER', title: 'eco' }
       ];
       
       const audio = new Audio();
@@ -303,18 +310,31 @@
       let currentTrackIndex = 0;
       let isPlaying = false;
       
+      const artistDisplay = document.getElementById('artistDisplay');
       const trackDisplay = document.getElementById('trackDisplay');
       const playIcon = document.getElementById('playIcon');
       const pauseIcon = document.getElementById('pauseIcon');
       const progressFill = document.getElementById('progressFill');
       
       function setAudioSource(index) {
-        audio.src = trackList[index];
+        audio.src = trackList[index].file;
         audio.load();
       }
       
-      function updateTrackLabel() {
-        if (trackDisplay) trackDisplay.textContent = trackList[currentTrackIndex];
+      function updateTrackInfo() {
+        if (artistDisplay) artistDisplay.textContent = trackList[currentTrackIndex].artist;
+        if (trackDisplay) trackDisplay.textContent = trackList[currentTrackIndex].title;
+      }
+      
+      function resetToFirstTrack() {
+        audio.pause();
+        audio.currentTime = 0;
+        currentTrackIndex = 0;
+        setAudioSource(0);
+        updateTrackInfo();
+        if (progressFill) progressFill.setAttribute('width', 0);
+        isPlaying = false;
+        updatePlayPauseIcons();
       }
       
       function playCurrentTrack() {
@@ -344,7 +364,11 @@
       };
       
       audio.onended = function() {
-        nextTrack();
+        if (currentTrackIndex === trackList.length - 1) {
+          resetToFirstTrack();
+        } else {
+          nextTrack();
+        }
       };
       
       audio.onerror = function() {
@@ -369,7 +393,7 @@
         audio.pause();
         currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
         setAudioSource(currentTrackIndex);
-        updateTrackLabel();
+        updateTrackInfo();
         if (progressFill) progressFill.setAttribute('width', 0);
         
         if (isPlaying) {
@@ -383,7 +407,7 @@
         audio.pause();
         currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
         setAudioSource(currentTrackIndex);
-        updateTrackLabel();
+        updateTrackInfo();
         if (progressFill) progressFill.setAttribute('width', 0);
         
         if (isPlaying) {
@@ -400,7 +424,7 @@
       };
       
       setAudioSource(0);
-      updateTrackLabel();
+      updateTrackInfo();
       updatePlayPauseIcons();
     })();
   </script>
