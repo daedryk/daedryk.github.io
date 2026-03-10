@@ -317,14 +317,12 @@
         if (trackDisplay) trackDisplay.textContent = trackList[currentTrackIndex];
       }
       
-      function loadTrack(index) {
-        audio.pause();
-        audio.currentTime = 0;
-        setAudioSource(index);
-        isPlaying = false;
-        updatePlayPauseIcons();
-        updateTrackLabel();
-        if (progressFill) progressFill.setAttribute('width', 0);
+      function playCurrentTrack() {
+        audio.play().catch(e => {
+          console.log('Playback error:', e);
+          isPlaying = false;
+          updatePlayPauseIcons();
+        });
       }
       
       function updatePlayPauseIcons() {
@@ -356,11 +354,14 @@
       function togglePlayPause() {
         if (isPlaying) {
           audio.pause();
+          isPlaying = false;
         } else {
-          if (!audio.src) setAudioSource(currentTrackIndex);
-          audio.play().catch(e => console.log('Playback prevented:', e));
+          if (!audio.src || audio.src === '') {
+            setAudioSource(currentTrackIndex);
+          }
+          playCurrentTrack();
+          isPlaying = true;
         }
-        isPlaying = !isPlaying;
         updatePlayPauseIcons();
       }
       
@@ -368,26 +369,28 @@
         audio.pause();
         currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
         setAudioSource(currentTrackIndex);
-        audio.load();
-        if (isPlaying) {
-          audio.play().catch(e => console.log('Playback error:', e));
-        }
         updateTrackLabel();
         if (progressFill) progressFill.setAttribute('width', 0);
-        if (!isPlaying) updatePlayPauseIcons();
+        
+        if (isPlaying) {
+          playCurrentTrack();
+        } else {
+          updatePlayPauseIcons();
+        }
       }
       
       function prevTrack() {
         audio.pause();
         currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
         setAudioSource(currentTrackIndex);
-        audio.load();
-        if (isPlaying) {
-          audio.play().catch(e => console.log('Playback error:', e));
-        }
         updateTrackLabel();
         if (progressFill) progressFill.setAttribute('width', 0);
-        if (!isPlaying) updatePlayPauseIcons();
+        
+        if (isPlaying) {
+          playCurrentTrack();
+        } else {
+          updatePlayPauseIcons();
+        }
       }
       
       window.playerControls = {
