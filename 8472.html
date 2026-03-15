@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Amstrad CPC464 · Panther player</title>
+  <title>Amstrad CPC464 demo</title>
   <style>
     * {
       margin: 0;
@@ -25,7 +25,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
       background: repeating-linear-gradient(
         45deg,
         #00ffc3 0px,
@@ -44,13 +44,26 @@
       100% { transform: translateY(0); }
     }
 
-    @keyframes moveStripeDown {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100vh); }
+    .static-stripes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: 2px;
+      pointer-events: none;
+      background: transparent;
     }
-    @keyframes moveStripeUp {
-      0% { transform: translateY(100vh); }
-      100% { transform: translateY(-100%); }
+
+    .static-stripe {
+      position: absolute;
+      width: 100%;
+      height: 6px;
+      opacity: 0.7;
+      box-shadow: 0 0 20px currentColor;
+      z-index: 0;
     }
 
     .cyber-frame {
@@ -79,27 +92,6 @@
       pointer-events: none;
       z-index: 3;
       border-radius: 2px;
-    }
-
-    .stripe-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-
-    .stripe {
-      position: absolute;
-      width: 100%;
-      height: 6px;
-      opacity: 0.8;
-      box-shadow: 0 0 20px currentColor;
-      animation: moveStripe linear forwards;
-      z-index: 0;
     }
 
     .image-wrapper {
@@ -206,7 +198,7 @@
   <div class="pattern-bg"></div>
 
   <div class="cyber-frame">
-    <div class="stripe-bg" id="stripeBg"></div>
+    <div class="static-stripes" id="staticStripes"></div>
     <div class="image-wrapper">
       <img class="moon-image" src="red_moon.jpg" alt="Red Moon in Supernova">
 
@@ -256,7 +248,7 @@
   </div>
 
   <div class="fact-sheet">
-    <h2>✦ MADE IN SLOVENIA ✦</h2>
+    <h2>※ MADE IN SLOVENIA ※</h2>
     <div class="svg-container">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-40 -102.2 80 102.2" fill="#00f">
         <path d="M-37.175342-94.368205a92.195445 92.195445 0 0 1 74.350684 0Q43-12 0-1q-43-11-37.175342-93.368205z"/>
@@ -273,31 +265,32 @@
 
   <script>
     (function() {
-      const stripeBg = document.getElementById('stripeBg');
+      const staticStripes = document.getElementById('staticStripes');
       const amstradColors = ['#00ffff', '#ff00ff', '#ffff00', '#ffffff', '#ff8800', '#ff4444', '#44ff44'];
-
-      function createStripe() {
+      staticStripes.innerHTML = '';
+      const stripeCount = 45; 
+      for (let i = 0; i < stripeCount; i++) {
         const stripe = document.createElement('div');
-        stripe.className = 'stripe';
+        stripe.className = 'static-stripe';
         const color = amstradColors[Math.floor(Math.random() * amstradColors.length)];
-        const direction = Math.random() > 0.5 ? 'Down' : 'Up';
-        const duration = 0.6 + Math.random() * 0.8;
         const height = 2 + Math.floor(Math.random() * 10);
         const topPos = Math.random() * 100;
-
+        const opacity = 0.3 + Math.random() * 0.6;
         stripe.style.background = color;
         stripe.style.color = color;
         stripe.style.boxShadow = `0 0 20px ${color}`;
         stripe.style.top = `${topPos}%`;
-        stripe.style.animationDuration = `${duration}s`;
         stripe.style.height = `${height}px`;
-        stripe.style.opacity = 0.4 + Math.random() * 0.6;
-        stripe.style.animationName = `moveStripe${direction}`;
-        stripe.addEventListener('animationend', () => { stripe.remove(); });
-        stripeBg.appendChild(stripe);
+        stripe.style.opacity = opacity;
+        stripe.style.left = '0';
+        stripe.style.width = '100%';
+        stripe.style.position = 'absolute';
+        stripe.style.pointerEvents = 'none';
+        stripe.style.zIndex = '0';
+        stripe.style.transform = 'none';
+        stripe.style.animation = 'none';
+        staticStripes.appendChild(stripe);
       }
-      setInterval(createStripe, 60);
-      for (let i = 0; i < 20; i++) setTimeout(createStripe, i * 30);
     })();
 
     (function() {
