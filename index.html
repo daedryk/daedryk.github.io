@@ -71,18 +71,7 @@
             object-fit: contain;
             opacity: 0.5;
             pointer-events: none;
-            z-index: 1;
-        }
-
-        .background-image-map {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             z-index: 0;
-            pointer-events: none;
         }
 
         .sound-toggle {
@@ -154,7 +143,6 @@
 
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container" id="visualizationClickArea">
-            <img src="map.jpeg" class="background-image-map" alt="Slovenia">
             <img src="img.png" class="background-image-war" alt="War">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         </div>
