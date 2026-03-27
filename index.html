@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>黨機器操作者</title>
     <link rel="icon" href="favicon.ico" />
     <style>
@@ -69,9 +69,9 @@
             width: 50%;
             height: 50%;
             object-fit: contain;
-            opacity: 0.5;
+            opacity: 1;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
         .sound-toggle {
@@ -187,7 +187,6 @@
             const soundToggle = document.getElementById('soundToggle');
             const visualizationArea = document.getElementById('visualizationClickArea');
 
-            // Electric color constants
             const ELECTRIC_RED = '#ff0000';
             const ELECTRIC_GREEN = '#00ff00';
             const ELECTRIC_BLUE = '#0000ff';
@@ -220,7 +219,6 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.strokeStyle = '#ff8000';
                 ctx.lineWidth = 1;
-
                 for (let angle = 0; angle < 360; angle += 15) {
                     const rad = angle * Math.PI / 180;
                     ctx.beginPath();
@@ -232,16 +230,14 @@
                     ctx.strokeStyle = '#ff8000';
                     ctx.stroke();
                 }
-
                 ctx.strokeStyle = '#ff8000';
                 for (let r = 50; r <= 250; r += 50) {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
                     ctx.stroke();
                 }
-
+                
                 ctx.save();
-                ctx.globalAlpha = 0.5;
                 ctx.strokeStyle = ELECTRIC_GREEN;
                 ctx.lineWidth = 2.5;
                 ctx.beginPath();
@@ -250,73 +246,61 @@
                     else ctx.lineTo(p.x, p.y);
                 });
                 ctx.stroke();
-
-                ctx.strokeStyle = 'rgba(0, 255, 0, 0.125)';
-                ctx.lineWidth = 10;
-                ctx.beginPath();
-                points.forEach((p, idx) => {
-                    if (idx === 0) ctx.moveTo(p.x, p.y);
-                    else ctx.lineTo(p.x, p.y);
-                });
-                ctx.stroke();
                 ctx.restore();
             }
-
+            
             function drawStaticDots(ctx) {
-                ctx.save();
-                ctx.globalAlpha = 0.5;
                 points.forEach((point, i) => {
                     if (i % 10 === 0) {
                         const useRed = (Math.floor(i / 10) % 2 === 0);
-                        let colorCenter = useRed ? ELECTRIC_RED : ELECTRIC_BLUE;
-                        const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
-                        grad.addColorStop(0, colorCenter + '66');
-                        grad.addColorStop(0.5, colorCenter + '40');
-                        grad.addColorStop(1, 'rgba(0,0,0,0)');
+                        let coreColor = useRed ? ELECTRIC_RED : ELECTRIC_BLUE;
+                        const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
+                        grad.addColorStop(0, coreColor);
+                        grad.addColorStop(0.7, coreColor);
+                        grad.addColorStop(1, '#ffaa33');
                         ctx.fillStyle = grad;
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 14, 0, Math.PI * 2);
+                        ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
                         ctx.fill();
-
-                        ctx.fillStyle = colorCenter + '66';
+                        
+                        ctx.fillStyle = coreColor;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
                         ctx.fill();
-
-                        ctx.fillStyle = '#ff800066';
+                        
+                        ctx.fillStyle = '#ffdd99';
                         ctx.beginPath();
                         ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
                         ctx.fill();
                     }
-
+                    
                     if (i % 25 === 0) {
                         const extraColor = ELECTRIC_BLUE;
-                        const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
-                        grad2.addColorStop(0, extraColor + '66');
-                        grad2.addColorStop(0.6, extraColor + '40');
-                        grad2.addColorStop(1, 'transparent');
+                        const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
+                        grad2.addColorStop(0, extraColor);
+                        grad2.addColorStop(0.8, extraColor);
+                        grad2.addColorStop(1, '#ffaa55');
                         ctx.fillStyle = grad2;
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
+                        ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
                         ctx.fill();
-
-                        ctx.fillStyle = extraColor + '66';
+                        
+                        ctx.fillStyle = extraColor;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
                         ctx.fill();
                     }
                 });
-                ctx.restore();
             }
-
+            
             function drawClock(ctx) {
                 if (isPlaying) return;
-
+                
                 const now = new Date();
                 const hours = now.getHours() % 12;
                 const minutes = now.getMinutes();
                 const seconds = now.getSeconds();
-
+                
                 if (soundEnabled) {
                     if (seconds !== lastSecond) {
                         playSound('s.wav');
@@ -331,22 +315,22 @@
                         lastHour = hours;
                     }
                 }
-
+                
                 const hourAngle = (hours * 30 + minutes * 0.5) * Math.PI / 180 - Math.PI / 2;
                 const minuteAngle = (minutes * 6 + seconds * 0.1) * Math.PI / 180 - Math.PI / 2;
                 const secondAngle = (seconds * 6) * Math.PI / 180 - Math.PI / 2;
-
+                
                 const hourLength = 180;
                 const minuteLength = 240;
                 const secondLength = 290;
-
+                
                 const hourX = centerX + Math.cos(hourAngle) * hourLength;
                 const hourY = centerY + Math.sin(hourAngle) * hourLength;
                 const minuteX = centerX + Math.cos(minuteAngle) * minuteLength;
                 const minuteY = centerY + Math.sin(minuteAngle) * minuteLength;
                 const secondX = centerX + Math.cos(secondAngle) * secondLength;
                 const secondY = centerY + Math.sin(secondAngle) * secondLength;
-
+                
                 const hourGrad = ctx.createLinearGradient(centerX, centerY, hourX, hourY);
                 hourGrad.addColorStop(0, '#ff8000');
                 hourGrad.addColorStop(1, '#000000');
@@ -358,11 +342,10 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(hourX, hourY);
                 ctx.stroke();
-
+                
                 const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
                 minuteGrad.addColorStop(0, '#ff8000');
                 minuteGrad.addColorStop(1, '#000000');
-                ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 15;
                 ctx.lineWidth = 4;
                 ctx.strokeStyle = minuteGrad;
@@ -370,46 +353,41 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(minuteX, minuteY);
                 ctx.stroke();
-
+                
                 const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
                 secondGrad.addColorStop(0, '#ff8000');
                 secondGrad.addColorStop(1, '#000000');
-                ctx.shadowColor = '#000000';
-                ctx.shadowBlur = 15;
                 ctx.lineWidth = 3;
                 ctx.strokeStyle = secondGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(secondX, secondY);
                 ctx.stroke();
-
+                
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = '#ff8000';
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
                 ctx.fill();
-
+                
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 20;
                 ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(hourX, hourY, 8, 0, Math.PI * 2);
                 ctx.fill();
-
-                ctx.shadowColor = '#000000';
+                
                 ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(minuteX, minuteY, 6, 0, Math.PI * 2);
                 ctx.fill();
-
-                ctx.shadowColor = '#000000';
+                
                 ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
                 ctx.fill();
-
+                
                 ctx.shadowBlur = 0;
-
                 ctx.shadowColor = ELECTRIC_GREEN;
                 ctx.shadowBlur = 25;
                 ctx.font = 'bold 56px "KaiTi", "楷体", "STKaiti", "华文楷体", "Microsoft YaHei", serif';
@@ -419,30 +397,28 @@
                 ctx.fillText('道', centerX, centerY);
                 ctx.shadowBlur = 0;
             }
-
+            
             function animate() {
                 if (!canvas) return;
                 const ctx = canvas.getContext('2d');
-
                 drawBackground(ctx);
                 drawStaticDots(ctx);
                 drawClock(ctx);
-
                 animationFrame = requestAnimationFrame(animate);
             }
-
+            
             function updateProgress() {
                 if (audioElement && isPlaying) {
                     const percent = (audioElement.currentTime / audioElement.duration) * 100;
                     progressDot.style.left = percent + '%';
                 }
             }
-
+            
             function stopClockSounds() {
                 soundEnabled = false;
                 soundToggle.textContent = 'Turn sounds on';
             }
-
+            
             function playMusic() {
                 if (audioElement) {
                     audioElement.pause();
@@ -462,10 +438,9 @@
                 isPlaying = true;
                 progressInterval = setInterval(updateProgress, 100);
                 stopClockSounds();
-
                 canvas.classList.add('canvas-hidden');
             }
-
+            
             function toggleMusic() {
                 if (isPlaying) {
                     audioElement.pause();
@@ -479,12 +454,12 @@
                     playMusic();
                 }
             }
-
+            
             visualizationArea.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleMusic();
             });
-
+            
             progressBar.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (audioElement && isPlaying) {
@@ -494,7 +469,7 @@
                     audioElement.currentTime = percent * audioElement.duration;
                 }
             });
-
+            
             if (soundToggle) {
                 soundToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -505,9 +480,9 @@
                     this.textContent = soundEnabled ? 'Turn sounds off' : 'Turn sounds on';
                 });
             }
-
+            
             points = generateBasePoints();
-
+            
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
                     animate();
