@@ -3,7 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>黨機器操作者</title>
+    <title>⚡ Cosmic Matrix | The Equation of God & Digital Universe</title>
+    <meta name="title" content="Cosmic Matrix | The Equation of God & Digital Universe">
+    <meta name="description" content="Explore the digital universe where time becomes a waveform. An interactive clockwork mandala of glitch art, sound frequencies, and philosophical code. The universe is a matrix. God is an equation.">
+    <meta name="keywords" content="digital universe, matrix, god equation, interactive clock, glitch art, philosophical code, cosmic waveform, sound meditation, glagolitic script, futuristic design, seo meta, cyber mandala">
+    <meta name="author" content="Digital Alchemist">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="⚡ Cosmic Matrix | The Equation of God & Digital Universe">
+    <meta property="og:description" content="The universe is a matrix. God is an equation. An interactive neon mandala with time-sound synthesis and philosophical depth.">
+    <meta property="og:image" content="img.png">
+    <meta property="og:image:alt" content="Neon cosmic clock mandala representing digital universe matrix">
+    <meta property="og:url" content="https://daedryk.github.io">
+    <meta property="og:site_name" content="Cosmic Matrix">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="⚡ Cosmic Matrix | Equation of God">
+    <meta name="twitter:description" content="Interactive cosmic clock. Watch time bend into light. The universe is a matrix. Sound, symbols & code.">
+    <meta name="twitter:image" content="img.png">
+    <meta name="twitter:image:alt" content="Abstract digital mandala with glowing hands and ancient symbol Dao">
+    <link rel="canonical" href="https://yourdomain.com">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" href="favicon.ico" />
     <style>
         * {
@@ -137,29 +161,33 @@
             text-shadow: 0 0 8px #ff0000, 0 0 16px #0000ff;
             padding: 10px 10px;
         }
+        
+        .seo-hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container" id="visualizationClickArea">
-            <img src="img.png" class="background-image-war" alt="War">
+            <img src="img.png" class="background-image-war" alt="Cosmic Matrix: Abstract digital war mandala representing the universe as a coded equation">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         </div>
     </div>
 
-    <div id="progressBar" class="progress-bar">
+    <div id="progressBar" class="progress-bar" aria-label="audio progress bar">
         <div id="progressDot" class="progress-dot"></div>
     </div>
 
     <p class="paragraph">The universe is a matrix. God is an equation.</p>
 
     <div class="content-box">
-        <a href="id.html">Who is this?</a>&nbsp;<a href="my.html">My story...</a>
+        <a href="id.html" title="Discover the identity behind the code">Who is this?</a>&nbsp;<a href="my.html" title="Read the digital story">My story...</a>
     </div>
 
     <div class="content-box">
-        <a href="m.html">Glagolitic Script Crash Course</a>
+        <a href="m.html" title="Learn ancient Glagolitic script and its hidden frequencies">Glagolitic Script Crash Course</a>
     </div>
 
     <div class="content-box">
@@ -238,7 +266,7 @@
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
                     ctx.stroke();
                 }
-                
+
                 ctx.save();
                 ctx.strokeStyle = ELECTRIC_GREEN;
                 ctx.lineWidth = 2.5;
@@ -250,7 +278,7 @@
                 ctx.stroke();
                 ctx.restore();
             }
-            
+
             function drawStaticDots(ctx) {
                 points.forEach((point, i) => {
                     if (i % 10 === 0) {
@@ -264,18 +292,18 @@
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
                         ctx.fill();
-                        
+
                         ctx.fillStyle = coreColor;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
                         ctx.fill();
-                        
+
                         ctx.fillStyle = '#ffdd99';
                         ctx.beginPath();
                         ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
                         ctx.fill();
                     }
-                    
+
                     if (i % 25 === 0) {
                         const extraColor = ELECTRIC_BLUE;
                         const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
@@ -286,7 +314,7 @@
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
                         ctx.fill();
-                        
+
                         ctx.fillStyle = extraColor;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
@@ -294,15 +322,15 @@
                     }
                 });
             }
-            
+
             function drawClock(ctx) {
                 if (isPlaying) return;
-                
+
                 const now = new Date();
                 const hours = now.getHours() % 12;
                 const minutes = now.getMinutes();
                 const seconds = now.getSeconds();
-                
+
                 if (soundEnabled) {
                     if (seconds !== lastSecond) {
                         playSound('s.wav');
@@ -317,22 +345,22 @@
                         lastHour = hours;
                     }
                 }
-                
+
                 const hourAngle = (hours * 30 + minutes * 0.5) * Math.PI / 180 - Math.PI / 2;
                 const minuteAngle = (minutes * 6 + seconds * 0.1) * Math.PI / 180 - Math.PI / 2;
                 const secondAngle = (seconds * 6) * Math.PI / 180 - Math.PI / 2;
-                
+
                 const hourLength = 180;
                 const minuteLength = 240;
                 const secondLength = 290;
-                
+
                 const hourX = centerX + Math.cos(hourAngle) * hourLength;
                 const hourY = centerY + Math.sin(hourAngle) * hourLength;
                 const minuteX = centerX + Math.cos(minuteAngle) * minuteLength;
                 const minuteY = centerY + Math.sin(minuteAngle) * minuteLength;
                 const secondX = centerX + Math.cos(secondAngle) * secondLength;
                 const secondY = centerY + Math.sin(secondAngle) * secondLength;
-                
+
                 const hourGrad = ctx.createLinearGradient(centerX, centerY, hourX, hourY);
                 hourGrad.addColorStop(0, '#ff8000');
                 hourGrad.addColorStop(1, '#000000');
@@ -344,7 +372,7 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(hourX, hourY);
                 ctx.stroke();
-                
+
                 const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
                 minuteGrad.addColorStop(0, '#ff8000');
                 minuteGrad.addColorStop(1, '#000000');
@@ -355,7 +383,7 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(minuteX, minuteY);
                 ctx.stroke();
-                
+
                 const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
                 secondGrad.addColorStop(0, '#ff8000');
                 secondGrad.addColorStop(1, '#000000');
@@ -365,30 +393,30 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(secondX, secondY);
                 ctx.stroke();
-                
+
                 ctx.shadowBlur = 0;
                 ctx.fillStyle = '#ff8000';
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 20;
                 ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(hourX, hourY, 8, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(minuteX, minuteY, 6, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.fillStyle = '#000000';
                 ctx.beginPath();
                 ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 ctx.shadowBlur = 0;
                 ctx.shadowColor = ELECTRIC_GREEN;
                 ctx.shadowBlur = 25;
@@ -399,7 +427,7 @@
                 ctx.fillText('道', centerX, centerY);
                 ctx.shadowBlur = 0;
             }
-            
+
             function animate() {
                 if (!canvas) return;
                 const ctx = canvas.getContext('2d');
@@ -408,19 +436,19 @@
                 drawClock(ctx);
                 animationFrame = requestAnimationFrame(animate);
             }
-            
+
             function updateProgress() {
                 if (audioElement && isPlaying) {
                     const percent = (audioElement.currentTime / audioElement.duration) * 100;
                     progressDot.style.left = percent + '%';
                 }
             }
-            
+
             function stopClockSounds() {
                 soundEnabled = false;
                 soundToggle.textContent = 'Turn sounds on';
             }
-            
+
             function playMusic() {
                 if (audioElement) {
                     audioElement.pause();
@@ -442,7 +470,7 @@
                 stopClockSounds();
                 canvas.classList.add('canvas-hidden');
             }
-            
+
             function toggleMusic() {
                 if (isPlaying) {
                     audioElement.pause();
@@ -456,12 +484,12 @@
                     playMusic();
                 }
             }
-            
+
             visualizationArea.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleMusic();
             });
-            
+
             progressBar.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (audioElement && isPlaying) {
@@ -471,7 +499,7 @@
                     audioElement.currentTime = percent * audioElement.duration;
                 }
             });
-            
+
             if (soundToggle) {
                 soundToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -482,9 +510,9 @@
                     this.textContent = soundEnabled ? 'Turn sounds off' : 'Turn sounds on';
                 });
             }
-            
+
             points = generateBasePoints();
-            
+
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', () => {
                     animate();
