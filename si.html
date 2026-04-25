@@ -48,7 +48,7 @@
         }
 
         .fact-sheet:hover .image-square img {
-            transform: scale(1);
+            transform: scale(1.02);
         }
 
         .content {
@@ -130,7 +130,6 @@
         .summary-note {
             background-color: #eef5ea;
             padding: 1.2rem 1.5rem;
-            border-radius: 1.2rem;
             margin: 1rem 0 1.6rem;
             border-top: 2px solid #2c5f2d;
             border-bottom: 2px solid #2c5f2d;
@@ -161,7 +160,6 @@
             gap: 0.4rem;
             background: white;
             padding: 0.65rem 1.8rem;
-            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
@@ -185,7 +183,7 @@
         }
 
         .fact-footer {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             text-align: center;
             color: #ad8a56;
             margin-top: 1rem;
@@ -193,9 +191,6 @@
         }
 
         @media (max-width: 680px) {
-            .fact-sheet {
-                border-radius: 1.5rem;
-            }
             .content {
                 padding: 1.5rem;
             }
@@ -214,7 +209,7 @@
 <body>
     <div class="fact-sheet">
         <div class="image-square">
-            <img src="map.jpeg" alt="Historical map of Slovene territory / Carantania and Slovene Lands">
+            <img src="map.jpeg" alt="Historical map of Slovene territory / Carantania and Slovene Lands" onerror="this.onerror=null; this.src='https://placehold.co/800x800/f5efe3/8b6946?text=map.jpeg+(historical+map)'">
         </div>
 
         <div class="content">
@@ -303,7 +298,6 @@
             </div>
             <div class="fact-footer">
                 ⱄⰾⱁⰲⰵⱀⱄⰽⰰ ⰸⰳⱁⰴⱁⰲⰻⱀⰰ
-                <p><a href="https://www.bandlab.com/daedryk"><img width="100%" src="BandLab.png"></a></p>
             </div>
         </div>
     </div>
