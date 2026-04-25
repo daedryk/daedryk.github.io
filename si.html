@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Slovenia | Political Integrations (722–1848)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffffff 0%, #fef9e6 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Georgia', 'Times New Roman', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        /* main fact sheet card */
+        .fact-sheet {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(255, 140, 0, 0.2);
+        }
+
+        /* square image container: forces square ratio, image cover */
+        .image-square {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f4f0e3;
+            overflow: hidden;
+            border-bottom: 4px solid #f18f01;   /* orange accent */
+        }
+
+        .image-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .fact-sheet:hover .image-square img {
+            transform: scale(1.02);
+        }
+
+        /* content area */
+        .content {
+            padding: 2rem 2rem 1.8rem;
+        }
+
+        /* title section with subtle green accent */
+        .title-section {
+            margin-bottom: 1.8rem;
+            border-left: 6px solid #2c5f2d;    /* deep green */
+            padding-left: 1.2rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #1e3a1e;
+            font-family: 'Segoe UI', 'Roboto', 'Playfair Display', serif;
+        }
+
+        .title-section .sub {
+            font-size: 0.9rem;
+            color: #f18f01;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        /* timeline & fact styling */
+        .timeline-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .event-item {
+            background: #fefaf2;
+            border-radius: 1.25rem;
+            padding: 1rem 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(241, 143, 1, 0.25);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .event-year {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f18f01;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+            background: rgba(241, 143, 1, 0.1);
+            padding: 0.1rem 0.7rem;
+            border-radius: 40px;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f3b1a;
+            margin: 0.3rem 0 0.6rem 0;
+        }
+
+        .event-desc {
+            color: #2c3e2b;
+            line-height: 1.45;
+            font-size: 0.98rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: rgba(241, 143, 1, 0.08);
+            border-left: 4px solid #f18f01;
+            padding: 0rem 0.8rem;
+            margin: 0.5rem 0 0;
+            font-style: normal;
+        }
+
+        /* final note / integration summary */
+        .summary-note {
+            background-color: #eef5ea;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.2rem;
+            margin: 1rem 0 1.6rem;
+            border-top: 2px solid #2c5f2d;
+            border-bottom: 2px solid #2c5f2d;
+        }
+
+        .summary-note p {
+            font-size: 0.95rem;
+            color: #1e3a1e;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .summary-note strong {
+            color: #f18f01;
+            font-weight: 700;
+        }
+
+        /* return link bottom */
+        .return-link {
+            text-align: center;
+            margin-top: 1.2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(241, 143, 1, 0.3);
+        }
+
+        .return-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: white;
+            padding: 0.65rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #2c5f2d;
+            border: 1.5px solid #f18f01;
+            transition: all 0.25s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            font-family: inherit;
+        }
+
+        .return-link a:hover {
+            background: #f18f01;
+            color: white;
+            border-color: #f18f01;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(241, 143, 1, 0.25);
+        }
+
+        .return-link a:active {
+            transform: translateY(1px);
+        }
+
+        /* footer minimal */
+        .fact-footer {
+            font-size: 0.7rem;
+            text-align: center;
+            color: #ad8a56;
+            margin-top: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* responsive touches */
+        @media (max-width: 680px) {
+            .fact-sheet {
+                border-radius: 1.5rem;
+            }
+            .content {
+                padding: 1.5rem;
+            }
+            .event-year {
+                font-size: 1.3rem;
+            }
+            .event-title {
+                font-size: 1.1rem;
+            }
+            .title-section h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fact-sheet">
+        <!-- square image on top: "map.jpeg" -->
+        <div class="image-square">
+            <img src="map.jpeg" alt="Historical map of Slovene territory / Carantania and Slovene Lands" onerror="this.onerror=null; this.src='https://placehold.co/800x800/f5efe3/8b6946?text=map.jpeg+(historical+map)'">
+        </div>
+
+        <div class="content">
+            <div class="title-section">
+                <h1>Slovene political integrations</h1>
+                <div class="sub">722 – 1848 · early medieval to pre-March Revolution</div>
+            </div>
+
+            <div class="timeline-block">
+                <!-- event 1: 722 - Carantania / first Slavic polity -->
+                <div class="event-item">
+                    <div class="event-year">⚔️ 722 AD</div>
+                    <div class="event-title">Carantania: first organised Slavic principality</div>
+                    <div class="event-desc">
+                        Around 722, the Alpine Slavs (ancestors of modern Slovenes) formed the principality of <strong>Carantania</strong> — one of the oldest Slavic state formations in Europe. It secured political autonomy under Prince <strong>Valhun</strong> (or Borut’s predecessor) and resisted Avar and Frankish pressure. Carantania preserved unique inauguration rituals of the “Duke’s Stone” (<em>Knežji kamen</em>), symbolising early Slavic parliamentary tradition.
+                    </div>
+                </div>
+
+                <!-- event 2: 745 - Frankish suzerainty, but preserved internal integration -->
+                <div class="event-item">
+                    <div class="event-year">🛡️ 745 AD</div>
+                    <div class="event-title">Carantania under Bavarian / Frankish protectorate</div>
+                    <div class="event-desc">
+                        Facing Avar danger, Carantania accepted Bavarian overlordship (745), later integrated into the <strong>Carolingian Empire</strong>. Though losing full sovereignty, Slavic nobles retained local governance and legal customs. This dual structure became a model of “indirect integration” — Slovene identity survived within larger realms.
+                    </div>
+                </div>
+
+                <!-- event 3: 843–976 – within Eastern Frankish & Duchy of Bavaria -->
+                <div class="event-item">
+                    <div class="event-year">🏰 843–976 AD</div>
+                    <div class="event-title">March of Carantania & Holy Roman framework</div>
+                    <div class="event-desc">
+                        After Treaty of Verdun (843), Slovene lands fell to East Francia. The <strong>March of Carantania</strong> (later Duchy of Carinthia from 976) formed a distinct political entity. Slovenes participated in imperial structures while keeping local assemblies and land rights — an early form of regional autonomy.
+                    </div>
+                </div>
+
+                <!-- event 4: 12th-14th c. - feudal fragmentation, but estates integration -->
+                <div class="event-item">
+                    <div class="event-year">📜 12th–14th centuries</div>
+                    <div class="event-title">Habsburg & feudal integration: Carniola, Styria, Carinthia</div>
+                    <div class="event-desc">
+                        From 1335, most Slovene-inhabited counties fell under <strong>Habsburg dominion</strong>. Yet the nobility and provincial estates (<em>deželni stanovi</em>) maintained Slavic legal traditions. The Duchy of Carniola received particular privileges. Political integration remained provincial, but Slovenes developed common identity across these Inner Austrian lands.
+                    </div>
+                </div>
+
+                <!-- event 5: 1515–1572 - Slovene peasant uprisings & early common political consciousness -->
+                <div class="event-item">
+                    <div class="event-year">🌾 1515–1572</div>
+                    <div class="event-title">Peasant revolts & the first common “All-Slovene” demands</div>
+                    <div class="event-desc">
+                        The 1515 <strong>Slovene Peasant Revolt</strong> and the Croatian–Slovene rebellion of 1573 (under Matija Gubec) transcended provincial borders. Demands for unified legal rights across Carniola, Styria, Carinthia signalled a nascent <strong>political integration of Slovene commoners</strong> — a forerunner to later national programs.
+                    </div>
+                </div>
+
+                <!-- event 6: 16th c. - protestant reformation: linguistic unification -->
+                <div class="event-item">
+                    <div class="event-year">✍️ 1550–1584</div>
+                    <div class="event-title">Protestant movement & first Slovene books (Trubar, Dalmatin)</div>
+                    <div class="event-desc">
+                        <strong>Primož Trubar</strong> published the first books in Slovene (1550). The Reformation created a standardised literary language, unifying Slovenes spiritually and culturally across fragmented political borders. While not a state, this <strong>linguistic-political integration</strong> laid foundations for later collective action.
+                    </div>
+                </div>
+
+                <!-- event 7: 17th–18th c. - absolutist integration within Habsburg monarchy -->
+                <div class="event-item">
+                    <div class="event-year">👑 1620–1790</div>
+                    <div class="event-title">Centralisation under Habsburg absolutism</div>
+                    <div class="event-desc">
+                        Maria Theresa and Joseph II introduced administrative reforms (districts, unified judiciary). The <strong>Kingdom of Illyria</strong> (1809–1813, Napoleonic) briefly united Slovene lands, acting as a political blueprint. After 1815, the Austrian Empire reasserted control, but the Illyrian Provinces inspired Slovene elites toward territorial cohesion.
+                    </div>
+                </div>
+
+                <!-- event 8: 1848 - watershed: United Slovenia program -->
+                <div class="event-item">
+                    <div class="event-year">🇸🇮 1848 AD</div>
+                    <div class="event-title">Spring of Nations & “Zedinjena Slovenija” (United Slovenia)</div>
+                    <div class="event-desc">
+                        During the March Revolution, Slovene national activists (Matija Majar, Lovro Toman) demanded the unification of all Slovene-inhabited counties (<strong>Carniola, southern Styria, Carinthian Slovene regions, Austrian Littoral</strong>) into a single autonomous political unit — <em>Zedinjena Slovenija</em>. This was the first explicit modern <strong>political integration program</strong> of Slovenes, advocating linguistic equality and representation. Though rejected by the Frankfurt Parliament, 1848 marks the endpoint of medieval/early modern integrations and the birth of Slovenian political nationalism.
+                    </div>
+                    <div class="highlight">
+                        ⚡ 1848 concludes our timeline — from Carantania’s duchy to the demand for a unified Slovene political territory.
+                    </div>
+                </div>
+            </div>
+
+            <!-- summary box: emphasizes political integrations from 722 to 1848 -->
+            <div class="summary-note">
+                <p>📌 <strong>Political integration of Slovenes (722–1848):</strong> From the early medieval <strong>Principality of Carantania</strong> (722), through autonomous marches within the Frankish and Holy Roman Empire, to Habsburg provincial estates — Slovenes maintained distinct legal and assembly traditions. The <strong>Illyrian Provinces</strong> (1809–1813) offered a momentary territorial union, while the revolutionary year <strong>1848</strong> crystallised the demand for “<strong>United Slovenia</strong>”, closing our period with a clear vision of national political unity.</p>
+            </div>
+
+            <!-- bottom link: "return" to https://daedryk.github.io -->
+            <div class="return-link">
+                <a href="https://daedryk.github.io" target="_blank" rel="noopener noreferrer">
+                    ⟳ return
+                </a>
+            </div>
+            <div class="fact-footer">
+                historical fact sheet · early Slovene political frameworks
+            </div>
+        </div>
+    </div>
+</body>
+</html>
