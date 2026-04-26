@@ -1,67 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 
-    ======================================================================
-    SITE: Political Integrations of Slovenia (722–1848)
-    AUTHOR: Historical Fact Sheet / Daedryk
-    DESCRIPTION: Timeline of Slovene political formations from Carantania
-                 to the United Slovenia program of 1848.
-    ======================================================================
-    -->
-
-    <!-- BASIC META -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    
-    <!-- TITLE (optimized for search & history) -->
     <title>Slovenia | Political Integrations (722–1848) | Carantania to United Slovenia</title>
-    
-    <!-- 
-        SEO META TAGS
-        =================================================================
-        These tags help search engines understand the content and context.
-        The page focuses on Slovene medieval statehood, Habsburg period,
-        and the 1848 national program.
-    -->
     <meta name="description" content="Explore the political integration of Slovenes from 722 AD (Principality of Carantania) to the 1848 Spring of Nations and the 'United Slovenia' program. Key events: Slavic principality, Habsburg administration, Illyrian Provinces, and the rise of Slovene national consciousness.">
     <meta name="keywords" content="Slovenia, political integration, Carantania, Slovenian history, United Slovenia, Zedinjena Slovenija, 1848 revolution, Habsburg monarchy, Slovene peasant revolt, Primož Trubar, Duchy of Carniola, Slavic principality, Central European history">
     <meta name="author" content="Daedryk Historical Archive">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    
-    <!-- Open Graph / Social Media (Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content="Slovenia | Political Integrations (722–1848)">
     <meta property="og:description" content="From the early Slavic principality of Carantania to the 1848 demand for United Slovenia — a visual timeline of Slovene political evolution.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://daedryk.github.io">
-    <meta property="og:image" content="https://daedryk.github.io/map.jpeg"> <!-- actual image URL will be used if present -->
+    <meta property="og:image" content="https://daedryk.github.io/map.jpeg">
     <meta property="og:image:alt" content="Historical map of Carantania and early Slovene territories">
     <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Slovenia | Political Integrations (722–1848)">
     <meta name="twitter:description" content="Timeline of Slovene political integration from medieval Carantania to 1848 revolutionary program 'Zedinjena Slovenija'.">
     <meta name="twitter:image" content="https://daedryk.github.io/map.jpeg">
     <meta name="twitter:image:alt" content="Historical map of Slovene lands / Carantania region">
-    
-    <!-- Canonical (use absolute URL if domain known) -->
     <link rel="canonical" href="https://daedryk.github.io/si.html">
-    
-    <!-- Optional: author / publisher verification (just semantic) -->
     <meta name="geo.region" content="SI">
     <meta name="language" content="English">
-    
-    <!-- 
-        STYLESHEET: modern & responsive design
-        =================================================================
-        • Custom linear gradient background
-        • Card-style fact sheet with image container + hover effects
-        • Fully responsive (flex, media queries)
-        • Colour scheme: earthy greens & orange accents (historical feel)
-    -->
     <style>
-        /* ---------- RESET & BASE ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -78,7 +40,6 @@
             padding: 2rem 1.5rem;
         }
 
-        /* MAIN CARD: fact-sheet container */
         .fact-sheet {
             max-width: 1000px;
             width: 100%;
@@ -89,7 +50,6 @@
             border: 1px solid rgba(255, 140, 0, 0.2);
         }
 
-        /* ---------- IMAGE SECTION (aspect 1:1) ---------- */
         .image-square {
             width: 100%;
             aspect-ratio: 1 / 1;
@@ -106,17 +66,14 @@
             transition: transform 0.4s ease;
         }
 
-        /* subtle zoom on hover to engage user */
         .fact-sheet:hover .image-square img {
             transform: scale(1.02);
         }
 
-        /* ---------- CONTENT AREA ---------- */
         .content {
             padding: 2rem 2rem 1.8rem;
         }
 
-        /* title block with left border (green identity) */
         .title-section {
             margin-bottom: 1.8rem;
             border-left: 6px solid #2c5f2d;
@@ -139,7 +96,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* timeline list: column layout */
         .timeline-block {
             display: flex;
             flex-direction: column;
@@ -147,7 +103,6 @@
             margin-bottom: 2rem;
         }
 
-        /* each event card */
         .event-item {
             background: #fefaf2;
             padding: 1rem 1.5rem;
@@ -156,7 +111,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
 
-        /* year badge */
         .event-year {
             font-size: 1.5rem;
             font-weight: 800;
@@ -182,7 +136,6 @@
             text-align: justify;
         }
 
-        /* inline highlight snippet (used for 1848 footnote) */
         .highlight {
             background: rgba(241, 143, 1, 0.08);
             border-left: 4px solid #f18f01;
@@ -192,7 +145,6 @@
             font-size: 0.92rem;
         }
 
-        /* summary box with green/orange accents */
         .summary-note {
             background-color: #eef5ea;
             padding: 1.2rem 1.5rem;
@@ -213,7 +165,6 @@
             font-weight: 700;
         }
 
-        /* return / home button */
         .return-link {
             text-align: center;
             margin-top: 1.2rem;
@@ -250,9 +201,8 @@
             transform: translateY(1px);
         }
 
-        /* footer: bandcamp / marquee (glagolitic charm) */
         .fact-footer {
-            font-size: 1rem;
+            font-size: 1.8rem;
             text-align: center;
             color: #ad8a56;
             margin-top: 1rem;
@@ -268,12 +218,11 @@
 
         marquee {
             margin-top: 0.75rem;
-            font-size: 0.85rem;
+            font-size: 1.8rem;
             font-family: monospace;
             color: #7c5f3a;
         }
 
-        /* responsive adjustments for smaller screens */
         @media (max-width: 680px) {
             .content {
                 padding: 1.5rem;
@@ -292,10 +241,6 @@
 </head>
 <body>
     <div class="fact-sheet">
-        <!-- 
-            IMAGE SECTION: historical map representing Carantania and Slovene lands.
-            Includes fallback placeholder if map.jpeg is not available.
-        -->
         <div class="image-square">
             <img src="map.jpeg" 
                  alt="Historical map of Carantania and early medieval Slovene territory with marked borders of Carinthia, Carniola, and Styria" 
@@ -303,19 +248,12 @@
         </div>
 
         <div class="content">
-            <!-- title section: main heading + period -->
             <div class="title-section">
                 <h1>Slovene political integrations</h1>
                 <div class="sub">722 – 1848 · early medieval to pre-March Revolution</div>
             </div>
 
-            <!-- 
-                TIMELINE: eight key milestones showing political integration,
-                from Carantania to the 1848 United Slovenia manifesto.
-                Each item includes year, title, description and some decorative icons.
-            -->
             <div class="timeline-block">
-                <!-- 1. Carantania foundation -->
                 <div class="event-item">
                     <div class="event-year">⚔️ 722 AD</div>
                     <div class="event-title">Carantania: first organised Slavic principality</div>
@@ -324,7 +262,6 @@
                     </div>
                 </div>
 
-                <!-- 2. 745 Frankish protectorate · dual governance model -->
                 <div class="event-item">
                     <div class="event-year">🛡️ 745 AD</div>
                     <div class="event-title">Carantania under Bavarian / Frankish protectorate</div>
@@ -333,7 +270,6 @@
                     </div>
                 </div>
 
-                <!-- 3. March of Carantania & Holy Roman Empire framework -->
                 <div class="event-item">
                     <div class="event-year">🏰 843–976 AD</div>
                     <div class="event-title">March of Carantania & Holy Roman framework</div>
@@ -342,7 +278,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Habsburg integration: provincial estates -->
                 <div class="event-item">
                     <div class="event-year">📜 12th–14th centuries</div>
                     <div class="event-title">Habsburg & feudal integration: Carniola, Styria, Carinthia</div>
@@ -351,7 +286,6 @@
                     </div>
                 </div>
 
-                <!-- 5. Peasant revolts: cross-border demands (early collective action) -->
                 <div class="event-item">
                     <div class="event-year">🌾 1515–1572</div>
                     <div class="event-title">Peasant revolts & the first common “All-Slovene” demands</div>
@@ -360,7 +294,6 @@
                     </div>
                 </div>
 
-                <!-- 6. Protestant movement & linguistic unification (Trubar / Dalmatin) -->
                 <div class="event-item">
                     <div class="event-year">✍️ 1550–1584</div>
                     <div class="event-title">Protestant movement & first Slovene books (Trubar, Dalmatin)</div>
@@ -369,7 +302,6 @@
                     </div>
                 </div>
 
-                <!-- 7. Habsburg centralisation & Napoleonic Illyrian Provinces -->
                 <div class="event-item">
                     <div class="event-year">👑 1620–1790</div>
                     <div class="event-title">Centralisation under Habsburg absolutism</div>
@@ -378,7 +310,6 @@
                     </div>
                 </div>
 
-                <!-- 8. 1848: Spring of Nations – United Slovenia program (climax) -->
                 <div class="event-item">
                     <div class="event-year">🇸🇮 1848 AD</div>
                     <div class="event-title">Spring of Nations & “Zedinjena Slovenija” (United Slovenia)</div>
@@ -391,33 +322,20 @@
                 </div>
             </div>
 
-            <!-- 
-                SUMMARY NOTE: cohesive summary for readers and search engines 
-                Highlights the essence of 722–1848 political integration.
-            -->
             <div class="summary-note">
                 <p>📌 <strong>Political integration of Slovenes (722–1848):</strong> From the early medieval <strong>Principality of Carantania</strong> (722), through autonomous marches within the Frankish and Holy Roman Empire, to Habsburg provincial estates — Slovenes maintained distinct legal and assembly traditions. The <strong>Illyrian Provinces</strong> (1809–1813) offered a momentary territorial union, while the revolutionary year <strong>1848</strong> crystallised the demand for “<strong>United Slovenia</strong>”, closing our period with a clear vision of national political unity.</p>
             </div>
 
-            <!-- 
-                RETURN / HOME LINK: navigational element pointing to main portfolio.
-                Uses rel="noopener noreferrer" for security & SEO.
-            -->
             <div class="return-link">
                 <a href="https://daedryk.github.io" rel="noopener noreferrer" aria-label="Return to homepage of Daedryk">
                     ⟳ return
                 </a>
             </div>
             
-            <!-- 
-                FOOTER: includes BandLab link (brand) and a decorative marquee
-                with historical Glagolitic script text for authenticity.
-            -->
             <div class="fact-footer">
                 <p><a href="https://www.bandlab.com/daedryk" title="ⰳⰾⰰⱄⱀⰻⰽ – Daedryk on BandLab" rel="noopener noreferrer">
                     <img src="BandLab.png" alt="BandLab profile of Daedryk - music and experimental sounds" width="100%">
                 </a></p>
-                <!-- Glagolitic greeting / atmospheric marquee (preserved original character set) -->
                 <marquee behavior="scroll" direction="left">ⰲⰵⱄⰵⰾⰵ ⱂⱃⰻⰳⱁⰴⰵ ⰲⰰⱎⰽⰵ ⰳⱁⱄⱂⱁⰴⰵ ⰽⰻ ⰲⱁⰴⰻⱁ ⱆⱄⰰⰽⱁⰳⰰⱃ ⱅⱑ ⰽⰰⰿⱁⱃ ⱄⱁⰴⰻ ⱂⰰ ⰳⰴⱁⱃ ⱄⰻ ⰶⰵ ⰱⱁⰴⰻ</marquee>
             </div>
         </div>
