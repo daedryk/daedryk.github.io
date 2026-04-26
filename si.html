@@ -53,23 +53,76 @@
         .image-square {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background: #f4f0e3;
+            background: #1e2a1a;
             overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
             border-bottom: 4px solid #f18f01;
+            transition: filter 0.2s;
         }
-
+        .image-square:hover {
+            filter: brightness(1.01);
+        }
         .image-square img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease, opacity 0.3s;
         }
-
-        .fact-sheet:hover .image-square img {
-            transform: scale(1.02);
+        .eye-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(0px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-size: min(45vw, 45vh, 280px);
+            font-family: 'Segoe UI', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10;
         }
-
+        .music-playing .eye-overlay {
+            opacity: 0.95;
+        }
+        .music-playing .image-square img {
+            opacity: 0.65;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0d6c2;
+            height: 5px;
+            position: relative;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(241, 143, 1, 0.5);
+        }
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #2c5f2d;
+            position: relative;
+            transition: width 0.05s linear;
+        }
+        .progress-dot {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background-color: #f18f01;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px white, 0 0 0 3px #f18f01;
+            transition: right 0.05s linear;
+        }
         .content {
             padding: 2rem 2rem 1.8rem;
         }
@@ -207,7 +260,7 @@
             color: #ad8a56;
             margin-top: 1rem;
         }
-        
+
         .fact-footer img {
             transition: opacity 0.2s;
         }
@@ -222,7 +275,14 @@
             font-family: monospace;
             color: #7c5f3a;
         }
-
+        .audio-status {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 6px;
+            color: #8b6b3c;
+            letter-spacing: 0.4px;
+            font-family: monospace;
+        }
         @media (max-width: 680px) {
             .content {
                 padding: 1.5rem;
@@ -236,16 +296,24 @@
             .title-section h1 {
                 font-size: 1.6rem;
             }
+            .eye-overlay {
+                font-size: min(55vw, 55vh, 220px);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="fact-sheet">
-        <div class="image-square">
+    <div class="fact-sheet" id="appRoot">
+        <div class="image-square" id="playPauseButton">
             <img src="map.jpeg" 
-                 alt="integral Slovenia">
+                 alt="integral Slovenia — click to play music">
+            <div class="eye-overlay" id="eyeEmoji">👁️</div>
         </div>
-
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar-fill" id="progressFill">
+                <div class="progress-dot" id="progressDot"></div>
+            </div>
+        </div>
         <center><i><font color="#808080">Carantania</font>, <font color="#008000">Carniola</font> & <font color="#ff8000">Croatia</font></i></center>
 
         <div class="content">
@@ -332,7 +400,7 @@
                     ⰔⰎⰑⰂⰅⰐⰋⰡ
                 </a>
             </div>
-            
+
             <div class="fact-footer">
                 <p><a href="https://www.bandlab.com/daedryk" title="ⰳⰾⰰⱄⱀⰻⰽ – Daedryk on BandLab" rel="noopener noreferrer">
                     <img src="BandLab.png" alt="BandLab profile of Daedryk - music and experimental sounds" width="100%">
@@ -341,5 +409,163 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (function() {
+            const audio = new Audio('brown_eye_rmx.m4a');
+            audio.preload = 'auto';
+            
+            const rootEl = document.getElementById('appRoot');
+            const playPauseSquare = document.getElementById('playPauseButton');
+            const progressFill = document.getElementById('progressFill');
+            const progressDot = document.getElementById('progressDot');
+            const progressContainer = document.getElementById('progressContainer');
+            
+            let isPlaying = false;
+            let animationFrameId = null;
+            
+            function updateProgressUI() {
+                if (!audio.duration || isNaN(audio.duration) || audio.duration === Infinity) {
+                    if (progressFill) progressFill.style.width = '0%';
+                    if (progressDot) progressDot.style.right = '-8px';
+                    return;
+                }
+                const percent = (audio.currentTime / audio.duration) * 100;
+                const fillWidth = Math.min(100, Math.max(0, percent)) + '%';
+                progressFill.style.width = fillWidth;
+                const containerWidth = progressContainer.offsetWidth;
+                const dotWidth = 14;
+                const rightOffset = containerWidth * (1 - (percent / 100));
+                if (progressDot && containerWidth) {
+                    let rightPos = rightOffset - (dotWidth/2);
+                    rightPos = Math.min(containerWidth - 6, Math.max(-6, rightPos));
+                    progressDot.style.right = rightPos + 'px';
+                } else if (progressDot) {
+                    progressDot.style.right = `calc(${100 - percent}% - 7px)`;
+                }
+            }
+            
+            function startProgressUpdater() {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                function updateLoop() {
+                    if (!isPlaying && (audio.paused || audio.ended)) {
+                        updateProgressUI();
+                        animationFrameId = null;
+                        return;
+                    }
+                    updateProgressUI();
+                    animationFrameId = requestAnimationFrame(updateLoop);
+                }
+                updateLoop();
+            }
+            
+            function stopProgressUpdater() {
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                updateProgressUI();
+            }
+            
+            function togglePlayPause() {
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    rootEl.classList.remove('music-playing');
+                    stopProgressUpdater();
+                } else {
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            isPlaying = true;
+                            rootEl.classList.add('music-playing');
+                            startProgressUpdater();
+                        }).catch(error => {
+                            console.warn("Audio playback failed: ", error);
+                            isPlaying = false;
+                            rootEl.classList.remove('music-playing');
+                        });
+                    } else {
+                        isPlaying = true;
+                        rootEl.classList.add('music-playing');
+                        startProgressUpdater();
+                    }
+                }
+            }
+            
+            function handleSeek(e) {
+                const rect = progressContainer.getBoundingClientRect();
+                if (!rect.width) return;
+                let clickX = e.clientX - rect.left;
+                clickX = Math.min(rect.width, Math.max(0, clickX));
+                const percent = clickX / rect.width;
+                if (audio.duration && isFinite(audio.duration) && !isNaN(audio.duration)) {
+                    const newTime = percent * audio.duration;
+                    audio.currentTime = newTime;
+                    updateProgressUI();
+                    if (!isPlaying) {
+                        updateProgressUI();
+                    } else {
+                        startProgressUpdater();
+                    }
+                } else {
+                    const setSeekOnce = () => {
+                        if (audio.duration && isFinite(audio.duration)) {
+                            const newTime = percent * audio.duration;
+                            audio.currentTime = newTime;
+                            updateProgressUI();
+                            audio.removeEventListener('loadedmetadata', setSeekOnce);
+                        }
+                    };
+                    audio.addEventListener('loadedmetadata', setSeekOnce);
+                }
+            }
+            
+            playPauseSquare.addEventListener('click', (e) => {
+                e.stopPropagation();
+                togglePlayPause();
+            });
+            
+            progressContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                handleSeek(e);
+            });
+            
+            audio.addEventListener('ended', () => {
+                isPlaying = false;
+                rootEl.classList.remove('music-playing');
+                stopProgressUpdater();
+                updateProgressUI();
+                progressFill.style.width = '0%';
+                if (progressDot) progressDot.style.right = '-8px';
+                audio.currentTime = 0;
+                updateProgressUI();
+            });
+            
+            audio.addEventListener('loadedmetadata', () => {
+                updateProgressUI();
+                if (!isPlaying) {
+                    progressFill.style.width = '0%';
+                    if (progressDot) progressDot.style.right = '-8px';
+                }
+            });
+            
+            audio.addEventListener('timeupdate', () => {
+                if (isPlaying) updateProgressUI();
+            });
+            
+            audio.load();
+            updateProgressUI();
+            rootEl.classList.remove('music-playing');
+            
+            audio.addEventListener('error', (err) => {
+                console.warn("Audio loading error: ", err);
+            });
+            
+            window.addEventListener('resize', () => {
+                updateProgressUI();
+            });
+        })();
+    </script>
 </body>
 </html>
