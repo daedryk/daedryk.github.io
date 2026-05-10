@@ -300,6 +300,34 @@
                 font-size: min(55vw, 55vh, 220px);
             }
         }
+        /* Enhanced Chinese character styling with SVG color shadows */
+        .chinese-grace {
+            font-size: 56px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            display: inline-block;
+            background: linear-gradient(135deg, #2c5f2d 0%, #f18f01 70%, #bb5e00 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 6px rgba(44, 95, 45, 0.3), 4px 4px 12px rgba(241, 143, 1, 0.2);
+            transition: all 0.2s ease;
+        }
+        .chinese-grace:hover {
+            text-shadow: 3px 3px 8px rgba(44, 95, 45, 0.5), 6px 6px 14px rgba(241, 143, 1, 0.3);
+            transform: scale(1.01);
+        }
+        .svg-color-shadows {
+            font-size: 56px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            display: inline-block;
+            background: linear-gradient(145deg, #d4af37 20%, #f18f01 50%, #2c5f2d 85%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: #b8860b;
+            text-shadow: 2px 2px 0 rgba(241, 143, 1, 0.5), 4px 4px 4px rgba(44, 95, 45, 0.4), 6px 6px 8px rgba(180, 90, 0, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -416,7 +444,7 @@
    x="0px"
    y="0px"
    width="100%"
-   
+
    viewBox="0 0 612 625.715"
    enable-background="new 0 0 612 625.715"
    xml:space="preserve"
@@ -449,43 +477,43 @@
    inkscape:guide-bbox="true" />
 <g
    id="Mountains">
-	<polygon
+        <polygon
    id="Blue_path"
    points="134,422.62 220.667,255.286 250,306.619 307.333,202.619 360.667,301.953    388.667,255.286 482,420.62 391.333,519.286 200.667,518.62  "
    fill="#386BB3" />
-	<g
+        <g
    id="Ribbons">
-		<g
+                <g
    id="g6">
-			<path
+                        <path
    stroke-miterlimit="10"
    d="M153.555,372.827     c37.86,0.028,37.848,18.058,75.709,18.084c37.861,0.028,37.876-18,75.737-17.973c37.864,0.028,37.852,18.057,75.715,18.084     c37.864,0.028,37.879-18,75.742-17.973"
    id="path8"
    stroke-width="5"
    stroke="#FFFFFF"
    fill="none" />
-		</g>
-		<g
+                </g>
+                <g
    id="g10">
-			<path
+                        <path
    stroke-miterlimit="10"
    d="M144.701,404.161     c39.748,0.152,39.679,18.182,79.427,18.333c39.75,0.153,39.819-17.875,79.568-17.722c39.75,0.152,39.682,18.181,79.432,18.333     c39.753,0.153,39.821-17.875,79.572-17.722"
    id="path12"
    stroke-width="5"
    stroke="#FFFFFF"
    fill="none" />
-		</g>
-		<g
+                </g>
+                <g
    id="g14">
-			<path
+                        <path
    stroke-miterlimit="10"
    d="M155.555,438.827     c37.86,0.028,37.848,18.058,75.709,18.084c37.861,0.028,37.876-18,75.737-17.973c37.864,0.028,37.852,18.057,75.715,18.084     c37.864,0.028,37.879-18,75.742-17.973"
    id="path16"
    stroke-width="5"
    stroke="#FFFFFF"
    fill="none" />
-		</g>
-	</g>
+                </g>
+        </g>
 </g>
 <path
    style="fill:#fdc100;stroke:#a86326;stroke-width:1.50000000000000000;stroke-miterlimit:10;fill-opacity:1;stroke-opacity:1"
@@ -948,7 +976,9 @@
    id="polygon75"
    style="fill:#de0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff2a2a;stroke-width:0.34525445;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /></svg>
 
-<p align="center"><font style="font-size: 56px" color="c0a664">容木兰</font></p>
+<p align="center">
+    <font style="font-size: 56px" color="c0a664" class="svg-color-shadows">容木兰</font>
+</p>
 
                 <p><a href="https://www.bandlab.com/daedryk" title="ⰳⰾⰰⱄⱀⰻⰽ – Daedryk on BandLab" rel="noopener noreferrer">
                     <img src="BandLab.png" alt="BandLab profile of Daedryk - music and experimental sounds" width="100%">
@@ -962,16 +992,16 @@
         (function() {
             const audio = new Audio('brown_eye_rmx.m4a');
             audio.preload = 'auto';
-            
+
             const rootEl = document.getElementById('appRoot');
             const playPauseSquare = document.getElementById('playPauseButton');
             const progressFill = document.getElementById('progressFill');
             const progressDot = document.getElementById('progressDot');
             const progressContainer = document.getElementById('progressContainer');
-            
+
             let isPlaying = false;
             let animationFrameId = null;
-            
+
             function updateProgressUI() {
                 if (!audio.duration || isNaN(audio.duration) || audio.duration === Infinity) {
                     if (progressFill) progressFill.style.width = '0%';
@@ -992,7 +1022,7 @@
                     progressDot.style.right = `calc(${100 - percent}% - 7px)`;
                 }
             }
-            
+
             function startProgressUpdater() {
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 function updateLoop() {
@@ -1006,7 +1036,7 @@
                 }
                 updateLoop();
             }
-            
+
             function stopProgressUpdater() {
                 if (animationFrameId) {
                     cancelAnimationFrame(animationFrameId);
@@ -1014,7 +1044,7 @@
                 }
                 updateProgressUI();
             }
-            
+
             function togglePlayPause() {
                 if (isPlaying) {
                     audio.pause();
@@ -1040,7 +1070,7 @@
                     }
                 }
             }
-            
+
             function handleSeek(e) {
                 const rect = progressContainer.getBoundingClientRect();
                 if (!rect.width) return;
@@ -1068,17 +1098,17 @@
                     audio.addEventListener('loadedmetadata', setSeekOnce);
                 }
             }
-            
+
             playPauseSquare.addEventListener('click', (e) => {
                 e.stopPropagation();
                 togglePlayPause();
             });
-            
+
             progressContainer.addEventListener('click', (e) => {
                 e.stopPropagation();
                 handleSeek(e);
             });
-            
+
             audio.addEventListener('ended', () => {
                 isPlaying = false;
                 rootEl.classList.remove('music-playing');
@@ -1089,7 +1119,7 @@
                 audio.currentTime = 0;
                 updateProgressUI();
             });
-            
+
             audio.addEventListener('loadedmetadata', () => {
                 updateProgressUI();
                 if (!isPlaying) {
@@ -1097,19 +1127,19 @@
                     if (progressDot) progressDot.style.right = '-8px';
                 }
             });
-            
+
             audio.addEventListener('timeupdate', () => {
                 if (isPlaying) updateProgressUI();
             });
-            
+
             audio.load();
             updateProgressUI();
             rootEl.classList.remove('music-playing');
-            
+
             audio.addEventListener('error', (err) => {
                 console.warn("Audio loading error: ", err);
             });
-            
+
             window.addEventListener('resize', () => {
                 updateProgressUI();
             });
