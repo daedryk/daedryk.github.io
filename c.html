@@ -1,207 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Triglav – The Three-Headed God | Slavic Deity</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ruevit | Slavic Deity of War & Autumn</title>
+  <meta name="description" content="Discover Ruevit, the Slavic seven-faced god of war, fertility, and autumn. Learn about his symbolism, myths, and historical significance.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background: #1a1f14;
-            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            color: #f0ecd9;
-            line-height: 1.5;
-            padding: 2rem 1rem;
-        }
+    body {
+      background: linear-gradient(145deg, #1e2a1e 0%, #0f1a0f 100%);
+      font-family: 'Segoe UI', 'Roboto', 'Georgia', 'Times New Roman', serif;
+      color: #f5efdc;
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #222a1c;
-            border-radius: 2rem;
-            padding: 2rem 2rem 2.5rem;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.6);
-            border: 1px solid #b8864b;
-        }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: rgba(28, 22, 18, 0.65);
+      backdrop-filter: blur(2px);
+      border-radius: 3rem;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+      overflow: hidden;
+      border: 1px solid rgba(210, 180, 110, 0.3);
+    }
 
-        /* header */
-        .hero {
-            text-align: center;
-            border-bottom: 2px solid #c4965a;
-            padding-bottom: 1.2rem;
-            margin-bottom: 1.8rem;
-        }
+    .hero {
+      background: linear-gradient(135deg, #2c2418cc, #1f2a15cc), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjYzhiNThhIiBmaWxsLW9wYWNpdHk9IjAuMTUiIGQ9Ik0yMCAzTDMgMTBsNyAxN0wzMCAyN2w3LTE3LTE3LTd6bTAgMjVsMTAgNkgxMGwxMC02eiIvPjwvc3ZnPg==');
+      background-repeat: repeat;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid #cb9e5b;
+    }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #eedba7, #cd9a5b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
+    .hero h1 {
+      font-size: 4.2rem;
+      font-weight: 800;
+      text-shadow: 4px 4px 0 #2e241d;
+      background: linear-gradient(135deg, #f3d382, #dcb572);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
+    }
 
-        .subhead {
-            font-size: 1.1rem;
-            color: #cfba8a;
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
+    .hero .subhead {
+      font-size: 1.3rem;
+      font-style: italic;
+      background: #1e2818aa;
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      font-weight: 500;
+      border-left: 3px solid #e7b45a;
+      border-right: 3px solid #e7b45a;
+      font-family: 'Segoe UI', 'Times New Roman', monospace;
+    }
 
-        /* section styling */
-        .section {
-            margin: 2rem 0;
-            background: #1c2418;
-            border-radius: 1.5rem;
-            padding: 1.2rem 1.8rem;
-            border-left: 6px solid #c3985c;
-            transition: transform 0.2s;
-        }
+    .content-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2.5rem 2rem;
+    }
 
-        .section:hover {
-            background: #202b1b;
-        }
+    .info-main {
+      flex: 2;
+      min-width: 250px;
+    }
 
-        .section h2 {
-            font-size: 1.8rem;
-            color: #e7ca8c;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-left: 3px solid #f0c46c;
-            padding-left: 1rem;
-        }
+    .info-card {
+      flex: 1.2;
+      min-width: 240px;
+      background: #231f1ae6;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 12px 20px -10px rgba(0,0,0,0.4);
+      border: 1px solid #cbaa6e55;
+      height: fit-content;
+    }
 
-        .section p {
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
+    h2 {
+      font-size: 2rem;
+      border-left: 6px solid #e2b76a;
+      padding-left: 1rem;
+      margin: 1.5rem 0 1rem 0;
+      font-weight: 600;
+    }
 
-        .attributes-list, .relations-list {
-            list-style: none;
-            margin: 1rem 0 0.5rem;
-        }
+    h2:first-of-type {
+      margin-top: 0;
+    }
 
-        .attributes-list li, .relations-list li {
-            margin-bottom: 0.6rem;
-            padding-left: 1.8rem;
-            position: relative;
-        }
+    h3 {
+      font-size: 1.5rem;
+      margin: 1rem 0 0.6rem;
+      color: #f7e2af;
+      font-weight: 500;
+    }
 
-        .attributes-list li::before {
-            content: "⚡";
-            position: absolute;
-            left: 0;
-            color: #e7bc7e;
-        }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #f2e8d5;
+    }
 
-        .relations-list li::before {
-            content: "🔗";
-            position: absolute;
-            left: 0;
-            color: #dbb064;
-        }
+    .card-title {
+      font-size: 1.8rem;
+      text-align: center;
+      border-bottom: 1px dashed #cbaa6e;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.2rem;
+      font-weight: bold;
+      color: #ffdfa5;
+    }
 
-        strong {
-            color: #f5da9c;
-        }
+    .symbol-list {
+      list-style: none;
+      padding: 0;
+    }
 
-        .quote-block {
-            background: #12190f;
-            padding: 1rem 1.5rem;
-            border-radius: 1.2rem;
-            font-style: italic;
-            margin: 1.5rem 0;
-            border-right: 3px solid #b5823c;
-            color: #e2d5b6;
-        }
+    .symbol-list li {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px dotted #716b5e;
+      padding-bottom: 0.6rem;
+    }
 
-        footer {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #a9976b;
-            border-top: 1px solid #4a5c38;
-            padding-top: 1.5rem;
-        }
+    .symbol-icon {
+      font-size: 1.8rem;
+      width: 2.3rem;
+      text-align: center;
+    }
 
-        hr {
-            border-color: #4a6036;
-            margin: 0.5rem 0;
-        }
+    .weapon-tag {
+      background: #4a3627;
+      border-radius: 30px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 0.5rem;
+      color: #fad97c;
+    }
 
-        @media (max-width: 700px) {
-            .container { padding: 1.2rem; }
-            h1 { font-size: 2.2rem; }
-            .section h2 { font-size: 1.4rem; }
-            .section { padding: 1rem; }
-        }
-    </style>
+    .fact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .fact-item {
+      background: #2c281f;
+      border-radius: 1rem;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    hr {
+      margin: 1.5rem 0;
+      border-color: #7a684d;
+    }
+
+    blockquote {
+      background: #1b1c13aa;
+      border-left: 5px solid #e7af5e;
+      padding: 0.8rem 1.2rem;
+      margin: 1rem 0;
+      font-style: italic;
+      border-radius: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      background: #171e12d0;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.85rem;
+      border-top: 1px solid #7f6b48;
+      color: #cbbd99;
+    }
+
+    @media (max-width: 780px) {
+      .hero h1 { font-size: 2.7rem; }
+      .content-grid { padding: 1.5rem; gap: 1.5rem; }
+      h2 { font-size: 1.7rem; }
+    }
+
+    .glagolitic-accent {
+      font-family: monospace;
+      font-weight: bold;
+      background: #2c261e;
+      padding: 0.1rem 0.3rem;
+      border-radius: 8px;
+      font-size: 1.1em;
+    }
+
+    a {
+      color: #f7cf8c;
+      text-decoration: none;
+      border-bottom: 1px dotted;
+    }
+    a:hover { color: #ffe0a3; }
+    
+    .back-link-container {
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .back-link {
+      display: inline-block;
+      background: #2c2418;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      font-weight: bold;
+      border: 1px solid #cb9e5b;
+      transition: all 0.2s ease;
+      color: #f7cf8c;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .back-link:hover {
+      background: #4a3a28;
+      color: #ffeaaf;
+      transform: scale(1.02);
+    }
+  </style>
 </head>
 <body>
 <div class="container">
-    <div class="hero">
-        <h1>ⰕⰓⰋⰃⰎⰀⰖ</h1>
-        <div class="subhead">The Three-Headed God · Supreme Ruler of Heaven, Earth & the Underworld</div>
+  <div class="hero">
+    <h1>🌾 RUEVIT 🌾</h1>
+    <div class="subhead">ⱃⱆⱗⰲⰻⱅ · The seven-faced warrior · Lord of Autumn & War</div>
+    <p style="margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto;">Guardian of the harvest's fury, wielder of the blade that turns the tide — revered by Slavic tribes of the Baltic region.</p>
+  </div>
+
+  <div class="content-grid">
+    <div class="info-main">
+      <h2>⚔️ Who is Ruevit?</h2>
+      <p><strong>Ruevit</strong> (also spelled Ruyevit, Rujevit, or Rugevit; his name written in Glagolitic script as <span class="glagolitic-accent">ⱃⱆⱗⰲⰻⱅ</span>) is a powerful warrior deity from Slavic mythology, particularly worshipped by the Slavic tribe of the <strong>Rani (Rujani)</strong> on the island of Rügen (modern-day Germany). He represents the untamed force of martial strength, the turning of seasons from summer's abundance to the harsh onset of winter, and the sacred violence of the autumn storm.</p>
+      <p>Unlike the more widely known Perun (god of thunder) or Svarog (celestial smith), Ruevit holds a regional but intense cult — a god of protection, conquest, and the grim courage required for battle. The medieval chronicler Saxo Grammaticus in <em>Gesta Danorum</em> describes a magnificent temple in Charenza (now Garz, Rügen) where a massive wooden idol of Ruevit stood, inspiring both awe and terror.</p>
+
+      <h2>🗡️ The Seven Faces & The Sword</h2>
+      <p>The most iconic feature of Ruevit is his <strong>seven faces</strong> — each carved on a separate side of his head, each facing a different direction. This symbolizes his all-seeing vigilance over the world, his ability to watch every horizon for enemies and fate. He is often depicted holding a giant iron sword, sometimes sheathed, to remind worshippers that even the mightiest warrior rests but is always ready to draw steel.</p>
+      <p>Another famous legend recorded by Saxo speaks of a sacred <strong>ceremonial sword</strong> belonging to the idol. During the siege of the temple by Danish king Valdemar I (1168 AD), priests and defenders believed Ruevit himself would defend the shrine. After the Christian conquest, the idol was torn down, but the myth of the seven-faced avenger survived among the folk tales of Pomerania and Rügen.</p>
+
+      <h2>🍂 Associations: Autumn, Fertility & Harvest War</h2>
+      <p>Ruevit is not merely a god of destruction — he embodies the <strong>necessary end of the agricultural cycle</strong>. As autumn arrives, the fields are reaped with scythes and sickles, tools that mirror his warrior’s blade. The bloodshed of war parallels the threshing of grain; both are sacrifices to ensure survival through the cold months. In some interpretations, his seven faces also represent the seven months of the growing season or the seven directions (four cardinal points, up, down, and within).</p>
+      <blockquote>“The shrine of Ruevit thrummed with the echo of bronze and horn; his seven eyes never blinked, and his sword hummed like the northern wind.” — reconstruction based on Slavic oral traditions.</blockquote>
+      <p>Fertility rites also connected with Ruevit: before the autumn equinox, warriors would dedicate captured weapons and ask for strength in livestock and harvest defense. The deity combined agrarian welfare and martial prowess — typical for West Slavic societies where raiding and farming were intertwined.</p>
+
+      <h2>🏛️ Historical Worship & Destruction</h2>
+      <p>The main cult center stood in the fortress-temple of Charenza (also known as Korenica). According to Saxo Grammaticus, the enormous statue of Ruevit was made of oak, <strong>seven feet tall</strong> (though symbolic reports vary) with seven heads, seven faces, and seven sheathed swords hanging from his belt, plus one massive iron sword gripped in his right hand. After the Danish conquest of Arkona and Rügen, Bishop Absalon ordered the idol to be burned, along with the temples of Porevit and Porenut — two related deities from the same pantheon.</p>
+      <p>Despite the destruction, echoes of Ruevit survived in folklore as a ghostly warrior of the misty shores, often identified as a defender of sacred groves. Modern Slavic native faith movements (Rodnovery) have revived his imagery, honoring him as a god of military valor, seasonal transition, and unwavering resolve.</p>
+
     </div>
 
-    <!-- introduction / domain -->
-    <div class="section">
-        <h2>🌍 Domain & Nature</h2>
-        <p><strong>Triglav</strong> (meaning "Three-Headed") was a major deity worshipped by West Slavic tribes, especially in Pomerania (around Szczecin and Wolin). He is regarded as a supreme or high god, embodying the tripartite structure of the universe: <strong>heaven, earth, and the underworld</strong>. His three heads symbolize absolute dominion over these three realms, as well as governance over time — past, present, and future — and the three classical elements: air, earth, and fire.</p>
-        <p>Chroniclers such as Ebbo and Herbord described Triglav’s temple in Szczecin as a major cult center, where the golden statue of the three-headed god stood adorned with a golden diadem binding the heads together — a symbol of the unity of worlds.</p>
+    <div class="info-card">
+      <div class="card-title">✨ RUEVIT AT A GLANCE</div>
+      <ul class="symbol-list">
+        <li><span class="symbol-icon">🗡️</span> <span><strong>Primary attribute:</strong> Iron longsword (ritual blade)</span></li>
+        <li><span class="symbol-icon">👁️👁️👁️👁️👁️👁️👁️</span> <span><strong>Seven faces</strong> · omnidirectional awareness</span></li>
+        <li><span class="symbol-icon">🍂</span> <span><strong>Season:</strong> Autumn (September–November)</span></li>
+        <li><span class="symbol-icon">⚔️</span> <span><strong>Domain:</strong> War, harvest, courage, protection</span></li>
+        <li><span class="symbol-icon">🌾</span> <span><strong>Offerings:</strong> Grain, mead, broken enemy weapons, oak leaves</span></li>
+        <li><span class="symbol-icon">🏝️</span> <span><strong>Cult center:</strong> Charenza (Rügen island, Baltic Sea)</span></li>
+      </ul>
+      <hr>
+      <h3 style="font-size:1.3rem; margin:0 0 0.5rem 0">🔮 Sacred Symbolism</h3>
+      <div class="fact-grid">
+        <div class="fact-item">🐗 Wild boar (ferocity)</div>
+        <div class="fact-item">🌾 Sheaf of wheat</div>
+        <div class="fact-item">🌊 Autumn storm waves</div>
+        <div class="fact-item">🪓 Iron & fire</div>
+      </div>
+      <h3 style="font-size:1.2rem; margin-top:1rem;">📜 Ancient Sources</h3>
+      <p style="font-size:0.9rem;">Primary written accounts: <strong>Saxo Grammaticus</strong> (Danish chronicler, ~12th c.) — <em>Gesta Danorum</em> book XIV. Mentions Ruevit along with Porevit and Porenut during the subjugation of the Rani tribe.</p>
+      <div style="background:#2a241e; border-radius: 1rem; padding: 0.7rem; margin-top: 1rem;">
+        <div style="display: flex; gap:0.7rem; align-items:center; font-weight:bold;">🏹 <span>War-cry invocation:</span></div>
+        <p style="font-family: monospace; margin-top:0.5rem; font-size:0.9rem;">“Ruevit, siedemlicy! Niech twój miecz strzeże naszych granic!”<br> (Old Slavic-inspired: “Ruevit, seven-faced! May your sword protect our borders!”)</p>
+      </div>
+      <hr>
+      <div style="text-align: center; margin-top: 0.5rem;">
+        <span class="weapon-tag">⚡ Avatar of autumn warrior</span>
+        <span class="weapon-tag">🍂 Keeper of the reaping blade</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 2rem 1.5rem 2rem;">
+    <h2>📖 Ruevit in Modern Culture & Revival</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.2rem;">
+      <div style="flex: 1; min-width: 200px; background: #1f2a1baa; border-radius: 1.5rem; padding: 1rem;">
+        <h3 style="margin-top:0;">🎨 Artistic depictions</h3>
+        <p>In contemporary Slavic fantasy literature and pagan art, Ruevit is shown as a towering figure with seven stern faces, each bearing a different expression — fury, vigilance, sorrow for fallen warriors, and calm acceptance of autumn’s decay. Musician and bands inspired by Slavic heathenry often invoke his name in metal tracks about ancient wars. The Glagolitic spelling <span class="glagolitic-accent">ⱃⱆⱗⰲⰻⱅ</span> appears in modern mystical inscriptions.</p>
+      </div>
+      <div style="flex: 1; background: #1f2a1baa; border-radius: 1.5rem; padding: 1rem;">
+        <h3 style="margin-top:0;">📿 Related Deities (West Slavic triad)</h3>
+        <p>Ruevit often appears in company with <strong>Porevit</strong> (god of forests and summer) and <strong>Porenut</strong> (seasonal god, sometimes of spring or fate). While Porevit had five faces and Porenut four, Ruevit's seven faces were considered the most potent. Together they governed the cycle of growth, war, and decay.</p>
+      </div>
+      <div style="flex: 1; background: #1f2a1baa; border-radius: 1.5rem; padding: 1rem;">
+        <h3 style="margin-top:0;">🏺Archaeological hints</h3>
+        <p>Remains of a Slavic fortified temple on Cape Arkona and the island of Rügen revealed wooden idols fragments, weaponry, and animal bones — consistent with sacrifices to war deities. Although no complete statue of Ruevit survives, the descriptions match typical West Slavic cult images.</p>
+      </div>
     </div>
 
-    <!-- attributes & symbols (no SVG) -->
-    <div class="section">
-        <h2>⚙️ Attributes & Sacred Symbols</h2>
-        <ul class="attributes-list">
-            <li><strong>Three heads</strong> – omniscience, control over all levels of existence; the heads see every corner of the world, making Triglav the ultimate guardian and judge.</li>
-            <li><strong>Blindfold or covered eyes</strong> – paradoxically, some accounts mention a veil over his eyes. This signifies that he deliberately ignores evil or mortal suffering, or that his divine vision is too powerful for human eyes to endure.</li>
-            <li><strong>Black horse</strong> – a sacred black horse was kept at his temple for divination. Priests would lead the horse through a grid of spears; the animal's movements were interpreted as Triglav’s prophecies.</li>
-            <li><strong>Spear or sword</strong> – in some depictions, each head wears a crown and the deity holds a weapon, representing warlike protection and authority.</li>
-            <li><strong>Golden diadem</strong> – binding the three heads together, emphasizing the inseparable unity of the cosmic realms.</li>
-        </ul>
-        <div class="quote-block">
-            “The three-headed idol stood in the main shrine, covered with a golden veil, and its eyes were mysteriously covered — only priests could approach and interpret its silent will.”
-        </div>
+    <div style="margin-top: 2rem; background: #00000030; border-radius: 1.5rem; padding: 1rem;">
+      <h3 style="text-align: center;">⚜️ Quick comparison with other Slavic war gods ⚜️</h3>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly; gap: 0.6rem; margin-top: 0.8rem;">
+        <div style="background:#302819; border-radius: 1rem; padding: 0.5rem 1rem;"><strong>⚡ Perun</strong> – supreme thunderer, warrior of sky (Pan-Slavic)</div>
+        <div style="background:#302819; border-radius: 1rem; padding: 0.5rem 1rem;"><strong>🌾 Ruevit</strong> – autumn, seven-faced guardian of Rügen</div>
+        <div style="background:#302819; border-radius: 1rem; padding: 0.5rem 1rem;"><strong>🐺 Svarozhich</strong> – solar war aspect (East Slavs)</div>
+        <div style="background:#302819; border-radius: 1rem; padding: 0.5rem 1rem;"><strong>🛡️ Yarovit</strong> – spring war & fertility (related to Ruevit? some syncretism)</div>
+      </div>
+      <p style="font-size: 0.85rem; text-align: center; margin-top: 1rem;">Note: Some researchers suggest Ruevit may be a local variant of a broader "war god with multiple faces" archetype, echoed in Baltic and Celtic traditions.</p>
     </div>
 
-    <!-- Relations & mythological context -->
-    <div class="section">
-        <h2>🔱 Relations & Cosmic Role</h2>
-        <ul class="relations-list">
-            <li><strong>Counterpart to Svarog or Perun</strong> – Triglav is often seen as a supreme sky god, equivalent to Svarog (the celestial smith) or Perun (the thunderer) in other Slavic traditions, but with a distinctive threefold nature.</li>
-            <li><strong>Temple of Szczecin</strong> – the main cult center: walls inside and out were carved with images of warriors, beasts, and ritual scenes. The golden statue of Triglav was the focal point of tributes and sacrifices.</li>
-            <li><strong>Sacrifices & rituals</strong> – worship involved frequent offerings of cattle, and occasionally prisoners of war. A sacred oak tree stood near the temple, where divinations were performed.</li>
-            <li><strong>Mountain spirit & folk memory</strong> – Triglav’s name endures in Slovenia’s highest peak, Mount Triglav. Folk tales transformed the god into a three-headed giant or a mountain guardian, watching over the gateway to the otherworld.</li>
-            <li><strong>Triad of supreme gods</strong> – for some tribes, Triglav, together with Svarog (heaven) and Dazhbog (sun), formed a sacred trinity representing cosmic order.</li>
-        </ul>
-        <p>In later folklore, Triglav became associated with the number three’s sacred power: three realms, three times, three elements — a pattern that echoes through Slavic ritual and symbol.</p>
-    </div>
+    <blockquote style="margin: 1.8rem 0 1rem 0; background:#191f13aa">
+      ✨ <strong>Sacred symbol of resilience:</strong> The seven-faced deity reminds us that true strength sees all paths and chooses the warrior’s way with wisdom, not only fury. Autumn is the season of both harvest and letting go — the blade cuts the grain to plant next year's hope.
+    </blockquote>
+  </div>
 
-    <!-- worship and historical legacy -->
-    <div class="section">
-        <h2>🏛️ Worship & Christian Suppression</h2>
-        <p>Triglav’s cult was especially strong among the Lutici and Pomeranian Slavs. The temple in Szczecin (Stettin) was destroyed during the Christianization campaigns of the 12th century, led by Bishop Otto of Bamberg. According to medieval records, the statue of Triglav was demolished, but local resistance remained fierce — the god’s black horse and sacred groves were considered sources of oracular power.</p>
-        <p>Despite the destruction, the memory of the three-headed god survived in folk art, oral tales, and even in the toponymy of the Alps. Modern Rodnovery (Slavic native faith) revival honors Triglav as a guardian of cosmic law and the unity of worlds.</p>
-        <hr>
-        <p style="margin-top: 0.8rem;"><strong>✨ Triglav’s essence:</strong> absolute sight, triune power, the knot that ties heaven, earth, and the underworld into a single unbreakable chain. He neither sleeps nor blinks — his three faces watch the past, the present, and what lies beyond.</p>
+  <div class="footer">
+    <span>🏛️ Information based on medieval chronicles (Saxo Grammaticus, Gesta Danorum), Slavic folklore reconstructions and academic research on West Slavic mythology. 🌾 Ruevit — guardian of the seven directions. 🗡️<br> Glagolitic inscription <strong>ⱃⱆⱗⰲⰻⱅ</strong> (Ruevit) honors the old Slavic literary tradition.</span><br>
+    <span style="font-size:0.75rem;">For educational purposes · Slavic pagan heritage · Dedicated to the memory of the Rani tribe.</span>
+    <div class="back-link-container">
+      <a href="https://daedryk.github.io" class="back-link">BACK</a>
     </div>
-
-    <footer>
-        <p>📜 Based on medieval chronicles (Ebbo, Herbord, Saxo Grammaticus) and Slavic comparative mythology.<br>
-        Triglav – the three-headed god of the West Slavs: a symbol of supreme triplicity, cosmic justice, and prophetic darkness.</p>
-        <p><a href="https://daedryk.github.io">BACK</a></p>
-    </footer>
+  </div>
 </div>
 </body>
 </html>
