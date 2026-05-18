@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Slavic Paganism | Deities, Symbols & Chain Mail Lore</title>
-    <meta name="description" content="Explore Slavic mythology with handcrafted SVG deity symbols, lore, and authentic chain mail borders.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slavic Deities: Relations, Attributes & Symbols</title>
     <style>
         * {
             margin: 0;
@@ -13,440 +12,422 @@
         }
 
         body {
-            background: linear-gradient(145deg, #1e2a1f 0%, #0f1a0e 100%);
-            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            color: #f3ecd8;
+            background: #1a2618;
+            font-family: 'Segoe UI', 'Georgia', serif;
+            color: #f0ebdd;
             line-height: 1.5;
-            scroll-behavior: smooth;
+            padding: 2rem 1rem;
         }
 
-        /* container with subtle weave background */
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
         }
 
-        /* hero section with chain mail trim */
-        .hero {
+        h1 {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            position: relative;
-            border-bottom: 2px solid #cd9a5b;
+            font-size: 2.4rem;
+            letter-spacing: 2px;
+            color: #e9cb9a;
+            border-bottom: 2px solid #b8864b;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 1rem;
+            padding-bottom: 0.3rem;
         }
 
-        /* CHAIN MAIL BORDER STYLES — inspired by riveted rings */
-        .chainmail-border {
-            position: relative;
-            background: rgba(25, 30, 20, 0.6);
-            border-radius: 2rem;
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        .title-wrap {
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
 
-        /* main pseudo-element chainmail pattern: overlapping rings */
-        .chainmail-border::before {
-            content: "";
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(180, 160, 120, 0.35) 0px,
-                rgba(180, 160, 120, 0.35) 2px,
-                rgba(140, 115, 75, 0.2) 2px,
-                rgba(140, 115, 75, 0.2) 6px,
-                rgba(200, 175, 130, 0.25) 6px,
-                rgba(200, 175, 130, 0.25) 10px
-            );
-            border-radius: 2rem;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* inset chainmail effect for inner card borders - ring pattern overlay */
-        .chainmail-border::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 35%, rgba(210, 180, 110, 0.08) 2px, transparent 2px);
-            background-size: 12px 12px;
-            border-radius: 1.9rem;
-            pointer-events: none;
-        }
-
-        /* Individual card chain mail variation — distinct but cohesive */
-        .chain-card {
-            position: relative;
-            background: rgba(30, 35, 25, 0.8);
-            backdrop-filter: blur(2px);
-            border-radius: 2rem;
-            padding: 1.5rem 1.8rem 2rem;
-            transition: transform 0.25s ease, box-shadow 0.3s;
-            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.6);
-            border: 1px solid rgba(205, 154, 91, 0.6);
-            overflow: hidden;
-        }
-
-        /* chain mail overlay on cards (more metallic) */
-        .chain-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: 
-                repeating-linear-gradient(0deg, rgba(170, 145, 90, 0.15) 0px, rgba(170, 145, 90, 0.15) 2px, transparent 2px, transparent 8px),
-                repeating-linear-gradient(90deg, rgba(170, 145, 90, 0.15) 0px, rgba(170, 145, 90, 0.15) 2px, transparent 2px, transparent 8px);
-            background-size: 12px 12px, 12px 12px;
-            border-radius: 2rem;
-            pointer-events: none;
-        }
-
-        /* additional ring-like dots for chainmail texture */
-        .chain-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 40%, rgba(210, 175, 100, 0.2) 1.5px, transparent 1.5px);
-            background-size: 14px 14px;
-            border-radius: 2rem;
-            pointer-events: none;
-        }
-
-        .chain-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -12px black;
-            border-color: #e5b574;
-            background: rgba(35, 42, 28, 0.9);
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #f7e6c4, #dba468);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            font-weight: 600;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 1rem auto 0;
-            color: #ddcca7;
+        .sub {
+            text-align: center;
+            color: #c7b07c;
+            margin-top: 0.5rem;
             font-style: italic;
         }
 
+        /* deity grid */
         .deities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.2rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        /* symbol wrapper inside cards */
-        .symbol-wrapper {
-            background: #2a3224;
-            border-radius: 50%;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 5px 0 0 #7a4f2e, inset 0 1px 4px rgba(255,255,200,0.2);
-            padding: 12px;
-            position: relative;
-            z-index: 2;
-        }
-
-        svg {
-            width: 96px;
-            height: 96px;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+        .card {
+            background: #1f2a1c;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border-left: 6px solid #cd9a5b;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.4);
             transition: transform 0.2s;
         }
 
-        .chain-card:hover svg {
-            transform: scale(1.02);
+        .card:hover {
+            transform: translateY(-5px);
+            background: #253a21;
+        }
+
+        .deity-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #b8864b;
+            padding-bottom: 0.7rem;
         }
 
         .deity-name {
             font-size: 1.9rem;
             font-weight: bold;
-            letter-spacing: 1px;
-            margin-top: 0.2rem;
-            color: #f3cf7a;
-            border-bottom: 1px dashed #b87c48;
-            display: inline-block;
-            padding-bottom: 0.2rem;
-            position: relative;
-            z-index: 2;
+            color: #f7dc9c;
         }
 
         .deity-title {
+            font-size: 0.85rem;
+            background: #2d3a24;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #e2c28b;
+        }
+
+        /* SVG symbol */
+        .symbol-svg {
+            background: #2c3526;
+            border-radius: 50%;
+            width: 85px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem 0 1rem 0;
+            box-shadow: inset 0 0 0 1px #6f874b, 0 2px 6px black;
+        }
+
+        svg {
+            width: 64px;
+            height: 64px;
+            filter: drop-shadow(0 1px 2px black);
+        }
+
+        .attributes {
+            margin: 1rem 0;
+            background: #172012;
+            padding: 0.7rem;
+            border-radius: 1rem;
+        }
+
+        .attributes p {
+            margin: 0.3rem 0;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #c9ae7a;
-            margin: 0.4rem 0 0.8rem;
-            position: relative;
-            z-index: 2;
         }
 
-        .lore {
-            text-align: left;
-            margin-top: 1.2rem;
-            font-size: 0.95rem;
-            background: #1e2419cc;
-            padding: 1rem;
-            border-radius: 1.2rem;
-            color: #ece2cf;
-            border-left: 4px solid #cd9a5b;
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(2px);
+        .attributes strong {
+            color: #ebc17e;
         }
 
-        .lore p {
-            margin: 0.5rem 0;
-        }
-
-        .lore strong {
-            color: #ffcf8a;
-        }
-
-        /* sacred traditions section also gets chainmail border */
-        .traditions-section {
-            margin-top: 2rem;
-            position: relative;
-            background: #1c241a;
-            border-radius: 2rem;
-            padding: 1.8rem 2rem;
-            border: 1px solid #a68248;
-        }
-
-        .traditions-section::before {
-            content: "";
-            position: absolute;
-            inset: -4px;
-            background: repeating-linear-gradient(
-                30deg,
-                rgba(200, 170, 110, 0.25) 0px,
-                rgba(200, 170, 110, 0.25) 2px,
-                rgba(130, 100, 55, 0.2) 2px,
-                rgba(130, 100, 55, 0.2) 6px,
-                rgba(210, 180, 120, 0.2) 6px,
-                rgba(210, 180, 120, 0.2) 10px
-            );
-            border-radius: 2rem;
-            pointer-events: none;
-        }
-
-        .traditions-section::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(190, 155, 85, 0.12) 2px, transparent 2px);
-            background-size: 12px 12px;
-            border-radius: 2rem;
-            pointer-events: none;
+        .relations {
+            font-size: 0.88rem;
+            background: #1a2417;
+            padding: 0.7rem;
+            border-radius: 1rem;
+            margin-top: 0.8rem;
+            border-left: 3px solid #a57348;
         }
 
         hr {
-            margin: 2rem 0 1rem;
-            border-color: #5f7343;
+            margin: 2rem 0;
+            border-color: #4c5e3a;
         }
 
-        footer {
+        .family-note {
+            background: #121a0f;
+            padding: 1.2rem;
+            border-radius: 1.2rem;
             text-align: center;
-            margin-top: 3rem;
-            font-size: 0.85rem;
-            color: #ab9f7c;
-            border-top: 1px solid #4e5d3a;
-            padding-top: 1.8rem;
-            position: relative;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 700px) {
-            .hero h1 { font-size: 2.3rem; }
-            .container { padding: 1rem; }
-            .symbol-wrapper { width: 100px; height: 100px; }
-            svg { width: 70px; height: 70px; }
-            .chainmail-border { padding: 1rem; }
+            .deity-name { font-size: 1.5rem; }
+            .symbol-svg { width: 70px; height: 70px; }
+            svg { width: 52px; height: 52px; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- Hero segment with CHAIN MAIL border (ancient Slavic warrior's hauberk style) -->
-    <div class="hero chainmail-border" style="margin-bottom: 2rem; padding: 1.5rem 2rem 2rem;">
-        <h1>⛓️ SŁAWA — Slavic Paganism ⚔️🌲</h1>
-        <p>Ancient gods, sacred symbols, and timeless lore — protected by the spiritual chain mail of ancestral faith.</p>
-        <p style="font-size: 0.9rem; margin-top: 1rem; letter-spacing: 1px;">✨ <em>“Perun’s thunder, Veles’ wisdom, Mokosh’s threads — bound in rings of steel and legend.”</em> ✨</p>
+    <div class="title-wrap">
+        <h1>🌿 SLOVANSKI BOGOVI 🌿</h1>
+        <div class="sub">Slavic Deities · Kinship · Sacred Symbols & Attributes</div>
     </div>
 
     <div class="deities-grid">
-        <!-- PERUN: chain-mail bordered card -->
-        <div class="chain-card">
-            <div class="symbol-wrapper">
+        
+        <!-- PERUN -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">⚡ Perun</span>
+                <span class="deity-title">God of Thunder, Lightning & War</span>
+            </div>
+            <div class="symbol-svg">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#FFD966"/>
-                            <stop offset="100%" stop-color="#D49A3A"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="42" stroke="#D4AF37" stroke-width="2.5" fill="none" stroke-dasharray="3 3"/>
-                    <path d="M50 18 L56 40 L72 38 L60 52 L68 70 L50 58 L32 70 L40 52 L28 38 L44 40 L50 18Z" fill="url(#goldGrad)" stroke="#B87C2E" stroke-width="1.5"/>
-                    <path d="M50 18 L48 12 L52 12 L50 18" fill="#FFE484"/>
+                    <circle cx="50" cy="50" r="42" stroke="#D4AF37" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+                    <path d="M50 18 L56 40 L72 38 L60 52 L68 70 L50 58 L32 70 L40 52 L28 38 L44 40 L50 18Z" fill="#F5C542" stroke="#B87C2E" stroke-width="1.2"/>
                     <circle cx="72" cy="36" r="3" fill="#FFBF60"/>
                     <circle cx="28" cy="36" r="3" fill="#FFBF60"/>
                 </svg>
             </div>
-            <div class="deity-name">⚡ Perun</div>
-            <div class="deity-title">God of Thunder, Lightning & Warriors</div>
-            <div class="lore">
-                <p><strong>Lore:</strong> Perun, the supreme Slavic thunderer, wields an axe of living lightning. He rides the stormy skies and battles the serpent Veles, defending cosmic law. Slavic princes swore oaths by Perun's name and oak groves were his sanctuaries.</p>
-                <p><strong>Symbolism:</strong> The Gromoviti znak (thunder mark) and axe symbolize his absolute power — a celestial warrior's chain mail forged by Svarog himself.</p>
+            <div class="attributes">
+                <p><strong>⚡ Attributes:</strong> Axe / hammer, thunderbolts, oak tree, fire, eagle.</p>
+                <p><strong>🔹 Symbols:</strong> Gromoviti znak (thunder mark), hexafoil, perunika (iris flower).</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Son of Svarog (celestial smith). Eternal rival of Veles. Father of Yarilo (spring deity) in some myths. Leader of the pantheon.
             </div>
         </div>
 
-        <!-- VELES: card with chain mail texture -->
-        <div class="chain-card">
-            <div class="symbol-wrapper">
+        <!-- VELES -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🐍 Veles</span>
+                <span class="deity-title">God of Underworld, Magic, Cattle & Poetry</span>
+            </div>
+            <div class="symbol-svg">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#7B8F5E" stroke-width="2.5" fill="none" stroke-dasharray="3 2"/>
-                    <path d="M35 44 L50 30 L65 44 L62 60 L50 72 L38 60 L35 44Z" fill="#2F4F2F" stroke="#A5B68A" stroke-width="1.5"/>
-                    <path d="M35 44 C28 32, 22 26, 28 22 C34 18, 38 28, 35 44" fill="#8B5A2B" stroke="#D2B48C" stroke-width="1.2"/>
-                    <path d="M65 44 C72 32, 78 26, 72 22 C66 18, 62 28, 65 44" fill="#8B5A2B" stroke="#D2B48C" stroke-width="1.2"/>
-                    <path d="M48 48 L52 48 L52 52 L48 52 Z" fill="#D9B48B"/>
-                    <path d="M44 56 L56 56" stroke="#C9AE6A" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="42" stroke="#8B9A6B" stroke-width="2" fill="none"/>
+                    <path d="M35 44 L50 30 L65 44 L62 60 L50 72 L38 60 L35 44Z" fill="#2F4F2F" stroke="#A5B68A" stroke-width="1.2"/>
+                    <path d="M35 44 C28 32,22 26,28 22 C34 18,38 28,35 44" fill="#8B5A2B" stroke="#D2B48C" stroke-width="1"/>
+                    <path d="M65 44 C72 32,78 26,72 22 C66 18,62 28,65 44" fill="#8B5A2B" stroke="#D2B48C" stroke-width="1"/>
                 </svg>
             </div>
-            <div class="deity-name">🌙 Veles</div>
-            <div class="deity-title">God of Underworld, Magic, Cattle & Poetry</div>
-            <div class="lore">
-                <p><strong>Lore:</strong> Veles, the shape‑shifting serpent and master of forests, rules the underworld Nav. Merchants, skalds, and herders honor him. His eternal rivalry with Perun brings storms and renewal. Hidden knowledge flows through his knot.</p>
-                <p><strong>Symbolism:</strong> Twisted rings and horned arcs evoke chain‑mail of the unknown — magic woven like interlocking steel rings.</p>
+            <div class="attributes">
+                <p><strong>🐉 Attributes:</strong> Horns, serpent / dragon, bear, cattle, wealth, music, magic, water.</p>
+                <p><strong>🔹 Symbols:</strong> Spiral, knot, horned figure, willow tree.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Eternal adversary of Perun (cosmic balance). Opposes the sky god; protector of merchants and shamans. Often associated with Chernobog's domain.
             </div>
         </div>
 
-        <!-- MOKOSH -->
-        <div class="chain-card">
-            <div class="symbol-wrapper">
+        <!-- SVAROG -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">⚒️ Svarog</span>
+                <span class="deity-title">Celestial Smith, Father of Gods</span>
+            </div>
+            <div class="symbol-svg">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#D68C5C" stroke-width="2.5" fill="none" stroke-dasharray="3 3"/>
-                    <rect x="38" y="38" width="24" height="24" fill="#B4653A" stroke="#F3C78E" stroke-width="1.8" rx="4"/>
-                    <path d="M50 30 L50 38 M50 62 L50 70 M38 50 L30 50 M70 50 L62 50" stroke="#FADB9F" stroke-width="2.5" stroke-linecap="round"/>
-                    <circle cx="50" cy="50" r="3" fill="#FEDF9E"/>
-                    <path d="M44 44 L56 56 M44 56 L56 44" stroke="#FFDC97" stroke-width="1.2"/>
+                    <circle cx="50" cy="50" r="42" stroke="#D4A373" stroke-width="2" fill="none"/>
+                    <path d="M38 62 L62 62 L58 72 L42 72 Z" fill="#7E5A41" stroke="#BC9A6C" stroke-width="1.5"/>
+                    <rect x="45" y="54" width="10" height="8" fill="#9C6E3E" stroke="#CFA668"/>
+                    <path d="M32 44 L44 48 L47 44 L40 36 L32 44Z" fill="#B07D44" stroke="#E5B874" stroke-width="1"/>
+                    <line x1="47" y1="44" x2="58" y2="49" stroke="#C3893C" stroke-width="2.5"/>
                 </svg>
             </div>
-            <div class="deity-name">🌾 Mokosh</div>
-            <div class="deity-title">Goddess of Fertility, Earth, Women & Fate</div>
-            <div class="lore">
-                <p><strong>Lore:</strong> Great Mother Mokosh spins the threads of life. As the moist earth and patroness of weaving, she protects childbirth and harvest. Women left wool offerings at her shrines. She weaves destiny with rings of flax and iron.</p>
-                <p><strong>Symbolism:</strong> Diamond lozenges & crossed spindles — her web of fate is as resilient as chain mail, protecting all who honor her.</p>
+            <div class="attributes">
+                <p><strong>🔥 Attributes:</strong> Hammer, anvil, forge, heavenly fire, law, creation, blacksmithing.</p>
+                <p><strong>🔹 Symbols:</strong> Alatyr stone (sacred anvil), flame wheel, the smith's cross.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Father of Dazhbog (sun) and Svarozhich (fire). Husband of Lada? (some traditions). Forged the sun and the world order.
             </div>
         </div>
 
         <!-- DAZHBOOG -->
-        <div class="chain-card">
-            <div class="symbol-wrapper">
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">☀️ Dazhbog</span>
+                <span class="deity-title">Sun God, Giver of Wealth & Light</span>
+            </div>
+            <div class="symbol-svg">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#E9B53E" stroke-width="2.5" fill="none"/>
+                    <circle cx="50" cy="50" r="42" stroke="#E9B53E" stroke-width="2" fill="none"/>
                     <circle cx="50" cy="50" r="14" fill="#FFC857" stroke="#F0A500" stroke-width="2"/>
-                    <g stroke="#FFB347" stroke-width="3.5" stroke-linecap="round">
+                    <g stroke="#FFB347" stroke-width="3" stroke-linecap="round">
                         <line x1="50" y1="14" x2="50" y2="28"/><line x1="50" y1="72" x2="50" y2="86"/>
                         <line x1="14" y1="50" x2="28" y2="50"/><line x1="72" y1="50" x2="86" y2="50"/>
                         <line x1="24.5" y1="24.5" x2="34.5" y2="34.5"/><line x1="65.5" y1="65.5" x2="75.5" y2="75.5"/>
                         <line x1="75.5" y1="24.5" x2="65.5" y2="34.5"/><line x1="24.5" y1="75.5" x2="34.5" y2="65.5"/>
                     </g>
-                    <path d="M50 44 C54 44, 56 48, 54 52 C52 56, 47 55, 46 51 C45 47, 49 44, 53 45" stroke="#F7D44A" fill="none" stroke-width="1.5"/>
                 </svg>
             </div>
-            <div class="deity-name">☀️ Dazhbog</div>
-            <div class="deity-title">Sun God, Giver of Warmth & Abundance</div>
-            <div class="lore">
-                <p><strong>Lore:</strong> Radiant Dazhbog rides his golden chariot across the sky, ancestor of the Rus'. His blessings bring harvest and joy. The sun never sets on his domain; his fiery armor resembles interlinked solar rings.</p>
-                <p><strong>Symbolism:</strong> Solar Kolovrat — a wheel of fire and chain mail links, representing endless celestial cycle and protection against darkness.</p>
+            <div class="attributes">
+                <p><strong>🌞 Attributes:</strong> Solar chariot, golden radiance, white horse, fire, wealth, justice.</p>
+                <p><strong>🔹 Symbols:</strong> Kolovrat (eight-spoked solar wheel), swastika (solar sign), circle with rays.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Son of Svarog. Consort / sister often Zhiva (goddess of life). Grandfather of the Slavic people (mythical ancestor).
+            </div>
+        </div>
+
+        <!-- MOKOSH -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🌾 Mokosh</span>
+                <span class="deity-title">Great Mother, Goddess of Earth & Fate</span>
+            </div>
+            <div class="symbol-svg">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#D68C5C" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
+                    <rect x="38" y="38" width="24" height="24" fill="#B4653A" stroke="#F3C78E" stroke-width="1.5" rx="4"/>
+                    <path d="M50 30 L50 38 M50 62 L50 70 M38 50 L30 50 M70 50 L62 50" stroke="#FADB9F" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="3" fill="#FEDF9E"/>
+                </svg>
+            </div>
+            <div class="attributes">
+                <p><strong>🧵 Attributes:</strong> Spindle, distaff, moist earth, fertility, weaving, women's destiny, rain.</p>
+                <p><strong>🔹 Symbols:</strong> Diamond (lozenge), crossed spindles, birch tree, female figurines.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Wife of Perun in some accounts, or independent. Mother of Yarilo and the spirits of fate (Rozhanitsy). Associated with matron goddess.
             </div>
         </div>
 
         <!-- LADA -->
-        <div class="chain-card">
-            <div class="symbol-wrapper">
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🌸 Lada</span>
+                <span class="deity-title">Goddess of Love, Beauty & Spring</span>
+            </div>
+            <div class="symbol-svg">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#F5A9B8" stroke-width="2.5" fill="none" stroke-dasharray="3 2"/>
-                    <path d="M50 24 L53 38 L67 35 L57 46 L68 57 L53 55 L50 68 L47 55 L32 57 L43 46 L33 35 L47 38 Z" fill="#F4C2C2" stroke="#E07A7A" stroke-width="1.5"/>
+                    <circle cx="50" cy="50" r="42" stroke="#F5A9B8" stroke-width="2" fill="none"/>
+                    <path d="M50 24 L53 38 L67 35 L57 46 L68 57 L53 55 L50 68 L47 55 L32 57 L43 46 L33 35 L47 38 Z" fill="#F4C2C2" stroke="#E07A7A" stroke-width="1.2"/>
                     <circle cx="50" cy="46" r="6" fill="#FFE0B5"/>
-                    <path d="M73 35 C78 26, 84 34, 76 40" stroke="#C59B6D" fill="none" stroke-width="1.8"/>
-                    <path d="M27 35 C22 26, 16 34, 24 40" stroke="#C59B6D" fill="none" stroke-width="1.8"/>
                 </svg>
             </div>
-            <div class="deity-name">🌸 Lada</div>
-            <div class="deity-title">Goddess of Spring, Love & Harmony</div>
-            <div class="lore">
-                <p><strong>Lore:</strong> Lada, the beautiful guardian of love and marriage, emerges when snow melts. Her rites include flower crowns, sacred fires, and singing. She binds hearts with tender yet unbreakable rings of loyalty.</p>
-                <p><strong>Symbolism:</strong> Flower-star & intertwined links — love’s chain mail is gentle but strong as steel, protecting harmony.</p>
+            <div class="attributes">
+                <p><strong>💐 Attributes:</strong> Flower wreath, cuckoo, birch, apple blossom, spring water, harmony.</p>
+                <p><strong>🔹 Symbols:</strong> Seven-pointed star, ring, rose, floral patterns.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Consort of Svarog (or Lado as male counterpart). Mother of Lel and Polel (twin gods of love and marriage). Protector of couples.
             </div>
         </div>
 
-        <!-- SVAROG -->
-        <div class="chain-card">
-            <div class="symbol-wrapper">
+        <!-- MORENA (MARZANNA) -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">❄️ Morena</span>
+                <span class="deity-title">Goddess of Death, Winter & Night</span>
+            </div>
+            <div class="symbol-svg">
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#D4A373" stroke-width="2.5" fill="none"/>
-                    <path d="M38 62 L62 62 L58 72 L42 72 Z" fill="#7E5A41" stroke="#BC9A6C" stroke-width="1.8"/>
-                    <rect x="45" y="54" width="10" height="8" fill="#9C6E3E" stroke="#CFA668"/>
-                    <path d="M32 44 L44 48 L47 44 L40 36 L32 44Z" fill="#B07D44" stroke="#E5B874" stroke-width="1.2"/>
-                    <line x1="47" y1="44" x2="58" y2="49" stroke="#C3893C" stroke-width="3"/>
-                    <path d="M66 38 Q72 32 68 44 Q74 38 70 48" stroke="#FF9F4A" fill="none" stroke-width="2"/>
-                    <path d="M72 31 Q78 24 74 37" stroke="#FFBB66" fill="none" stroke-width="1.8"/>
+                    <circle cx="50" cy="50" r="42" stroke="#C0D0E0" stroke-width="2" fill="none"/>
+                    <path d="M35 35 L65 65 M65 35 L35 65" stroke="#9FB0C0" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="12" fill="none" stroke="#AFC5DA" stroke-width="2"/>
+                    <path d="M42 28 L58 28 M42 72 L58 72" stroke="#B4C8DC" stroke-width="2"/>
                 </svg>
             </div>
-            <div class="deity-name">⚒️ Svarog</div>
-            <div class="deity-title">Celestial Smith, Father of the Gods</div>
-            <div class="lore">
-                <p><strong>Lore:</strong> Svarog the heavenly smith forged the sun and forged the first chain mail for warriors of spirit. He taught humanity to work metal and law. His hammer strikes ring like a thousand interlocking rings across the sky.</p>
-                <p><strong>Symbolism:</strong> Anvil, hammer and flame — the original chain mail master, each ring a link of divine order.</p>
+            <div class="attributes">
+                <p><strong>🌨️ Attributes:</strong> Frost, darkness, black horse, sickle, frozen waters, nightmare.</p>
+                <p><strong>🔹 Symbols:</strong> Black sun, broken wheel, willow branch (funerary), sickle moon.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Sister of Živa (life) and Lada. Daughter of Chernobog? Sometimes consort of Veles. Rival of Yarilo (spring god). Drowned each spring in rituals.
+            </div>
+        </div>
+
+        <!-- YARILO -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🌾 Yarilo</span>
+                <span class="deity-title">God of Spring, Fertility & Passion</span>
+            </div>
+            <div class="symbol-svg">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#E6D690" stroke-width="2" fill="none"/>
+                    <path d="M50 22 L56 42 L74 44 L60 56 L66 74 L50 62 L34 74 L40 56 L26 44 L44 42 Z" fill="#F1E184" stroke="#BD9A3B" stroke-width="1.2"/>
+                    <circle cx="50" cy="48" r="4" fill="#FFFAE0"/>
+                </svg>
+            </div>
+            <div class="attributes">
+                <p><strong>🌱 Attributes:</strong> White horse, wreath of wheat, flowering staff, youth, raw fertility, sun.</p>
+                <p><strong>🔹 Symbols:</strong> Five-petal flower, ear of grain, horn of plenty.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Son of Perun and Mokosh (or Dazhbog). Lover of Lada. Dies and reborn each year; defeats Morena to begin spring.
+            </div>
+        </div>
+
+        <!-- SVAROZHICH -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🔥 Svarozhich</span>
+                <span class="deity-title">God of Hearth Fire & Sacred Flame</span>
+            </div>
+            <div class="symbol-svg">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#F4A261" stroke-width="2" fill="none"/>
+                    <path d="M42 40 Q50 28 58 40 Q64 52 55 62 Q48 68 42 58 Q36 48 42 40Z" fill="#E76F2D" stroke="#FFBC6E" stroke-width="1.5"/>
+                    <path d="M50 30 L50 44 M50 54 L50 68" stroke="#FF9F4A" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="attributes">
+                <p><strong>🏠 Attributes:</strong> Sacred fire, hearth, smith's spark, purification, altar flame.</p>
+                <p><strong>🔹 Symbols:</strong> Flame tongue, cross in circle (fire cross), burning log.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Son of Svarog. Brother of Dazhbog. Honored as domestic fire spirit; sometimes seen as aspect of Perun.
+            </div>
+        </div>
+
+        <!-- ZHIVA -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🌿 Živa (Żywie)</span>
+                <span class="deity-title">Goddess of Life, Health & Vitality</span>
+            </div>
+            <div class="symbol-svg">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#9BC47F" stroke-width="2" fill="none"/>
+                    <path d="M50 28 L62 48 L58 70 L42 70 L38 48 Z" fill="#6F9E4F" stroke="#C0E0A0" stroke-width="1.2"/>
+                    <circle cx="50" cy="42" r="6" fill="#DAF2B0"/>
+                    <path d="M50 28 L52 22 L48 22 Z" fill="#B4D96E"/>
+                </svg>
+            </div>
+            <div class="attributes">
+                <p><strong>💚 Attributes:</strong> Cuckoo bird, water of life, green branches, healing herbs, renewal.</p>
+                <p><strong>🔹 Symbols:</strong> Cuckoo, leaf wreath, flowing water, the living knot.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Sister of Morena (death) and Lada. Daughter of Svarog? She resurrects nature after winter. Companion of Dazhbog.
+            </div>
+        </div>
+
+        <!-- CHERNOBOG -->
+        <div class="card">
+            <div class="deity-header">
+                <span class="deity-name">🌑 Chernobog</span>
+                <span class="deity-title">God of Darkness, Chaos & Misfortune</span>
+            </div>
+            <div class="symbol-svg">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#4E5E70" stroke-width="2" fill="none"/>
+                    <path d="M34 34 L66 66 M66 34 L34 66" stroke="#8A9AA8" stroke-width="2.5"/>
+                    <circle cx="50" cy="50" r="16" fill="#1E2A2E" stroke="#5B6E7A" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div class="attributes">
+                <p><strong>🖤 Attributes:</strong> Black, curse, night, evil eye, ruin, trickery.</p>
+                <p><strong>🔹 Symbols:</strong> Black sun (obverse), inverted star, skull.</p>
+            </div>
+            <div class="relations">
+                <strong>👥 Relations:</strong> Antagonist to Belobog (white god) in dualistic belief. Father of Morena? Often allied with Veles' darker aspects.
             </div>
         </div>
     </div>
 
-    <!-- Additional lore & sacred traditions: decorated with chain mail border (both before/after) -->
-    <div class="traditions-section" style="position: relative; margin-top: 2.5rem;">
-        <h2 style="display: flex; align-items: center; gap: 12px; font-size: 1.8rem; border-left: 6px solid #e0b87a; padding-left: 20px; z-index: 2; position: relative;">⛓️ Sacred Traditions & Rodnovery — Bound by Spiritual Chainmail ⛓️</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; position: relative; z-index: 2;">
-            <div style="flex: 1; min-width: 200px;">
-                <p>🛡️ <strong>Warrior's faith:</strong> Perun's blessing was invoked before battles. Elite Slavic druzhina wore chainmail inscribed with thunder symbols, believing each ring held ancestral protection.</p>
-                <p>🔥 <strong>Kupala Night:</strong> Fire‑jumping rituals symbolically purify, while flower wreaths float like interwoven links of fate.</p>
-            </div>
-            <div style="flex: 1; min-width: 200px;">
-                <p>🌾 <strong>Harvest rings:</strong> Offerings of grain and honey to Mokosh and Dazhbog were bound in woven circles, echoing the chain mail of cosmic unity.</p>
-                <p>🐉 <strong>Perun & Veles:</strong> The eternal struggle between order and chaos — each thunderbolt rings like a hammer on mail, each serpent coil mimics interlocking links of the deep earth.</p>
-            </div>
-            <div style="flex: 1; min-width: 200px;">
-                <p>📜 <strong>Modern Rodnovery:</strong> Today's Slavic native faith incorporates both kolovrat symbols and chain mail patterns in ritual jewelry, connecting past and present as an unbroken ring.</p>
-                <p>✨ <em>“As rings protect the body, faith protects the soul.” — old Slavic proverb</em></p>
-            </div>
-        </div>
+    <!-- brief family / cosmic relations summary -->
+    <div class="family-note">
+        <p>🔱 <strong>Cosmic structure:</strong> Svarog (smith) → Dazhbog (sun) & Svarozhich (fire). Perun (thunder) battles Veles (underworld) to maintain order — a cycle of storm and calm. Mokosh (earth mother) weaves fate alongside Lada (love) and Živa (life). Seasonal death of Morena and rebirth through Yarilo reflects agricultural belief. Slavic pantheon emphasizes duality: sky/earth, light/dark, fire/water.</p>
+        <p style="margin-top: 0.6rem;">✨ Symbols shown as SVG · Sacred signs include kolovrat, gromoviti znak, lozenge, thunder axe, and spindle. ✨</p>
     </div>
-
-    <footer>
-        <p>⚔️ Chain mail borders honor the Slavic warriors, druzhina, and ancestral smiths who believed that interwoven rings hold both physical and spiritual strength. Every symbol carries the resilience of the old faith. ⚔️</p>
-        <p style="margin-top: 8px;">© Slavic Mythology — Fire of the ancient faith lives on through stories, symbols & steel rings.</p>
-    </footer>
 </div>
 </body>
 </html>
