@@ -63,7 +63,6 @@
       font-family: 'Segoe UI', 'Times New Roman', monospace;
     }
 
-    /* Audio player container - subtle, normal themed webkit player */
     .hero-audio {
       margin-top: 1.8rem;
       display: flex;
@@ -71,7 +70,6 @@
       align-items: center;
     }
 
-    /* Normal themed webkit audio player — clean, semi-transparent to blend with hero */
     .hero-audio audio {
       width: 100%;
       max-width: 480px;
@@ -84,7 +82,6 @@
       transition: all 0.2s ease;
     }
 
-    /* WebKit specific styling for a subtle normal look (keeps native UI but blends) */
     .hero-audio audio::-webkit-media-controls-panel {
       background: linear-gradient(135deg, #2c271f, #212119);
       border-radius: 60px;
@@ -291,8 +288,6 @@
       color: #ffeaaf;
       transform: scale(1.02);
     }
-
-    /* subtle note: audio file andromeda.m4a is expected in same dir as page */
   </style>
 </head>
 <body>
@@ -302,14 +297,12 @@
     <div class="subhead">ⰓⰖⰧⰂⰋⰕ</div>
     <p style="margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto;">Guardian of the harvest's fury, wielder of the blade that turns the tide — revered by Slavic tribes of the Baltic region.</p>
     
-    <!-- NORMAL THEMED WEBKIT AUDIO PLAYER placed at bottom of hero div -->
     <div class="hero-audio">
       <audio controls preload="metadata">
         <source src="andromeda.m4a" type="audio/x-m4a">
         Your browser does not support the audio element. Please update to a modern browser.
       </audio>
     </div>
-    <!-- end of audio player -->
   </div>
 
   <div class="content-grid">
