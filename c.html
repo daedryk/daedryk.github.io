@@ -34,7 +34,7 @@
     .hero {
       background: linear-gradient(135deg, #2c2418cc, #1f2a15cc), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjYzhiNThhIiBmaWxsLW9wYWNpdHk9IjAuMTUiIGQ9Ik0yMCAzTDMgMTBsNyAxN0wzMCAyN2w3LTE3LTE3LTd6bTAgMjVsMTAgNkgxMGwxMC02eiIvPjwvc3ZnPg==');
       background-repeat: repeat;
-      padding: 2.5rem 2rem;
+      padding: 2.5rem 2rem 2rem 2rem;
       text-align: center;
       border-bottom: 2px solid #cb9e5b;
     }
@@ -61,6 +61,58 @@
       border-left: 3px solid #e7b45a;
       border-right: 3px solid #e7b45a;
       font-family: 'Segoe UI', 'Times New Roman', monospace;
+    }
+
+    /* Audio player container - subtle, normal themed webkit player */
+    .hero-audio {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Normal themed webkit audio player — clean, semi-transparent to blend with hero */
+    .hero-audio audio {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(20, 18, 15, 0.65);
+      border-radius: 60px;
+      padding: 0.2rem 0.5rem;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border: 1px solid #dbb46e88;
+      transition: all 0.2s ease;
+    }
+
+    /* WebKit specific styling for a subtle normal look (keeps native UI but blends) */
+    .hero-audio audio::-webkit-media-controls-panel {
+      background: linear-gradient(135deg, #2c271f, #212119);
+      border-radius: 60px;
+      box-shadow: inset 0 1px 1px rgba(255,255,240,0.1), 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .hero-audio audio::-webkit-media-controls-play-button {
+      background-color: #e7b45a;
+      border-radius: 30px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+
+    .hero-audio audio::-webkit-media-controls-timeline {
+      background-color: #f5e5c8;
+      border-radius: 10px;
+      height: 4px;
+    }
+
+    .hero-audio audio::-webkit-media-controls-volume-slider {
+      background-color: #dbb46e;
+      border-radius: 10px;
+    }
+
+    .hero-audio audio::-webkit-media-controls-current-time-display,
+    .hero-audio audio::-webkit-media-controls-time-remaining-display {
+      color: #ffefcf;
+      text-shadow: 0 0 2px #1e1a10;
+      font-weight: 500;
     }
 
     .content-grid {
@@ -198,6 +250,7 @@
       .hero h1 { font-size: 2.7rem; }
       .content-grid { padding: 1.5rem; gap: 1.5rem; }
       h2 { font-size: 1.7rem; }
+      .hero-audio audio { max-width: 100%; }
     }
 
     .glagolitic-accent {
@@ -238,6 +291,8 @@
       color: #ffeaaf;
       transform: scale(1.02);
     }
+
+    /* subtle note: audio file andromeda.m4a is expected in same dir as page */
   </style>
 </head>
 <body>
@@ -246,6 +301,15 @@
     <h1>RUEVIT</h1>
     <div class="subhead">ⰓⰖⰧⰂⰋⰕ</div>
     <p style="margin-top: 1rem; max-width: 700px; margin-left: auto; margin-right: auto;">Guardian of the harvest's fury, wielder of the blade that turns the tide — revered by Slavic tribes of the Baltic region.</p>
+    
+    <!-- NORMAL THEMED WEBKIT AUDIO PLAYER placed at bottom of hero div -->
+    <div class="hero-audio">
+      <audio controls preload="metadata">
+        <source src="andromeda.m4a" type="audio/x-m4a">
+        Your browser does not support the audio element. Please update to a modern browser.
+      </audio>
+    </div>
+    <!-- end of audio player -->
   </div>
 
   <div class="content-grid">
