@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slavic Deities: Relations, Attributes & Symbols</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Triglav – The Three-Headed God | Slavic Deity</title>
     <style>
         * {
             margin: 0;
@@ -12,422 +12,196 @@
         }
 
         body {
-            background: #1a2618;
-            font-family: 'Segoe UI', 'Georgia', serif;
-            color: #f0ebdd;
+            background: #1a1f14;
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            color: #f0ecd9;
             line-height: 1.5;
             padding: 2rem 1rem;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1000px;
             margin: 0 auto;
+            background: #222a1c;
+            border-radius: 2rem;
+            padding: 2rem 2rem 2.5rem;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.6);
+            border: 1px solid #b8864b;
+        }
+
+        /* header */
+        .hero {
+            text-align: center;
+            border-bottom: 2px solid #c4965a;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
         }
 
         h1 {
-            text-align: center;
-            font-size: 2.4rem;
-            letter-spacing: 2px;
-            color: #e9cb9a;
-            border-bottom: 2px solid #b8864b;
-            display: inline-block;
-            width: auto;
-            margin: 0 auto 1rem;
-            padding-bottom: 0.3rem;
+            font-size: 3rem;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #eedba7, #cd9a5b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        .title-wrap {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .sub {
-            text-align: center;
-            color: #c7b07c;
-            margin-top: 0.5rem;
+        .subhead {
+            font-size: 1.1rem;
+            color: #cfba8a;
             font-style: italic;
+            margin-top: 0.5rem;
         }
 
-        /* deity grid */
-        .deities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-            gap: 2rem;
+        /* section styling */
+        .section {
             margin: 2rem 0;
-        }
-
-        .card {
-            background: #1f2a1c;
+            background: #1c2418;
             border-radius: 1.5rem;
-            padding: 1.5rem;
-            border-left: 6px solid #cd9a5b;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+            padding: 1.2rem 1.8rem;
+            border-left: 6px solid #c3985c;
             transition: transform 0.2s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            background: #253a21;
+        .section:hover {
+            background: #202b1b;
         }
 
-        .deity-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+        .section h2 {
+            font-size: 1.8rem;
+            color: #e7ca8c;
             margin-bottom: 1rem;
-            border-bottom: 1px dashed #b8864b;
-            padding-bottom: 0.7rem;
-        }
-
-        .deity-name {
-            font-size: 1.9rem;
-            font-weight: bold;
-            color: #f7dc9c;
-        }
-
-        .deity-title {
-            font-size: 0.85rem;
-            background: #2d3a24;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            color: #e2c28b;
-        }
-
-        /* SVG symbol */
-        .symbol-svg {
-            background: #2c3526;
-            border-radius: 50%;
-            width: 85px;
-            height: 85px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0.5rem 0 1rem 0;
-            box-shadow: inset 0 0 0 1px #6f874b, 0 2px 6px black;
+            gap: 10px;
+            border-left: 3px solid #f0c46c;
+            padding-left: 1rem;
         }
 
-        svg {
-            width: 64px;
-            height: 64px;
-            filter: drop-shadow(0 1px 2px black);
+        .section p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
-        .attributes {
-            margin: 1rem 0;
-            background: #172012;
-            padding: 0.7rem;
-            border-radius: 1rem;
+        .attributes-list, .relations-list {
+            list-style: none;
+            margin: 1rem 0 0.5rem;
         }
 
-        .attributes p {
-            margin: 0.3rem 0;
-            font-size: 0.9rem;
+        .attributes-list li, .relations-list li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.8rem;
+            position: relative;
         }
 
-        .attributes strong {
-            color: #ebc17e;
+        .attributes-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #e7bc7e;
         }
 
-        .relations {
-            font-size: 0.88rem;
-            background: #1a2417;
-            padding: 0.7rem;
-            border-radius: 1rem;
-            margin-top: 0.8rem;
-            border-left: 3px solid #a57348;
+        .relations-list li::before {
+            content: "🔗";
+            position: absolute;
+            left: 0;
+            color: #dbb064;
+        }
+
+        strong {
+            color: #f5da9c;
+        }
+
+        .quote-block {
+            background: #12190f;
+            padding: 1rem 1.5rem;
+            border-radius: 1.2rem;
+            font-style: italic;
+            margin: 1.5rem 0;
+            border-right: 3px solid #b5823c;
+            color: #e2d5b6;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #a9976b;
+            border-top: 1px solid #4a5c38;
+            padding-top: 1.5rem;
         }
 
         hr {
-            margin: 2rem 0;
-            border-color: #4c5e3a;
-        }
-
-        .family-note {
-            background: #121a0f;
-            padding: 1.2rem;
-            border-radius: 1.2rem;
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
+            border-color: #4a6036;
+            margin: 0.5rem 0;
         }
 
         @media (max-width: 700px) {
-            .deity-name { font-size: 1.5rem; }
-            .symbol-svg { width: 70px; height: 70px; }
-            svg { width: 52px; height: 52px; }
+            .container { padding: 1.2rem; }
+            h1 { font-size: 2.2rem; }
+            .section h2 { font-size: 1.4rem; }
+            .section { padding: 1rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="title-wrap">
-        <h1>🌿 SLOVANSKI BOGOVI 🌿</h1>
-        <div class="sub">Slavic Deities · Kinship · Sacred Symbols & Attributes</div>
+    <div class="hero">
+        <h1>🐉 TRIGLAV</h1>
+        <div class="subhead">The Three-Headed God · Supreme Ruler of Heaven, Earth & the Underworld</div>
     </div>
 
-    <div class="deities-grid">
-        
-        <!-- PERUN -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">⚡ Perun</span>
-                <span class="deity-title">God of Thunder, Lightning & War</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#D4AF37" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
-                    <path d="M50 18 L56 40 L72 38 L60 52 L68 70 L50 58 L32 70 L40 52 L28 38 L44 40 L50 18Z" fill="#F5C542" stroke="#B87C2E" stroke-width="1.2"/>
-                    <circle cx="72" cy="36" r="3" fill="#FFBF60"/>
-                    <circle cx="28" cy="36" r="3" fill="#FFBF60"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>⚡ Attributes:</strong> Axe / hammer, thunderbolts, oak tree, fire, eagle.</p>
-                <p><strong>🔹 Symbols:</strong> Gromoviti znak (thunder mark), hexafoil, perunika (iris flower).</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Son of Svarog (celestial smith). Eternal rival of Veles. Father of Yarilo (spring deity) in some myths. Leader of the pantheon.
-            </div>
-        </div>
+    <!-- introduction / domain -->
+    <div class="section">
+        <h2>🌍 Domain & Nature</h2>
+        <p><strong>Triglav</strong> (meaning "Three-Headed") was a major deity worshipped by West Slavic tribes, especially in Pomerania (around Szczecin and Wolin). He is regarded as a supreme or high god, embodying the tripartite structure of the universe: <strong>heaven, earth, and the underworld</strong>. His three heads symbolize absolute dominion over these three realms, as well as governance over time — past, present, and future — and the three classical elements: air, earth, and fire.</p>
+        <p>Chroniclers such as Ebbo and Herbord described Triglav’s temple in Szczecin as a major cult center, where the golden statue of the three-headed god stood adorned with a golden diadem binding the heads together — a symbol of the unity of worlds.</p>
+    </div>
 
-        <!-- VELES -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🐍 Veles</span>
-                <span class="deity-title">God of Underworld, Magic, Cattle & Poetry</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#8B9A6B" stroke-width="2" fill="none"/>
-                    <path d="M35 44 L50 30 L65 44 L62 60 L50 72 L38 60 L35 44Z" fill="#2F4F2F" stroke="#A5B68A" stroke-width="1.2"/>
-                    <path d="M35 44 C28 32,22 26,28 22 C34 18,38 28,35 44" fill="#8B5A2B" stroke="#D2B48C" stroke-width="1"/>
-                    <path d="M65 44 C72 32,78 26,72 22 C66 18,62 28,65 44" fill="#8B5A2B" stroke="#D2B48C" stroke-width="1"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🐉 Attributes:</strong> Horns, serpent / dragon, bear, cattle, wealth, music, magic, water.</p>
-                <p><strong>🔹 Symbols:</strong> Spiral, knot, horned figure, willow tree.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Eternal adversary of Perun (cosmic balance). Opposes the sky god; protector of merchants and shamans. Often associated with Chernobog's domain.
-            </div>
-        </div>
-
-        <!-- SVAROG -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">⚒️ Svarog</span>
-                <span class="deity-title">Celestial Smith, Father of Gods</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#D4A373" stroke-width="2" fill="none"/>
-                    <path d="M38 62 L62 62 L58 72 L42 72 Z" fill="#7E5A41" stroke="#BC9A6C" stroke-width="1.5"/>
-                    <rect x="45" y="54" width="10" height="8" fill="#9C6E3E" stroke="#CFA668"/>
-                    <path d="M32 44 L44 48 L47 44 L40 36 L32 44Z" fill="#B07D44" stroke="#E5B874" stroke-width="1"/>
-                    <line x1="47" y1="44" x2="58" y2="49" stroke="#C3893C" stroke-width="2.5"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🔥 Attributes:</strong> Hammer, anvil, forge, heavenly fire, law, creation, blacksmithing.</p>
-                <p><strong>🔹 Symbols:</strong> Alatyr stone (sacred anvil), flame wheel, the smith's cross.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Father of Dazhbog (sun) and Svarozhich (fire). Husband of Lada? (some traditions). Forged the sun and the world order.
-            </div>
-        </div>
-
-        <!-- DAZHBOOG -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">☀️ Dazhbog</span>
-                <span class="deity-title">Sun God, Giver of Wealth & Light</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#E9B53E" stroke-width="2" fill="none"/>
-                    <circle cx="50" cy="50" r="14" fill="#FFC857" stroke="#F0A500" stroke-width="2"/>
-                    <g stroke="#FFB347" stroke-width="3" stroke-linecap="round">
-                        <line x1="50" y1="14" x2="50" y2="28"/><line x1="50" y1="72" x2="50" y2="86"/>
-                        <line x1="14" y1="50" x2="28" y2="50"/><line x1="72" y1="50" x2="86" y2="50"/>
-                        <line x1="24.5" y1="24.5" x2="34.5" y2="34.5"/><line x1="65.5" y1="65.5" x2="75.5" y2="75.5"/>
-                        <line x1="75.5" y1="24.5" x2="65.5" y2="34.5"/><line x1="24.5" y1="75.5" x2="34.5" y2="65.5"/>
-                    </g>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🌞 Attributes:</strong> Solar chariot, golden radiance, white horse, fire, wealth, justice.</p>
-                <p><strong>🔹 Symbols:</strong> Kolovrat (eight-spoked solar wheel), swastika (solar sign), circle with rays.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Son of Svarog. Consort / sister often Zhiva (goddess of life). Grandfather of the Slavic people (mythical ancestor).
-            </div>
-        </div>
-
-        <!-- MOKOSH -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🌾 Mokosh</span>
-                <span class="deity-title">Great Mother, Goddess of Earth & Fate</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#D68C5C" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
-                    <rect x="38" y="38" width="24" height="24" fill="#B4653A" stroke="#F3C78E" stroke-width="1.5" rx="4"/>
-                    <path d="M50 30 L50 38 M50 62 L50 70 M38 50 L30 50 M70 50 L62 50" stroke="#FADB9F" stroke-width="2"/>
-                    <circle cx="50" cy="50" r="3" fill="#FEDF9E"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🧵 Attributes:</strong> Spindle, distaff, moist earth, fertility, weaving, women's destiny, rain.</p>
-                <p><strong>🔹 Symbols:</strong> Diamond (lozenge), crossed spindles, birch tree, female figurines.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Wife of Perun in some accounts, or independent. Mother of Yarilo and the spirits of fate (Rozhanitsy). Associated with matron goddess.
-            </div>
-        </div>
-
-        <!-- LADA -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🌸 Lada</span>
-                <span class="deity-title">Goddess of Love, Beauty & Spring</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#F5A9B8" stroke-width="2" fill="none"/>
-                    <path d="M50 24 L53 38 L67 35 L57 46 L68 57 L53 55 L50 68 L47 55 L32 57 L43 46 L33 35 L47 38 Z" fill="#F4C2C2" stroke="#E07A7A" stroke-width="1.2"/>
-                    <circle cx="50" cy="46" r="6" fill="#FFE0B5"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>💐 Attributes:</strong> Flower wreath, cuckoo, birch, apple blossom, spring water, harmony.</p>
-                <p><strong>🔹 Symbols:</strong> Seven-pointed star, ring, rose, floral patterns.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Consort of Svarog (or Lado as male counterpart). Mother of Lel and Polel (twin gods of love and marriage). Protector of couples.
-            </div>
-        </div>
-
-        <!-- MORENA (MARZANNA) -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">❄️ Morena</span>
-                <span class="deity-title">Goddess of Death, Winter & Night</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#C0D0E0" stroke-width="2" fill="none"/>
-                    <path d="M35 35 L65 65 M65 35 L35 65" stroke="#9FB0C0" stroke-width="3" stroke-linecap="round"/>
-                    <circle cx="50" cy="50" r="12" fill="none" stroke="#AFC5DA" stroke-width="2"/>
-                    <path d="M42 28 L58 28 M42 72 L58 72" stroke="#B4C8DC" stroke-width="2"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🌨️ Attributes:</strong> Frost, darkness, black horse, sickle, frozen waters, nightmare.</p>
-                <p><strong>🔹 Symbols:</strong> Black sun, broken wheel, willow branch (funerary), sickle moon.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Sister of Živa (life) and Lada. Daughter of Chernobog? Sometimes consort of Veles. Rival of Yarilo (spring god). Drowned each spring in rituals.
-            </div>
-        </div>
-
-        <!-- YARILO -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🌾 Yarilo</span>
-                <span class="deity-title">God of Spring, Fertility & Passion</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#E6D690" stroke-width="2" fill="none"/>
-                    <path d="M50 22 L56 42 L74 44 L60 56 L66 74 L50 62 L34 74 L40 56 L26 44 L44 42 Z" fill="#F1E184" stroke="#BD9A3B" stroke-width="1.2"/>
-                    <circle cx="50" cy="48" r="4" fill="#FFFAE0"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🌱 Attributes:</strong> White horse, wreath of wheat, flowering staff, youth, raw fertility, sun.</p>
-                <p><strong>🔹 Symbols:</strong> Five-petal flower, ear of grain, horn of plenty.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Son of Perun and Mokosh (or Dazhbog). Lover of Lada. Dies and reborn each year; defeats Morena to begin spring.
-            </div>
-        </div>
-
-        <!-- SVAROZHICH -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🔥 Svarozhich</span>
-                <span class="deity-title">God of Hearth Fire & Sacred Flame</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#F4A261" stroke-width="2" fill="none"/>
-                    <path d="M42 40 Q50 28 58 40 Q64 52 55 62 Q48 68 42 58 Q36 48 42 40Z" fill="#E76F2D" stroke="#FFBC6E" stroke-width="1.5"/>
-                    <path d="M50 30 L50 44 M50 54 L50 68" stroke="#FF9F4A" stroke-width="2"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🏠 Attributes:</strong> Sacred fire, hearth, smith's spark, purification, altar flame.</p>
-                <p><strong>🔹 Symbols:</strong> Flame tongue, cross in circle (fire cross), burning log.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Son of Svarog. Brother of Dazhbog. Honored as domestic fire spirit; sometimes seen as aspect of Perun.
-            </div>
-        </div>
-
-        <!-- ZHIVA -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🌿 Živa (Żywie)</span>
-                <span class="deity-title">Goddess of Life, Health & Vitality</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#9BC47F" stroke-width="2" fill="none"/>
-                    <path d="M50 28 L62 48 L58 70 L42 70 L38 48 Z" fill="#6F9E4F" stroke="#C0E0A0" stroke-width="1.2"/>
-                    <circle cx="50" cy="42" r="6" fill="#DAF2B0"/>
-                    <path d="M50 28 L52 22 L48 22 Z" fill="#B4D96E"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>💚 Attributes:</strong> Cuckoo bird, water of life, green branches, healing herbs, renewal.</p>
-                <p><strong>🔹 Symbols:</strong> Cuckoo, leaf wreath, flowing water, the living knot.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Sister of Morena (death) and Lada. Daughter of Svarog? She resurrects nature after winter. Companion of Dazhbog.
-            </div>
-        </div>
-
-        <!-- CHERNOBOG -->
-        <div class="card">
-            <div class="deity-header">
-                <span class="deity-name">🌑 Chernobog</span>
-                <span class="deity-title">God of Darkness, Chaos & Misfortune</span>
-            </div>
-            <div class="symbol-svg">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="42" stroke="#4E5E70" stroke-width="2" fill="none"/>
-                    <path d="M34 34 L66 66 M66 34 L34 66" stroke="#8A9AA8" stroke-width="2.5"/>
-                    <circle cx="50" cy="50" r="16" fill="#1E2A2E" stroke="#5B6E7A" stroke-width="1.5"/>
-                </svg>
-            </div>
-            <div class="attributes">
-                <p><strong>🖤 Attributes:</strong> Black, curse, night, evil eye, ruin, trickery.</p>
-                <p><strong>🔹 Symbols:</strong> Black sun (obverse), inverted star, skull.</p>
-            </div>
-            <div class="relations">
-                <strong>👥 Relations:</strong> Antagonist to Belobog (white god) in dualistic belief. Father of Morena? Often allied with Veles' darker aspects.
-            </div>
+    <!-- attributes & symbols (no SVG) -->
+    <div class="section">
+        <h2>⚙️ Attributes & Sacred Symbols</h2>
+        <ul class="attributes-list">
+            <li><strong>Three heads</strong> – omniscience, control over all levels of existence; the heads see every corner of the world, making Triglav the ultimate guardian and judge.</li>
+            <li><strong>Blindfold or covered eyes</strong> – paradoxically, some accounts mention a veil over his eyes. This signifies that he deliberately ignores evil or mortal suffering, or that his divine vision is too powerful for human eyes to endure.</li>
+            <li><strong>Black horse</strong> – a sacred black horse was kept at his temple for divination. Priests would lead the horse through a grid of spears; the animal's movements were interpreted as Triglav’s prophecies.</li>
+            <li><strong>Spear or sword</strong> – in some depictions, each head wears a crown and the deity holds a weapon, representing warlike protection and authority.</li>
+            <li><strong>Golden diadem</strong> – binding the three heads together, emphasizing the inseparable unity of the cosmic realms.</li>
+        </ul>
+        <div class="quote-block">
+            “The three-headed idol stood in the main shrine, covered with a golden veil, and its eyes were mysteriously covered — only priests could approach and interpret its silent will.”
         </div>
     </div>
 
-    <!-- brief family / cosmic relations summary -->
-    <div class="family-note">
-        <p>🔱 <strong>Cosmic structure:</strong> Svarog (smith) → Dazhbog (sun) & Svarozhich (fire). Perun (thunder) battles Veles (underworld) to maintain order — a cycle of storm and calm. Mokosh (earth mother) weaves fate alongside Lada (love) and Živa (life). Seasonal death of Morena and rebirth through Yarilo reflects agricultural belief. Slavic pantheon emphasizes duality: sky/earth, light/dark, fire/water.</p>
-        <p style="margin-top: 0.6rem;">✨ Symbols shown as SVG · Sacred signs include kolovrat, gromoviti znak, lozenge, thunder axe, and spindle. ✨</p>
+    <!-- Relations & mythological context -->
+    <div class="section">
+        <h2>🔱 Relations & Cosmic Role</h2>
+        <ul class="relations-list">
+            <li><strong>Counterpart to Svarog or Perun</strong> – Triglav is often seen as a supreme sky god, equivalent to Svarog (the celestial smith) or Perun (the thunderer) in other Slavic traditions, but with a distinctive threefold nature.</li>
+            <li><strong>Temple of Szczecin</strong> – the main cult center: walls inside and out were carved with images of warriors, beasts, and ritual scenes. The golden statue of Triglav was the focal point of tributes and sacrifices.</li>
+            <li><strong>Sacrifices & rituals</strong> – worship involved frequent offerings of cattle, and occasionally prisoners of war. A sacred oak tree stood near the temple, where divinations were performed.</li>
+            <li><strong>Mountain spirit & folk memory</strong> – Triglav’s name endures in Slovenia’s highest peak, Mount Triglav. Folk tales transformed the god into a three-headed giant or a mountain guardian, watching over the gateway to the otherworld.</li>
+            <li><strong>Triad of supreme gods</strong> – for some tribes, Triglav, together with Svarog (heaven) and Dazhbog (sun), formed a sacred trinity representing cosmic order.</li>
+        </ul>
+        <p>In later folklore, Triglav became associated with the number three’s sacred power: three realms, three times, three elements — a pattern that echoes through Slavic ritual and symbol.</p>
     </div>
+
+    <!-- worship and historical legacy -->
+    <div class="section">
+        <h2>🏛️ Worship & Christian Suppression</h2>
+        <p>Triglav’s cult was especially strong among the Lutici and Pomeranian Slavs. The temple in Szczecin (Stettin) was destroyed during the Christianization campaigns of the 12th century, led by Bishop Otto of Bamberg. According to medieval records, the statue of Triglav was demolished, but local resistance remained fierce — the god’s black horse and sacred groves were considered sources of oracular power.</p>
+        <p>Despite the destruction, the memory of the three-headed god survived in folk art, oral tales, and even in the toponymy of the Alps. Modern Rodnovery (Slavic native faith) revival honors Triglav as a guardian of cosmic law and the unity of worlds.</p>
+        <hr>
+        <p style="margin-top: 0.8rem;"><strong>✨ Triglav’s essence:</strong> absolute sight, triune power, the knot that ties heaven, earth, and the underworld into a single unbreakable chain. He neither sleeps nor blinks — his three faces watch the past, the present, and what lies beyond.</p>
+    </div>
+
+    <footer>
+        <p>📜 Based on medieval chronicles (Ebbo, Herbord, Saxo Grammaticus) and Slavic comparative mythology.<br>
+        Triglav – the three-headed god of the West Slavs: a symbol of supreme triplicity, cosmic justice, and prophetic darkness.</p>
+        <p style="margin-top: 8px;">⚡ No SVG — pure lore, attributes, and relations of the three‑headed deity ⚡</p>
+    </footer>
 </div>
 </body>
 </html>
