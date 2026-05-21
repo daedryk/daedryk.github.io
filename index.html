@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Cosmic web | Glagolitic Gold & Black Radiance</title>
+    <title>Cosmic web</title>
     <meta name="title" content="Cosmic Matrix | The Equation of God & Digital Universe">
     <meta name="description" content="Explore the digital universe where time becomes a waveform. An interactive clockwork mandala of glitch art, sound frequencies, and philosophical code. The universe is a matrix. God is an equation.">
     <meta name="keywords" content="digital universe, matrix, god equation, interactive clock, glitch art, philosophical code, cosmic waveform, sound meditation, glagolitic script, futuristic design, seo meta, cyber mandala">
     <meta name="author" content="Arbiter Daedryk">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cosmic web">
     <meta property="og:description" content="The universe is a matrix. God is an equation. An interactive neon mandala with time-sound synthesis and philosophical depth.">
@@ -16,7 +18,16 @@
     <meta property="og:image:alt" content="War idol">
     <meta property="og:url" content="https://daedryk.github.io">
     <meta property="og:site_name" content="Daedryk GitHub iO">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cosmic web">
+    <meta name="twitter:description" content="Interactive cosmic clock. Watch time bend into light. The universe is a matrix. Sound, symbols & code.">
+    <meta name="twitter:image" content="img.png">
+    <meta name="twitter:image:alt" content="War idol">
+    <link rel="canonical" href="https://daedryk.github.io">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" href="favicon.ico" />
     <style>
         * {
@@ -26,16 +37,13 @@
         }
 
         body {
-            background-color: #020202;
-            background-image: radial-gradient(circle at 15% 30%, rgba(255, 215, 0, 0.05) 2%, transparent 2.5%),
-                              radial-gradient(circle at 75% 70%, rgba(0, 0, 0, 0.8) 1%, transparent 1.5%);
-            background-size: 55px 55px, 80px 80px;
-            color: #e6b422;
-            font-family: 'Arial', 'Segoe UI', 'Courier New', monospace;
+            background-color: #ffffff;
+            color: #ff8000;
+            font-family: 'Arial', sans-serif;
             display: block;
             width: 100%;
             min-height: 100vh;
-            padding: 10px 10px 30px;
+            padding: 10px 10px;
         }
 
         .eternal-universe-wrapper {
@@ -43,50 +51,13 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 640px;
+            max-width: 600px;
             margin: 0 auto;
-            background: transparent;
-            position: relative;
-        }
-
-        .glagolitic-golden-glow {
-            text-align: center;
-            margin: 30px 15px 20px;
-            padding: 28px 20px;
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(20,12,0,0.85) 100%);
-            border-radius: 64px 32px 64px 32px;
-            box-shadow: 0 0 25px rgba(255, 200, 50, 0.7), inset 0 0 18px rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(1.5px);
-            border: 1px solid rgba(255, 200, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .glagolitic-golden-glow:hover {
-            box-shadow: 0 0 45px rgba(255, 215, 0, 0.85), inset 0 0 25px rgba(255, 180, 0, 0.5);
-            border-color: rgba(255, 220, 60, 0.9);
-        }
-
-        .glagolitic-text {
-            font-family: 'Segoe UI', 'Arial', 'Noto Sans Glagolitic', 'Everson Mono', system-ui, sans-serif;
-            font-size: 2.2rem;
-            line-height: 1.55;
-            font-weight: 600;
-            text-shadow: 0 0 6px #000000, 0 0 12px #d4af37, 0 0 20px #b8860b, 2px 2px 4px black;
-            background: linear-gradient(135deg, #ffdd88, #d9a404, #ffd966, #aa7c2c);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-align: center;
-            transition: text-shadow 0.2s;
-        }
-
-        @keyframes goldPulse {
-            0% { text-shadow: 0 0 4px #000, 0 0 10px #d4af37, 0 0 18px #b86f0c; }
-            100% { text-shadow: 0 0 10px #000, 0 0 22px #ffd966, 0 0 32px #ffaa33; }
-        }
-
-        .glagolitic-text {
-            animation: goldPulse 3s infinite alternate ease-in-out;
+            background: #ffffff;
+            color: #ff8000;
+            --electric-red: #ff0000;
+            --electric-green: #00ff00;
+            --electric-blue: #0000ff;
         }
 
         .eu-image-container {
@@ -97,15 +68,13 @@
             overflow: hidden;
             margin: 0 auto;
             cursor: pointer;
-            border-radius: 50%;
-            box-shadow: 0 0 35px rgba(0,0,0,0.8), 0 0 0 2px rgba(218,165,32,0.4), inset 0 0 20px rgba(0,0,0,0.6);
         }
 
         #eu-graphCanvas {
             display: block;
             width: 100%;
             height: 100%;
-            background-color: #00000010;
+            background-color: transparent;
             position: relative;
             z-index: 3;
             pointer-events: none;
@@ -121,133 +90,105 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 52%;
-            height: 52%;
+            width: 50%;
+            height: 50%;
             object-fit: contain;
-            opacity: 0.9;
+            opacity: 1;
             pointer-events: none;
             z-index: 1;
-            filter: drop-shadow(0 0 12px #ffaa22) brightness(1.05);
         }
 
         .sound-toggle {
-            color: #ffd966;
+            color: #ff0000;
             cursor: pointer;
             text-decoration: none;
             font-size: 1rem;
-            font-weight: bold;
             display: inline-block;
-            text-shadow: 0 0 8px #000000, 0 0 5px #d4af37;
-            transition: 0.2s;
-            background: #111;
-            padding: 6px 16px;
-            border-radius: 40px;
-            border: 1px solid #f5bc70;
-        }
-
-        .sound-toggle:hover {
-            background: #1f1a0a;
-            text-shadow: 0 0 12px #ffdd99;
-            color: #ffecb3;
-            border-color: #ffd966;
-            box-shadow: 0 0 12px rgba(255, 200, 0, 0.5);
+            text-shadow: 0 0 8px #ff0000;
         }
 
         .content-box {
             width: 100%;
             max-width: 600px;
-            margin: 14px auto;
-            padding: 12px 18px;
-            background: #0c0b07e6;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(218, 165, 32, 0.6);
-            border-radius: 40px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.7), inset 0 0 15px rgba(218,165,32,0.2);
+            margin: 10px auto;
+            padding: 15px 20px;
+            background: #ffffff;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px #ff0000, 0 0 10px rgba(0, 0, 0, 1);
+            color: #ff8000;
             text-align: center;
             font-size: 1rem;
-            transition: all 0.2s;
         }
 
         .content-box a {
-            color: #ffcd7e;
+            color: #ff8000;
             text-decoration: none;
-            font-weight: 500;
-            text-shadow: 0 0 4px #000;
-            border-bottom: 1px dotted #d4af37;
         }
 
         .content-box a:hover {
-            color: #ffdd99;
-            text-shadow: 0 0 8px #ffaa33;
-            border-bottom-color: #ffcc66;
+            text-decoration: underline;
         }
 
         .progress-bar {
             width: 100%;
-            max-width: 580px;
-            margin: 20px auto 12px;
-            height: 5px;
-            background: linear-gradient(90deg, #2a1f05, #d4af37, #b47c1e, #ffd58c, #d4af37);
-            filter: drop-shadow(0 0 8px #ffb347);
-            border-radius: 12px;
+            max-width: 600px;
+            margin: 20px auto 10px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #00ff00, #ff0000);
+            filter: drop-shadow(0 0 8px #000000);
+            border-radius: 2px;
             position: relative;
             cursor: pointer;
-            border: none;
         }
 
         .progress-dot {
-            width: 12px;
-            height: 12px;
-            background: radial-gradient(circle, #ffdd99, #b97f10);
+            width: 8px;
+            height: 8px;
+            background: #ff8000;
             border-radius: 50%;
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 18px 3px rgba(255, 200, 0, 0.9), 0 0 5px black;
+            box-shadow: 0 0 12px 4px rgba(255, 128, 0, 0.9);
             pointer-events: none;
-            transition: left 0.05s linear;
+            transition: left 0.1s linear;
         }
 
         .paragraph {
             text-align: center;
-            color: #ffd07a;
-            text-shadow: 0 0 8px #000000, 0 0 10px #b87c1e;
-            padding: 12px 10px;
-            font-size: 1.2rem;
-            font-weight: 500;
-            background: rgba(0,0,0,0.4);
-            display: inline-block;
-            width: auto;
-            margin: 5px auto;
-            border-radius: 60px;
-            backdrop-filter: blur(4px);
+            color: #ff8000;
+            text-shadow: 0 0 8px #ff0000, 0 0 16px #0000ff;
+            padding: 10px 10px;
         }
 
-        .signature-line {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #b48b3a;
-        }
-        .signature-line a {
-            color: #e6b422;
-            text-decoration: none;
-        }
-        @media (max-width: 560px) {
-            .glagolitic-text {
-                font-size: 1.35rem;
-            }
-            .glagolitic-golden-glow {
-                padding: 18px 15px;
-                margin: 20px 5px;
-            }
-        }
         .seo-hidden {
             display: none;
         }
-        .gold-accent {
-            font-weight: bold;
-            text-shadow: 0 0 6px gold;
+
+        .glagolitic-gold-wrapper {
+            text-align: center;
+            margin: 20px 0 10px;
+        }
+        .glagolitic-gold {
+            font-size: 32pt;
+            font-family: 'Segoe UI', 'Arial', 'Noto Sans Glagolitic', 'Everson Mono', monospace;
+            font-weight: 500;
+            display: inline-block;
+            background: linear-gradient(135deg, #f9d976, #e6b422, #ffd966, #c99400);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 25px rgba(255, 180, 0, 0.5), 0 0 5px #00000088;
+            line-height: 1.5;
+            letter-spacing: normal;
+        }
+        .glagolitic-gold-wrapper font {
+            all: unset;
+            display: inline-block;
+        }
+        .glagolitic-gold br {
+            display: block;
         }
     </style>
 </head>
@@ -255,7 +196,7 @@
 
     <div class="eternal-universe-wrapper">
         <div class="eu-image-container" id="visualizationClickArea">
-            <img src="img.png" class="background-image-war" alt="The Holy Symbol of Ruevit" onerror="this.style.opacity='0.6'">
+            <img src="img.png" class="background-image-war" alt="The Holy Symbol of Ruevit">
             <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
         </div>
     </div>
@@ -264,23 +205,24 @@
         <div id="progressDot" class="progress-dot"></div>
     </div>
 
-    <p class="paragraph">⚡ The universe is a matrix. God is an equation. ⚡</p>
+    <p class="paragraph">The universe is a matrix. God is an equation.</p>
 
     <div class="content-box">
-        <a href="id.html" title="Discover the identity behind the code">◈ Who is this? ◈</a>&nbsp;&nbsp;⟡&nbsp;&nbsp;
-        <a href="my.html" title="Read the digital story">◈ My story... ◈</a>
+        <a href="id.html" title="Discover the identity behind the code">Who is this?</a>&nbsp;<a href="my.html" title="Read the digital story">My story...</a>
     </div>
 
     <div class="content-box">
-        <a href="m.html" title="Learn ancient Glagolitic script and its hidden frequencies">⌘ Glagolitic Script Crash Course ⌘</a>
+        <a href="m.html" title="Learn ancient Glagolitic script and its hidden frequencies">Glagolitic Script Crash Course</a>
     </div>
 
     <div class="content-box">
-        <span id="soundToggle" class="sound-toggle">♫ Turn sounds on ♫</span>
+        <span id="soundToggle" class="sound-toggle">Turn sounds on</span>
     </div>
 
-    <div class="glagolitic-golden-glow">
-        <div class="glagolitic-text">
+    <p align="center">©2026 by <a href="a.html" style="color: #ff0000">Daedryk</a>. Don't mess with my <a href="c.html" style="color: #ff0000">code</a>!</p>
+
+    <div class="glagolitic-gold-wrapper">
+        <div class="glagolitic-gold">
             ⰳⰾⰰⱄⱀⰻⰽ<br>
             ⰲⱏ ⱀⰰⱍⰵⰾⱑ ⰱⱑ ⱄⰾⱁⰲⱁ<br>
             ⰻ ⱄⰾⱁⰲⱁ ⰱⱑ ⱆ ⰱⱁⰳⰰ<br>
@@ -290,10 +232,6 @@
             ⰻ ⰱⰵⰸⱏ ⱀⰵⰳⱁ ⱀⰻⱍⱅⱁⰶⰵ ⰱⱏⱄⱅⱐ<br>
             ⰵⰶⰵ ⰱⱏⱄⱅⱐ
         </div>
-    </div>
-
-    <div class="signature-line">
-        ©2026 by <a href="a.html" style="color:#ffcc66">Daedryk</a>. Don't mess with my <a href="c.html" style="color:#ffcc66">code</a>
     </div>
 
     <script>
@@ -317,9 +255,9 @@
             const soundToggle = document.getElementById('soundToggle');
             const visualizationArea = document.getElementById('visualizationClickArea');
 
-            const ELECTRIC_RED = '#ff5500';
-            const ELECTRIC_GREEN = '#d4af37';
-            const ELECTRIC_BLUE = '#b8860b';
+            const ELECTRIC_RED = '#ff0000';
+            const ELECTRIC_GREEN = '#00ff00';
+            const ELECTRIC_BLUE = '#0000ff';
 
             function playSound(filename) {
                 if (!soundEnabled) return;
@@ -328,7 +266,7 @@
                 }
                 const audio = new Audio();
                 audio.src = filename;
-                audio.play().catch(e => console.warn("sound not loaded", e));
+                audio.play().catch(() => {});
             }
 
             function generateBasePoints() {
@@ -337,9 +275,9 @@
                     const theta = (i / 1000) * Math.PI * 2;
                     const x = -180 + (360 * theta / (Math.PI * 2));
                     const y = Math.sin(x) * x * Math.cos(x);
-                    const radius = 55 + ((190) * (y + 180) / 360);
-                    const graphX = centerX + Math.cos(theta - Math.PI / 2) * Math.min(radius, 260);
-                    const graphY = centerY + Math.sin(theta - Math.PI / 2) * Math.min(radius, 260);
+                    const radius = 50 + ((200) * (y + 180) / 360);
+                    const graphX = centerX + Math.cos(theta - Math.PI / 2) * radius;
+                    const graphY = centerY + Math.sin(theta - Math.PI / 2) * radius;
                     newPoints.push({ x: graphX, y: graphY });
                 }
                 return newPoints;
@@ -347,38 +285,29 @@
 
             function drawBackground(ctx) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#030303';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                const gradBack = ctx.createRadialGradient(centerX, centerY, 30, centerX, centerY, 320);
-                gradBack.addColorStop(0, '#1a1406');
-                gradBack.addColorStop(0.7, '#020100');
-                ctx.fillStyle = gradBack;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.strokeStyle = '#e6b422';
-                ctx.lineWidth = 0.8;
-                for (let angle = 0; angle < 360; angle += 18) {
+                ctx.strokeStyle = '#ff8000';
+                ctx.lineWidth = 1;
+                for (let angle = 0; angle < 360; angle += 15) {
                     const rad = angle * Math.PI / 180;
                     ctx.beginPath();
                     ctx.moveTo(centerX, centerY);
                     ctx.lineTo(
-                        centerX + Math.cos(rad) * 280,
-                        centerY + Math.sin(rad) * 280
+                        centerX + Math.cos(rad) * 275,
+                        centerY + Math.sin(rad) * 275
                     );
-                    ctx.strokeStyle = '#d4af3780';
+                    ctx.strokeStyle = '#ff8000';
                     ctx.stroke();
                 }
-                ctx.strokeStyle = '#f0b32e';
-                for (let r = 60; r <= 270; r += 65) {
+                ctx.strokeStyle = '#ff8000';
+                for (let r = 50; r <= 250; r += 50) {
                     ctx.beginPath();
                     ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
                     ctx.stroke();
                 }
 
                 ctx.save();
-                ctx.shadowBlur = 0;
-                ctx.strokeStyle = '#ffcd7e';
-                ctx.lineWidth = 2.2;
+                ctx.strokeStyle = ELECTRIC_GREEN;
+                ctx.lineWidth = 2.5;
                 ctx.beginPath();
                 points.forEach((p, idx) => {
                     if (idx === 0) ctx.moveTo(p.x, p.y);
@@ -390,30 +319,43 @@
 
             function drawStaticDots(ctx) {
                 points.forEach((point, i) => {
-                    if (i % 12 === 0) {
-                        const useGold = (Math.floor(i / 12) % 2 === 0);
-                        let coreColor = useGold ? '#ffcc66' : '#b87c2e';
-                        const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 14);
+                    if (i % 10 === 0) {
+                        const useRed = (Math.floor(i / 10) % 2 === 0);
+                        let coreColor = useRed ? ELECTRIC_RED : ELECTRIC_BLUE;
+                        const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
                         grad.addColorStop(0, coreColor);
-                        grad.addColorStop(0.6, '#cd9a2b');
-                        grad.addColorStop(1, '#f5d742');
+                        grad.addColorStop(0.7, coreColor);
+                        grad.addColorStop(1, '#ffaa33');
                         ctx.fillStyle = grad;
                         ctx.beginPath();
-                        ctx.arc(point.x, point.y, 11, 0, Math.PI * 2);
+                        ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
                         ctx.fill();
-                        ctx.fillStyle = '#fce38a';
-                        ctx.beginPath();
-                        ctx.arc(point.x-1, point.y-1, 2, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                    if (i % 27 === 0) {
-                        ctx.fillStyle = '#e6b422cc';
-                        ctx.beginPath();
-                        ctx.arc(point.x, point.y, 9, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.fillStyle = '#ffeaac';
+
+                        ctx.fillStyle = coreColor;
                         ctx.beginPath();
                         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = '#ffdd99';
+                        ctx.beginPath();
+                        ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    if (i % 25 === 0) {
+                        const extraColor = ELECTRIC_BLUE;
+                        const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
+                        grad2.addColorStop(0, extraColor);
+                        grad2.addColorStop(0.8, extraColor);
+                        grad2.addColorStop(1, '#ffaa55');
+                        ctx.fillStyle = grad2;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = extraColor;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
                         ctx.fill();
                     }
                 });
@@ -446,9 +388,9 @@
                 const minuteAngle = (minutes * 6 + seconds * 0.1) * Math.PI / 180 - Math.PI / 2;
                 const secondAngle = (seconds * 6) * Math.PI / 180 - Math.PI / 2;
 
-                const hourLength = 175;
-                const minuteLength = 230;
-                const secondLength = 275;
+                const hourLength = 180;
+                const minuteLength = 240;
+                const secondLength = 290;
 
                 const hourX = centerX + Math.cos(hourAngle) * hourLength;
                 const hourY = centerY + Math.sin(hourAngle) * hourLength;
@@ -457,32 +399,33 @@
                 const secondX = centerX + Math.cos(secondAngle) * secondLength;
                 const secondY = centerY + Math.sin(secondAngle) * secondLength;
 
-                ctx.shadowBlur = 12;
-                ctx.shadowColor = '#ffcd7e';
-                ctx.lineWidth = 5;
                 const hourGrad = ctx.createLinearGradient(centerX, centerY, hourX, hourY);
-                hourGrad.addColorStop(0, '#ffcc66');
-                hourGrad.addColorStop(1, '#7a5c1a');
+                hourGrad.addColorStop(0, '#ff8000');
+                hourGrad.addColorStop(1, '#000000');
+                ctx.shadowColor = '#000000';
+                ctx.shadowBlur = 15;
+                ctx.lineWidth = 6;
                 ctx.strokeStyle = hourGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(hourX, hourY);
                 ctx.stroke();
 
-                ctx.lineWidth = 3.5;
                 const minuteGrad = ctx.createLinearGradient(centerX, centerY, minuteX, minuteY);
-                minuteGrad.addColorStop(0, '#ffd966');
-                minuteGrad.addColorStop(1, '#aa7c2c');
+                minuteGrad.addColorStop(0, '#ff8000');
+                minuteGrad.addColorStop(1, '#000000');
+                ctx.shadowBlur = 15;
+                ctx.lineWidth = 4;
                 ctx.strokeStyle = minuteGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
                 ctx.lineTo(minuteX, minuteY);
                 ctx.stroke();
 
-                ctx.lineWidth = 2.5;
                 const secondGrad = ctx.createLinearGradient(centerX, centerY, secondX, secondY);
-                secondGrad.addColorStop(0, '#ffdd99');
-                secondGrad.addColorStop(1, '#8b691b');
+                secondGrad.addColorStop(0, '#ff8000');
+                secondGrad.addColorStop(1, '#000000');
+                ctx.lineWidth = 3;
                 ctx.strokeStyle = secondGrad;
                 ctx.beginPath();
                 ctx.moveTo(centerX, centerY);
@@ -490,35 +433,37 @@
                 ctx.stroke();
 
                 ctx.shadowBlur = 0;
-                ctx.fillStyle = '#ffdd77';
+                ctx.fillStyle = '#ff8000';
                 ctx.beginPath();
-                ctx.arc(centerX, centerY, 10, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#000000';
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
+                ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.fillStyle = '#d4af37';
-                ctx.shadowBlur = 12;
-                ctx.shadowColor = '#ffb347';
-                ctx.font = 'bold 58px "KaiTi", "楷体", "Microsoft YaHei", serif';
-                ctx.fillStyle = '#ffdd99';
+                ctx.shadowColor = '#000000';
+                ctx.shadowBlur = 20;
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(hourX, hourY, 8, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(minuteX, minuteY, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.shadowBlur = 0;
+                ctx.shadowColor = ELECTRIC_GREEN;
+                ctx.shadowBlur = 25;
+                ctx.font = 'bold 56px "KaiTi", "楷体", "STKaiti", "华文楷体", "Microsoft YaHei", serif';
+                ctx.fillStyle = ELECTRIC_GREEN;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText('道', centerX, centerY);
                 ctx.shadowBlur = 0;
-                ctx.fillStyle = '#e6b422';
-                ctx.beginPath();
-                ctx.arc(hourX, hourY, 7, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.beginPath();
-                ctx.arc(minuteX, minuteY, 5, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#cd9a2b';
-                ctx.beginPath();
-                ctx.arc(secondX, secondY, 4, 0, Math.PI * 2);
-                ctx.fill();
             }
 
             function animate() {
@@ -531,35 +476,35 @@
             }
 
             function updateProgress() {
-                if (audioElement && isPlaying && !isNaN(audioElement.duration)) {
+                if (audioElement && isPlaying) {
                     const percent = (audioElement.currentTime / audioElement.duration) * 100;
-                    progressDot.style.left = Math.min(100, Math.max(0, percent)) + '%';
+                    progressDot.style.left = percent + '%';
                 }
             }
 
             function stopClockSounds() {
                 soundEnabled = false;
-                soundToggle.textContent = '♫ Turn sounds on ♫';
+                soundToggle.textContent = 'Turn sounds on';
             }
 
             function playMusic() {
                 if (audioElement) {
                     audioElement.pause();
-                    audioElement = null;
                 }
                 audioElement = new Audio('skinhead.m4a');
                 audioElement.addEventListener('timeupdate', updateProgress);
                 audioElement.addEventListener('ended', () => {
                     isPlaying = false;
                     progressDot.style.left = '0%';
-                    if (progressInterval) clearInterval(progressInterval);
-                    progressInterval = null;
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                        progressInterval = null;
+                    }
                     canvas.classList.remove('canvas-hidden');
                 });
-                audioElement.play().catch(e => console.warn("audio blocked"));
+                audioElement.play();
                 isPlaying = true;
-                if (progressInterval) clearInterval(progressInterval);
-                progressInterval = setInterval(updateProgress, 120);
+                progressInterval = setInterval(updateProgress, 100);
                 stopClockSounds();
                 canvas.classList.add('canvas-hidden');
             }
@@ -568,8 +513,10 @@
                 if (isPlaying) {
                     audioElement.pause();
                     isPlaying = false;
-                    if (progressInterval) clearInterval(progressInterval);
-                    progressInterval = null;
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                        progressInterval = null;
+                    }
                     canvas.classList.remove('canvas-hidden');
                 } else {
                     playMusic();
@@ -583,10 +530,9 @@
 
             progressBar.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (audioElement && isPlaying && audioElement.duration) {
+                if (audioElement && isPlaying) {
                     const rect = progressBar.getBoundingClientRect();
-                    let clickX = e.clientX - rect.left;
-                    clickX = Math.min(rect.width, Math.max(0, clickX));
+                    const clickX = e.clientX - rect.left;
                     const percent = clickX / rect.width;
                     audioElement.currentTime = percent * audioElement.duration;
                 }
@@ -599,22 +545,18 @@
                         toggleMusic();
                     }
                     soundEnabled = !soundEnabled;
-                    this.textContent = soundEnabled ? '🔊 Turn sounds off 🔊' : '♫ Turn sounds on ♫';
-                    if (soundEnabled && audioContext.state === 'suspended') audioContext.resume();
+                    this.textContent = soundEnabled ? 'Turn sounds off' : 'Turn sounds on';
                 });
             }
 
             points = generateBasePoints();
 
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => { animate(); });
+                document.addEventListener('DOMContentLoaded', () => {
+                    animate();
+                });
             } else {
                 animate();
-            }
-
-            const bgImg = document.querySelector('.background-image-war');
-            if (bgImg && bgImg.naturalWidth === 0) {
-                bgImg.style.filter = "drop-shadow(0 0 10px #ffcc33) brightness(0.9) contrast(1.2)";
             }
         })();
     </script>
