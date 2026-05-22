@@ -37,7 +37,7 @@
         }
 
         body {
-            background-color: #ffffff;
+            background: linear-gradient(90deg, #000000, #ffffff, #000000);
             color: #ff8000;
             font-family: 'Arial', sans-serif;
             display: block;
@@ -190,6 +190,18 @@
         .glagolitic-gold br {
             display: block;
         }
+        
+        .bottom-image-wrapper {
+            text-align: center;
+            margin: 10px auto;
+        }
+        .bottom-image-wrapper img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -234,9 +246,9 @@
         </div>
     </div>
 
-    <center>
-        <img src="Windisch_hat.png" width="100%" alt="Windisch hat">
-    </center>
+    <div class="bottom-image-wrapper">
+        <img src="Windisch_hat.png" alt="Windisch hat">
+    </div>
 
     <script>
         (function() {
