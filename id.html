@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>魏魔族</title>
+  <title>Agent Smooth</title>
   <style>
     * {
       margin: 0;
@@ -29,6 +29,50 @@
       padding: 2.2rem 2rem 2rem 2rem;
       color: #d2ffe8;
       box-shadow: 0 25px 40px -10px rgba(0, 30, 20, 0.8);
+    }
+    .selfie-container {
+      position: relative;
+      margin-bottom: 1.75rem;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 2px solid #3f9c86;
+      background-color: #0d382e;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+    .selfie-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      vertical-align: middle;
+    }
+    .page-title-on-image {
+      position: absolute;
+      top: 1rem;
+      left: 1.2rem;
+      background: rgba(10, 47, 38, 0.75);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #e2fff0;
+      text-shadow: 0 2px 5px #031e16;
+      border-left: 4px solid #7ed9c2;
+      font-family: 'Courier New', Courier, monospace;
+      pointer-events: none;
+      z-index: 2;
+      white-space: nowrap;
+    }
+    @media (max-width: 540px) {
+      .page-title-on-image {
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+        top: 0.6rem;
+        left: 0.8rem;
+        white-space: nowrap;
+      }
     }
     .info-field {
       border: 2px solid #3f9c86;
@@ -182,6 +226,10 @@
 </head>
 <body>
   <div class="id-card">
+    <div class="selfie-container">
+      <img class="selfie-img" src="1738228053946.png" alt="Dejan selfie" onerror="this.onerror=null; this.style.opacity='0.7'; this.style.filter='grayscale(0.2)';">
+      <div class="page-title-on-image">魏魔族 · 血统档案</div>
+    </div>
     <div class="badge">
       <a href="MyHeritage_raw_dna_data.zip">Agent Smooth</a>
     </div>
