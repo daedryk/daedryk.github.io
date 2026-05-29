@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>四女巫和一巫师 · 古风竖卷</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fbf5e8;
+      background-image: radial-gradient(circle at 10% 20%, rgba(210, 180, 140, 0.08) 2%, transparent 2.5%),
+                        radial-gradient(circle at 85% 70%, rgba(160, 120, 80, 0.05) 1.8%, transparent 2%);
+      background-size: 48px 48px, 32px 32px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Noto Serif SC', '华文楷书', 'Microsoft YaHei', 'STKaiti', 'KaiTi', serif;
+      padding: 2rem 1.5rem;
+    }
+
+    .scroll-container {
+      max-width: 860px;
+      width: 100%;
+      background: #fffef7;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), inset 0 0 0 1px #f0e2c5, inset 0 0 0 6px #f9efdf;
+      border-radius: 4px 32px 4px 32px;
+      padding: 2rem 1rem 2rem 1rem;
+      transition: all 0.2s;
+    }
+
+    .vertical-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 1.4rem;
+      line-height: 2.3rem;
+      letter-spacing: 0.05em;
+      color: #2e241f;
+      text-align: justify;
+      word-break: keep-all;
+      white-space: normal;
+    }
+
+    .passage {
+      background: rgba(250, 245, 235, 0.5);
+      border-radius: 28px 8px 28px 8px;
+      padding: 1.2rem 0.9rem 1.2rem 0.9rem;
+      margin: 0.4rem 0;
+      transition: background 0.2s;
+    }
+
+    .ornament-top, .ornament-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0.5rem 0 0.8rem 0;
+    }
+
+    .ornament-between {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.2rem 0 1rem 0;
+    }
+
+    svg.ornament-svg {
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05));
+      transition: transform 0.3s ease;
+    }
+
+    svg.ornament-svg:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 640px) {
+      .vertical-text {
+        font-size: 1.1rem;
+        line-height: 1.9rem;
+      }
+      .scroll-container {
+        padding: 1.2rem 0.6rem;
+      }
+      .passage {
+        padding: 0.8rem 0.6rem;
+      }
+    }
+
+    .scroll-container {
+      position: relative;
+    }
+    .scroll-container::before,
+    .scroll-container::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 20px;
+      background: radial-gradient(ellipse at center, #d9b48b 20%, #b87c4f 80%);
+      border-radius: 50%;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .scroll-container::before {
+      top: -8px;
+      left: 20px;
+    }
+    .scroll-container::after {
+      bottom: -8px;
+      right: 20px;
+    }
+
+    .vertical-text::first-letter {
+      font-weight: 700;
+      color: #8b3c1c;
+    }
+
+    .vertical-text {
+      display: block;
+      max-height: none;
+      column-gap: 1.2rem;
+      text-indent: 0em;
+    }
+    .passage {
+      margin-bottom: 0.6rem;
+      break-inside: avoid;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-container">
+  <div class="ornament-top">
+    <svg class="ornament-svg" width="260" height="48" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 24 L30 12 L50 24 L30 36 L10 24Z" fill="#D6B17E" stroke="#B47C44" stroke-width="0.8" opacity="0.9"/>
+      <path d="M70 24 L90 12 L110 24 L90 36 L70 24Z" fill="#C9A063" stroke="#A56B2F" stroke-width="0.8" opacity="0.85"/>
+      <circle cx="130" cy="24" r="8" fill="#E2C294" stroke="#B47C44" stroke-width="1"/>
+      <circle cx="130" cy="24" r="3" fill="#CDA36E"/>
+      <path d="M170 24 L190 12 L210 24 L190 36 L170 24Z" fill="#D6B17E" stroke="#B47C44" stroke-width="0.8" opacity="0.9"/>
+      <path d="M220 24 L240 12 L250 24 L240 36 L220 24Z" fill="#C9A063" stroke="#A56B2F" stroke-width="0.8" opacity="0.85"/>
+      <rect x="12" y="4" width="6" height="40" fill="#D9B48B" rx="2" opacity="0.6"/>
+      <rect x="242" y="4" width="6" height="40" fill="#D9B48B" rx="2" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div id="verticalContent" class="vertical-text"></div>
+
+  <div class="ornament-bottom">
+    <svg class="ornament-svg" width="300" height="56" viewBox="0 0 300 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.8">
+        <path d="M20 28 L34 16 L48 28 L34 40 L20 28Z" fill="#CAA776" stroke="#946B38" stroke-width="0.7"/>
+        <path d="M68 28 L82 16 L96 28 L82 40 L68 28Z" fill="#BD9A64" stroke="#8A5F2E" stroke-width="0.7"/>
+        <circle cx="132" cy="28" r="9" fill="#E9D0A6" stroke="#A9743E" stroke-width="1"/>
+        <circle cx="132" cy="28" r="3.5" fill="#BC8F5A"/>
+        <path d="M170 28 L184 16 L198 28 L184 40 L170 28Z" fill="#CAA776" stroke="#946B38" stroke-width="0.7"/>
+        <path d="M218 28 L232 16 L246 28 L232 40 L218 28Z" fill="#BD9A64" stroke="#8A5F2E" stroke-width="0.7"/>
+        <rect x="10" y="10" width="5" height="36" fill="#C79860" rx="2" opacity="0.5"/>
+        <rect x="284" y="10" width="5" height="36" fill="#C79860" rx="2" opacity="0.5"/>
+        <path d="M258 20 L274 28 L258 36 L242 28 L258 20Z" fill="#E2BD86" stroke="#986D38" stroke-width="0.6"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<script>
+  const rawStory = [
+    "四女巫和一巫师",
+    "从前，在中国古代，有四位强大的女巫生活在神秘的森林深处。每位女巫都拥有由大自然之灵赋予的独特能力。",
+    "第一位是梅灵，风之女巫，她的呼吸可以唤起狂风暴雨，也能轻轻吹起和风。第二位是灵灵，火之女巫，她可以用手指点燃火焰，并使其顺从自己的命令。",
+    "然后是华丽，土之女巫，她可以使大地震颤，也能在触摸间让生命蓬勃茂盛。最后是纯丽，水之女巫，她的眼泪可以治愈病痛，她的笑声可以淹没整个村庄。",
+    "有一天，一位名叫魏的谦卑巫师踏上了寻找一位失踪的公主的任务。传说中，这位公主美丽善良，她的消失使王国陷入绝望。",
+    "魏怀着责任和荣誉感，前往寻找四位女巫，知道她们的力量可以帮助他。怀着决心，他踏入了女巫所在的神奇森林深处。",
+    "在与女巫相遇后，魏谦卑地请求她们的帮助。被他的诚意和决心所感动，女巫们同意帮助他。梅灵利用她的风扫荡整个土地，搜索每一个角落，希望找到失踪的公主的任何线索。",
+    "灵灵召唤火焰照亮王国最黑暗的角落，希望发现任何可能导致公主失踪的线索。华丽借助大地揭示其秘密，利用她的力量感知由公主失踪引起的土地扰动。而纯丽，以她无尽的善心，利用水来净化和净化，希望为他们的搜寻带来清晰。",
+    "五位同伴共同踏上了充满危险和不确定性的旅程。经过危险的森林和险恶的山脉，他们坚持不懈，彼此之间的联系日渐加强。",
+    "最终，在经过数日不懈的搜寻后，他们发现了公主，她被一位邪恶的巫师困在了一座塔中。他们凭借自己的力量和魔法，击败了巫师，解救了公主，将她安全地送回了王国。",
+    "公主对他们的勇敢和善良心怀感激，并承诺永远的友谊。于是，四位女巫和巫师返回了家园，他们的心灵充满了喜悦，精神也因为他们的崇高使命而得到了提升。"
+  ];
+
+  function removeAllPunctuation(text) {
+    return text.replace(/[\p{P}\p{S}]/gu, '').replace(/[·～—…]/g, '')
+                .replace(/[、。，！？；：“”‘’《》【】（）]/g, '')
+                .replace(/[\.\,\!\?\:\;\"\'\(\)\[\]\{\}\<\>\*\&\^\%\$\#\@\~\`\\\/\|]/g, '');
+  }
+
+  function buildVerticalStory() {
+    const container = document.getElementById('verticalContent');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const cleanedParagraphs = rawStory.map(para => removeAllPunctuation(para).trim());
+    
+    for (let i = 0; i < cleanedParagraphs.length; i++) {
+      const paragraphText = cleanedParagraphs[i];
+      if (paragraphText === "") continue;
+      
+      const passageDiv = document.createElement('div');
+      passageDiv.className = 'passage';
+      passageDiv.innerText = paragraphText;
+      container.appendChild(passageDiv);
+      
+      if (i !== cleanedParagraphs.length - 1) {
+        const ornamentBetweenDiv = document.createElement('div');
+        ornamentBetweenDiv.className = 'ornament-between';
+        const svgNS = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("class", "ornament-svg");
+        svg.setAttribute("width", "200");
+        svg.setAttribute("height", "36");
+        svg.setAttribute("viewBox", "0 0 200 36");
+        svg.setAttribute("fill", "none");
+        
+        if (i % 2 === 0) {
+          const path1 = document.createElementNS(svgNS, "path");
+          path1.setAttribute("d", "M15 18 L25 10 L35 18 L25 26 L15 18Z");
+          path1.setAttribute("fill", "#D8B07C");
+          path1.setAttribute("stroke", "#A57242");
+          path1.setAttribute("stroke-width", "0.6");
+          const path2 = document.createElementNS(svgNS, "path");
+          path2.setAttribute("d", "M55 18 L65 10 L75 18 L65 26 L55 18Z");
+          path2.setAttribute("fill", "#CEA671");
+          path2.setAttribute("stroke", "#9A6535");
+          path2.setAttribute("stroke-width", "0.6");
+          const circle = document.createElementNS(svgNS, "circle");
+          circle.setAttribute("cx", "110");
+          circle.setAttribute("cy", "18");
+          circle.setAttribute("r", "7");
+          circle.setAttribute("fill", "#E4C493");
+          circle.setAttribute("stroke", "#B47C44");
+          circle.setAttribute("stroke-width", "0.9");
+          const innerCircle = document.createElementNS(svgNS, "circle");
+          innerCircle.setAttribute("cx", "110");
+          innerCircle.setAttribute("cy", "18");
+          innerCircle.setAttribute("r", "2.5");
+          innerCircle.setAttribute("fill", "#B37B48");
+          const path3 = document.createElementNS(svgNS, "path");
+          path3.setAttribute("d", "M145 18 L155 10 L165 18 L155 26 L145 18Z");
+          path3.setAttribute("fill", "#D8B07C");
+          path3.setAttribute("stroke", "#A57242");
+          const path4 = document.createElementNS(svgNS, "path");
+          path4.setAttribute("d", "M175 18 L185 10 L195 18 L185 26 L175 18Z");
+          path4.setAttribute("fill", "#CEA671");
+          svg.appendChild(path1);
+          svg.appendChild(path2);
+          svg.appendChild(circle);
+          svg.appendChild(innerCircle);
+          svg.appendChild(path3);
+          svg.appendChild(path4);
+        } else {
+          const cloud1 = document.createElementNS(svgNS, "path");
+          cloud1.setAttribute("d", "M20 18 C20 12, 28 12, 28 18 C28 24, 20 24, 20 18Z");
+          cloud1.setAttribute("fill", "#D3A870");
+          cloud1.setAttribute("opacity", "0.8");
+          const cloud2 = document.createElementNS(svgNS, "path");
+          cloud2.setAttribute("d", "M68 18 C68 10, 78 10, 78 18 C78 26, 68 26, 68 18Z");
+          cloud2.setAttribute("fill", "#C8985E");
+          const diamond = document.createElementNS(svgNS, "polygon");
+          diamond.setAttribute("points", "125,12 133,18 125,24 117,18");
+          diamond.setAttribute("fill", "#E2BA83");
+          diamond.setAttribute("stroke", "#996A37");
+          diamond.setAttribute("stroke-width", "0.7");
+          const wave1 = document.createElementNS(svgNS, "path");
+          wave1.setAttribute("d", "M160 18 L170 12 L180 18 L190 12 L200 18");
+          wave1.setAttribute("stroke", "#BB8750");
+          wave1.setAttribute("stroke-width", "1.3");
+          wave1.setAttribute("fill", "none");
+          wave1.setAttribute("stroke-linecap", "round");
+          const dotGroup = document.createElementNS(svgNS, "circle");
+          dotGroup.setAttribute("cx", "48");
+          dotGroup.setAttribute("cy", "18");
+          dotGroup.setAttribute("r", "3");
+          dotGroup.setAttribute("fill", "#B87C48");
+          svg.appendChild(cloud1);
+          svg.appendChild(cloud2);
+          svg.appendChild(diamond);
+          svg.appendChild(wave1);
+          svg.appendChild(dotGroup);
+          const dot2 = document.createElementNS(svgNS, "circle");
+          dot2.setAttribute("cx", "95");
+          dot2.setAttribute("cy", "18");
+          dot2.setAttribute("r", "3.5");
+          dot2.setAttribute("fill", "#AA7441");
+          svg.appendChild(dot2);
+        }
+        
+        ornamentBetweenDiv.appendChild(svg);
+        container.appendChild(ornamentBetweenDiv);
+      }
+    }
+    
+    const finalHint = document.createElement('div');
+    finalHint.style.display = 'flex';
+    finalHint.style.justifyContent = 'center';
+    finalHint.style.margin = '0.6rem 0 0.2rem 0';
+    finalHint.style.opacity = '0.6';
+    const tinySvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    tinySvg.setAttribute("width", "120");
+    tinySvg.setAttribute("height", "20");
+    tinySvg.setAttribute("viewBox", "0 0 120 20");
+    const linePattern = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    linePattern.setAttribute("d", "M10 10 L30 4 L50 10 L70 16 L90 10 L110 4");
+    linePattern.setAttribute("stroke", "#C19762");
+    linePattern.setAttribute("stroke-width", "1");
+    linePattern.setAttribute("fill", "none");
+    tinySvg.appendChild(linePattern);
+    finalHint.appendChild(tinySvg);
+    container.appendChild(finalHint);
+  }
+  
+  document.title = "四女巫和一巫师 · 古风竖卷";
+  buildVerticalStory();
+</script>
+</body>
+</html>
