@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>四女巫和一巫师 · 古风竖卷</title>
+  <title>四女巫和一巫师</title>
   <style>
     * {
       margin: 0;
@@ -25,7 +25,7 @@
     }
 
     .scroll-container {
-      max-width: 860px;
+      max-width: 1100px;
       width: 100%;
       background: #fffef7;
       box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), inset 0 0 0 1px #f0e2c5, inset 0 0 0 6px #f9efdf;
@@ -37,9 +37,9 @@
     .vertical-text {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      font-size: 1.4rem;
-      line-height: 2.3rem;
-      letter-spacing: 0.05em;
+      font-size: 2.8rem;
+      line-height: 4rem;
+      letter-spacing: 0.08em;
       color: #2e241f;
       text-align: justify;
       word-break: keep-all;
@@ -49,44 +49,27 @@
     .passage {
       background: rgba(250, 245, 235, 0.5);
       border-radius: 28px 8px 28px 8px;
-      padding: 1.2rem 0.9rem 1.2rem 0.9rem;
-      margin: 0.4rem 0;
-      transition: background 0.2s;
+      padding: 1.6rem 1rem 1.6rem 1rem;
+      margin: 0.6rem 0;
     }
 
-    .ornament-top, .ornament-bottom {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0.5rem 0 0.8rem 0;
-    }
-
-    .ornament-between {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1.2rem 0 1rem 0;
-    }
-
-    svg.ornament-svg {
-      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05));
-      transition: transform 0.3s ease;
-    }
-
-    svg.ornament-svg:hover {
-      transform: scale(1.02);
-    }
-
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .vertical-text {
-        font-size: 1.1rem;
-        line-height: 1.9rem;
+        font-size: 2rem;
+        line-height: 3rem;
       }
       .scroll-container {
-        padding: 1.2rem 0.6rem;
+        padding: 1.5rem 0.8rem;
       }
       .passage {
-        padding: 0.8rem 0.6rem;
+        padding: 1rem 0.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .vertical-text {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
       }
     }
 
@@ -114,8 +97,9 @@
     }
 
     .vertical-text::first-letter {
-      font-weight: 700;
+      font-weight: 800;
       color: #8b3c1c;
+      font-size: 1.1em;
     }
 
     .vertical-text {
@@ -125,7 +109,7 @@
       text-indent: 0em;
     }
     .passage {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
       break-inside: avoid;
     }
     html {
@@ -135,36 +119,7 @@
 </head>
 <body>
 <div class="scroll-container">
-  <div class="ornament-top">
-    <svg class="ornament-svg" width="260" height="48" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 24 L30 12 L50 24 L30 36 L10 24Z" fill="#D6B17E" stroke="#B47C44" stroke-width="0.8" opacity="0.9"/>
-      <path d="M70 24 L90 12 L110 24 L90 36 L70 24Z" fill="#C9A063" stroke="#A56B2F" stroke-width="0.8" opacity="0.85"/>
-      <circle cx="130" cy="24" r="8" fill="#E2C294" stroke="#B47C44" stroke-width="1"/>
-      <circle cx="130" cy="24" r="3" fill="#CDA36E"/>
-      <path d="M170 24 L190 12 L210 24 L190 36 L170 24Z" fill="#D6B17E" stroke="#B47C44" stroke-width="0.8" opacity="0.9"/>
-      <path d="M220 24 L240 12 L250 24 L240 36 L220 24Z" fill="#C9A063" stroke="#A56B2F" stroke-width="0.8" opacity="0.85"/>
-      <rect x="12" y="4" width="6" height="40" fill="#D9B48B" rx="2" opacity="0.6"/>
-      <rect x="242" y="4" width="6" height="40" fill="#D9B48B" rx="2" opacity="0.6"/>
-    </svg>
-  </div>
-
   <div id="verticalContent" class="vertical-text"></div>
-
-  <div class="ornament-bottom">
-    <svg class="ornament-svg" width="300" height="56" viewBox="0 0 300 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g opacity="0.8">
-        <path d="M20 28 L34 16 L48 28 L34 40 L20 28Z" fill="#CAA776" stroke="#946B38" stroke-width="0.7"/>
-        <path d="M68 28 L82 16 L96 28 L82 40 L68 28Z" fill="#BD9A64" stroke="#8A5F2E" stroke-width="0.7"/>
-        <circle cx="132" cy="28" r="9" fill="#E9D0A6" stroke="#A9743E" stroke-width="1"/>
-        <circle cx="132" cy="28" r="3.5" fill="#BC8F5A"/>
-        <path d="M170 28 L184 16 L198 28 L184 40 L170 28Z" fill="#CAA776" stroke="#946B38" stroke-width="0.7"/>
-        <path d="M218 28 L232 16 L246 28 L232 40 L218 28Z" fill="#BD9A64" stroke="#8A5F2E" stroke-width="0.7"/>
-        <rect x="10" y="10" width="5" height="36" fill="#C79860" rx="2" opacity="0.5"/>
-        <rect x="284" y="10" width="5" height="36" fill="#C79860" rx="2" opacity="0.5"/>
-        <path d="M258 20 L274 28 L258 36 L242 28 L258 20Z" fill="#E2BD86" stroke="#986D38" stroke-width="0.6"/>
-      </g>
-    </svg>
-  </div>
 </div>
 
 <script>
@@ -203,116 +158,10 @@
       passageDiv.className = 'passage';
       passageDiv.innerText = paragraphText;
       container.appendChild(passageDiv);
-      
-      if (i !== cleanedParagraphs.length - 1) {
-        const ornamentBetweenDiv = document.createElement('div');
-        ornamentBetweenDiv.className = 'ornament-between';
-        const svgNS = "http://www.w3.org/2000/svg";
-        const svg = document.createElementNS(svgNS, "svg");
-        svg.setAttribute("class", "ornament-svg");
-        svg.setAttribute("width", "200");
-        svg.setAttribute("height", "36");
-        svg.setAttribute("viewBox", "0 0 200 36");
-        svg.setAttribute("fill", "none");
-        
-        if (i % 2 === 0) {
-          const path1 = document.createElementNS(svgNS, "path");
-          path1.setAttribute("d", "M15 18 L25 10 L35 18 L25 26 L15 18Z");
-          path1.setAttribute("fill", "#D8B07C");
-          path1.setAttribute("stroke", "#A57242");
-          path1.setAttribute("stroke-width", "0.6");
-          const path2 = document.createElementNS(svgNS, "path");
-          path2.setAttribute("d", "M55 18 L65 10 L75 18 L65 26 L55 18Z");
-          path2.setAttribute("fill", "#CEA671");
-          path2.setAttribute("stroke", "#9A6535");
-          path2.setAttribute("stroke-width", "0.6");
-          const circle = document.createElementNS(svgNS, "circle");
-          circle.setAttribute("cx", "110");
-          circle.setAttribute("cy", "18");
-          circle.setAttribute("r", "7");
-          circle.setAttribute("fill", "#E4C493");
-          circle.setAttribute("stroke", "#B47C44");
-          circle.setAttribute("stroke-width", "0.9");
-          const innerCircle = document.createElementNS(svgNS, "circle");
-          innerCircle.setAttribute("cx", "110");
-          innerCircle.setAttribute("cy", "18");
-          innerCircle.setAttribute("r", "2.5");
-          innerCircle.setAttribute("fill", "#B37B48");
-          const path3 = document.createElementNS(svgNS, "path");
-          path3.setAttribute("d", "M145 18 L155 10 L165 18 L155 26 L145 18Z");
-          path3.setAttribute("fill", "#D8B07C");
-          path3.setAttribute("stroke", "#A57242");
-          const path4 = document.createElementNS(svgNS, "path");
-          path4.setAttribute("d", "M175 18 L185 10 L195 18 L185 26 L175 18Z");
-          path4.setAttribute("fill", "#CEA671");
-          svg.appendChild(path1);
-          svg.appendChild(path2);
-          svg.appendChild(circle);
-          svg.appendChild(innerCircle);
-          svg.appendChild(path3);
-          svg.appendChild(path4);
-        } else {
-          const cloud1 = document.createElementNS(svgNS, "path");
-          cloud1.setAttribute("d", "M20 18 C20 12, 28 12, 28 18 C28 24, 20 24, 20 18Z");
-          cloud1.setAttribute("fill", "#D3A870");
-          cloud1.setAttribute("opacity", "0.8");
-          const cloud2 = document.createElementNS(svgNS, "path");
-          cloud2.setAttribute("d", "M68 18 C68 10, 78 10, 78 18 C78 26, 68 26, 68 18Z");
-          cloud2.setAttribute("fill", "#C8985E");
-          const diamond = document.createElementNS(svgNS, "polygon");
-          diamond.setAttribute("points", "125,12 133,18 125,24 117,18");
-          diamond.setAttribute("fill", "#E2BA83");
-          diamond.setAttribute("stroke", "#996A37");
-          diamond.setAttribute("stroke-width", "0.7");
-          const wave1 = document.createElementNS(svgNS, "path");
-          wave1.setAttribute("d", "M160 18 L170 12 L180 18 L190 12 L200 18");
-          wave1.setAttribute("stroke", "#BB8750");
-          wave1.setAttribute("stroke-width", "1.3");
-          wave1.setAttribute("fill", "none");
-          wave1.setAttribute("stroke-linecap", "round");
-          const dotGroup = document.createElementNS(svgNS, "circle");
-          dotGroup.setAttribute("cx", "48");
-          dotGroup.setAttribute("cy", "18");
-          dotGroup.setAttribute("r", "3");
-          dotGroup.setAttribute("fill", "#B87C48");
-          svg.appendChild(cloud1);
-          svg.appendChild(cloud2);
-          svg.appendChild(diamond);
-          svg.appendChild(wave1);
-          svg.appendChild(dotGroup);
-          const dot2 = document.createElementNS(svgNS, "circle");
-          dot2.setAttribute("cx", "95");
-          dot2.setAttribute("cy", "18");
-          dot2.setAttribute("r", "3.5");
-          dot2.setAttribute("fill", "#AA7441");
-          svg.appendChild(dot2);
-        }
-        
-        ornamentBetweenDiv.appendChild(svg);
-        container.appendChild(ornamentBetweenDiv);
-      }
     }
-    
-    const finalHint = document.createElement('div');
-    finalHint.style.display = 'flex';
-    finalHint.style.justifyContent = 'center';
-    finalHint.style.margin = '0.6rem 0 0.2rem 0';
-    finalHint.style.opacity = '0.6';
-    const tinySvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    tinySvg.setAttribute("width", "120");
-    tinySvg.setAttribute("height", "20");
-    tinySvg.setAttribute("viewBox", "0 0 120 20");
-    const linePattern = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    linePattern.setAttribute("d", "M10 10 L30 4 L50 10 L70 16 L90 10 L110 4");
-    linePattern.setAttribute("stroke", "#C19762");
-    linePattern.setAttribute("stroke-width", "1");
-    linePattern.setAttribute("fill", "none");
-    tinySvg.appendChild(linePattern);
-    finalHint.appendChild(tinySvg);
-    container.appendChild(finalHint);
   }
   
-  document.title = "四女巫和一巫师 · 古风竖卷";
+  document.title = "四女巫和一巫师 · 巨幅竖卷";
   buildVerticalStory();
 </script>
 </body>
