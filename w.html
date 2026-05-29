@@ -31,6 +31,8 @@
       transition: all 0.2s;
       position: relative;
       border: 1px solid #dbb87c;
+      display: flex;
+      justify-content: center;
     }
 
     .scroll-container::before {
@@ -48,9 +50,6 @@
     .vertical-text {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      font-size: 2.8rem;
-      line-height: 4rem;
-      letter-spacing: 0.1em;
       text-align: justify;
       word-break: keep-all;
       white-space: normal;
@@ -62,13 +61,19 @@
       -webkit-background-clip: text;
       color: #d4af37;
       text-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 0 4px rgba(212, 175, 55, 0.3);
+      display: block;
+      max-height: none;
+      column-gap: 1.2rem;
+      text-indent: 0em;
+      overflow-y: visible;
+      overflow-x: visible;
     }
 
     .passage {
       background: rgba(30, 27, 22, 0.08);
       border-radius: 24px 6px 24px 6px;
-      padding: 1.6rem 1rem 1.6rem 1rem;
-      margin: 0.6rem 0;
+      padding: 1rem 0.8rem;
+      margin: 0.4rem 0;
       width: 100%;
       display: block;
       border-left: 2px solid rgba(212, 175, 55, 0.5);
@@ -80,45 +85,6 @@
       font-weight: 900;
       color: #e5c665;
       text-shadow: 0 0 6px #ffd966, 0 0 1px #b8860b;
-      font-size: 1.15em;
-    }
-
-    @media (min-width: 1200px) {
-      .vertical-text {
-        font-size: 3rem;
-        line-height: 4.4rem;
-      }
-      .scroll-container {
-        max-width: 1200px;
-        padding: 2rem 1.5rem;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .vertical-text {
-        font-size: 2.2rem;
-        line-height: 3.2rem;
-      }
-      .scroll-container {
-        padding: 1.5rem 0.8rem;
-      }
-      .passage {
-        padding: 1rem 0.7rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .vertical-text {
-        font-size: 1.6rem;
-        line-height: 2.4rem;
-      }
-      .scroll-container {
-        max-width: 98vw;
-        padding: 1rem 0.5rem;
-      }
-      .passage {
-        padding: 0.8rem 0.5rem;
-      }
     }
 
     .scroll-container {
@@ -150,16 +116,8 @@
       pointer-events: none;
     }
 
-    .vertical-text {
-      display: block;
-      max-height: none;
-      column-gap: 1.2rem;
-      text-indent: 0em;
-      overflow-y: visible;
-      overflow-x: visible;
-    }
     .passage {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
       break-inside: avoid;
       word-break: break-word;
       box-shadow: inset 0 1px 3px rgba(255,215,0,0.1), 0 1px 2px rgba(0,0,0,0.02);
@@ -232,6 +190,134 @@
   
   document.title = "四女巫和一巫师";
   buildVerticalStory();
+
+  (function adjustFontSizeToFit() {
+    const container = document.querySelector('.scroll-container');
+    const textContainer = document.getElementById('verticalContent');
+    if (!container || !textContainer) return;
+    
+    const baseFontSize = 2.8;
+    const minFontSize = 1.2;
+    let currentFontSize = baseFontSize;
+    
+    textContainer.style.fontSize = currentFontSize + 'rem';
+    textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+    
+    let needsAdjustment = false;
+    let scrollHeight = textContainer.scrollHeight;
+    let containerHeight = container.clientHeight;
+    
+    if (scrollHeight > containerHeight * 1.05) {
+      needsAdjustment = true;
+      while (scrollHeight > containerHeight * 0.98 && currentFontSize > minFontSize) {
+        currentFontSize -= 0.08;
+        textContainer.style.fontSize = currentFontSize + 'rem';
+        textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+        scrollHeight = textContainer.scrollHeight;
+        containerHeight = container.clientHeight;
+        if (currentFontSize <= minFontSize) break;
+      }
+    } else if (scrollHeight < containerHeight * 0.7 && currentFontSize < 3.8) {
+      while (scrollHeight < containerHeight * 0.8 && currentFontSize < 3.8) {
+        currentFontSize += 0.1;
+        textContainer.style.fontSize = currentFontSize + 'rem';
+        textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+        scrollHeight = textContainer.scrollHeight;
+        containerHeight = container.clientHeight;
+        if (scrollHeight > containerHeight * 0.9) break;
+        if (currentFontSize >= 3.8) break;
+      }
+    }
+    
+    if (!needsAdjustment && currentFontSize > baseFontSize + 0.2) {
+      let finalCheck = textContainer.scrollHeight;
+      let contH = container.clientHeight;
+      if (finalCheck > contH * 0.98) {
+        while (finalCheck > contH * 0.96 && currentFontSize > minFontSize) {
+          currentFontSize -= 0.05;
+          textContainer.style.fontSize = currentFontSize + 'rem';
+          textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+          finalCheck = textContainer.scrollHeight;
+          contH = container.clientHeight;
+          if (currentFontSize <= minFontSize) break;
+        }
+      }
+    }
+    
+    const passageElements = document.querySelectorAll('.passage');
+    if (passageElements.length > 0) {
+      let paddingVal = Math.max(0.6, Math.min(1.2, currentFontSize * 0.28));
+      for (let el of passageElements) {
+        el.style.paddingTop = paddingVal + 'rem';
+        el.style.paddingBottom = paddingVal + 'rem';
+        el.style.paddingLeft = (paddingVal * 0.7) + 'rem';
+        el.style.paddingRight = (paddingVal * 0.7) + 'rem';
+        el.style.marginTop = (paddingVal * 0.4) + 'rem';
+        el.style.marginBottom = (paddingVal * 0.4) + 'rem';
+      }
+    }
+    
+    if (currentFontSize <= 1.4) {
+      textContainer.style.letterSpacing = '0.02em';
+    } else if (currentFontSize >= 2.2) {
+      textContainer.style.letterSpacing = '0.08em';
+    } else {
+      textContainer.style.letterSpacing = '0.05em';
+    }
+  })();
+
+  window.addEventListener('resize', function() {
+    setTimeout(function() {
+      (function adjustFontSizeToFit() {
+        const container = document.querySelector('.scroll-container');
+        const textContainer = document.getElementById('verticalContent');
+        if (!container || !textContainer) return;
+        
+        let currentFontSize = parseFloat(textContainer.style.fontSize) || 2.2;
+        const minFontSize = 1.2;
+        
+        textContainer.style.fontSize = currentFontSize + 'rem';
+        textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+        
+        let scrollHeight = textContainer.scrollHeight;
+        let containerHeight = container.clientHeight;
+        
+        if (scrollHeight > containerHeight * 0.98) {
+          while (scrollHeight > containerHeight * 0.96 && currentFontSize > minFontSize) {
+            currentFontSize -= 0.06;
+            textContainer.style.fontSize = currentFontSize + 'rem';
+            textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+            scrollHeight = textContainer.scrollHeight;
+            containerHeight = container.clientHeight;
+            if (currentFontSize <= minFontSize) break;
+          }
+        } else if (scrollHeight < containerHeight * 0.7 && currentFontSize < 3.5) {
+          while (scrollHeight < containerHeight * 0.8 && currentFontSize < 3.5) {
+            currentFontSize += 0.08;
+            textContainer.style.fontSize = currentFontSize + 'rem';
+            textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
+            scrollHeight = textContainer.scrollHeight;
+            containerHeight = container.clientHeight;
+            if (scrollHeight > containerHeight * 0.9) break;
+            if (currentFontSize >= 3.5) break;
+          }
+        }
+        
+        const passageElements = document.querySelectorAll('.passage');
+        if (passageElements.length > 0) {
+          let paddingVal = Math.max(0.6, Math.min(1.1, currentFontSize * 0.28));
+          for (let el of passageElements) {
+            el.style.paddingTop = paddingVal + 'rem';
+            el.style.paddingBottom = paddingVal + 'rem';
+            el.style.paddingLeft = (paddingVal * 0.7) + 'rem';
+            el.style.paddingRight = (paddingVal * 0.7) + 'rem';
+            el.style.marginTop = (paddingVal * 0.4) + 'rem';
+            el.style.marginBottom = (paddingVal * 0.4) + 'rem';
+          }
+        }
+      })();
+    }, 50);
+  });
 </script>
 </body>
 </html>
