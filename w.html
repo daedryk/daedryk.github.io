@@ -12,10 +12,7 @@
     }
 
     body {
-      background: #fbf5e8;
-      background-image: radial-gradient(circle at 10% 20%, rgba(210, 180, 140, 0.08) 2%, transparent 2.5%),
-                        radial-gradient(circle at 85% 70%, rgba(160, 120, 80, 0.05) 1.8%, transparent 2%);
-      background-size: 48px 48px, 32px 32px;
+      background: linear-gradient(145deg, #1a1715 0%, #2c2824 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -25,13 +22,27 @@
     }
 
     .scroll-container {
-      max-width: 1100px;
+      max-width: 95vw;
       width: 100%;
-      background: #fffef7;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), inset 0 0 0 1px #f0e2c5, inset 0 0 0 6px #f9efdf;
-      border-radius: 4px 32px 4px 32px;
+      background: linear-gradient(135deg, #fef9e6 0%, #fcf3dc 100%);
+      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.5), inset 0 0 0 2px #f3e2b0, inset 0 0 0 6px #e9d6a0;
+      border-radius: 4px 48px 4px 48px;
       padding: 2rem 1rem 2rem 1rem;
       transition: all 0.2s;
+      position: relative;
+      border: 1px solid #dbb87c;
+    }
+
+    .scroll-container::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      pointer-events: none;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 4px 42px 4px 42px;
     }
 
     .vertical-text {
@@ -39,24 +50,54 @@
       text-orientation: mixed;
       font-size: 2.8rem;
       line-height: 4rem;
-      letter-spacing: 0.08em;
-      color: #2e241f;
+      letter-spacing: 0.1em;
       text-align: justify;
       word-break: keep-all;
       white-space: normal;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      background: linear-gradient(135deg, #2c2b26 0%, #3a3730 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: #d4af37;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 0 4px rgba(212, 175, 55, 0.3);
     }
 
     .passage {
-      background: rgba(250, 245, 235, 0.5);
-      border-radius: 28px 8px 28px 8px;
+      background: rgba(30, 27, 22, 0.08);
+      border-radius: 24px 6px 24px 6px;
       padding: 1.6rem 1rem 1.6rem 1rem;
       margin: 0.6rem 0;
+      width: 100%;
+      display: block;
+      border-left: 2px solid rgba(212, 175, 55, 0.5);
+      border-right: 2px solid rgba(192, 192, 192, 0.4);
+      backdrop-filter: blur(1px);
     }
 
-    @media (max-width: 768px) {
+    .vertical-text::first-letter {
+      font-weight: 900;
+      color: #e5c665;
+      text-shadow: 0 0 6px #ffd966, 0 0 1px #b8860b;
+      font-size: 1.15em;
+    }
+
+    @media (min-width: 1200px) {
       .vertical-text {
-        font-size: 2rem;
-        line-height: 3rem;
+        font-size: 3rem;
+        line-height: 4.4rem;
+      }
+      .scroll-container {
+        max-width: 1200px;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .vertical-text {
+        font-size: 2.2rem;
+        line-height: 3.2rem;
       }
       .scroll-container {
         padding: 1.5rem 0.8rem;
@@ -66,40 +107,47 @@
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       .vertical-text {
         font-size: 1.6rem;
         line-height: 2.4rem;
+      }
+      .scroll-container {
+        max-width: 98vw;
+        padding: 1rem 0.5rem;
+      }
+      .passage {
+        padding: 0.8rem 0.5rem;
       }
     }
 
     .scroll-container {
       position: relative;
     }
-    .scroll-container::before,
     .scroll-container::after {
       content: "";
       position: absolute;
-      width: 40px;
-      height: 20px;
-      background: radial-gradient(ellipse at center, #d9b48b 20%, #b87c4f 80%);
-      border-radius: 50%;
-      opacity: 0.3;
-      pointer-events: none;
-    }
-    .scroll-container::before {
-      top: -8px;
-      left: 20px;
-    }
-    .scroll-container::after {
       bottom: -8px;
       right: 20px;
+      width: 60px;
+      height: 24px;
+      background: radial-gradient(ellipse at center, #d4af37 10%, #a67c2e 70%);
+      border-radius: 50%;
+      opacity: 0.4;
+      pointer-events: none;
+      filter: blur(1px);
     }
-
-    .vertical-text::first-letter {
-      font-weight: 800;
-      color: #8b3c1c;
-      font-size: 1.1em;
+    .scroll-container::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 20px;
+      width: 60px;
+      height: 24px;
+      background: radial-gradient(ellipse at center, #e0c374 15%, #b8860b 75%);
+      border-radius: 50%;
+      opacity: 0.45;
+      pointer-events: none;
     }
 
     .vertical-text {
@@ -107,11 +155,32 @@
       max-height: none;
       column-gap: 1.2rem;
       text-indent: 0em;
+      overflow-y: visible;
+      overflow-x: visible;
     }
     .passage {
       margin-bottom: 0.8rem;
       break-inside: avoid;
+      word-break: break-word;
+      box-shadow: inset 0 1px 3px rgba(255,215,0,0.1), 0 1px 2px rgba(0,0,0,0.02);
     }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      background: #2a2724;
+    }
+    ::-webkit-scrollbar-track {
+      background: #24201c;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #d4af37, #b49450);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #e5c665, #c9a03d);
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -161,7 +230,7 @@
     }
   }
   
-  document.title = "四女巫和一巫师 · 巨幅竖卷";
+  document.title = "四女巫和一巫师";
   buildVerticalStory();
 </script>
 </body>
