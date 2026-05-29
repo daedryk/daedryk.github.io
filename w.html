@@ -12,7 +12,7 @@
     }
 
     body {
-      background: linear-gradient(145deg, #12100e 0%, #2a2520 100%);
+      background: linear-gradient(145deg, #0f0e0c 0%, #1f1b17 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -25,10 +25,12 @@
       max-width: 1000px;
       width: 100%;
       height: 85vh;
-      background: linear-gradient(135deg, #fdf8ed 0%, #faf0dc 100%);
+      background: radial-gradient(circle at 30% 20%, rgba(235, 220, 175, 0.25), rgba(200, 180, 120, 0.1)),
+                  linear-gradient(135deg, #fef8e8 0%, #faf0dc 40%, #f5e9d0 100%);
+      background-blend-mode: overlay;
       box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #f3e2b0, inset 0 0 0 6px #e9d6a0;
       border-radius: 12px 56px 12px 56px;
-      padding: 1.8rem 1.2rem;
+      padding: 2.8rem 1.5rem 2.8rem 1.5rem;
       position: relative;
       border: 1px solid #e2c288;
       overflow-y: auto;
@@ -51,22 +53,23 @@
     .vertical-text {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      font-size: 1.8rem;
-      line-height: 2.6rem;
-      letter-spacing: 0.08em;
-      color: #c7a84b;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.05), 0 0 2px rgba(212, 175, 55, 0.5);
+      font-size: 1.85rem;
+      line-height: 2.7rem;
+      letter-spacing: 0.1em;
+      color: #b8943c;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 0 3px rgba(212, 175, 55, 0.6);
       width: 100%;
       display: block;
     }
 
     .passage {
-      background: rgba(160, 140, 100, 0.08);
-      border-radius: 20px 6px 20px 6px;
-      padding: 1rem 0.9rem;
-      margin: 0.6rem 0;
-      border-left: 2px solid rgba(212, 175, 55, 0.6);
-      border-right: 1px solid rgba(192, 192, 192, 0.3);
+      background: rgba(200, 180, 130, 0.1);
+      border-radius: 24px 8px 24px 8px;
+      padding: 1.2rem 1rem;
+      margin: 0.8rem 0;
+      border-left: 2px solid rgba(212, 175, 55, 0.7);
+      border-right: 1px solid rgba(192, 192, 192, 0.35);
+      backdrop-filter: blur(2px);
       transition: all 0.2s;
     }
 
@@ -81,67 +84,89 @@
     .vertical-text::first-letter {
       font-weight: 900;
       color: #f5d470;
-      text-shadow: 0 0 4px #ffdf8c;
-      font-size: 1.2em;
+      text-shadow: 0 0 6px #ffdf8c, 0 0 1px #c9a03d;
+      font-size: 1.25em;
     }
 
     .scroll-container::before {
       content: "";
       position: sticky;
-      top: 0;
+      top: -8px;
       left: 0;
       width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #d4af37, transparent);
-      margin-bottom: 10px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #e8d28a, #d4af37, transparent);
+      margin-bottom: 15px;
       display: block;
+      border-radius: 3px;
+      box-shadow: 0 0 4px gold;
     }
 
     .scroll-container::after {
       content: "";
       position: sticky;
-      bottom: 0;
+      bottom: -8px;
       left: 0;
       width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #d4af37, transparent);
-      margin-top: 10px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #e8d28a, #d4af37, transparent);
+      margin-top: 15px;
       display: block;
+      border-radius: 3px;
+      box-shadow: 0 0 4px gold;
     }
 
     @media (max-width: 760px) {
       .vertical-text {
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         line-height: 2rem;
       }
       .scroll-container {
-        padding: 1rem 0.8rem;
+        padding: 1.8rem 1rem;
         height: 80vh;
       }
       .passage {
-        padding: 0.6rem 0.6rem;
+        padding: 0.8rem 0.7rem;
+        margin: 0.5rem 0;
       }
     }
 
     @media (max-width: 560px) {
       .vertical-text {
         font-size: 1.1rem;
-        line-height: 1.7rem;
+        line-height: 1.65rem;
+        letter-spacing: 0.05em;
+      }
+      .scroll-container {
+        padding: 1.2rem 0.8rem;
+      }
+      .passage {
+        padding: 0.6rem 0.5rem;
       }
     }
 
     @media (min-width: 1200px) {
       .vertical-text {
         font-size: 2.2rem;
-        line-height: 3rem;
+        line-height: 3.1rem;
       }
       .scroll-container {
         max-width: 1100px;
+        padding: 3rem 1.8rem;
+      }
+      .passage {
+        padding: 1.4rem 1.2rem;
+        margin: 1rem 0;
       }
     }
 
-    .ornament-gold {
-      background: radial-gradient(circle at 30% 20%, rgba(212,175,55,0.2), transparent 70%);
+    @keyframes subtleGlow {
+      0% { text-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 0 2px rgba(212,175,55,0.4); }
+      100% { text-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 0 5px rgba(212,175,55,0.7); }
+    }
+
+    .vertical-text {
+      animation: subtleGlow 3s infinite alternate;
     }
   </style>
 </head>
