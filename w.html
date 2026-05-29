@@ -12,33 +12,34 @@
     }
 
     body {
-      background: linear-gradient(145deg, #0f0e0c 0%, #1f1b17 100%);
+      background: linear-gradient(145deg, #0a0908 0%, #1a1612 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       font-family: 'Noto Serif SC', '华文楷书', 'Microsoft YaHei', 'STKaiti', 'KaiTi', serif;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
     }
 
     .scroll-container {
-      max-width: 1000px;
+      max-width: 1400px;
       width: 100%;
-      height: 85vh;
-      background: radial-gradient(circle at 30% 20%, rgba(235, 220, 175, 0.25), rgba(200, 180, 120, 0.1)),
+      background: radial-gradient(circle at 30% 20%, rgba(235, 220, 175, 0.2), rgba(200, 180, 120, 0.08)),
                   linear-gradient(135deg, #fef8e8 0%, #faf0dc 40%, #f5e9d0 100%);
       background-blend-mode: overlay;
       box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #f3e2b0, inset 0 0 0 6px #e9d6a0;
-      border-radius: 12px 56px 12px 56px;
-      padding: 2.8rem 1.5rem 2.8rem 1.5rem;
+      border-radius: 16px 64px 16px 64px;
+      padding: 3rem 2rem;
       position: relative;
       border: 1px solid #e2c288;
       overflow-y: auto;
       overflow-x: hidden;
+      min-height: 95vh;
+      max-height: none;
     }
 
     .scroll-container::-webkit-scrollbar {
-      width: 8px;
+      width: 10px;
     }
     .scroll-container::-webkit-scrollbar-track {
       background: #2c2824;
@@ -49,124 +50,136 @@
       background: linear-gradient(180deg, #d4af37, #9e7b3a);
       border-radius: 10px;
     }
+    .scroll-container::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #e5c665, #b8860b);
+    }
 
     .vertical-text {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      font-size: 1.85rem;
-      line-height: 2.7rem;
-      letter-spacing: 0.1em;
-      color: #b8943c;
-      text-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 0 3px rgba(212, 175, 55, 0.6);
+      font-size: 3.2rem;
+      line-height: 4.6rem;
+      letter-spacing: 0.12em;
+      color: #c7a44a;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.1), 0 0 8px rgba(212, 175, 55, 0.5);
       width: 100%;
       display: block;
     }
 
     .passage {
-      background: rgba(200, 180, 130, 0.1);
-      border-radius: 24px 8px 24px 8px;
-      padding: 1.2rem 1rem;
-      margin: 0.8rem 0;
-      border-left: 2px solid rgba(212, 175, 55, 0.7);
-      border-right: 1px solid rgba(192, 192, 192, 0.35);
-      backdrop-filter: blur(2px);
-      transition: all 0.2s;
-    }
-
-    .passage:first-child {
-      margin-top: 0;
-    }
-
-    .passage:last-child {
-      margin-bottom: 0;
+      background: rgba(200, 180, 130, 0.08);
+      border-radius: 28px 10px 28px 10px;
+      padding: 1.6rem 1.2rem;
+      margin: 0.4rem 0;
+      border-left: 3px solid rgba(212, 175, 55, 0.7);
+      border-right: 1px solid rgba(192, 192, 192, 0.3);
+      backdrop-filter: blur(1px);
     }
 
     .vertical-text::first-letter {
       font-weight: 900;
       color: #f5d470;
-      text-shadow: 0 0 6px #ffdf8c, 0 0 1px #c9a03d;
-      font-size: 1.25em;
+      text-shadow: 0 0 8px #ffdf8c, 0 0 2px #c9a03d;
+      font-size: 1.2em;
+    }
+
+    .ornament-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem 0 0.8rem 0;
+      padding: 0.3rem 0;
+    }
+
+    .ornament-svg {
+      filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.6));
+      transition: all 0.2s ease;
+    }
+
+    .ornament-svg:hover {
+      filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.9));
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 900px) {
+      .vertical-text {
+        font-size: 2.2rem;
+        line-height: 3.2rem;
+      }
+      .scroll-container {
+        padding: 2rem 1.2rem;
+      }
+      .passage {
+        padding: 1rem 0.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .vertical-text {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
+        letter-spacing: 0.06em;
+      }
+      .scroll-container {
+        padding: 1.5rem 0.8rem;
+      }
+      .passage {
+        padding: 0.7rem 0.6rem;
+        margin: 0.3rem 0;
+      }
+      .ornament-divider {
+        margin: 0.6rem 0 0.5rem 0;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .vertical-text {
+        font-size: 3.8rem;
+        line-height: 5.2rem;
+      }
+      .scroll-container {
+        padding: 3.5rem 2.5rem;
+      }
+      .passage {
+        padding: 1.8rem 1.5rem;
+      }
     }
 
     .scroll-container::before {
       content: "";
       position: sticky;
-      top: -8px;
+      top: -10px;
       left: 0;
       width: 100%;
       height: 3px;
       background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #e8d28a, #d4af37, transparent);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       display: block;
       border-radius: 3px;
-      box-shadow: 0 0 4px gold;
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
     }
 
     .scroll-container::after {
       content: "";
       position: sticky;
-      bottom: -8px;
+      bottom: -10px;
       left: 0;
       width: 100%;
       height: 3px;
       background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #e8d28a, #d4af37, transparent);
-      margin-top: 15px;
+      margin-top: 20px;
       display: block;
       border-radius: 3px;
-      box-shadow: 0 0 4px gold;
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.8);
     }
 
-    @media (max-width: 760px) {
-      .vertical-text {
-        font-size: 1.35rem;
-        line-height: 2rem;
-      }
-      .scroll-container {
-        padding: 1.8rem 1rem;
-        height: 80vh;
-      }
-      .passage {
-        padding: 0.8rem 0.7rem;
-        margin: 0.5rem 0;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .vertical-text {
-        font-size: 1.1rem;
-        line-height: 1.65rem;
-        letter-spacing: 0.05em;
-      }
-      .scroll-container {
-        padding: 1.2rem 0.8rem;
-      }
-      .passage {
-        padding: 0.6rem 0.5rem;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .vertical-text {
-        font-size: 2.2rem;
-        line-height: 3.1rem;
-      }
-      .scroll-container {
-        max-width: 1100px;
-        padding: 3rem 1.8rem;
-      }
-      .passage {
-        padding: 1.4rem 1.2rem;
-        margin: 1rem 0;
-      }
-    }
-
-    @keyframes subtleGlow {
-      0% { text-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 0 2px rgba(212,175,55,0.4); }
-      100% { text-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 0 5px rgba(212,175,55,0.7); }
+    @keyframes softGlow {
+      0% { text-shadow: 0 2px 3px rgba(0,0,0,0.1), 0 0 4px rgba(212,175,55,0.4); }
+      100% { text-shadow: 0 2px 3px rgba(0,0,0,0.1), 0 0 12px rgba(212,175,55,0.7); }
     }
 
     .vertical-text {
-      animation: subtleGlow 3s infinite alternate;
+      animation: softGlow 3s infinite alternate;
     }
   </style>
 </head>
@@ -197,6 +210,82 @@
                 .replace(/[\.\,\!\?\:\;\"\'\(\)\[\]\{\}\<\>\*\&\^\%\$\#\@\~\`\\\/\|]/g, '');
   }
 
+  function createOrnamentSvg(variant) {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("class", "ornament-svg");
+    svg.setAttribute("width", "100");
+    svg.setAttribute("height", "24");
+    svg.setAttribute("viewBox", "0 0 100 24");
+    svg.setAttribute("fill", "none");
+    
+    if (variant % 2 === 0) {
+      const line1 = document.createElementNS(svgNS, "path");
+      line1.setAttribute("d", "M8 12 L20 6 L32 12 L20 18 L8 12Z");
+      line1.setAttribute("fill", "#D4AF37");
+      line1.setAttribute("stroke", "#B8860B");
+      line1.setAttribute("stroke-width", "0.6");
+      line1.setAttribute("opacity", "0.85");
+      
+      const line2 = document.createElementNS(svgNS, "path");
+      line2.setAttribute("d", "M40 12 L52 6 L64 12 L52 18 L40 12Z");
+      line2.setAttribute("fill", "#D4AF37");
+      line2.setAttribute("stroke", "#B8860B");
+      line2.setAttribute("stroke-width", "0.6");
+      line2.setAttribute("opacity", "0.85");
+      
+      const circle = document.createElementNS(svgNS, "circle");
+      circle.setAttribute("cx", "82");
+      circle.setAttribute("cy", "12");
+      circle.setAttribute("r", "5");
+      circle.setAttribute("fill", "#E8C87A");
+      circle.setAttribute("stroke", "#B8860B");
+      circle.setAttribute("stroke-width", "0.7");
+      
+      const innerCircle = document.createElementNS(svgNS, "circle");
+      innerCircle.setAttribute("cx", "82");
+      innerCircle.setAttribute("cy", "12");
+      innerCircle.setAttribute("r", "2");
+      innerCircle.setAttribute("fill", "#C9A03D");
+      
+      svg.appendChild(line1);
+      svg.appendChild(line2);
+      svg.appendChild(circle);
+      svg.appendChild(innerCircle);
+    } else {
+      const diamond = document.createElementNS(svgNS, "polygon");
+      diamond.setAttribute("points", "18,4 26,12 18,20 10,12");
+      diamond.setAttribute("fill", "#C9A44A");
+      diamond.setAttribute("stroke", "#A67C2E");
+      diamond.setAttribute("stroke-width", "0.6");
+      
+      const diamond2 = document.createElementNS(svgNS, "polygon");
+      diamond2.setAttribute("points", "50,6 56,12 50,18 44,12");
+      diamond2.setAttribute("fill", "#D8B45C");
+      diamond2.setAttribute("stroke", "#9E7535");
+      diamond2.setAttribute("stroke-width", "0.6");
+      
+      const curve = document.createElementNS(svgNS, "path");
+      curve.setAttribute("d", "M74 12 C78 8, 86 8, 90 12 C86 16, 78 16, 74 12Z");
+      curve.setAttribute("fill", "#E8C060");
+      curve.setAttribute("stroke", "#B8860B");
+      curve.setAttribute("stroke-width", "0.5");
+      
+      const dot = document.createElementNS(svgNS, "circle");
+      dot.setAttribute("cx", "82");
+      dot.setAttribute("cy", "12");
+      dot.setAttribute("r", "2.5");
+      dot.setAttribute("fill", "#F0D878");
+      
+      svg.appendChild(diamond);
+      svg.appendChild(diamond2);
+      svg.appendChild(curve);
+      svg.appendChild(dot);
+    }
+    
+    return svg;
+  }
+
   function buildVerticalStory() {
     const container = document.getElementById('verticalContent');
     if (!container) return;
@@ -212,6 +301,14 @@
       passageDiv.className = 'passage';
       passageDiv.innerText = paragraphText;
       container.appendChild(passageDiv);
+      
+      if (i !== cleanedParagraphs.length - 1) {
+        const ornamentWrapper = document.createElement('div');
+        ornamentWrapper.className = 'ornament-divider';
+        const svgOrnament = createOrnamentSvg(i);
+        ornamentWrapper.appendChild(svgOrnament);
+        container.appendChild(ornamentWrapper);
+      }
     }
   }
   
