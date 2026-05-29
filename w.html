@@ -12,135 +12,136 @@
     }
 
     body {
-      background: linear-gradient(145deg, #1a1715 0%, #2c2824 100%);
+      background: linear-gradient(145deg, #12100e 0%, #2a2520 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Noto Serif SC', '华文楷书', 'Microsoft YaHei', 'STKaiti', 'KaiTi', serif;
-      padding: 2rem 1.5rem;
+      padding: 2rem;
     }
 
     .scroll-container {
-      max-width: 95vw;
+      max-width: 1000px;
       width: 100%;
-      background: linear-gradient(135deg, #fef9e6 0%, #fcf3dc 100%);
-      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.5), inset 0 0 0 2px #f3e2b0, inset 0 0 0 6px #e9d6a0;
-      border-radius: 4px 48px 4px 48px;
-      padding: 2rem 1rem 2rem 1rem;
-      transition: all 0.2s;
+      height: 85vh;
+      background: linear-gradient(135deg, #fdf8ed 0%, #faf0dc 100%);
+      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.6), inset 0 0 0 2px #f3e2b0, inset 0 0 0 6px #e9d6a0;
+      border-radius: 12px 56px 12px 56px;
+      padding: 1.8rem 1.2rem;
       position: relative;
-      border: 1px solid #dbb87c;
-      display: flex;
-      justify-content: center;
+      border: 1px solid #e2c288;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
-    .scroll-container::before {
-      content: "";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      pointer-events: none;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 4px 42px 4px 42px;
+    .scroll-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .scroll-container::-webkit-scrollbar-track {
+      background: #2c2824;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #d4af37, #9e7b3a);
+      border-radius: 10px;
     }
 
     .vertical-text {
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      text-align: justify;
-      word-break: keep-all;
-      white-space: normal;
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+      letter-spacing: 0.08em;
+      color: #c7a84b;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.05), 0 0 2px rgba(212, 175, 55, 0.5);
       width: 100%;
-      height: auto;
-      overflow: visible;
-      background: linear-gradient(135deg, #2c2b26 0%, #3a3730 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: #d4af37;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 0 4px rgba(212, 175, 55, 0.3);
       display: block;
-      max-height: none;
-      column-gap: 1.2rem;
-      text-indent: 0em;
-      overflow-y: visible;
-      overflow-x: visible;
     }
 
     .passage {
-      background: rgba(30, 27, 22, 0.08);
-      border-radius: 24px 6px 24px 6px;
-      padding: 1rem 0.8rem;
-      margin: 0.4rem 0;
-      width: 100%;
-      display: block;
-      border-left: 2px solid rgba(212, 175, 55, 0.5);
-      border-right: 2px solid rgba(192, 192, 192, 0.4);
-      backdrop-filter: blur(1px);
+      background: rgba(160, 140, 100, 0.08);
+      border-radius: 20px 6px 20px 6px;
+      padding: 1rem 0.9rem;
+      margin: 0.6rem 0;
+      border-left: 2px solid rgba(212, 175, 55, 0.6);
+      border-right: 1px solid rgba(192, 192, 192, 0.3);
+      transition: all 0.2s;
+    }
+
+    .passage:first-child {
+      margin-top: 0;
+    }
+
+    .passage:last-child {
+      margin-bottom: 0;
     }
 
     .vertical-text::first-letter {
       font-weight: 900;
-      color: #e5c665;
-      text-shadow: 0 0 6px #ffd966, 0 0 1px #b8860b;
+      color: #f5d470;
+      text-shadow: 0 0 4px #ffdf8c;
+      font-size: 1.2em;
     }
 
-    .scroll-container {
-      position: relative;
-    }
-    .scroll-container::after {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      right: 20px;
-      width: 60px;
-      height: 24px;
-      background: radial-gradient(ellipse at center, #d4af37 10%, #a67c2e 70%);
-      border-radius: 50%;
-      opacity: 0.4;
-      pointer-events: none;
-      filter: blur(1px);
-    }
     .scroll-container::before {
       content: "";
-      position: absolute;
-      top: -6px;
-      left: 20px;
-      width: 60px;
-      height: 24px;
-      background: radial-gradient(ellipse at center, #e0c374 15%, #b8860b 75%);
-      border-radius: 50%;
-      opacity: 0.45;
-      pointer-events: none;
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #d4af37, transparent);
+      margin-bottom: 10px;
+      display: block;
     }
 
-    .passage {
-      margin-bottom: 0.6rem;
-      break-inside: avoid;
-      word-break: break-word;
-      box-shadow: inset 0 1px 3px rgba(255,215,0,0.1), 0 1px 2px rgba(0,0,0,0.02);
+    .scroll-container::after {
+      content: "";
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4af37, #f5e2b0, #d4af37, transparent);
+      margin-top: 10px;
+      display: block;
     }
 
-    ::-webkit-scrollbar {
-      width: 10px;
-      background: #2a2724;
-    }
-    ::-webkit-scrollbar-track {
-      background: #24201c;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #d4af37, #b49450);
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #e5c665, #c9a03d);
+    @media (max-width: 760px) {
+      .vertical-text {
+        font-size: 1.3rem;
+        line-height: 2rem;
+      }
+      .scroll-container {
+        padding: 1rem 0.8rem;
+        height: 80vh;
+      }
+      .passage {
+        padding: 0.6rem 0.6rem;
+      }
     }
 
-    html {
-      scroll-behavior: smooth;
+    @media (max-width: 560px) {
+      .vertical-text {
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .vertical-text {
+        font-size: 2.2rem;
+        line-height: 3rem;
+      }
+      .scroll-container {
+        max-width: 1100px;
+      }
+    }
+
+    .ornament-gold {
+      background: radial-gradient(circle at 30% 20%, rgba(212,175,55,0.2), transparent 70%);
     }
   </style>
 </head>
@@ -165,7 +166,8 @@
   ];
 
   function removeAllPunctuation(text) {
-    return text.replace(/[\p{P}\p{S}]/gu, '').replace(/[·～—…]/g, '')
+    return text.replace(/[\p{P}\p{S}]/gu, '')
+                .replace(/[·～—…]/g, '')
                 .replace(/[、。，！？；：“”‘’《》【】（）]/g, '')
                 .replace(/[\.\,\!\?\:\;\"\'\(\)\[\]\{\}\<\>\*\&\^\%\$\#\@\~\`\\\/\|]/g, '');
   }
@@ -190,134 +192,6 @@
   
   document.title = "四女巫和一巫师";
   buildVerticalStory();
-
-  (function adjustFontSizeToFit() {
-    const container = document.querySelector('.scroll-container');
-    const textContainer = document.getElementById('verticalContent');
-    if (!container || !textContainer) return;
-    
-    const baseFontSize = 2.8;
-    const minFontSize = 1.2;
-    let currentFontSize = baseFontSize;
-    
-    textContainer.style.fontSize = currentFontSize + 'rem';
-    textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-    
-    let needsAdjustment = false;
-    let scrollHeight = textContainer.scrollHeight;
-    let containerHeight = container.clientHeight;
-    
-    if (scrollHeight > containerHeight * 1.05) {
-      needsAdjustment = true;
-      while (scrollHeight > containerHeight * 0.98 && currentFontSize > minFontSize) {
-        currentFontSize -= 0.08;
-        textContainer.style.fontSize = currentFontSize + 'rem';
-        textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-        scrollHeight = textContainer.scrollHeight;
-        containerHeight = container.clientHeight;
-        if (currentFontSize <= minFontSize) break;
-      }
-    } else if (scrollHeight < containerHeight * 0.7 && currentFontSize < 3.8) {
-      while (scrollHeight < containerHeight * 0.8 && currentFontSize < 3.8) {
-        currentFontSize += 0.1;
-        textContainer.style.fontSize = currentFontSize + 'rem';
-        textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-        scrollHeight = textContainer.scrollHeight;
-        containerHeight = container.clientHeight;
-        if (scrollHeight > containerHeight * 0.9) break;
-        if (currentFontSize >= 3.8) break;
-      }
-    }
-    
-    if (!needsAdjustment && currentFontSize > baseFontSize + 0.2) {
-      let finalCheck = textContainer.scrollHeight;
-      let contH = container.clientHeight;
-      if (finalCheck > contH * 0.98) {
-        while (finalCheck > contH * 0.96 && currentFontSize > minFontSize) {
-          currentFontSize -= 0.05;
-          textContainer.style.fontSize = currentFontSize + 'rem';
-          textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-          finalCheck = textContainer.scrollHeight;
-          contH = container.clientHeight;
-          if (currentFontSize <= minFontSize) break;
-        }
-      }
-    }
-    
-    const passageElements = document.querySelectorAll('.passage');
-    if (passageElements.length > 0) {
-      let paddingVal = Math.max(0.6, Math.min(1.2, currentFontSize * 0.28));
-      for (let el of passageElements) {
-        el.style.paddingTop = paddingVal + 'rem';
-        el.style.paddingBottom = paddingVal + 'rem';
-        el.style.paddingLeft = (paddingVal * 0.7) + 'rem';
-        el.style.paddingRight = (paddingVal * 0.7) + 'rem';
-        el.style.marginTop = (paddingVal * 0.4) + 'rem';
-        el.style.marginBottom = (paddingVal * 0.4) + 'rem';
-      }
-    }
-    
-    if (currentFontSize <= 1.4) {
-      textContainer.style.letterSpacing = '0.02em';
-    } else if (currentFontSize >= 2.2) {
-      textContainer.style.letterSpacing = '0.08em';
-    } else {
-      textContainer.style.letterSpacing = '0.05em';
-    }
-  })();
-
-  window.addEventListener('resize', function() {
-    setTimeout(function() {
-      (function adjustFontSizeToFit() {
-        const container = document.querySelector('.scroll-container');
-        const textContainer = document.getElementById('verticalContent');
-        if (!container || !textContainer) return;
-        
-        let currentFontSize = parseFloat(textContainer.style.fontSize) || 2.2;
-        const minFontSize = 1.2;
-        
-        textContainer.style.fontSize = currentFontSize + 'rem';
-        textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-        
-        let scrollHeight = textContainer.scrollHeight;
-        let containerHeight = container.clientHeight;
-        
-        if (scrollHeight > containerHeight * 0.98) {
-          while (scrollHeight > containerHeight * 0.96 && currentFontSize > minFontSize) {
-            currentFontSize -= 0.06;
-            textContainer.style.fontSize = currentFontSize + 'rem';
-            textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-            scrollHeight = textContainer.scrollHeight;
-            containerHeight = container.clientHeight;
-            if (currentFontSize <= minFontSize) break;
-          }
-        } else if (scrollHeight < containerHeight * 0.7 && currentFontSize < 3.5) {
-          while (scrollHeight < containerHeight * 0.8 && currentFontSize < 3.5) {
-            currentFontSize += 0.08;
-            textContainer.style.fontSize = currentFontSize + 'rem';
-            textContainer.style.lineHeight = (currentFontSize * 1.45) + 'rem';
-            scrollHeight = textContainer.scrollHeight;
-            containerHeight = container.clientHeight;
-            if (scrollHeight > containerHeight * 0.9) break;
-            if (currentFontSize >= 3.5) break;
-          }
-        }
-        
-        const passageElements = document.querySelectorAll('.passage');
-        if (passageElements.length > 0) {
-          let paddingVal = Math.max(0.6, Math.min(1.1, currentFontSize * 0.28));
-          for (let el of passageElements) {
-            el.style.paddingTop = paddingVal + 'rem';
-            el.style.paddingBottom = paddingVal + 'rem';
-            el.style.paddingLeft = (paddingVal * 0.7) + 'rem';
-            el.style.paddingRight = (paddingVal * 0.7) + 'rem';
-            el.style.marginTop = (paddingVal * 0.4) + 'rem';
-            el.style.marginBottom = (paddingVal * 0.4) + 'rem';
-          }
-        }
-      })();
-    }, 50);
-  });
 </script>
 </body>
 </html>
