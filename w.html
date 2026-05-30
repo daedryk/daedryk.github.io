@@ -1,102 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<title>四女巫和一巫师</title>
-<style>
-.vertical-columns {
-    display: grid;
-    grid-template-columns: repeat(17, auto);
-    gap: 32px;
-    justify-content: center;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>四女巫和一巫师</title>
+    <style>
+        .vertical-columns {
+            display: grid;
+            grid-template-columns: repeat(17, auto);
+            gap: 32px;
+            justify-content: center;
+            overflow-x: auto;
+            padding-bottom: 2rem;
+        }
 
-.column {
-    writing-mode: vertical-rl;
-    height: 4096px;
-    text-align: left;
-    font-size: 56px;
-    background-color: rgba(0,255,255,0.1);
-}
-</style>
+        .column {
+            writing-mode: vertical-rl;
+            height: 4096px;
+            text-align: left;
+            font-size: 56px;
+            background-color: rgba(0,255,255,0.1);
+            text-orientation: mixed;
+            white-space: pre-wrap;
+            font-family: "KaiTi", "华文楷书", "Microsoft YaHei", serif;
+            line-height: 1.2;
+            padding: 8px 4px;
+            border-radius: 24px;
+            backdrop-filter: blur(1px);
+        }
+
+        .enchantment-player {
+            background: rgba(10, 8, 20, 0.68);
+            backdrop-filter: blur(18px);
+            border-radius: 3rem;
+            padding: 1.5rem 2rem 1.8rem 2rem;
+            margin: 1.8rem auto;
+            max-width: 700px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 215, 0, 0.3) inset;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            transition: all 0.2s;
+        }
+
+        .player-track {
+            text-align: center;
+            margin-bottom: 1.4rem;
+        }
+
+        .player-track .song-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFE6B0, #FFB347, #FFD966);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.3);
+        }
+
+        .player-track .song-artist {
+            color: #FFDD99;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .player-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 1.8rem 0 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-56 {
+            background: #1f1b2e;
+            border: none;
+            cursor: pointer;
+            width: 56px;
+            height: 56px;
+            border-radius: 56px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 14px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 235, 140, 0.2) inset;
+            background: radial-gradient(circle at 35% 30%, #2e2745, #191326);
+        }
+
+        .ctrl-56:hover {
+            transform: scale(1.07);
+            background: radial-gradient(circle at 35% 30%, #4a3a6e, #261f3a);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6), 0 0 0 1px #ffd96655 inset;
+        }
+
+        .ctrl-56:active {
+            transform: scale(0.94);
+        }
+
+        .ctrl-56.primary-glow {
+            background: radial-gradient(circle at 40% 35%, #b37b2e, #6b3e12);
+            box-shadow: 0 0 12px rgba(255, 200, 100, 0.6), 0 5px 12px black;
+        }
+
+        .ctrl-56.primary-glow:hover {
+            background: radial-gradient(circle at 40% 35%, #da9e4a, #8c541c);
+            box-shadow: 0 0 18px #ffcd7e;
+        }
+
+        .ctrl-56 svg {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
+        }
+
+        .ctrl-56 svg path, 
+        .ctrl-56 svg polygon, 
+        .ctrl-56 svg rect, 
+        .ctrl-56 svg line {
+            stroke: #FFE6B0;
+            stroke-width: 1.8;
+            fill: #FFE6B0;
+        }
+
+        .progress-section {
+            margin: 0.8rem 0 1rem;
+        }
+
+        .time-indicator {
+            display: flex;
+            justify-content: space-between;
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #FFF0C0;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        input.progress-slider {
+            width: 100%;
+            height: 5px;
+            -webkit-appearance: none;
+            background: #3a2e44;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        input.progress-slider:focus {
+            outline: none;
+        }
+
+        input.progress-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #FFCC66;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #FFD966;
+            border: none;
+            cursor: pointer;
+        }
+
+        .volume-holder {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+            margin-top: 0.9rem;
+        }
+
+        .volume-icon-svg svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        .volume-icon-svg svg path {
+            fill: #FFDBA5;
+            stroke: none;
+        }
+
+        input.volume-range {
+            flex: 1;
+            height: 4px;
+            -webkit-appearance: none;
+            background: #4a3b5a;
+            border-radius: 10px;
+        }
+
+        input.volume-range::-webkit-slider-thumb {
+            width: 12px;
+            height: 12px;
+            background: #FFDEAD;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .player-status {
+            font-size: 0.68rem;
+            text-align: center;
+            margin-top: 1rem;
+            color: #ddbb77;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        body {
+            background-color: #8B0000;
+            margin: 0;
+            padding: 20px 16px 40px 16px;
+            font-family: "KaiTi", "华文楷书", "Segoe UI", system-ui;
+        }
+
+        body, .column, .player-status, .time-indicator {
+            color: #FFD966;
+        }
+
+        .column span {
+            font-weight: 500;
+        }
+
+        @media (max-width: 950px) {
+            .vertical-columns {
+                gap: 16px;
+            }
+            .column {
+                font-size: 42px;
+                height: 3800px;
+            }
+        }
+        @media (max-width: 700px) {
+            .enchantment-player {
+                padding: 1rem;
+            }
+            .ctrl-56 {
+                width: 56px;
+                height: 56px;
+            }
+            .player-buttons {
+                gap: 1.2rem;
+            }
+        }
+    </style>
 </head>
+<body text="gold">
 
-<body bgcolor="red" text="gold">
+<div class="enchantment-player">
+    <div class="player-track">
+        <div class="song-name" id="magicSongTitle">🌙 蓝阳 · 灵风序曲</div>
+        <div class="song-artist" id="magicArtistName">四女巫与巫师 · 古韵合鸣</div>
+    </div>
 
-<p align="center">
-    <audio controls preload="metadata" src="blue_sun.m4a">
-        Your browser does not support the audio element.
-        <source src="blue_sun.m4a" type="audio/mp4">
-    </audio>
-</p>
+    <div class="player-buttons">
+        <button class="ctrl-56" id="btnPrev" aria-label="上一章律动">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="19 20 9 12 19 4 19 20" />
+                <line x1="5" y1="19" x2="5" y2="5" />
+            </svg>
+        </button>
+        <button class="ctrl-56 primary-glow" id="btnPlayPause" aria-label="聆听/静默">
+            <svg id="playSvgIcon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            <svg id="pauseSvgIcon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" style="display: none;">
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+            </svg>
+        </button>
+        <button class="ctrl-56" id="btnNext" aria-label="下一章幻律">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 4 15 12 5 20 5 4" />
+                <line x1="19" y1="5" x2="19" y2="19" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="progress-section">
+        <div class="time-indicator">
+            <span id="currentTimeText">0:00</span>
+            <span id="durationTimeText">0:00</span>
+        </div>
+        <input type="range" class="progress-slider" id="seekSlider" value="0" step="0.01" aria-label="探索音律">
+    </div>
+
+    <div class="volume-holder">
+        <div class="volume-icon-svg">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M3 9 L3 15 L7 15 L12 20 L12 4 L7 9 Z" stroke="#FFD966" fill="#FFD966" />
+                <path d="M16.5 8.5 C18 10 18 14 16.5 15.5" stroke="#FFD966" fill="none" stroke-linecap="round"/>
+                <path d="M19.5 5.5 C22.5 8.5 22.5 15.5 19.5 18.5" stroke="#FFD966" fill="none" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <input type="range" id="volumeControl" class="volume-range" min="0" max="1" step="0.01" value="0.7" aria-label="灵音量">
+    </div>
+    <div class="player-status" id="playerStateMsg">🎵 女巫的旋律 · 静待启奏 🎵</div>
+</div>
 
 <div class="vertical-columns">
-
-<div class="column">
-<span style="color: #00008B;">水</span>
+    <div class="column"><span style="color: #00008B;">水</span></div>
+    <div class="column"><span style="color: #008000;">木</span></div>
+    <div class="column"><span style="color: #FF0000;">火</span></div>
+    <div class="column"><span style="color: #FFD700;">土</span></div>
+    <div class="column"><span style="color: #FFFFFF;">金</span></div>
+    <div class="column"><span style="color: black">四女巫和一巫师</span></div>
+    <div class="column">从前在中国古代有四位强大的女巫生活在神秘的森林深处每位女巫都拥有由大自然之灵赋予的独特能力</div>
+    <div class="column">第一位是梅灵风之女巫她的呼吸可以唤起狂风暴雨也能轻轻吹起和风第二位是灵灵火之女巫她可以用手指点燃火焰并使其顺从自己的命令</div>
+    <div class="column">然后是华丽土之女巫她可以使大地震颤也能在触摸间让生命蓬勃茂盛最后是纯丽水之女巫她的眼泪可以治愈病痛她的笑声可以淹没整个村庄</div>
+    <div class="column">有一天一位名叫魏的谦卑巫师踏上了寻找一位失踪的公主的任务传说中这位公主美丽善良她的消失使王国陷入绝望</div>
+    <div class="column">魏怀着责任和荣誉感前往寻找四位女巫知道她们的力量可以帮助他怀着决心他踏入了女巫所在的神奇森林深处</div>
+    <div class="column">在与女巫相遇后魏谦卑地请求她们的帮助被他的诚意和决心所感动女巫们同意帮助他梅灵利用她的风扫荡整个土地搜索每一个角落希望找到失踪的公主的任何线索</div>
+    <div class="column">灵灵召唤火焰照亮王国最黑暗的角落希望发现任何可能导致公主失踪的线索华丽借助大地揭示其秘密利用她的力量感知由公主失踪引起的土地扰动</div>
+    <div class="column">而纯丽以她无尽的善心利用水来净化和净化希望为他们的搜寻带来清晰</div>
+    <div class="column">五位同伴共同踏上了充满危险和不确定性的旅程经过危险的森林和险恶的山脉他们坚持不懈彼此之间的联系日渐加强</div>
+    <div class="column">最终在经过数日不懈的搜寻后他们发现了公主她被一位邪恶的巫师困在了一座塔中他们凭借自己的力量和魔法击败了巫师解救了公主将她安全地送回了王国</div>
+    <div class="column">公主对他们的勇敢和善良心怀感激并承诺永远的友谊于是四位女巫和巫师返回了家园他们的心灵充满了喜悦精神也因为他们的崇高使命而得到了提升</div>
 </div>
 
-<div class="column">
-<span style="color: #008000;">木</span>
-</div>
+<script>
+    const mysticalTracks = [
+        {
+            title: "🌙 蓝阳 · 灵风序曲",
+            artist: "四女巫与巫师 · 古韵合鸣",
+            src: "blue_sun.m4a"
+        },
+        {
+            title: "🔥 火之低语",
+            artist: "灵灵 · 烈焰心弦",
+            src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"
+        },
+        {
+            title: "💧 水镜祈愿",
+            artist: "纯丽 · 泪珠灵韵",
+            src: "https://cdn.pixabay.com/download/audio/2022/03/10/audio_c6c8f6f6c7.mp3?filename=ethereal-ambient-114764.mp3"
+        }
+    ];
 
-<div class="column">
-<span style="color: #FF0000;">火</span>
-</div>
+    let currentTrackIdx = 0;
+    let audioObj = new Audio();
+    let isMusicPlaying = false;
 
-<div class="column">
-<span style="color: #FFD700;">土</span>
-</div>
+    const playPauseButton = document.getElementById('btnPlayPause');
+    const prevButton = document.getElementById('btnPrev');
+    const nextButton = document.getElementById('btnNext');
+    const seekSlider = document.getElementById('seekSlider');
+    const volumeSlider = document.getElementById('volumeControl');
+    const currentSpan = document.getElementById('currentTimeText');
+    const durationSpan = document.getElementById('durationTimeText');
+    const songTitleElem = document.getElementById('magicSongTitle');
+    const artistElem = document.getElementById('magicArtistName');
+    const statusMsgSpan = document.getElementById('playerStateMsg');
+    const playIconElem = document.getElementById('playSvgIcon');
+    const pauseIconElem = document.getElementById('pauseSvgIcon');
 
-<div class="column">
-<span style="color: #FFFFFF;">金</span>
-</div>
+    function formatTimeMinutes(secondsRaw) {
+        if (isNaN(secondsRaw) || secondsRaw === Infinity) return "0:00";
+        const mins = Math.floor(secondsRaw / 60);
+        const secs = Math.floor(secondsRaw % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
 
-<div class="column">
-<span style="color: black">四女巫和一巫师</span>
-</div>
+    function updatePlayPauseVisuals() {
+        if (isMusicPlaying) {
+            playIconElem.style.display = 'none';
+            pauseIconElem.style.display = 'inline-block';
+        } else {
+            playIconElem.style.display = 'inline-block';
+            pauseIconElem.style.display = 'none';
+        }
+    }
 
-<div class="column">
-从前在中国古代有四位强大的女巫生活在神秘的森林深处每位女巫都拥有由大自然之灵赋予的独特能力
-</div>
+    function loadTrackByIndex(index) {
+        const trackData = mysticalTracks[index];
+        if (!trackData) return;
+        const wasPlaying = isMusicPlaying;
+        if (isMusicPlaying) {
+            audioObj.pause();
+            isMusicPlaying = false;
+            updatePlayPauseVisuals();
+        }
+        audioObj.src = trackData.src;
+        audioObj.load();
+        songTitleElem.innerText = trackData.title;
+        artistElem.innerText = trackData.artist;
+        seekSlider.value = 0;
+        currentSpan.innerText = "0:00";
+        durationSpan.innerText = "0:00";
+        statusMsgSpan.innerText = `🎼 载入灵韵 · ${trackData.title}`;
 
-<div class="column">
-第一位是梅灵风之女巫她的呼吸可以唤起狂风暴雨也能轻轻吹起和风第二位是灵灵火之女巫她可以用手指点燃火焰并使其顺从自己的命令
-</div>
+        audioObj.onerror = () => {
+            if (currentTrackIdx === 0 && mysticalTracks.length > 1) {
+                statusMsgSpan.innerText = "✨ 蓝阳未寻，召唤火水之韵 ✨";
+                currentTrackIdx = 1;
+                loadTrackByIndex(currentTrackIdx);
+            } else if (currentTrackIdx === 0 && mysticalTracks.length === 1) {
+                statusMsgSpan.innerText = "⚠️ 未找到音频，但仍可操作元素 ⚠️";
+            }
+        };
 
-<div class="column">
-然后是华丽土之女巫她可以使大地震颤也能在触摸间让生命蓬勃茂盛最后是纯丽水之女巫她的眼泪可以治愈病痛她的笑声可以淹没整个村庄
-</div>
+        if (wasPlaying) {
+            const playPromise = audioObj.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isMusicPlaying = true;
+                    updatePlayPauseVisuals();
+                    statusMsgSpan.innerText = `🎶 缱绻音律 · 聆听${trackData.title}`;
+                }).catch(() => {
+                    isMusicPlaying = false;
+                    updatePlayPauseVisuals();
+                    statusMsgSpan.innerText = "⏸ 轻触播放符，重奏传说";
+                });
+            }
+        }
+    }
 
-<div class="column">
-有一天一位名叫魏的谦卑巫师踏上了寻找一位失踪的公主的任务传说中这位公主美丽善良她的消失使王国陷入绝望
-</div>
+    function playCurrentTrack() {
+        const playPromise = audioObj.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isMusicPlaying = true;
+                updatePlayPauseVisuals();
+                statusMsgSpan.innerText = `🎵 幻音流转 · ${mysticalTracks[currentTrackIdx].title}`;
+            }).catch((err) => {
+                isMusicPlaying = false;
+                updatePlayPauseVisuals();
+                statusMsgSpan.innerText = "🕯️ 点按播放 · 唤醒四女巫和声";
+            });
+        }
+    }
 
-<div class="column">
-魏怀着责任和荣誉感前往寻找四位女巫知道她们的力量可以帮助他怀着决心他踏入了女巫所在的神奇森林深处
-</div>
+    function togglePlayPauseAction() {
+        if (isMusicPlaying) {
+            audioObj.pause();
+            isMusicPlaying = false;
+            updatePlayPauseVisuals();
+            statusMsgSpan.innerText = "⏸ 灵息暂歇 · 卷轴待续";
+        } else {
+            playCurrentTrack();
+        }
+    }
 
-<div class="column">
-在与女巫相遇后魏谦卑地请求她们的帮助被他的诚意和决心所感动女巫们同意帮助他梅灵利用她的风扫荡整个土地搜索每一个角落希望找到失踪的公主的任何线索
-</div>
+    function nextTrackAction() {
+        currentTrackIdx = (currentTrackIdx + 1) % mysticalTracks.length;
+        loadTrackByIndex(currentTrackIdx);
+        if (isMusicPlaying) {
+            setTimeout(() => {
+                audioObj.play().then(() => {
+                    isMusicPlaying = true;
+                    updatePlayPauseVisuals();
+                    statusMsgSpan.innerText = `🎶 流转 · ${mysticalTracks[currentTrackIdx].title}`;
+                }).catch(() => {
+                    isMusicPlaying = false;
+                    updatePlayPauseVisuals();
+                });
+            }, 80);
+        } else {
+            isMusicPlaying = false;
+            updatePlayPauseVisuals();
+        }
+    }
 
-<div class="column">
-灵灵召唤火焰照亮王国最黑暗的角落希望发现任何可能导致公主失踪的线索华丽借助大地揭示其秘密利用她的力量感知由公主失踪引起的土地扰动
-</div>
+    function prevTrackAction() {
+        currentTrackIdx = (currentTrackIdx - 1 + mysticalTracks.length) % mysticalTracks.length;
+        loadTrackByIndex(currentTrackIdx);
+        if (isMusicPlaying) {
+            setTimeout(() => {
+                audioObj.play().then(() => {
+                    isMusicPlaying = true;
+                    updatePlayPauseVisuals();
+                    statusMsgSpan.innerText = `🎶 回溯 · ${mysticalTracks[currentTrackIdx].title}`;
+                }).catch(() => {
+                    isMusicPlaying = false;
+                    updatePlayPauseVisuals();
+                });
+            }, 80);
+        } else {
+            isMusicPlaying = false;
+            updatePlayPauseVisuals();
+        }
+    }
 
-<div class="column">
-而纯丽以她无尽的善心利用水来净化和净化希望为他们的搜寻带来清晰
-</div>
+    function onAudioTimeUpdate() {
+        if (audioObj.duration && !isNaN(audioObj.duration)) {
+            const percent = (audioObj.currentTime / audioObj.duration) * 100;
+            seekSlider.value = percent;
+            currentSpan.innerText = formatTimeMinutes(audioObj.currentTime);
+        } else {
+            currentSpan.innerText = formatTimeMinutes(audioObj.currentTime);
+        }
+    }
 
-<div class="column">
-五位同伴共同踏上了充满危险和不确定性的旅程经过危险的森林和险恶的山脉他们坚持不懈彼此之间的联系日渐加强
-</div>
+    function onAudioLoadedMeta() {
+        if (audioObj.duration && !isNaN(audioObj.duration)) {
+            durationSpan.innerText = formatTimeMinutes(audioObj.duration);
+            seekSlider.max = 100;
+        } else {
+            durationSpan.innerText = "0:00";
+        }
+    }
 
-<div class="column">
-最终在经过数日不懈的搜寻后他们发现了公主她被一位邪恶的巫师困在了一座塔中他们凭借自己的力量和魔法击败了巫师解救了公主将她安全地送回了王国
-</div>
+    function onAudioEnded() {
+        nextTrackAction();
+    }
 
-<div class="column">
-公主对他们的勇敢和善良心怀感激并承诺永远的友谊于是四位女巫和巫师返回了家园他们的心灵充满了喜悦精神也因为他们的崇高使命而得到了提升
-</div>
+    function seekAudioAction(e) {
+        if (audioObj.duration && !isNaN(audioObj.duration)) {
+            const seekTo = (e.target.value / 100) * audioObj.duration;
+            audioObj.currentTime = seekTo;
+            seekSlider.value = e.target.value;
+            currentSpan.innerText = formatTimeMinutes(audioObj.currentTime);
+        }
+    }
 
-</div>
+    function changeVolume(e) {
+        let vol = parseFloat(e.target.value);
+        if (isNaN(vol)) vol = 0.7;
+        audioObj.volume = vol;
+    }
 
+    playPauseButton.addEventListener('click', togglePlayPauseAction);
+    prevButton.addEventListener('click', prevTrackAction);
+    nextButton.addEventListener('click', nextTrackAction);
+    seekSlider.addEventListener('input', seekAudioAction);
+    volumeSlider.addEventListener('input', changeVolume);
+    audioObj.addEventListener('timeupdate', onAudioTimeUpdate);
+    audioObj.addEventListener('loadedmetadata', onAudioLoadedMeta);
+    audioObj.addEventListener('ended', onAudioEnded);
+    audioObj.addEventListener('canplay', () => {
+        if (audioObj.duration) durationSpan.innerText = formatTimeMinutes(audioObj.duration);
+    });
+    
+    audioObj.volume = 0.7;
+    volumeSlider.value = "0.7";
+    currentTrackIdx = 0;
+    loadTrackByIndex(0);
+    isMusicPlaying = false;
+    updatePlayPauseVisuals();
+    statusMsgSpan.innerText = "🍂 四女巫祈音 · 56px 灵键 · 轻启玄律 🍂";
+</script>
 </body>
+</html>
