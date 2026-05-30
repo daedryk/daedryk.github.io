@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>四女巫和一巫师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a1408 0%, #0f0c03 100%);
+            min-height: 100vh;
+            font-family: 'Noto Serif SC', 'Times New Roman', '宋体', 'SimHei', 'STSong', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-x: auto;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .vertical-scroll {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background: transparent;
+            min-height: 90vh;
+            padding: 1rem 2rem 3rem 2rem;
+            box-shadow: none;
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+        }
+
+        .char-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            background: none;
+            border: none;
+            box-shadow: none;
+            font-size: 4.8rem;
+            font-weight: 550;
+            line-height: 1.35;
+            letter-spacing: 0.1em;
+            transition: all 0.15s ease;
+            color: #E9D6A3;
+            text-shadow: 0 0 2px rgba(255,215,0,0.4), 1px 1px 0px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+
+        .char-box:nth-child(odd) {
+            color: #F7E7B4;
+            text-shadow: 0 0 3px #ffd96688, 0 0 1px gold;
+        }
+        .char-box:nth-child(even) {
+            color: #E0E3E9;
+            text-shadow: 0 0 3px #b0c4deaa, 0 0 1px silver;
+        }
+
+        .char-box:first-child {
+            font-size: 6rem;
+            font-weight: 700;
+            color: #F5D742;
+            text-shadow: 0 0 8px #ffb347, 2px 2px 4px #4a3b0e;
+        }
+
+        @media (max-width: 780px) {
+            .char-box {
+                font-size: 3.5rem;
+            }
+            .char-box:first-child {
+                font-size: 4.8rem;
+            }
+            .vertical-scroll {
+                gap: 0.2rem;
+                padding: 1rem 1rem 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .char-box {
+                font-size: 2.8rem;
+            }
+            .char-box:first-child {
+                font-size: 3.6rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 12px;
+            background: #2a2416;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #D4AF37, #C0C0C0);
+            border-radius: 20px;
+            border: 1px solid #3e351c;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1a0e;
+            border-radius: 20px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+        }
+
+        body::after {
+            content: '⇠ 滑动浏览金银长卷 ⇢';
+            position: fixed;
+            bottom: 16px;
+            right: 24px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            color: #EBD88C;
+            padding: 6px 14px;
+            border-radius: 60px;
+            letter-spacing: 1px;
+            pointer-events: none;
+            z-index: 10;
+            font-weight: 400;
+            border-left: 2px solid gold;
+            border-right: 2px solid silver;
+        }
+    </style>
+</head>
+<body>
+<div class="vertical-scroll" id="verticalStoryContainer"></div>
+
+<script>
+    const rawText = `四女巫和一巫师
+从前，在中国古代，有四位强大的女巫生活在神秘的森林深处。每位女巫都拥有由大自然之灵赋予的独特能力。
+
+第一位是梅灵，风之女巫，她的呼吸可以唤起狂风暴雨，也能轻轻吹起和风。第二位是灵灵，火之女巫，她可以用手指点燃火焰，并使其顺从自己的命令。
+
+然后是华丽，土之女巫，她可以使大地震颤，也能在触摸间让生命蓬勃茂盛。最后是纯丽，水之女巫，她的眼泪可以治愈病痛，她的笑声可以淹没整个村庄。
+
+有一天，一位名叫魏的谦卑巫师踏上了寻找一位失踪的公主的任务。传说中，这位公主美丽善良，她的消失使王国陷入绝望。
+
+魏怀着责任和荣誉感，前往寻找四位女巫，知道她们的力量可以帮助他。怀着决心，他踏入了女巫所在的神奇森林深处。
+
+在与女巫相遇后，魏谦卑地请求她们的帮助。被他的诚意和决心所感动，女巫们同意帮助他。梅灵利用她的风扫荡整个土地，搜索每一个角落，希望找到失踪的公主的任何线索。
+
+灵灵召唤火焰照亮王国最黑暗的角落，希望发现任何可能导致公主失踪的线索。华丽借助大地揭示其秘密，利用她的力量感知由公主失踪引起的土地扰动。
+
+而纯丽，以她无尽的善心，利用水来净化和净化，希望为他们的搜寻带来清晰。
+
+五位同伴共同踏上了充满危险和不确定性的旅程。经过危险的森林和险恶的山脉，他们坚持不懈，彼此之间的联系日渐加强。
+
+最终，在经过数日不懈的搜寻后，他们发现了公主，她被一位邪恶的巫师困在了一座塔中。他们凭借自己的力量和魔法，击败了巫师，解救了公主，将她安全地送回了王国。
+
+公主对他们的勇敢和善良心怀感激，并承诺永远的友谊。于是，四位女巫和巫师返回了家园，他们的心灵充满了喜悦，精神也因为他们的崇高使命而得到了提升。`;
+
+    function removePunctuationAndSpaces(str) {
+        const punctuationRegex = /[\u3000\u3001\u3002\uff0c\uff0e\uff1f\uff01\uff1b\uff1a\uff08\uff09\u201c\u201d\u2018\u2019\u3010\u3011\u300a\u300b\u300e\u300f\uff5b\uff5d\uff08\uff09\u00b7\u2026\u25cf~!@#$%^&*()_+`\-=\[\]{};':"\\|,.<>\/?·！￥…（）—【】‘；：”“’。？《》——、]/g;
+        let noPunct = str.replace(punctuationRegex, '');
+        noPunct = noPunct.replace(/[\s\n\r\t]/g, '');
+        return noPunct;
+    }
+
+    const cleanedText = removePunctuationAndSpaces(rawText);
+    const finalCleanText = cleanedText.replace(/[\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~]/g, '');
+    
+    const characters = finalCleanText.split('');
+    
+    const container = document.getElementById('verticalStoryContainer');
+    container.innerHTML = '';
+    
+    for (let i = 0; i < characters.length; i++) {
+        const ch = characters[i];
+        if (!ch || ch.trim() === '' && ch !== ' ') continue;
+        const charDiv = document.createElement('div');
+        charDiv.className = 'char-box';
+        charDiv.textContent = ch;
+        container.appendChild(charDiv);
+    }
+</script>
+</body>
+</html>
