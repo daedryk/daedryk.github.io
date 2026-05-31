@@ -257,12 +257,6 @@
     </div>
 
     <div class="player-buttons">
-        <button class="ctrl-56" id="btnPrev" aria-label="上一章律动">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="19 20 9 12 19 4 19 20" />
-                <line x1="5" y1="19" x2="5" y2="5" />
-            </svg>
-        </button>
         <button class="ctrl-56 primary-glow" id="btnPlayPause" aria-label="聆听/静默">
             <svg id="playSvgIcon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8">
                 <polygon points="5 3 19 12 5 21 5 3" />
@@ -270,12 +264,6 @@
             <svg id="pauseSvgIcon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" style="display: none;">
                 <rect x="6" y="4" width="4" height="16" />
                 <rect x="14" y="4" width="4" height="16" />
-            </svg>
-        </button>
-        <button class="ctrl-56" id="btnNext" aria-label="下一章幻律">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="5 4 15 12 5 20 5 4" />
-                <line x1="19" y1="5" x2="19" y2="19" />
             </svg>
         </button>
     </div>
@@ -298,7 +286,7 @@
         </div>
         <input type="range" id="volumeControl" class="volume-range" min="0" max="1" step="0.01" value="0.7" aria-label="灵音量">
     </div>
-    <div class="player-status" id="playerStateMsg">🎵 女巫的旋律 · 静待启奏 🎵</div>
+    <div class="player-status" id="playerStateMsg">🎵 邪舌之夜 · 静待启奏 🎵</div>
 </div>
 
 <div class="vertical-columns">
@@ -322,31 +310,16 @@
 </div>
 
 <script>
-    const mysticalTracks = [
-        {
-            title: "🌙 蓝阳 · 灵风序曲",
-            artist: "四女巫与巫师 · 古韵合鸣",
-            src: "blue_sun.m4a"
-        },
-        {
-            title: "🔥 火之低语",
-            artist: "灵灵 · 烈焰心弦",
-            src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"
-        },
-        {
-            title: "💧 水镜祈愿",
-            artist: "纯丽 · 泪珠灵韵",
-            src: "https://cdn.pixabay.com/download/audio/2022/03/10/audio_c6c8f6f6c7.mp3?filename=ethereal-ambient-114764.mp3"
-        }
-    ];
+    const PRIMARY_TRACK = {
+        title: "🌙 蓝阳 · 灵风序曲",
+        artist: "四女巫与巫师 · 古韵合鸣",
+        src: "blue_sun.m4a"
+    };
 
-    let currentTrackIdx = 0;
     let audioObj = new Audio();
     let isMusicPlaying = false;
 
     const playPauseButton = document.getElementById('btnPlayPause');
-    const prevButton = document.getElementById('btnPrev');
-    const nextButton = document.getElementById('btnNext');
     const seekSlider = document.getElementById('seekSlider');
     const volumeSlider = document.getElementById('volumeControl');
     const currentSpan = document.getElementById('currentTimeText');
@@ -358,7 +331,7 @@
     const pauseIconElem = document.getElementById('pauseSvgIcon');
 
     function formatTimeMinutes(secondsRaw) {
-        if (isNaN(secondsRaw) || secondsRaw === Infinity) return "0:00";
+        if (isNaN(secondsRaw) || secondsRaw === Infinity || secondsRaw < 0) return "0:00";
         const mins = Math.floor(secondsRaw / 60);
         const secs = Math.floor(secondsRaw % 60);
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
@@ -374,32 +347,25 @@
         }
     }
 
-    function loadTrackByIndex(index) {
-        const trackData = mysticalTracks[index];
-        if (!trackData) return;
+    function loadPrimaryTrack() {
         const wasPlaying = isMusicPlaying;
         if (isMusicPlaying) {
             audioObj.pause();
             isMusicPlaying = false;
             updatePlayPauseVisuals();
         }
-        audioObj.src = trackData.src;
+        audioObj.src = PRIMARY_TRACK.src;
         audioObj.load();
-        songTitleElem.innerText = trackData.title;
-        artistElem.innerText = trackData.artist;
+        songTitleElem.innerText = PRIMARY_TRACK.title;
+        artistElem.innerText = PRIMARY_TRACK.artist;
         seekSlider.value = 0;
         currentSpan.innerText = "0:00";
         durationSpan.innerText = "0:00";
-        statusMsgSpan.innerText = `🎼 载入灵韵 · ${trackData.title}`;
+        statusMsgSpan.innerText = `🎵 邪舌之夜 · 载入灵韵 ${PRIMARY_TRACK.title}`;
 
-        audioObj.onerror = () => {
-            if (currentTrackIdx === 0 && mysticalTracks.length > 1) {
-                statusMsgSpan.innerText = "✨ 蓝阳未寻，召唤火水之韵 ✨";
-                currentTrackIdx = 1;
-                loadTrackByIndex(currentTrackIdx);
-            } else if (currentTrackIdx === 0 && mysticalTracks.length === 1) {
-                statusMsgSpan.innerText = "⚠️ 未找到音频，但仍可操作元素 ⚠️";
-            }
+        audioObj.onerror = (err) => {
+            console.warn("音频加载错误: 无法获取blue_sun.m4a", err);
+            statusMsgSpan.innerText = "⚠️ 邪舌之夜 · 未寻到blue_sun.m4a，仍可尝试播放 ⚠️";
         };
 
         if (wasPlaying) {
@@ -408,11 +374,12 @@
                 playPromise.then(() => {
                     isMusicPlaying = true;
                     updatePlayPauseVisuals();
-                    statusMsgSpan.innerText = `🎶 缱绻音律 · 聆听${trackData.title}`;
-                }).catch(() => {
+                    statusMsgSpan.innerText = `🎶 邪舌之夜 · 聆听${PRIMARY_TRACK.title} 🎶`;
+                }).catch((e) => {
+                    console.log("自动播放被阻止或错误:", e);
                     isMusicPlaying = false;
                     updatePlayPauseVisuals();
-                    statusMsgSpan.innerText = "⏸ 轻触播放符，重奏传说";
+                    statusMsgSpan.innerText = "⏸ 邪舌之夜 · 轻触播放唤醒咒语";
                 });
             }
         }
@@ -424,11 +391,12 @@
             playPromise.then(() => {
                 isMusicPlaying = true;
                 updatePlayPauseVisuals();
-                statusMsgSpan.innerText = `🎵 幻音流转 · ${mysticalTracks[currentTrackIdx].title}`;
+                statusMsgSpan.innerText = `🎵 邪舌之夜 · ${PRIMARY_TRACK.title} 萦绕耳畔 🎵`;
             }).catch((err) => {
                 isMusicPlaying = false;
                 updatePlayPauseVisuals();
-                statusMsgSpan.innerText = "🕯️ 点按播放 · 唤醒四女巫和声";
+                statusMsgSpan.innerText = "🕯️ 邪舌之夜 · 需点击播放符 (可能音频未就绪)";
+                console.warn("播放失败:", err);
             });
         }
     }
@@ -438,54 +406,21 @@
             audioObj.pause();
             isMusicPlaying = false;
             updatePlayPauseVisuals();
-            statusMsgSpan.innerText = "⏸ 灵息暂歇 · 卷轴待续";
+            statusMsgSpan.innerText = "⏸ 邪舌之夜 · 乐声暂歇，恶言低语沉寂";
         } else {
-            playCurrentTrack();
-        }
-    }
-
-    function nextTrackAction() {
-        currentTrackIdx = (currentTrackIdx + 1) % mysticalTracks.length;
-        loadTrackByIndex(currentTrackIdx);
-        if (isMusicPlaying) {
-            setTimeout(() => {
-                audioObj.play().then(() => {
-                    isMusicPlaying = true;
-                    updatePlayPauseVisuals();
-                    statusMsgSpan.innerText = `🎶 流转 · ${mysticalTracks[currentTrackIdx].title}`;
-                }).catch(() => {
-                    isMusicPlaying = false;
-                    updatePlayPauseVisuals();
-                });
-            }, 80);
-        } else {
-            isMusicPlaying = false;
-            updatePlayPauseVisuals();
-        }
-    }
-
-    function prevTrackAction() {
-        currentTrackIdx = (currentTrackIdx - 1 + mysticalTracks.length) % mysticalTracks.length;
-        loadTrackByIndex(currentTrackIdx);
-        if (isMusicPlaying) {
-            setTimeout(() => {
-                audioObj.play().then(() => {
-                    isMusicPlaying = true;
-                    updatePlayPauseVisuals();
-                    statusMsgSpan.innerText = `🎶 回溯 · ${mysticalTracks[currentTrackIdx].title}`;
-                }).catch(() => {
-                    isMusicPlaying = false;
-                    updatePlayPauseVisuals();
-                });
-            }, 80);
-        } else {
-            isMusicPlaying = false;
-            updatePlayPauseVisuals();
+            if (!audioObj.src || audioObj.src.indexOf('blue_sun.m4a') === -1) {
+                loadPrimaryTrack();
+                setTimeout(() => {
+                    playCurrentTrack();
+                }, 50);
+            } else {
+                playCurrentTrack();
+            }
         }
     }
 
     function onAudioTimeUpdate() {
-        if (audioObj.duration && !isNaN(audioObj.duration)) {
+        if (audioObj.duration && !isNaN(audioObj.duration) && isFinite(audioObj.duration)) {
             const percent = (audioObj.currentTime / audioObj.duration) * 100;
             seekSlider.value = percent;
             currentSpan.innerText = formatTimeMinutes(audioObj.currentTime);
@@ -495,20 +430,41 @@
     }
 
     function onAudioLoadedMeta() {
-        if (audioObj.duration && !isNaN(audioObj.duration)) {
+        if (audioObj.duration && !isNaN(audioObj.duration) && isFinite(audioObj.duration)) {
             durationSpan.innerText = formatTimeMinutes(audioObj.duration);
             seekSlider.max = 100;
         } else {
             durationSpan.innerText = "0:00";
         }
+        if (audioObj.duration) {
+            statusMsgSpan.innerText = statusMsgSpan.innerText.replace("载入", "已就绪");
+        }
     }
 
     function onAudioEnded() {
-        nextTrackAction();
+        audioObj.currentTime = 0;
+        seekSlider.value = 0;
+        currentSpan.innerText = formatTimeMinutes(0);
+        const replayPromise = audioObj.play();
+        if (replayPromise !== undefined) {
+            replayPromise.then(() => {
+                isMusicPlaying = true;
+                updatePlayPauseVisuals();
+                statusMsgSpan.innerText = `🔄 邪舌之夜 · ${PRIMARY_TRACK.title} 再度萦绕 🔄`;
+            }).catch(() => {
+                isMusicPlaying = false;
+                updatePlayPauseVisuals();
+                statusMsgSpan.innerText = "邪舌之夜 · 循环重播需要手动播放";
+            });
+        } else {
+            isMusicPlaying = false;
+            updatePlayPauseVisuals();
+            statusMsgSpan.innerText = "邪舌之夜 · 乐章终结，轻触符印再启";
+        }
     }
 
     function seekAudioAction(e) {
-        if (audioObj.duration && !isNaN(audioObj.duration)) {
+        if (audioObj.duration && !isNaN(audioObj.duration) && isFinite(audioObj.duration)) {
             const seekTo = (e.target.value / 100) * audioObj.duration;
             audioObj.currentTime = seekTo;
             seekSlider.value = e.target.value;
@@ -522,25 +478,39 @@
         audioObj.volume = vol;
     }
 
-    playPauseButton.addEventListener('click', togglePlayPauseAction);
-    prevButton.addEventListener('click', prevTrackAction);
-    nextButton.addEventListener('click', nextTrackAction);
-    seekSlider.addEventListener('input', seekAudioAction);
-    volumeSlider.addEventListener('input', changeVolume);
-    audioObj.addEventListener('timeupdate', onAudioTimeUpdate);
-    audioObj.addEventListener('loadedmetadata', onAudioLoadedMeta);
-    audioObj.addEventListener('ended', onAudioEnded);
-    audioObj.addEventListener('canplay', () => {
-        if (audioObj.duration) durationSpan.innerText = formatTimeMinutes(audioObj.duration);
-    });
-    
-    audioObj.volume = 0.7;
-    volumeSlider.value = "0.7";
-    currentTrackIdx = 0;
-    loadTrackByIndex(0);
-    isMusicPlaying = false;
-    updatePlayPauseVisuals();
-    statusMsgSpan.innerText = "🍂 四女巫祈音 · 56px 灵键 · 轻启玄律 🍂";
+    function onAudioCanPlay() {
+        if (audioObj.duration && !isNaN(audioObj.duration)) {
+            durationSpan.innerText = formatTimeMinutes(audioObj.duration);
+        }
+        if (isMusicPlaying && audioObj.paused) {
+            audioObj.play().catch(() => {});
+        }
+    }
+
+    function initPlayer() {
+        playPauseButton.addEventListener('click', togglePlayPauseAction);
+        seekSlider.addEventListener('input', seekAudioAction);
+        volumeSlider.addEventListener('input', changeVolume);
+        audioObj.addEventListener('timeupdate', onAudioTimeUpdate);
+        audioObj.addEventListener('loadedmetadata', onAudioLoadedMeta);
+        audioObj.addEventListener('ended', onAudioEnded);
+        audioObj.addEventListener('canplay', onAudioCanPlay);
+        audioObj.addEventListener('error', () => {
+            if (audioObj.error) {
+                statusMsgSpan.innerText = "❄️ 邪舌之夜 · 乐章沉睡 (blue_sun.m4a未就绪) ❄️";
+            }
+        });
+
+        audioObj.volume = 0.7;
+        volumeSlider.value = "0.7";
+        
+        audioObj.preload = "auto";
+        loadPrimaryTrack();
+        isMusicPlaying = false;
+        updatePlayPauseVisuals();
+    }
+
+    initPlayer();
 </script>
 </body>
 </html>
