@@ -1,4 +1,63 @@
-<head><title>Su Jinglei</title></head>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Su Jinglei</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: crimson;
+    position: relative;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(125deg, 
+      #ff0040, 
+      #e60073, 
+      #7a00b3, 
+      #1f0033, 
+      #cc0066, 
+      #ff3399);
+    background-size: 400% 400%;
+    animation: ninjaEnergy 6s ease infinite;
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 30% 50%, rgba(255, 80, 120, 0.45), rgba(10, 0, 25, 0.7));
+    pointer-events: none;
+    animation: pulseGlow 2.4s infinite alternate;
+  }
+  
+  @keyframes ninjaEnergy {
+    0% { background-position: 0% 30%; }
+    25% { background-position: 40% 70%; }
+    50% { background-position: 80% 40%; }
+    75% { background-position: 30% 85%; }
+    100% { background-position: 0% 30%; }
+  }
+  
+  @keyframes pulseGlow {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+</style>
+</head>
 
 <center>
 
@@ -19,3 +78,4 @@
 </center>
 
 </body>
+</html>
