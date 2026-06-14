@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
+<meta charset="UTF-8">
 <title>Su Jinglei</title>
 <style>
   body {
@@ -9,7 +10,7 @@
     background: crimson;
     position: relative;
   }
-  
+
   body::before {
     content: "";
     position: fixed;
@@ -18,19 +19,19 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(125deg, 
-      #ff0040, 
-      #e60073, 
-      #7a00b3, 
-      #1f0033, 
-      #cc0066, 
+    background: linear-gradient(125deg,
+      #ff0040,
+      #e60073,
+      #7a00b3,
+      #1f0033,
+      #cc0066,
       #ff3399);
     background-size: 400% 400%;
     animation: ninjaEnergy 6s ease infinite;
     opacity: 0.92;
     pointer-events: none;
   }
-  
+
   body::after {
     content: "";
     position: fixed;
@@ -43,39 +44,309 @@
     pointer-events: none;
     animation: pulseGlow 2.4s infinite alternate;
   }
-  
+
   @keyframes ninjaEnergy {
-    0% { background-position: 0% 30%; }
-    25% { background-position: 40% 70%; }
-    50% { background-position: 80% 40%; }
-    75% { background-position: 30% 85%; }
-    100% { background-position: 0% 30%; }
+    0% {
+      background-position: 0% 30%;
+    }
+    25% {
+      background-position: 40% 70%;
+    }
+    50% {
+      background-position: 80% 40%;
+    }
+    75% {
+      background-position: 30% 85%;
+    }
+    100% {
+      background-position: 0% 30%;
+    }
   }
-  
+
   @keyframes pulseGlow {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .custom-audio-player {
+    position: fixed;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+    border-radius: 60px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 12px 28px;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .play-pause-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+    transition: transform 0.1s ease;
+  }
+
+  .play-pause-btn:active {
+    transform: scale(0.96);
+  }
+
+  .progress-container {
+    flex: 1;
+    min-width: 260px;
+    max-width: 420px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .progress-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(30, 10, 40, 0.65);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 6px rgba(255, 51, 153, 0.4);
+    transition: all 0.2s;
+  }
+
+  .progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff66b2, #ff3388, #d4006e);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 8px #ff66b2;
+    transition: width 0.05s linear;
+  }
+
+  .progress-container:hover .progress-bar-bg {
+    height: 8px;
+    background: rgba(40, 15, 55, 0.8);
+  }
+
+  .progress-container:hover .progress-fill {
+    background: linear-gradient(90deg, #ff80c0, #ff44aa, #ff0066);
+    box-shadow: 0 0 12px #ff3388;
+  }
+
+  body {
+    padding-bottom: 85px;
+  }
+
+  @media (max-width: 620px) {
+    .custom-audio-player {
+      padding: 8px 20px;
+      gap: 12px;
+      bottom: 16px;
+    }
+    .progress-container {
+      min-width: 140px;
+    }
   }
 </style>
 </head>
 
-<center>
-
 <body text="violet" link="brass" alink="red" vlink="gold">
 
-<p><a style="text-decoration: none" href="https://daedryk.github.io" title="adjutant">
-<span style="font-size: 96px">副官</span>
-</a></p>
+  <center>
+    <p><a style="text-decoration: none" href="https://daedryk.github.io" title="adjutant">
+        <span style="font-size: 96px">副官</span>
+      </a></p>
 
-<p>
-<img height="1300" width="700" src="Su_Jinglei.png" alt="蘇靜蕾">
-</p>
+    <p>
+      <img height="1300" width="700" src="Su_Jinglei.png" alt="蘇靜蕾">
+    </p>
 
-<p>
-<span style="font-size: 96px">蘇靜蕾</span>
-</p>
+    <p>
+      <span style="font-size: 96px">蘇靜蕾</span>
+    </p>
+  </center>
 
-</center>
+  <div class="custom-audio-player">
+    <button class="play-pause-btn" id="playPauseBtn" aria-label="播放/暂停">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="24" fill="url(#violetGrad)" stroke="rgba(255,255,240,0.35)" stroke-width="1.2" />
+        <defs>
+          <radialGradient id="violetGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+            <stop offset="0%" stop-color="#c27eff" />
+            <stop offset="70%" stop-color="#8b3cff" />
+            <stop offset="100%" stop-color="#5a1eb9" />
+          </radialGradient>
+        </defs>
+        <circle id="redDot" cx="26" cy="26" r="8" fill="#ff1a4f" stroke="white" stroke-width="1.2"
+          style="filter: drop-shadow(0 0 4px #ff3366); opacity: 0; transition: opacity 0.18s ease;" />
+      </svg>
+    </button>
 
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar-bg">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const audio = new Audio('the_hype.mp3');
+      audio.volume = 1.0;
+      audio.preload = 'auto';
+
+      const playPauseBtn = document.getElementById('playPauseBtn');
+      const redDot = document.getElementById('redDot');
+      const progressFill = document.getElementById('progressFill');
+      const progressContainer = document.getElementById('progressContainer');
+
+      let isPlaying = false;
+      let seeking = false;
+
+      function updateProgress() {
+        if (!isNaN(audio.duration) && audio.duration !== Infinity && audio.duration > 0) {
+          const percent = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = percent + '%';
+        } else {
+          progressFill.style.width = '0%';
+        }
+      }
+
+      function robustToggle() {
+        if (isPlaying) {
+          audio.pause();
+          isPlaying = false;
+          if (redDot) redDot.style.opacity = '0';
+        } else {
+          const result = audio.play();
+          if (result && typeof result.catch === 'function') {
+            result.then(() => {
+              isPlaying = true;
+              if (redDot) redDot.style.opacity = '1';
+              updateProgress();
+            }).catch((e) => {
+              console.log("Autoplay blocked or error:", e);
+              isPlaying = false;
+              if (redDot) redDot.style.opacity = '0';
+            });
+          } else {
+            audio.play();
+            isPlaying = true;
+            if (redDot) redDot.style.opacity = '1';
+          }
+        }
+      }
+
+      playPauseBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        robustToggle();
+      });
+
+      function seekFromClick(event) {
+        const rect = progressContainer.querySelector('.progress-bar-bg').getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const width = rect.width;
+        if (width > 0 && !isNaN(audio.duration) && audio.duration > 0 && isFinite(audio.duration)) {
+          const percent = Math.min(1, Math.max(0, clickX / width));
+          const newTime = percent * audio.duration;
+          audio.currentTime = newTime;
+          updateProgress();
+        }
+      }
+
+      progressContainer.addEventListener('click', (e) => {
+        seekFromClick(e);
+      });
+
+      let isDragging = false;
+      progressContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        seeking = true;
+        seekFromClick(e);
+        e.preventDefault();
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          seekFromClick(e);
+        }
+      });
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          seeking = false;
+        }
+      });
+      progressContainer.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        seeking = true;
+        seekFromClick(e.touches[0]);
+        e.preventDefault();
+      });
+      window.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length) {
+          seekFromClick(e.touches[0]);
+        }
+      });
+      window.addEventListener('touchend', () => {
+        isDragging = false;
+        seeking = false;
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (!seeking) {
+          updateProgress();
+        }
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        updateProgress();
+      });
+
+      audio.addEventListener('ended', () => {
+        isPlaying = false;
+        if (redDot) redDot.style.opacity = '0';
+        updateProgress();
+        audio.currentTime = 0;
+        progressFill.style.width = '0%';
+      });
+
+      audio.addEventListener('play', () => {
+        isPlaying = true;
+        if (redDot) redDot.style.opacity = '1';
+      });
+      audio.addEventListener('pause', () => {
+        isPlaying = false;
+        if (redDot) redDot.style.opacity = '0';
+      });
+
+      if (redDot) redDot.style.opacity = '0';
+      isPlaying = false;
+      updateProgress();
+
+      audio.addEventListener('error', (e) => {
+        console.warn("音频加载错误，确保 the_hype.mp3 文件存在");
+        if (redDot) redDot.style.opacity = '0';
+        isPlaying = false;
+      });
+    })();
+  </script>
 </body>
+
 </html>
