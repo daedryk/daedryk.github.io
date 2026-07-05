@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AY Audio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #f9e7b3 0%, #f5d78a 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      padding: 1rem;
+    }
+
+    .player-card {
+      max-width: 480px;
+      width: 100%;
+      background: #1a1a1a;
+      background: radial-gradient(circle at 20% 30%, #2b2b1a, #0f0f0a);
+      padding: 2rem 2rem 2.5rem;
+      border-radius: 56px 56px 48px 48px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 0 2px #f5c542 inset, 0 0 0 4px #f7d44a inset;
+      transition: box-shadow 0.2s;
+      border: 1px solid #f7d44a;
+    }
+
+    .player-card:hover {
+      box-shadow: 0 24px 48px rgba(0,0,0,0.8), 0 0 0 2px #fad85e inset, 0 0 0 4px #fad85e inset;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 0.2rem 0 0.8rem 0;
+      color: #f7d44a;
+      text-shadow: 0 2px 0 #0f0f0a, 0 4px 8px rgba(0,0,0,0.6);
+      border-bottom: 2px dashed #f5c542;
+      margin-bottom: 1.8rem;
+      word-break: break-word;
+      font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    }
+
+    .title small {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #e6b83d;
+      display: block;
+      margin-top: 0.15rem;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    .progress-wrapper {
+      background: #2f2f1c;
+      border-radius: 40px;
+      padding: 5px 5px;
+      box-shadow: inset 0 4px 8px rgba(0,0,0,0.6), 0 1px 0 #f5c542;
+      margin-bottom: 2.2rem;
+      border: 1px solid #ad8b2a;
+    }
+
+    .progress-track {
+      background: #1e1e0e;
+      height: 14px;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 6px #0a0a00;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: repeating-linear-gradient(90deg, 
+        #f5c542 0px, #f5c542 8px, 
+        #ffd966 8px, #ffd966 16px,
+        #f5b82e 16px, #f5b82e 24px);
+      background-size: 24px 100%;
+      border-radius: 30px;
+      box-shadow: 0 0 12px #f7c74a, 0 0 20px #f5b82e;
+      transition: width 0.15s ease;
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: -3px;
+      width: 12px;
+      height: 20px;
+      background: #1a1a0a;
+      border-radius: 40% 40% 20% 20% / 60% 60% 20% 20%;
+      filter: blur(2px);
+      opacity: 0.6;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .play-btn {
+      background: transparent;
+      border: none;
+      font-size: 4.8rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.2rem 0.8rem;
+      border-radius: 80px;
+      background: #1e1e0e;
+      box-shadow: 0 8px 0 #0a0a00, 0 10px 20px rgba(0,0,0,0.5), 0 0 0 2px #f5c542;
+      transition: all 0.08s linear;
+      transform: translateY(-4px);
+      text-shadow: 0 4px 8px #0f0f0a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      color: #f7d44a;
+      background: radial-gradient(circle at 30% 30%, #3d3d1e, #14140a);
+    }
+
+    .play-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #0a0a00, 0 8px 16px rgba(0,0,0,0.6);
+    }
+
+    .play-btn:focus-visible {
+      outline: 3px solid #fad85e;
+      outline-offset: 6px;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.8rem;
+      color: #dbb13a;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      background: #1c1c0e;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #ad8b2a;
+      opacity: 0.8;
+      font-family: 'Courier New', monospace;
+    }
+
+    .status-row span {
+      background: #0f0f05;
+      padding: 0.1rem 0.8rem;
+      border-radius: 20px;
+      color: #f5c542;
+    }
+
+    .reset-hint {
+      text-align: center;
+      font-size: 0.7rem;
+      margin-top: 0.6rem;
+      color: #9f862e;
+      letter-spacing: 1px;
+      font-weight: 300;
+    }
+
+    .reset-hint i {
+      font-style: normal;
+      background: #232312;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      border: 1px solid #5c4b1a;
+    }
+
+    @media (max-width: 480px) {
+      .player-card {
+        padding: 1.5rem 1rem 2rem;
+        border-radius: 40px;
+      }
+      .play-btn {
+        font-size: 4rem;
+        width: 80px;
+        height: 80px;
+      }
+      .title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="player-card">
+    <div class="title">
+      Shear-Shoot Toy
+      <small>⏤ wasp edition ⏤</small>
+    </div>
+
+    <div class="progress-wrapper">
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="playPauseBtn" class="play-btn" aria-label="Play or pause">⭐</button>
+    </div>
+
+    <div class="status-row">
+      <span id="currentTimeDisplay">0:00</span>
+      <span id="durationDisplay">0:00</span>
+    </div>
+    <div class="reset-hint">
+      <i>↺ resets on end</i>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const audio = new Audio('shear-shoot_toy.mp3');
+      audio.volume = 1.0;
+      audio.preload = 'auto';
+
+      const playBtn = document.getElementById('playPauseBtn');
+      const progressFill = document.getElementById('progressFill');
+      const currentTimeDisplay = document.getElementById('currentTimeDisplay');
+      const durationDisplay = document.getElementById('durationDisplay');
+
+      let isPlaying = false;
+      let resetPending = false;
+
+      function formatTime(seconds) {
+        if (!seconds || isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+      }
+
+      function updateProgress() {
+        if (audio.duration && !isNaN(audio.duration)) {
+          const percent = (audio.currentTime / audio.duration) * 100;
+          progressFill.style.width = Math.min(percent, 100) + '%';
+          currentTimeDisplay.textContent = formatTime(audio.currentTime);
+          durationDisplay.textContent = formatTime(audio.duration);
+        } else {
+          durationDisplay.textContent = '0:00';
+        }
+      }
+
+      function resetPlayer() {
+        if (resetPending) return;
+        resetPending = true;
+
+        audio.pause();
+        audio.currentTime = 0;
+        isPlaying = false;
+        playBtn.textContent = '⭐';
+        progressFill.style.width = '0%';
+        currentTimeDisplay.textContent = '0:00';
+        if (audio.duration && !isNaN(audio.duration)) {
+          durationDisplay.textContent = formatTime(audio.duration);
+        } else {
+          durationDisplay.textContent = '0:00';
+        }
+        resetPending = false;
+      }
+
+      function togglePlay() {
+        if (audio.paused) {
+          if (audio.currentTime >= audio.duration && audio.duration > 0) {
+            resetPlayer();
+            audio.play().catch(() => {});
+            isPlaying = true;
+            playBtn.textContent = '🌟';
+            updateProgress();
+            return;
+          }
+
+          audio.play().catch((err) => {
+            console.warn('Playback error:', err);
+          });
+          isPlaying = true;
+          playBtn.textContent = '🌟';
+        } else {
+          audio.pause();
+          isPlaying = false;
+          playBtn.textContent = '⭐';
+        }
+        updateProgress();
+      }
+
+      audio.addEventListener('play', () => {
+        isPlaying = true;
+        playBtn.textContent = '🌟';
+        if (audio.duration && !isNaN(audio.duration)) {
+          durationDisplay.textContent = formatTime(audio.duration);
+        }
+      });
+
+      audio.addEventListener('pause', () => {
+        isPlaying = false;
+        playBtn.textContent = '⭐';
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        updateProgress();
+        if (audio.duration && !isNaN(audio.duration) && durationDisplay.textContent === '0:00') {
+          durationDisplay.textContent = formatTime(audio.duration);
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        resetPlayer();
+        playBtn.textContent = '⭐';
+        progressFill.style.width = '0%';
+        currentTimeDisplay.textContent = '0:00';
+        if (audio.duration && !isNaN(audio.duration)) {
+          durationDisplay.textContent = formatTime(audio.duration);
+        }
+        isPlaying = false;
+        resetPending = false;
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        if (audio.duration && !isNaN(audio.duration)) {
+          durationDisplay.textContent = formatTime(audio.duration);
+          if (audio.currentTime === 0) {
+            currentTimeDisplay.textContent = '0:00';
+          }
+        }
+      });
+
+      audio.addEventListener('canplay', () => {
+        if (audio.duration && !isNaN(audio.duration)) {
+          durationDisplay.textContent = formatTime(audio.duration);
+        }
+        updateProgress();
+      });
+
+      playBtn.addEventListener('click', togglePlay);
+
+      audio.addEventListener('error', (e) => {
+        console.warn('Audio error, possibly file missing:', e);
+        durationDisplay.textContent = '?:??';
+        if (audio.paused) {
+          playBtn.textContent = '⭐';
+        }
+      });
+
+      if (audio.readyState >= 1 && audio.duration) {
+        durationDisplay.textContent = formatTime(audio.duration);
+      }
+      progressFill.style.width = '0%';
+      currentTimeDisplay.textContent = '0:00';
+      playBtn.textContent = '⭐';
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && isPlaying) {
+        }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration && audio.currentTime >= audio.duration && audio.duration > 0 && audio.paused) {
+          progressFill.style.width = '100%';
+          currentTimeDisplay.textContent = formatTime(audio.duration);
+        }
+      });
+
+      console.log('🐝 AY Audio · wasp player ready');
+    })();
+  </script>
+</body>
+</html>
