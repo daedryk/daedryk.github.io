@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ⰸⰴⱃⰰⱆⰾⰹⱌⰰ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f3f0;
+      font-family: 'Segoe UI', 'Palatino', 'Georgia', serif;
+      padding: 2rem 1.5rem;
+    }
+
+    .hymn-card {
+      max-width: 780px;
+      width: 100%;
+      background: #ffffff;
+      border: 3px solid #0000ff;
+      border-radius: 32px 32px 28px 28px;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 180, 0.25),
+                  0 8px 16px -6px rgba(200, 0, 0, 0.1);
+      padding: 2.8rem 2.2rem 3.2rem;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    .hymn-card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 10%;
+      width: 80%;
+      height: 6px;
+      background: #ff0000;
+      border-radius: 12px 12px 0 0;
+      opacity: 0.7;
+    }
+
+    .hymn-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-align: center;
+      color: #0000ff;
+      text-shadow: 0 2px 4px rgba(0, 0, 255, 0.08);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px dashed #ff0000;
+      word-break: break-word;
+      font-family: 'Times New Roman', 'Palatino', serif;
+    }
+
+    .separator {
+      text-align: center;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: #0000ff;
+      opacity: 0.6;
+      margin: 0.5rem 0 0.2rem;
+      letter-spacing: 0.3rem;
+    }
+
+    .hymn-body {
+      font-size: 1.3rem;
+      line-height: 1.75;
+      color: #1a1a2e;
+      text-align: center;
+      font-family: 'Segoe UI', 'Palatino', 'Georgia', serif;
+      padding: 0.2rem 0.2rem 0;
+    }
+
+    .verse {
+      margin: 1.8rem 0 1.2rem;
+      padding: 0.4rem 0.2rem;
+      border-left: 3px solid #ff0000;
+      border-right: 3px solid #0000ff;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 20px 4px 20px 4px;
+      padding: 0.8rem 0.6rem;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 255, 0.05);
+    }
+
+    .verse:first-of-type {
+      margin-top: 0.4rem;
+    }
+
+    .hymn-line {
+      display: block;
+      padding: 0.2rem 0.1rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      word-break: break-word;
+    }
+
+    .hymn-line:first-child {
+      font-weight: 500;
+      color: #0000cc;
+    }
+
+    .stanza-break {
+      display: block;
+      text-align: center;
+      font-size: 2rem;
+      color: #cc0000;
+      opacity: 0.5;
+      margin: 0.8rem 0 0.2rem;
+      line-height: 1;
+    }
+
+    .hymn-card:hover {
+      box-shadow: 0 24px 48px -16px rgba(0, 0, 200, 0.3),
+                  0 12px 24px -10px rgba(200, 0, 0, 0.15);
+      border-color: #1a1aff;
+    }
+
+    @media (max-width: 550px) {
+      .hymn-card {
+        padding: 1.8rem 1.2rem 2.2rem;
+      }
+      .hymn-title {
+        font-size: 1.9rem;
+      }
+      .hymn-body {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+      .verse {
+        padding: 0.5rem 0.4rem;
+        border-left-width: 2px;
+        border-right-width: 2px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hymn-title {
+        font-size: 1.5rem;
+      }
+      .hymn-body {
+        font-size: 1rem;
+      }
+    }
+
+    .hymn-footer {
+      margin-top: 2.2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: #0000aa;
+      border-top: 1px solid #ff0000;
+      padding-top: 1.2rem;
+      opacity: 0.5;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .hymn-footer span {
+      display: inline-block;
+      padding: 0 0.3rem;
+      color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="hymn-card">
+    <div class="hymn-title">ⰸⰴⱃⰰⱆⰾⰹⰰ</div>
+
+    <div class="hymn-body">
+
+      <div class="separator">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⱄⱂⰵⱅ ⱅⱔⱃⱅⰵ ⱄⱁ ⱃⱁⰴⰻⰾⰵ</span>
+        <span class="hymn-line">ⱂⱃⰻⱑⱅⰾⰻ ⰲⰻⱀⱌⰵ ⱀⰰⰿ ⱄⰾⰰⱅⰽⱁ</span>
+        <span class="hymn-line">ⰽⰻ ⱀⰰⰿ ⱁⰶⰻⱆⰾⱑ ⰶⰻⰾⰵ</span>
+        <span class="hymn-line">ⱄⱔⱃⱌⰵ ⱃⰰⰸⱑⱄⱀⰻ ⰻⱀ ⱁⰽⱁ</span>
+        <span class="hymn-line">ⰽⰻ ⱆⱅⱁⱂⰻ</span>
+        <span class="hymn-line">ⱆⱄⰵ ⱄⰽⱔⱃⰱⰻ</span>
+        <span class="hymn-line">ⱆ ⱂⱁⱅⱔⱃⱅⰻⱈ ⱂⱔⱃⱄⰻⱈ ⱆⱂ ⰱⱆⰴⰻ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⰽⱁⰿⱆ ⱀⰰⰻⱂⱃⰵⰴ ⰲⰵⱄⰵⰾⱁ</span>
+        <span class="hymn-line">ⰸⰴⱃⰰⰲⰻⱌⱁ ⰱⱃⰰⱅⱗ ⱍⰿⱁ ⰸⰰⱂⰵⱅ</span>
+        <span class="hymn-line">ⰱⰻⰳ ⱀⰰⱎⱁ ⱀⰰⰿ ⰴⰵⰶⰵⰾⱁ</span>
+        <span class="hymn-line">ⰱⱁⰳ ⰶⰻⰲⰻ ⰲⱔⱄ ⱄⰾⱁⰲⰵⱀⱄⰽⰻ ⱄⰲⰵⱅ</span>
+        <span class="hymn-line">ⰱⱃⰰⱅⰵ ⱆⱄⰵ</span>
+        <span class="hymn-line">ⰽⰰⱃ ⱀⰰⱄ ⱗ</span>
+        <span class="hymn-line">ⱄⰻⱀⱁⱆ ⱄⰾⱁⰲⰵⱍⰵ ⰿⰰⱅⰵⱃⰵ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⱆ ⱄⱁⰲⱃⰰⰶⱀⰻⰽⰵ ⰸ ⱁⰱⰾⰰⰽⱁⱆ</span>
+        <span class="hymn-line">ⱃⱁⰴⱆ ⱀⰰⰻ ⱀⰰⰶⰳⰰ ⱅⱃⰵⱋⰻ ⰳⱃⱁⰿ</span>
+        <span class="hymn-line">ⱂⱃⱁⱄⱅ ⰽⱁ ⱗ ⰱⰻⱆ ⱁⱍⰰⰽⱁⱆ</span>
+        <span class="hymn-line">ⱀⰰⱂⱃⰵⰻ ⱀⰰⰻ ⰱⱁ ⱄⰾⱁⰲⰵⱀⱌⰵⱆ ⰴⱁⰿ</span>
+        <span class="hymn-line">ⱀⰰⰻ ⰸⰴⱃⱁⰱⰵ</span>
+        <span class="hymn-line">ⱀⰹⱈ ⱃⱁⰽⰵ</span>
+        <span class="hymn-line">ⱄⰻ ⱄⱂⱁⱀⰵ ⰽⱗⱃ ⰹⰿ ⱎⰵ ⱅⰵⰶⰵ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⰵⰴⰻⱀⱁⱄⱅ ⱄⱃⰵⱍⰰ ⱄⱂⱃⰰⰲⰰ</span>
+        <span class="hymn-line">ⰽ ⱀⰰⰿ ⱀⰰⰻ ⱀⰰⰸⰰⰻ ⱄⰵ ⰲⱔⱃⱀⰵⰻⱁ</span>
+        <span class="hymn-line">ⱁⱅⱃⱁⰽ ⰽⰰⱃ ⰻⰿⰰ ⱄⰾⰰⰲⰰ</span>
+        <span class="hymn-line">ⱀⰰⰻ ⱄⰻ ⱆ ⱃⱁⰽⰵ ⱄⰵⰶⰵⰻⱁ</span>
+        <span class="hymn-line">ⰴⰰ ⱁⰱⰾⰰⱄⱅ</span>
+        <span class="hymn-line">ⰻⱀ ⰸ ⱀⰻⱁ ⱍⰰⱄⱅ</span>
+        <span class="hymn-line">ⱁⰱⰻⰾⱀⱁⱄⱅ ⰱⱁⰴⱁ ⱀⰰⱎⰰ ⰾⰰⱄⱅ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⰱⱁⰳ ⰶⰻⰲⰻ ⰲⰰⱄ ⱄⰾⱁⰲⰵⱀⰽⰵ</span>
+        <span class="hymn-line">ⱂⱃⰵⰾⰵⱂⰵ ⰶⰾⰰⱈⱅⱀⰵ ⱃⱁⰶⰻⱌⰵ</span>
+        <span class="hymn-line">ⱀⰻ ⱅⰰⰽⰵ ⱗ ⰿⰾⰰⰴⰵⱀⰽⰵ</span>
+        <span class="hymn-line">ⰽⱁⱅ ⱀⰰⱎⰵ ⱗ ⰽⱔⱃⰲⰻ ⰴⰵⰽⰾⰵ</span>
+        <span class="hymn-line">ⱀⰰⰻ ⱄⰻⱀⱁⱆ</span>
+        <span class="hymn-line">ⰸⰰⱃⱁⰴ ⱀⱁⱆ</span>
+        <span class="hymn-line">ⰻⰸ ⰲⰰⱄ ⰱⱁ ⱄⱅⱃⰰⱈ ⱄⱁⰲⱃⰰⰶⱀⰻⰽⱁⱆ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⰿⰾⰰⰴⰵⱀⱍⰻ ⰸⰴⰰⰻ ⱄⰵ ⱂⰻⱗ</span>
+        <span class="hymn-line">ⰸⰴⱃⰰⰲⰻⱌⰰ ⱀⰰⱎⰰ ⰲⰻ ⱀⰰⱎ ⱆⱂ</span>
+        <span class="hymn-line">ⰾⱓⰱⰵⰸⱀⰻ ⰴⱁⰿⰰⱍⰻⱗ</span>
+        <span class="hymn-line">ⱀⱁⰱⰵⱀ ⱀⰰⰻ ⰲⰰⰿ ⱀⰵ ⱆⱄⰿⱔⱃⱅⰻ ⱄⱅⱃⱆⱂ</span>
+        <span class="hymn-line">ⰽⰵⱃ ⱂⱁ ⱀⰰⱄ</span>
+        <span class="hymn-line">ⰱⱁⰴⰵ ⰲⰰⱄ</span>
+        <span class="hymn-line">ⰻⱁ ⱄⱔⱃⱍⱀⱁ ⰱⱃⰰⱀⰻⱅ ⰽⰾⰻⱌⰰⱆ ⱍⰰⱄ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⰶⰻⰲⰵ ⱀⰰⰻ ⱆⱄⰻ ⱀⰰⱃⱁⰴⰻ</span>
+        <span class="hymn-line">ⰽⰻ ⱈⱃⰵⱂⰵⱀⰵ ⰴⱁⱍⰰⰽⰰⱅ ⰴⰰⱀ</span>
+        <span class="hymn-line">ⰴⰰ ⰽⱁⰴⱔⱃ ⱄⱁⱀⱌⰵ ⱈⱁⰴⰻ</span>
+        <span class="hymn-line">ⱂⱃⰵⱂⰻⱃ ⰻⱄ ⱄⰲⰵⱅⰰ ⰱⱁ ⱂⱃⰵⰳⱀⰰⱀ</span>
+        <span class="hymn-line">ⰴⰰ ⱃⱁⱑⰽ</span>
+        <span class="hymn-line">ⱂⱃⱁⱄⱅ ⰱⰻ ⱆⱄⰰⰽ</span>
+        <span class="hymn-line">ⱀⰵ ⰲⱃⰰⰳ ⰾⰵ ⱄⱁⱄⰵⰴ ⰱⱁ ⰿⰵⱑⰽ</span>
+      </div>
+
+      <div class="stanza-break">※</div>
+
+      <div class="verse">
+        <span class="hymn-line">ⱀⰰⰸⰰⰴⱀⱗ ⱎⰵ ⱂⱃⰻⱑⱅⰾⰻ</span>
+        <span class="hymn-line">ⰽⱁⰸⰰⱃⱌⰵ ⰸⰰⱄⰵ ⱆⰸⰴⰻⰳⱀⰻⰿⱁ</span>
+        <span class="hymn-line">ⰽⰻ ⱄⰿⱁ ⰸⰰⱅⱁ ⱄⰵ ⰸⰱⱃⰰⱅⰾⰻ</span>
+        <span class="hymn-line">ⰽⰻ ⰴⱁⰱⱃⱁ ⱆ ⱄⱔⱃⱌⱆ ⰿⰻⱄⰾⰻⰿⱁ</span>
+        <span class="hymn-line">ⰴⱁⰽⰰⰻ ⰴⱀⰻ</span>
+        <span class="hymn-line">ⱀⰰⰻ ⰶⰻⰲⰻ</span>
+        <span class="hymn-line">ⰱⱁⰳ ⰽⰰⱃ ⱀⰰⱄ ⰴⱁⰱⱃⰻⱈ ⱗ ⰾⱓⰴⰺ</span>
+      </div>
+
+      <div class="separator" style="margin-top: 1.2rem;">※</div>
+
+      <div class="hymn-footer">
+        <span>⚪</span> <span>🔵</span> <span>🔴</span>  ·  ⰸⰴⱃⰰⰲⰻⱌⰰ
+      </div>
+    </div>
+  </div>
+</body>
+</html>
