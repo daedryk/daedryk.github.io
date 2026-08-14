@@ -12,7 +12,7 @@
   }
 
   body {
-    background-color: #000000;
+    background-color: #0b0d15;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,77 +24,86 @@
   .container {
     max-width: 700px;
     width: 100%;
-    background-color: #0d0d0d;
+    background-color: #141826;
     border-radius: 20px;
     padding: 28px 24px 32px 24px;
-    box-shadow: 0 12px 40px rgba(255, 140, 0, 0.08);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 60px rgba(255, 0, 255, 0.1);
+    border: 1px solid #00ffff44;
   }
 
   .title {
     text-align: center;
     font-size: 28px;
     font-weight: 500;
-    color: #ff9900;
+    color: #00ffff;
     letter-spacing: 1px;
     margin-bottom: 2px;
+    text-shadow: 0 0 12px #00ffff88, 0 0 30px #00ffff44;
   }
 
   .subtitle {
     text-align: center;
     font-size: 17px;
-    color: #aaaaaa;
+    color: #b0baff;
     margin-bottom: 22px;
     font-weight: 300;
     letter-spacing: 0.3px;
+    text-shadow: 0 0 8px #8888ff44;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 15px;  /* slightly smaller, crisp */
-    color: #f0f0f0;
+    font-size: 15px;
+    color: #e0e8ff;
   }
 
   /* header row */
   thead th {
     text-align: left;
     padding: 8px 6px 10px 6px;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid #33ccff55;
     font-weight: 500;
     font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .th-letter { color: #ff6666; }
-  .th-name   { color: #66ff88; }
-  .th-pron   { color: #66aaff; }
+  .th-letter { color: #ff44aa; text-shadow: 0 0 10px #ff44aa66; }
+  .th-name   { color: #66ffbb; text-shadow: 0 0 10px #66ffbb66; }
+  .th-pron   { color: #44aaff; text-shadow: 0 0 10px #44aaff66; }
 
   /* body rows */
   tbody td {
     padding: 6px 6px 6px 6px;
-    border-bottom: 1px solid #1e1e1e;
+    border-bottom: 1px solid #2a2f4a;
     vertical-align: middle;
   }
 
   .col-letter {
-    color: #ff6666;
-    font-size: 18px;   /* glagolitic chars a bit more visible */
+    color: #ff66bb;
+    font-size: 18px;
     letter-spacing: 0.5px;
     width: 18%;
+    text-shadow: 0 0 6px #ff44aa66;
   }
 
   .col-name {
-    color: #66ff88;
+    color: #55ffbb;
     width: 32%;
+    text-shadow: 0 0 6px #44ffaa44;
   }
 
   .col-pron {
-    color: #66aaff;
+    color: #66bbff;
     width: 50%;
+    text-shadow: 0 0 6px #4488ff44;
   }
 
   /* subtle hover */
   tbody tr:hover {
-    background-color: #141414;
+    background-color: #1e2440;
+    box-shadow: inset 0 0 20px #00ffff11;
   }
 
   /* responsive */
