@@ -1,185 +1,262 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glagolitic Script – Phonetic Rules</title>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glagolitic Script – Phonetic Rules</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    background-color: #0b0d15;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 24px;
-  }
+    body {
+      background-color: #0b0d15;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
 
-  .container {
-    max-width: 700px;
-    width: 100%;
-    background-color: #141826;
-    border-radius: 20px;
-    padding: 28px 24px 32px 24px;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 60px rgba(255, 0, 255, 0.1);
-    border: 1px solid #00ffff44;
-  }
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background-color: #141826;
+      border-radius: 20px;
+      padding: 28px 24px 32px 24px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 60px rgba(255, 0, 255, 0.1);
+      border: 1px solid #00ffff44;
+    }
 
-  .title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 500;
-    color: #00ffff;
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-    text-shadow: 0 0 12px #00ffff88, 0 0 30px #00ffff44;
-  }
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 500;
+      color: #00ffff;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+      text-shadow: 0 0 12px #00ffff88, 0 0 30px #00ffff44;
+    }
 
-  .subtitle {
-    text-align: center;
-    font-size: 17px;
-    color: #b0baff;
-    margin-bottom: 22px;
-    font-weight: 300;
-    letter-spacing: 0.3px;
-    text-shadow: 0 0 8px #8888ff44;
-  }
+    .subtitle {
+      text-align: center;
+      font-size: 17px;
+      color: #b0baff;
+      margin-bottom: 22px;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      text-shadow: 0 0 8px #8888ff44;
+    }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    color: #e0e8ff;
-  }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      color: #e0e8ff;
+    }
 
-  /* header row */
-  thead th {
-    text-align: left;
-    padding: 8px 6px 10px 6px;
-    border-bottom: 1px solid #33ccff55;
-    font-weight: 500;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+    thead th {
+      text-align: left;
+      padding: 8px 6px 10px 6px;
+      border-bottom: 1px solid #33ccff55;
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-  .th-letter { color: #ff44aa; text-shadow: 0 0 10px #ff44aa66; }
-  .th-name   { color: #66ffbb; text-shadow: 0 0 10px #66ffbb66; }
-  .th-pron   { color: #44aaff; text-shadow: 0 0 10px #44aaff66; }
+    .th-letter {
+      color: #ff44aa;
+      text-shadow: 0 0 10px #ff44aa, 0 0 20px #ff44aa88, 0 0 40px #ff44aa44;
+      background: linear-gradient(135deg, #ff99cc, #ff44aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+    .th-name {
+      color: #66ffbb;
+      text-shadow: 0 0 10px #66ffbb, 0 0 20px #66ffbb88, 0 0 40px #66ffbb44;
+      background: linear-gradient(135deg, #88ffdd, #44ffaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+    .th-pron {
+      color: #44aaff;
+      text-shadow: 0 0 10px #44aaff, 0 0 20px #44aaff88, 0 0 40px #44aaff44;
+      background: linear-gradient(135deg, #88ccff, #44aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
 
-  /* body rows */
-  tbody td {
-    padding: 6px 6px 6px 6px;
-    border-bottom: 1px solid #2a2f4a;
-    vertical-align: middle;
-  }
+    tbody td {
+      padding: 6px 6px 6px 6px;
+      border-bottom: 1px solid #2a2f4a;
+      vertical-align: middle;
+    }
 
-  .col-letter {
-    color: #ff66bb;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    width: 18%;
-    text-shadow: 0 0 6px #ff44aa66;
-  }
+    .col-letter {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      width: 18%;
+      color: #ff66bb;
+      text-shadow: 0 0 6px #ff44aa, 0 0 15px #ff44aa66, 0 0 30px #ff44aa33;
+      background: linear-gradient(145deg, #ffaacc, #ff44aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
 
-  .col-name {
-    color: #55ffbb;
-    width: 32%;
-    text-shadow: 0 0 6px #44ffaa44;
-  }
+    .col-name {
+      width: 32%;
+      color: #55ffbb;
+      text-shadow: 0 0 6px #44ffaa, 0 0 15px #44ffaa66, 0 0 30px #44ffaa33;
+      background: linear-gradient(145deg, #88ffdd, #22ffaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
 
-  .col-pron {
-    color: #66bbff;
-    width: 50%;
-    text-shadow: 0 0 6px #4488ff44;
-  }
+    .col-pron {
+      width: 50%;
+      color: #66bbff;
+      text-shadow: 0 0 6px #4488ff, 0 0 15px #4488ff66, 0 0 30px #4488ff33;
+      background: linear-gradient(145deg, #99ccff, #4488ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 500;
+    }
 
-  /* subtle hover */
-  tbody tr:hover {
-    background-color: #1e2440;
-    box-shadow: inset 0 0 20px #00ffff11;
-  }
+    tbody tr:hover {
+      background-color: #1e2440;
+      box-shadow: inset 0 0 30px #ff44aa22, inset 0 0 60px #44aaff22;
+      transition: box-shadow 0.2s ease;
+    }
 
-  /* responsive */
-  @media (max-width: 480px) {
-    .container { padding: 18px 12px; }
-    .title { font-size: 22px; }
-    .subtitle { font-size: 15px; }
-    table { font-size: 13px; }
-    .col-letter { font-size: 16px; }
-    thead th { font-size: 14px; }
-  }
-</style>
+    @media (max-width: 480px) {
+      .container { padding: 18px 12px; }
+      .title { font-size: 22px; }
+      .subtitle { font-size: 15px; }
+      table { font-size: 13px; }
+      .col-letter { font-size: 16px; }
+      thead th { font-size: 14px; }
+    }
+
+    .container {
+      box-shadow: 0 0 30px #ff44aa55, 0 0 60px #44aaff55, 0 0 90px #ff44aa22;
+      border: 1px solid rgba(255, 68, 170, 0.5);
+      background: #10131f;
+      background-image: radial-gradient(circle at 20% 30%, rgba(255, 68, 170, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(68, 170, 255, 0.08) 0%, transparent 60%);
+    }
+
+    .title {
+      color: #ff88cc;
+      text-shadow: 0 0 15px #ff44aa, 0 0 40px #ff44aa88, 0 0 80px #ff44aa44;
+      background: linear-gradient(135deg, #ffaadd, #ff44aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+    .subtitle {
+      color: #88ddff;
+      text-shadow: 0 0 12px #44aaff, 0 0 30px #44aaff66;
+      background: linear-gradient(135deg, #aaddff, #44aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 400;
+    }
+
+    thead th {
+      border-bottom: 2px solid rgba(255, 68, 170, 0.5);
+      box-shadow: 0 2px 8px rgba(255, 68, 170, 0.3);
+    }
+
+    tbody tr {
+      transition: all 0.15s ease;
+    }
+    tbody tr:hover .col-letter,
+    tbody tr:hover .col-name,
+    tbody tr:hover .col-pron {
+      filter: brightness(1.3) drop-shadow(0 0 8px currentColor);
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <div class="title">ⰃⰎⰀⰃⰑⰎⰋⰜⰀ</div>
-  <div class="subtitle">Glagolitic script · Phonetic rules</div>
+  <div class="container">
+    <div class="title">ⰃⰎⰀⰃⰑⰎⰋⰜⰀ</div>
+    <div class="subtitle">Glagolitic script · Phonetic rules</div>
 
-  <table>
-    <thead>
-      <tr>
-        <th class="th-letter">Letter</th>
-        <th class="th-name">Name</th>
-        <th class="th-pron">Pronounciation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class="col-letter">Ⰰ</td><td class="col-name">Azu</td><td class="col-pron">A</td></tr>
-      <tr><td class="col-letter">Ⰱ</td><td class="col-name">Buky</td><td class="col-pron">B</td></tr>
-      <tr><td class="col-letter">Ⰲ</td><td class="col-name">Vede</td><td class="col-pron">V</td></tr>
-      <tr><td class="col-letter">Ⰳ</td><td class="col-name">Glagoli</td><td class="col-pron">G</td></tr>
-      <tr><td class="col-letter">Ⰴ</td><td class="col-name">Dobro</td><td class="col-pron">D</td></tr>
-      <tr><td class="col-letter">Ⰵ</td><td class="col-name">Yestu</td><td class="col-pron">E</td></tr>
-      <tr><td class="col-letter">Ⰶ</td><td class="col-name">Zhivete</td><td class="col-pron">ZH (Ž)</td></tr>
-      <tr><td class="col-letter">Ⰷ</td><td class="col-name">Dzelo</td><td class="col-pron">DZ</td></tr>
-      <tr><td class="col-letter">Ⰸ</td><td class="col-name">Zemlja</td><td class="col-pron">Z</td></tr>
-      <tr><td class="col-letter">Ⰹ</td><td class="col-name">Izhe</td><td class="col-pron">YI</td></tr>
-      <tr><td class="col-letter">Ⰺ</td><td class="col-name">Initial Izhe</td><td class="col-pron">IY</td></tr>
-      <tr><td class="col-letter">Ⰻ</td><td class="col-name">I</td><td class="col-pron">I</td></tr>
-      <tr><td class="col-letter">Ⰼ</td><td class="col-name">Djervi</td><td class="col-pron">DZH (Đ)</td></tr>
-      <tr><td class="col-letter">Ⰽ</td><td class="col-name">Kako</td><td class="col-pron">K</td></tr>
-      <tr><td class="col-letter">Ⰾ</td><td class="col-name">Ljudije</td><td class="col-pron">L</td></tr>
-      <tr><td class="col-letter">Ⰿ</td><td class="col-name">Myslite</td><td class="col-pron">M</td></tr>
-      <tr><td class="col-letter">Ⱀ</td><td class="col-name">Nashi</td><td class="col-pron">N</td></tr>
-      <tr><td class="col-letter">Ⱁ</td><td class="col-name">Onu</td><td class="col-pron">O</td></tr>
-      <tr><td class="col-letter">Ⱂ</td><td class="col-name">Pokoji</td><td class="col-pron">P</td></tr>
-      <tr><td class="col-letter">Ⱃ</td><td class="col-name">Ritsi</td><td class="col-pron">R</td></tr>
-      <tr><td class="col-letter">Ⱄ</td><td class="col-name">Slovo</td><td class="col-pron">S</td></tr>
-      <tr><td class="col-letter">Ⱅ</td><td class="col-name">Tvrido</td><td class="col-pron">T</td></tr>
-      <tr><td class="col-letter">Ⱆ</td><td class="col-name">Uku</td><td class="col-pron">U</td></tr>
-      <tr><td class="col-letter">Ⱇ</td><td class="col-name">Fritu</td><td class="col-pron">F</td></tr>
-      <tr><td class="col-letter">Ⱈ</td><td class="col-name">Heru</td><td class="col-pron">H</td></tr>
-      <tr><td class="col-letter">Ⱉ</td><td class="col-name">Otu</td><td class="col-pron">Ø</td></tr>
-      <tr><td class="col-letter">Ⱊ</td><td class="col-name">Pe</td><td class="col-pron">P</td></tr>
-      <tr><td class="col-letter">Ⱋ</td><td class="col-name">Shta</td><td class="col-pron">SHCH (ŠČ)</td></tr>
-      <tr><td class="col-letter">Ⱌ</td><td class="col-name">Tsi</td><td class="col-pron">TS (C)</td></tr>
-      <tr><td class="col-letter">Ⱍ</td><td class="col-name">Chrivi</td><td class="col-pron">CH (Č)</td></tr>
-      <tr><td class="col-letter">Ⱎ</td><td class="col-name">Sha</td><td class="col-pron">SH (Š)</td></tr>
-      <tr><td class="col-letter">Ⱏ</td><td class="col-name">Yeru</td><td class="col-pron">Y regular</td></tr>
-      <tr><td class="col-letter">Ⱐ</td><td class="col-name">Yeri</td><td class="col-pron">Y nasal</td></tr>
-      <tr><td class="col-letter">Ⱑ</td><td class="col-name">Yati</td><td class="col-pron">YA</td></tr>
-      <tr><td class="col-letter">Ⱒ</td><td class="col-name">Spidery Ha</td><td class="col-pron">KH</td></tr>
-      <tr><td class="col-letter">Ⱓ</td><td class="col-name">Yu</td><td class="col-pron">YU</td></tr>
-      <tr><td class="col-letter">Ⱔ</td><td class="col-name">Small Yus</td><td class="col-pron">SEMIVOWEL</td></tr>
-      <tr><td class="col-letter">Ⱕ</td><td class="col-name">Small Yus with Tail</td><td class="col-pron">nasalized SEMIVOWEL</td></tr>
-      <tr><td class="col-letter">Ⱖ</td><td class="col-name">Yo</td><td class="col-pron">YO</td></tr>
-      <tr><td class="col-letter">Ⱗ</td><td class="col-name">Iotated Small Yus</td><td class="col-pron">YE</td></tr>
-      <tr><td class="col-letter">Ⱘ</td><td class="col-name">Big Yus</td><td class="col-pron">Ö</td></tr>
-      <tr><td class="col-letter">Ⱙ</td><td class="col-name">Iotated Big Yus</td><td class="col-pron">Ë</td></tr>
-      <tr><td class="col-letter">Ⱚ</td><td class="col-name">Fita</td><td class="col-pron">TH</td></tr>
-      <tr><td class="col-letter">Ⱛ</td><td class="col-name">Izhitsa</td><td class="col-pron">I (with teeth)</td></tr>
-      <tr><td class="col-letter">Ⱜ</td><td class="col-name">Shtapic</td><td class="col-pron">glottal stop or variant vowel</td></tr>
-      <tr><td class="col-letter">Ⱝ</td><td class="col-name">Trokutasti A</td><td class="col-pron">Ä</td></tr>
-      <tr><td class="col-letter">Ⱞ</td><td class="col-name">Latinate Myslite</td><td class="col-pron">M (closed mouth)</td></tr>
-      <tr><td class="col-letter">Ⱟ</td><td class="col-name">Caudate Chrivi</td><td class="col-pron">CH (Ć)</td></tr>
-    </tbody>
-  </table>
-</div>
+    <table>
+      <thead>
+        <tr>
+          <th class="th-letter">Letter</th>
+          <th class="th-name">Name</th>
+          <th class="th-pron">Pronounciation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-letter">Ⰰ</td><td class="col-name">Azu</td><td class="col-pron">A</td></tr>
+        <tr><td class="col-letter">Ⰱ</td><td class="col-name">Buky</td><td class="col-pron">B</td></tr>
+        <tr><td class="col-letter">Ⰲ</td><td class="col-name">Vede</td><td class="col-pron">V</td></tr>
+        <tr><td class="col-letter">Ⰳ</td><td class="col-name">Glagoli</td><td class="col-pron">G</td></tr>
+        <tr><td class="col-letter">Ⰴ</td><td class="col-name">Dobro</td><td class="col-pron">D</td></tr>
+        <tr><td class="col-letter">Ⰵ</td><td class="col-name">Yestu</td><td class="col-pron">E</td></tr>
+        <tr><td class="col-letter">Ⰶ</td><td class="col-name">Zhivete</td><td class="col-pron">ZH (Ž)</td></tr>
+        <tr><td class="col-letter">Ⰷ</td><td class="col-name">Dzelo</td><td class="col-pron">DZ</td></tr>
+        <tr><td class="col-letter">Ⰸ</td><td class="col-name">Zemlja</td><td class="col-pron">Z</td></tr>
+        <tr><td class="col-letter">Ⰹ</td><td class="col-name">Izhe</td><td class="col-pron">YI</td></tr>
+        <tr><td class="col-letter">Ⰺ</td><td class="col-name">Initial Izhe</td><td class="col-pron">IY</td></tr>
+        <tr><td class="col-letter">Ⰻ</td><td class="col-name">I</td><td class="col-pron">I</td></tr>
+        <tr><td class="col-letter">Ⰼ</td><td class="col-name">Djervi</td><td class="col-pron">DZH (Đ)</td></tr>
+        <tr><td class="col-letter">Ⰽ</td><td class="col-name">Kako</td><td class="col-pron">K</td></tr>
+        <tr><td class="col-letter">Ⰾ</td><td class="col-name">Ljudije</td><td class="col-pron">L</td></tr>
+        <tr><td class="col-letter">Ⰿ</td><td class="col-name">Myslite</td><td class="col-pron">M</td></tr>
+        <tr><td class="col-letter">Ⱀ</td><td class="col-name">Nashi</td><td class="col-pron">N</td></tr>
+        <tr><td class="col-letter">Ⱁ</td><td class="col-name">Onu</td><td class="col-pron">O</td></tr>
+        <tr><td class="col-letter">Ⱂ</td><td class="col-name">Pokoji</td><td class="col-pron">P</td></tr>
+        <tr><td class="col-letter">Ⱃ</td><td class="col-name">Ritsi</td><td class="col-pron">R</td></tr>
+        <tr><td class="col-letter">Ⱄ</td><td class="col-name">Slovo</td><td class="col-pron">S</td></tr>
+        <tr><td class="col-letter">Ⱅ</td><td class="col-name">Tvrido</td><td class="col-pron">T</td></tr>
+        <tr><td class="col-letter">Ⱆ</td><td class="col-name">Uku</td><td class="col-pron">U</td></tr>
+        <tr><td class="col-letter">Ⱇ</td><td class="col-name">Fritu</td><td class="col-pron">F</td></tr>
+        <tr><td class="col-letter">Ⱈ</td><td class="col-name">Heru</td><td class="col-pron">H</td></tr>
+        <tr><td class="col-letter">Ⱉ</td><td class="col-name">Otu</td><td class="col-pron">Ø</td></tr>
+        <tr><td class="col-letter">Ⱊ</td><td class="col-name">Pe</td><td class="col-pron">P</td></tr>
+        <tr><td class="col-letter">Ⱋ</td><td class="col-name">Shta</td><td class="col-pron">SHCH (ŠČ)</td></tr>
+        <tr><td class="col-letter">Ⱌ</td><td class="col-name">Tsi</td><td class="col-pron">TS (C)</td></tr>
+        <tr><td class="col-letter">Ⱍ</td><td class="col-name">Chrivi</td><td class="col-pron">CH (Č)</td></tr>
+        <tr><td class="col-letter">Ⱎ</td><td class="col-name">Sha</td><td class="col-pron">SH (Š)</td></tr>
+        <tr><td class="col-letter">Ⱏ</td><td class="col-name">Yeru</td><td class="col-pron">Y regular</td></tr>
+        <tr><td class="col-letter">Ⱐ</td><td class="col-name">Yeri</td><td class="col-pron">Y nasal</td></tr>
+        <tr><td class="col-letter">Ⱑ</td><td class="col-name">Yati</td><td class="col-pron">YA</td></tr>
+        <tr><td class="col-letter">Ⱒ</td><td class="col-name">Spidery Ha</td><td class="col-pron">KH</td></tr>
+        <tr><td class="col-letter">Ⱓ</td><td class="col-name">Yu</td><td class="col-pron">YU</td></tr>
+        <tr><td class="col-letter">Ⱔ</td><td class="col-name">Small Yus</td><td class="col-pron">SEMIVOWEL</td></tr>
+        <tr><td class="col-letter">Ⱕ</td><td class="col-name">Small Yus with Tail</td><td class="col-pron">nasalized SEMIVOWEL</td></tr>
+        <tr><td class="col-letter">Ⱖ</td><td class="col-name">Yo</td><td class="col-pron">YO</td></tr>
+        <tr><td class="col-letter">Ⱗ</td><td class="col-name">Iotated Small Yus</td><td class="col-pron">YE</td></tr>
+        <tr><td class="col-letter">Ⱘ</td><td class="col-name">Big Yus</td><td class="col-pron">Ö</td></tr>
+        <tr><td class="col-letter">Ⱙ</td><td class="col-name">Iotated Big Yus</td><td class="col-pron">Ë</td></tr>
+        <tr><td class="col-letter">Ⱚ</td><td class="col-name">Fita</td><td class="col-pron">TH</td></tr>
+        <tr><td class="col-letter">Ⱛ</td><td class="col-name">Izhitsa</td><td class="col-pron">I (with teeth)</td></tr>
+        <tr><td class="col-letter">Ⱜ</td><td class="col-name">Shtapic</td><td class="col-pron">glottal stop or variant vowel</td></tr>
+        <tr><td class="col-letter">Ⱝ</td><td class="col-name">Trokutasti A</td><td class="col-pron">Ä</td></tr>
+        <tr><td class="col-letter">Ⱞ</td><td class="col-name">Latinate Myslite</td><td class="col-pron">M (closed mouth)</td></tr>
+        <tr><td class="col-letter">Ⱟ</td><td class="col-name">Caudate Chrivi</td><td class="col-pron">CH (Ć)</td></tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
