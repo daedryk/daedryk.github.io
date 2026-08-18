@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>⍟ multiverse · dot census</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0b0e1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, 'Arial', sans-serif;
+            padding: 20px;
+        }
+        .shrine {
+            background: #121626;
+            border-radius: 48px;
+            padding: 30px 25px 40px;
+            max-width: 720px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px #ff800033, inset 0 0 60px #ff000008;
+            border: 1px solid #ff800022;
+        }
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #0a0c14;
+            box-shadow: inset 0 0 40px #00000088, 0 0 0 1px #ff880033;
+        }
+        #multiverseCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 28px;
+            color: #ffcc99;
+            text-shadow: 0 0 8px #ff440066;
+        }
+        .stat-card {
+            background: #1a1f2e;
+            border-radius: 20px;
+            padding: 16px 10px;
+            text-align: center;
+            border: 1px solid #ff880033;
+            backdrop-filter: blur(4px);
+            box-shadow: inset 0 0 20px #00000066;
+        }
+        .stat-card .number {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        .stat-card .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffaa77;
+            margin-top: 6px;
+            opacity: 0.8;
+        }
+        .stat-card.red .number { color: #ff2a2a; text-shadow: 0 0 20px #ff0000aa; }
+        .stat-card.blue .number { color: #3a8cff; text-shadow: 0 0 20px #0066ffaa; }
+        .stat-card.gold .number { color: #ffb347; text-shadow: 0 0 20px #ff8800aa; }
+        .stat-card.total .number { color: #e0e0ff; text-shadow: 0 0 20px #8888ffaa; }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 30px;
+            margin: 24px 0 10px;
+            padding: 14px 18px;
+            background: #0d111e;
+            border-radius: 60px;
+            border: 1px solid #ff880022;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ddc7a2;
+            font-size: 0.9rem;
+        }
+        .swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 12px currentColor;
+        }
+        .swatch.red { background: radial-gradient(circle at 30% 30%, #ff6666, #cc0000, #550000); color: #ff3333; }
+        .swatch.blue { background: radial-gradient(circle at 30% 30%, #66aaff, #0044cc, #001133); color: #3388ff; }
+        .swatch.secondary { background: radial-gradient(circle at 30% 30%, #66aaff, #0033aa, #000a22); color: #2266dd; width: 14px; height: 14px; }
+        .swatch.glow { background: radial-gradient(circle at 30% 30%, #ffdd77, #dd8800, #663300); color: #ffaa33; }
+        .footnote {
+            margin-top: 22px;
+            font-size: 0.85rem;
+            color: #aa9977;
+            text-align: center;
+            border-top: 1px dashed #ff880033;
+            padding-top: 20px;
+            letter-spacing: 0.5px;
+        }
+        .footnote span { color: #ffaa55; }
+        .glow-text {
+            text-shadow: 0 0 12px #ff440066;
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .shrine { padding: 16px; }
+            .stat-card .number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="shrine">
+    <div class="canvas-wrapper">
+        <canvas id="multiverseCanvas" width="600" height="600"></canvas>
+    </div>
+
+    <!-- stats dashboard -->
+    <div class="stats-grid">
+        <div class="stat-card red">
+            <div class="number" id="redCount">—</div>
+            <div class="label">⭒ red mains</div>
+        </div>
+        <div class="stat-card blue">
+            <div class="number" id="blueCount">—</div>
+            <div class="label">⭒ blue mains</div>
+        </div>
+        <div class="stat-card gold">
+            <div class="number" id="secondaryCount">—</div>
+            <div class="label">⭒ secondary</div>
+        </div>
+        <div class="stat-card total" style="grid-column: span 3;">
+            <div class="number" id="totalDots">—</div>
+            <div class="label">✦ total visible dots (mains + secondary)</div>
+        </div>
+    </div>
+
+    <!-- legend / size guide -->
+    <div class="legend">
+        <div class="legend-item"><span class="swatch red"></span> main red · 12px</div>
+        <div class="legend-item"><span class="swatch blue"></span> main blue · 12px</div>
+        <div class="legend-item"><span class="swatch secondary"></span> secondary · 10px</div>
+        <div class="legend-item"><span class="swatch glow"></span> gradient glow</div>
+    </div>
+
+    <div class="footnote">
+        <span>⍟</span> each dot is a universe · main dots (red/blue) are larger · secondary dots are slightly smaller · every dot glows with a radial gradient from core color to gold <span>⍟</span>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const canvas = document.getElementById('multiverseCanvas');
+        const ctx = canvas.getContext('2d');
+        const W = 600, H = 600;
+        const CX = 300, CY = 300;
+
+        // ----- generate the exact same points as in the original -----
+        function generateBasePoints() {
+            const pts = [];
+            for (let i = 0; i <= 1000; i++) {
+                const theta = (i / 1000) * Math.PI * 2;
+                const x = -180 + (360 * theta / (Math.PI * 2));
+                const y = Math.sin(x) * x * Math.cos(x);
+                const radius = 50 + ((200) * (y + 180) / 360);
+                const gx = CX + Math.cos(theta - Math.PI / 2) * radius;
+                const gy = CY + Math.sin(theta - Math.PI / 2) * radius;
+                pts.push({ x: gx, y: gy });
+            }
+            return pts;
+        }
+
+        const points = generateBasePoints();
+
+        // ---- count categories (matching the draw logic) ----
+        let redMain = 0, blueMain = 0, secondaryCount = 0;
+        const totalPoints = points.length; // 1001
+
+        for (let i = 0; i < totalPoints; i++) {
+            const isMain = (i % 10 === 0);
+            const isSecondary = (i % 25 === 0);
+            if (isMain) {
+                // main dots alternate red/blue based on index group
+                const useRed = (Math.floor(i / 10) % 2 === 0);
+                if (useRed) redMain++;
+                else blueMain++;
+            }
+            if (isSecondary) {
+                secondaryCount++;
+            }
+        }
+
+        // secondary dots that are also main are counted in both, but we want the "extra" secondary only.
+        // In the original, secondary dots are drawn ON TOP of mains when both conditions are true.
+        // So we count "secondary" as the number of points where i%25===0 (they are drawn regardless)
+        // But we want to show the number of secondary *dots* drawn (they overlap mains).
+        // We'll just show the raw count from the condition, as in the visual.
+        // However, to avoid double-counting in totals, we treat them as separate layers.
+        // For the "total visible dots" we sum: main dots (red+blue) + secondary dots (since they are additional)
+        // But secondary includes some that are also main – but they are drawn as extra rings.
+        // In the original, the secondary dots are drawn on top, so they are visible as separate entities.
+        // We'll count them as additional dots.
+        // But we don't want to double-count the same point as both main and secondary in total.
+        // However, the visual has both a main dot AND a secondary dot at the same position when both conditions are true.
+        // So total visible = (redMain + blueMain) + secondaryCount.
+        // Because secondary dots are extra overlays.
+        const totalVisible = redMain + blueMain + secondaryCount;
+
+        // update DOM
+        document.getElementById('redCount').textContent = redMain;
+        document.getElementById('blueCount').textContent = blueMain;
+        document.getElementById('secondaryCount').textContent = secondaryCount;
+        document.getElementById('totalDots').textContent = totalVisible;
+
+        // ----- draw the multiverse canvas (exact replica, no "道" character) -----
+        function drawMultiverse() {
+            ctx.clearRect(0, 0, W, H);
+
+            // --- background grid (same as original) ---
+            ctx.strokeStyle = '#ff8000';
+            ctx.lineWidth = 1;
+            for (let angle = 0; angle < 360; angle += 15) {
+                const rad = angle * Math.PI / 180;
+                ctx.beginPath();
+                ctx.moveTo(CX, CY);
+                ctx.lineTo(CX + Math.cos(rad) * 275, CY + Math.sin(rad) * 275);
+                ctx.strokeStyle = '#ff8000';
+                ctx.stroke();
+            }
+            ctx.strokeStyle = '#ff8000';
+            for (let r = 50; r <= 250; r += 50) {
+                ctx.beginPath();
+                ctx.arc(CX, CY, r, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            // --- background curve (the faint green line) ---
+            ctx.save();
+            ctx.strokeStyle = '#00ff00';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            points.forEach((p, idx) => {
+                if (idx === 0) ctx.moveTo(p.x, p.y);
+                else ctx.lineTo(p.x, p.y);
+            });
+            ctx.stroke();
+            ctx.restore();
+
+            // --- draw the dots (exactly as in the original, no "道" symbol) ---
+            points.forEach((point, i) => {
+                // main dots (i % 10 === 0)
+                if (i % 10 === 0) {
+                    const useRed = (Math.floor(i / 10) % 2 === 0);
+                    let coreColor = useRed ? '#ff0000' : '#0000ff';
+                    // main dot gradient
+                    const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
+                    grad.addColorStop(0, coreColor);
+                    grad.addColorStop(0.7, coreColor);
+                    grad.addColorStop(1, '#ffaa33');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // core
+                    ctx.fillStyle = coreColor;
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // highlight
+                    ctx.fillStyle = '#ffdd99';
+                    ctx.beginPath();
+                    ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // secondary dots (i % 25 === 0) – drawn on top of mains
+                if (i % 25 === 0) {
+                    const extraColor = '#0000ff';
+                    const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
+                    grad2.addColorStop(0, extraColor);
+                    grad2.addColorStop(0.8, extraColor);
+                    grad2.addColorStop(1, '#ffaa55');
+                    ctx.fillStyle = grad2;
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = extraColor;
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            });
+
+            // --- small sacred geometry dots (the 12 around center, but we keep them as part of the "universe" aesthetic) ---
+            // we keep them because they are part of the original canvas, but the user asked to describe "except the dao dots"
+            // the "dao" character is not drawn, but the small dots around it are still part of the cosmic web.
+            // we'll keep them for flavor – they are 12 tiny orange dots.
+            ctx.save();
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const rad = 95;
+                const x = CX + Math.cos(angle) * rad;
+                const y = CY + Math.sin(angle) * rad;
+                ctx.beginPath();
+                ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff8000';
+                ctx.fill();
+            }
+            ctx.restore();
+
+            // subtle circles (like the original)
+            ctx.save();
+            ctx.shadowBlur = 0;
+            for (let i = 0; i < 3; i++) {
+                ctx.beginPath();
+                ctx.arc(CX, CY, 30 + i*12, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(255, 128, 0, ${0.3 - i*0.1})`;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        drawMultiverse();
+
+        // optional: redraw on resize (but canvas is fixed size)
+    })();
+</script>
+</body>
+</html>
