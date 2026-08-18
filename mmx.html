@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>⋆ silver census · dot matrix</title>
+    <title>⋆ cyber census · dot matrix</title>
     <style>
         * {
             margin: 0;
@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
         body {
-            background: #0c0e14;
+            background: #080b12;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -20,58 +20,76 @@
             padding: 20px;
         }
         .shrine {
-            background: #151a24;
+            background: #0f1622;
             border-radius: 40px;
             padding: 30px 25px 40px;
             max-width: 780px;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px #aabbcc33, inset 0 0 60px #8899aa08;
-            border: 1px solid #99aabb22;
-        }
-        .canvas-wrapper {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 0 1px #4a6a8a33, inset 0 0 80px #1a3a5a08;
+            border: 1px solid #4a7a9a33;
             position: relative;
-            width: 100%;
-            aspect-ratio: 1/1;
-            border-radius: 28px;
             overflow: hidden;
-            background: #11161f;
-            box-shadow: inset 0 0 40px #00000088, 0 0 0 1px #99aabb33;
         }
-        #silverCanvas {
-            display: block;
+        .shrine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(0, 180, 255, 0.03) 0%, transparent 60%),
+                        radial-gradient(circle at 70% 60%, rgba(255, 0, 100, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ——— cyber ornament ——— */
+        .cyber-ornament {
+            text-align: center;
+            margin: 0 0 10px 0;
+            line-height: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .cyber-ornament svg {
             width: 100%;
-            height: 100%;
-            background: transparent;
+            max-width: 400px;
+            height: auto;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 8px #00aaff33) drop-shadow(0 0 2px #ff006633);
         }
 
         /* ——— table ——— */
         .table-wrap {
-            margin-top: 28px;
+            margin-top: 18px;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid #8899aa33;
-            background: #0f141e;
-            box-shadow: inset 0 0 30px #00000055;
+            border: 1px solid #2a5a7a44;
+            background: #0a111e;
+            box-shadow: inset 0 0 40px #00000066, 0 0 30px #0044aa08;
+            position: relative;
+            z-index: 1;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            color: #c8d6e5;
+            color: #b8d0e8;
             font-size: 0.95rem;
         }
         th {
-            background: #1c2533;
-            color: #d0dcec;
+            background: #14222e;
+            color: #8ab8e8;
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 14px 12px;
-            border-bottom: 2px solid #66778844;
-            text-shadow: 0 0 12px #aabbcc33;
+            padding: 16px 14px;
+            border-bottom: 2px solid #2a5a7a44;
+            text-shadow: 0 0 20px #0066ff22;
+            font-size: 0.8rem;
         }
         td {
-            padding: 12px 14px;
-            border-bottom: 1px solid #33445533;
+            padding: 14px 16px;
+            border-bottom: 1px solid #1a3a4a33;
             text-align: center;
         }
         tr:last-child td {
@@ -79,73 +97,138 @@
         }
         .row-label {
             font-weight: 500;
-            color: #b8c7dd;
+            color: #aac8e8;
             text-align: left;
-            padding-left: 20px;
+            padding-left: 24px;
+            letter-spacing: 0.3px;
         }
         .row-value {
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: #e0ecff;
-            text-shadow: 0 0 8px #88aacc44;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #d0ecff;
+            text-shadow: 0 0 16px #0088ff44;
+            font-variant-numeric: tabular-nums;
         }
-        .row-value.silver-glow {
-            color: #d0dcec;
-            text-shadow: 0 0 16px #aabbcc66;
+        .row-value.red-cyber {
+            color: #ff5577;
+            text-shadow: 0 0 20px #ff004466;
         }
-        .row-value.red-silver {
-            color: #d96c6c;
-            text-shadow: 0 0 12px #aa555566;
+        .row-value.blue-cyber {
+            color: #44aaff;
+            text-shadow: 0 0 20px #0066ff66;
         }
-        .row-value.blue-silver {
-            color: #6c9fd9;
-            text-shadow: 0 0 12px #5577aa66;
+        .row-value.gold-cyber {
+            color: #ffbb66;
+            text-shadow: 0 0 20px #ff880044;
         }
-        .row-value.gold-silver {
-            color: #c9b37a;
-            text-shadow: 0 0 12px #aa883366;
+        .row-value.total-cyber {
+            color: #88ccff;
+            text-shadow: 0 0 30px #0088ff66;
         }
         .badge {
             display: inline-block;
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 10px;
             vertical-align: middle;
-            box-shadow: 0 0 12px currentColor;
+            box-shadow: 0 0 16px currentColor;
         }
-        .badge.red { background: radial-gradient(circle at 30% 30%, #ff6666, #cc0000, #550000); color: #ff3333; }
-        .badge.blue { background: radial-gradient(circle at 30% 30%, #66aaff, #0044cc, #001133); color: #3388ff; }
-        .badge.secondary { background: radial-gradient(circle at 30% 30%, #66aaff, #0033aa, #000a22); color: #2266dd; width: 12px; height: 12px; }
-        .badge.total { background: radial-gradient(circle at 30% 30%, #c8d6e5, #8899aa, #445566); color: #aabbcc; }
+        .badge.red { background: radial-gradient(circle at 30% 30%, #ff5577, #cc0033, #660011); color: #ff3366; }
+        .badge.blue { background: radial-gradient(circle at 30% 30%, #44aaff, #0066dd, #002255); color: #3388ff; }
+        .badge.secondary { background: radial-gradient(circle at 30% 30%, #44aaff, #0044aa, #001a33); color: #2266dd; width: 12px; height: 12px; }
+        .badge.total { background: radial-gradient(circle at 30% 30%, #88ccff, #4488bb, #1a3355); color: #66aadd; }
 
-        .footnote {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: #8899aa;
+        /* ——— cyber footer ——— */
+        .cyber-footer {
+            margin-top: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .cyber-line {
+            flex: 1;
+            min-width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2a6a8a55, #4a9aca55, #2a6a8a55, transparent);
+        }
+        .cyber-pulse {
+            color: #6a9aba;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px #0088ff33;
+            padding: 0 10px;
+            white-space: nowrap;
+        }
+        .cyber-pulse span {
+            color: #88ccff;
+            font-weight: 600;
+        }
+
+        /* ——— bottom ornament ——— */
+        .cyber-ornament-bottom {
             text-align: center;
-            border-top: 1px dashed #44556644;
-            padding-top: 18px;
-            letter-spacing: 0.5px;
+            margin: 16px 0 0 0;
+            line-height: 0;
+            position: relative;
+            z-index: 1;
         }
-        .footnote span { color: #b0c4d8; }
-        .silver-text {
-            text-shadow: 0 0 12px #aabbcc44;
+        .cyber-ornament-bottom svg {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            opacity: 0.5;
+            filter: drop-shadow(0 0 6px #00aaff22);
         }
+
         @media (max-width: 500px) {
-            .shrine { padding: 16px; }
-            td, th { padding: 10px 8px; font-size: 0.85rem; }
-            .row-value { font-size: 1rem; }
+            .shrine { padding: 18px 14px 30px; }
+            td, th { padding: 10px 8px; font-size: 0.8rem; }
+            .row-value { font-size: 1.1rem; }
+            .row-label { padding-left: 12px; }
+            .cyber-pulse { font-size: 0.6rem; letter-spacing: 2px; }
         }
     </style>
 </head>
 <body>
 <div class="shrine">
-    <div class="canvas-wrapper">
-        <canvas id="silverCanvas" width="600" height="600"></canvas>
+    <!-- top cyber ornament -->
+    <div class="cyber-ornament">
+        <svg viewBox="0 0 400 40" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00aaff" stop-opacity="0"/>
+                    <stop offset="20%" stop-color="#00aaff" stop-opacity="0.6"/>
+                    <stop offset="50%" stop-color="#ff0066" stop-opacity="0.8"/>
+                    <stop offset="80%" stop-color="#00aaff" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#00aaff" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="cyberGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ff0066" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#ff0066" stop-opacity="0.4"/>
+                    <stop offset="50%" stop-color="#00aaff" stop-opacity="0.6"/>
+                    <stop offset="70%" stop-color="#ff0066" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#ff0066" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+            <rect x="0" y="18" width="400" height="4" fill="url(#cyberGrad)" rx="2" />
+            <rect x="0" y="10" width="400" height="2" fill="url(#cyberGrad2)" rx="1" opacity="0.5" />
+            <rect x="0" y="28" width="400" height="2" fill="url(#cyberGrad2)" rx="1" opacity="0.5" />
+            <circle cx="40" cy="20" r="4" fill="#00aaff" opacity="0.6" filter="url(#glow)" />
+            <circle cx="360" cy="20" r="4" fill="#ff0066" opacity="0.6" />
+            <circle cx="200" cy="20" r="6" fill="none" stroke="#00aaff" stroke-width="1.5" opacity="0.4" />
+            <circle cx="200" cy="20" r="2" fill="#88ccff" opacity="0.8" />
+            <circle cx="100" cy="20" r="2" fill="#00aaff" opacity="0.3" />
+            <circle cx="300" cy="20" r="2" fill="#ff0066" opacity="0.3" />
+        </svg>
     </div>
 
-    <!-- ——— silver table ——— -->
+    <!-- ——— data table ——— -->
     <div class="table-wrap">
         <table>
             <thead>
@@ -159,25 +242,25 @@
             <tbody>
                 <tr>
                     <td class="row-label"><span class="badge red"></span> main · red</td>
-                    <td class="row-value red-silver" id="redCount">—</td>
+                    <td class="row-value red-cyber">50</td>
                     <td>12px</td>
                     <td>red → gold</td>
                 </tr>
                 <tr>
                     <td class="row-label"><span class="badge blue"></span> main · blue</td>
-                    <td class="row-value blue-silver" id="blueCount">—</td>
+                    <td class="row-value blue-cyber">51</td>
                     <td>12px</td>
                     <td>blue → gold</td>
                 </tr>
                 <tr>
                     <td class="row-label"><span class="badge secondary"></span> secondary</td>
-                    <td class="row-value gold-silver" id="secondaryCount">—</td>
+                    <td class="row-value gold-cyber">41</td>
                     <td>10px</td>
                     <td>blue → gold</td>
                 </tr>
-                <tr style="border-top: 2px solid #66778855;">
+                <tr style="border-top: 2px solid #2a5a7a55;">
                     <td class="row-label"><span class="badge total"></span> total visible dots</td>
-                    <td class="row-value silver-glow" id="totalDots">—</td>
+                    <td class="row-value total-cyber">142</td>
                     <td>—</td>
                     <td>—</td>
                 </tr>
@@ -185,167 +268,43 @@
         </table>
     </div>
 
-    <div class="footnote">
-        <span>⍟</span> all dots glow with radial gradients · main dots are larger (12px) · secondary dots are slightly smaller (10px) · every dot is a universe <span>⍟</span>
+    <!-- cyber footer with explanation -->
+    <div class="cyber-footer">
+        <div class="cyber-line"></div>
+        <div class="cyber-pulse">
+            <span>⍟</span> every dot is a universe <span>⍟</span>
+        </div>
+        <div class="cyber-line"></div>
+    </div>
+
+    <!-- bottom explanation -->
+    <div style="text-align: center; margin-top: 16px; color: #5a8aaa; font-size: 0.8rem; letter-spacing: 0.5px; position: relative; z-index: 1; line-height: 1.6; padding: 0 10px;">
+        <span style="color: #88ccff; text-shadow: 0 0 12px #0088ff33;">main dots</span> (red + blue) are larger at 12px · 
+        <span style="color: #ffbb66; text-shadow: 0 0 12px #ff880033;">secondary</span> dots are 10px · all glow with radial gradients from core color to gold
+    </div>
+
+    <!-- bottom cyber ornament -->
+    <div class="cyber-ornament-bottom">
+        <svg viewBox="0 0 400 30" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="cyberGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ff0066" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#ff0066" stop-opacity="0.3"/>
+                    <stop offset="50%" stop-color="#00aaff" stop-opacity="0.5"/>
+                    <stop offset="70%" stop-color="#ff0066" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#ff0066" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+            <rect x="0" y="14" width="400" height="2" fill="url(#cyberGrad3)" rx="1" />
+            <rect x="0" y="20" width="400" height="2" fill="url(#cyberGrad3)" rx="1" opacity="0.5" />
+            <circle cx="60" cy="15" r="3" fill="#00aaff" opacity="0.5" />
+            <circle cx="340" cy="15" r="3" fill="#ff0066" opacity="0.5" />
+            <circle cx="200" cy="15" r="4" fill="none" stroke="#ff0066" stroke-width="1" opacity="0.3" />
+            <circle cx="200" cy="15" r="1.5" fill="#ff6699" opacity="0.6" />
+            <path d="M120,15 L130,8 L140,15 L130,22 Z" fill="none" stroke="#00aaff" stroke-width="1" opacity="0.4" />
+            <path d="M260,15 L270,8 L280,15 L270,22 Z" fill="none" stroke="#ff0066" stroke-width="1" opacity="0.4" />
+        </svg>
     </div>
 </div>
-
-<script>
-    (function() {
-        const canvas = document.getElementById('silverCanvas');
-        const ctx = canvas.getContext('2d');
-        const W = 600, H = 600;
-        const CX = 300, CY = 300;
-
-        // ----- generate points (same as original) -----
-        function generateBasePoints() {
-            const pts = [];
-            for (let i = 0; i <= 1000; i++) {
-                const theta = (i / 1000) * Math.PI * 2;
-                const x = -180 + (360 * theta / (Math.PI * 2));
-                const y = Math.sin(x) * x * Math.cos(x);
-                const radius = 50 + ((200) * (y + 180) / 360);
-                const gx = CX + Math.cos(theta - Math.PI / 2) * radius;
-                const gy = CY + Math.sin(theta - Math.PI / 2) * radius;
-                pts.push({ x: gx, y: gy });
-            }
-            return pts;
-        }
-
-        const points = generateBasePoints();
-
-        // ---- count categories ----
-        let redMain = 0, blueMain = 0, secondaryCount = 0;
-        for (let i = 0; i < points.length; i++) {
-            const isMain = (i % 10 === 0);
-            const isSecondary = (i % 25 === 0);
-            if (isMain) {
-                const useRed = (Math.floor(i / 10) % 2 === 0);
-                if (useRed) redMain++;
-                else blueMain++;
-            }
-            if (isSecondary) {
-                secondaryCount++;
-            }
-        }
-        const totalVisible = redMain + blueMain + secondaryCount;
-
-        // update table
-        document.getElementById('redCount').textContent = redMain;
-        document.getElementById('blueCount').textContent = blueMain;
-        document.getElementById('secondaryCount').textContent = secondaryCount;
-        document.getElementById('totalDots').textContent = totalVisible;
-
-        // ----- draw multiverse with silver backgrounds, original dot colors -----
-        function drawSilverMultiverse() {
-            ctx.clearRect(0, 0, W, H);
-
-            // --- background grid (silver) ---
-            ctx.strokeStyle = '#8899aa';
-            ctx.lineWidth = 1;
-            for (let angle = 0; angle < 360; angle += 15) {
-                const rad = angle * Math.PI / 180;
-                ctx.beginPath();
-                ctx.moveTo(CX, CY);
-                ctx.lineTo(CX + Math.cos(rad) * 275, CY + Math.sin(rad) * 275);
-                ctx.strokeStyle = '#778899';
-                ctx.stroke();
-            }
-            ctx.strokeStyle = '#778899';
-            for (let r = 50; r <= 250; r += 50) {
-                ctx.beginPath();
-                ctx.arc(CX, CY, r, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            // --- background curve (silver) ---
-            ctx.save();
-            ctx.strokeStyle = '#88aacc';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            points.forEach((p, idx) => {
-                if (idx === 0) ctx.moveTo(p.x, p.y);
-                else ctx.lineTo(p.x, p.y);
-            });
-            ctx.stroke();
-            ctx.restore();
-
-            // --- draw dots with ORIGINAL COLORS (red, blue, gold) ---
-            points.forEach((point, i) => {
-                // main dots (i % 10 === 0)
-                if (i % 10 === 0) {
-                    const useRed = (Math.floor(i / 10) % 2 === 0);
-                    let coreColor = useRed ? '#ff0000' : '#0000ff';
-                    // main dot gradient
-                    const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
-                    grad.addColorStop(0, coreColor);
-                    grad.addColorStop(0.7, coreColor);
-                    grad.addColorStop(1, '#ffaa33');
-                    ctx.fillStyle = grad;
-                    ctx.beginPath();
-                    ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // core
-                    ctx.fillStyle = coreColor;
-                    ctx.beginPath();
-                    ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // highlight
-                    ctx.fillStyle = '#ffdd99';
-                    ctx.beginPath();
-                    ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
-                // secondary dots (i % 25 === 0) – drawn on top of mains
-                if (i % 25 === 0) {
-                    const extraColor = '#0000ff';
-                    const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
-                    grad2.addColorStop(0, extraColor);
-                    grad2.addColorStop(0.8, extraColor);
-                    grad2.addColorStop(1, '#ffaa55');
-                    ctx.fillStyle = grad2;
-                    ctx.beginPath();
-                    ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    ctx.fillStyle = extraColor;
-                    ctx.beginPath();
-                    ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            });
-
-            // --- small sacred geometry dots (silver) ---
-            ctx.save();
-            for (let i = 0; i < 12; i++) {
-                const angle = (i * 30) * Math.PI / 180;
-                const rad = 95;
-                const x = CX + Math.cos(angle) * rad;
-                const y = CY + Math.sin(angle) * rad;
-                ctx.beginPath();
-                ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-                ctx.fillStyle = '#8899aa';
-                ctx.fill();
-            }
-            ctx.restore();
-
-            // subtle rings (silver)
-            ctx.save();
-            for (let i = 0; i < 3; i++) {
-                ctx.beginPath();
-                ctx.arc(CX, CY, 30 + i*12, 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(136, 153, 170, ${0.25 - i*0.08})`;
-                ctx.lineWidth = 1.2;
-                ctx.stroke();
-            }
-            ctx.restore();
-        }
-
-        drawSilverMultiverse();
-    })();
-</script>
 </body>
 </html>
