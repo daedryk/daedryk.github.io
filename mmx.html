@@ -114,9 +114,9 @@
             vertical-align: middle;
             box-shadow: 0 0 12px currentColor;
         }
-        .badge.red { background: radial-gradient(circle at 30% 30%, #d96c6c, #883333, #331111); color: #cc5555; }
-        .badge.blue { background: radial-gradient(circle at 30% 30%, #6c9fd9, #335588, #112244); color: #5588cc; }
-        .badge.secondary { background: radial-gradient(circle at 30% 30%, #6c9fd9, #2a4a7a, #0a1a2a); color: #4477aa; width: 12px; height: 12px; }
+        .badge.red { background: radial-gradient(circle at 30% 30%, #ff6666, #cc0000, #550000); color: #ff3333; }
+        .badge.blue { background: radial-gradient(circle at 30% 30%, #66aaff, #0044cc, #001133); color: #3388ff; }
+        .badge.secondary { background: radial-gradient(circle at 30% 30%, #66aaff, #0033aa, #000a22); color: #2266dd; width: 12px; height: 12px; }
         .badge.total { background: radial-gradient(circle at 30% 30%, #c8d6e5, #8899aa, #445566); color: #aabbcc; }
 
         .footnote {
@@ -161,19 +161,19 @@
                     <td class="row-label"><span class="badge red"></span> main · red</td>
                     <td class="row-value red-silver" id="redCount">—</td>
                     <td>12px</td>
-                    <td>red → silver-gold</td>
+                    <td>red → gold</td>
                 </tr>
                 <tr>
                     <td class="row-label"><span class="badge blue"></span> main · blue</td>
                     <td class="row-value blue-silver" id="blueCount">—</td>
                     <td>12px</td>
-                    <td>blue → silver-gold</td>
+                    <td>blue → gold</td>
                 </tr>
                 <tr>
                     <td class="row-label"><span class="badge secondary"></span> secondary</td>
                     <td class="row-value gold-silver" id="secondaryCount">—</td>
                     <td>10px</td>
-                    <td>blue → pale silver</td>
+                    <td>blue → gold</td>
                 </tr>
                 <tr style="border-top: 2px solid #66778855;">
                     <td class="row-label"><span class="badge total"></span> total visible dots</td>
@@ -236,7 +236,7 @@
         document.getElementById('secondaryCount').textContent = secondaryCount;
         document.getElementById('totalDots').textContent = totalVisible;
 
-        // ----- draw silver-toned multiverse (no "道") -----
+        // ----- draw multiverse with silver backgrounds, original dot colors -----
         function drawSilverMultiverse() {
             ctx.clearRect(0, 0, W, H);
 
@@ -258,7 +258,7 @@
                 ctx.stroke();
             }
 
-            // --- background curve (soft silver-green) ---
+            // --- background curve (silver) ---
             ctx.save();
             ctx.strokeStyle = '#88aacc';
             ctx.lineWidth = 2;
@@ -270,17 +270,17 @@
             ctx.stroke();
             ctx.restore();
 
-            // --- draw dots (silver palette) ---
+            // --- draw dots with ORIGINAL COLORS (red, blue, gold) ---
             points.forEach((point, i) => {
-                // main dots
+                // main dots (i % 10 === 0)
                 if (i % 10 === 0) {
                     const useRed = (Math.floor(i / 10) % 2 === 0);
-                    let coreColor = useRed ? '#cc7777' : '#77aadd';
-                    // main gradient: core → silver-gold
+                    let coreColor = useRed ? '#ff0000' : '#0000ff';
+                    // main dot gradient
                     const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
                     grad.addColorStop(0, coreColor);
-                    grad.addColorStop(0.6, coreColor);
-                    grad.addColorStop(1, '#b0bcc8');
+                    grad.addColorStop(0.7, coreColor);
+                    grad.addColorStop(1, '#ffaa33');
                     ctx.fillStyle = grad;
                     ctx.beginPath();
                     ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
@@ -292,27 +292,28 @@
                     ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
                     ctx.fill();
 
-                    // highlight (silver-white)
-                    ctx.fillStyle = '#e8f0f8';
+                    // highlight
+                    ctx.fillStyle = '#ffdd99';
                     ctx.beginPath();
-                    ctx.arc(point.x - 1.5, point.y - 1.5, 1.2, 0, Math.PI * 2);
+                    ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
                     ctx.fill();
                 }
 
-                // secondary dots (blue → pale silver)
+                // secondary dots (i % 25 === 0) – drawn on top of mains
                 if (i % 25 === 0) {
+                    const extraColor = '#0000ff';
                     const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
-                    grad2.addColorStop(0, '#77aadd');
-                    grad2.addColorStop(0.7, '#5599bb');
-                    grad2.addColorStop(1, '#a0b4c8');
+                    grad2.addColorStop(0, extraColor);
+                    grad2.addColorStop(0.8, extraColor);
+                    grad2.addColorStop(1, '#ffaa55');
                     ctx.fillStyle = grad2;
                     ctx.beginPath();
                     ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
                     ctx.fill();
 
-                    ctx.fillStyle = '#77aadd';
+                    ctx.fillStyle = extraColor;
                     ctx.beginPath();
-                    ctx.arc(point.x, point.y, 2.5, 0, Math.PI * 2);
+                    ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
                     ctx.fill();
                 }
             });
