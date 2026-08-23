@@ -10,35 +10,39 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     html, body {
       width: 100%;
       min-height: 100vh;
-      background: linear-gradient(145deg, #05241c 0%, #0b3f31 100%);
+      background: linear-gradient(145deg, #1e2b2a 0%, #2f4542 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 0.75rem 0.75rem;
+      padding: 0.75rem;
     }
+
     .id-card {
       width: 680px;
       max-width: 92vw;
-      background-color: #0a2f26;
-      border: 3px solid #73c7b0;
-      border-radius: 32px;
+      background: linear-gradient(145deg, #b8c9c0, #8fa8a0);
+      border: 2px solid #d4e8e0;
+      border-radius: 40px;
       padding: 2.2rem 2rem 2rem 2rem;
-      color: #d2ffe8;
-      box-shadow: 0 25px 40px -10px rgba(0, 30, 20, 0.8);
+      color: #1a2b26;
+      box-shadow: 0 20px 40px -8px rgba(0, 20, 15, 0.7), inset 0 1px 4px rgba(255, 255, 245, 0.6);
+      backdrop-filter: blur(1px);
     }
+
     .selfie-container {
       position: relative;
       margin-bottom: 1.75rem;
       border-radius: 28px;
       overflow: hidden;
-      border: 2px solid #3f9c86;
-      background-color: #0d382e;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+      border: 2px solid #b2ccc2;
+      background-color: #cedfd6;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,240,0.3);
     }
+
     .selfie-img {
       display: block;
       width: 100%;
@@ -46,25 +50,25 @@
       object-fit: cover;
       vertical-align: middle;
     }
+
     .page-title-on-image {
       position: absolute;
       top: 1rem;
       left: 1.2rem;
-      background: rgba(10, 47, 38, 0.75);
+      background: rgba(180, 200, 190, 0.7);
       backdrop-filter: blur(4px);
       padding: 0.5rem 1.2rem;
       border-radius: 60px;
       font-size: 1.55rem;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: #e2fff0;
-      text-shadow: 0 2px 5px #031e16;
-      border-left: 4px solid #7ed9c2;
-      font-family: 'Courier New', Courier, monospace;
+      color: #0f1f1a;
+      text-shadow: 0 1px 2px #d0e6dd;
+      border-left: 4px solid #aac7bb;
       pointer-events: none;
       z-index: 2;
       white-space: nowrap;
     }
+
     @media (max-width: 540px) {
       .page-title-on-image {
         font-size: 1rem;
@@ -74,104 +78,136 @@
         white-space: nowrap;
       }
     }
+
     .info-field {
-      border: 2px solid #3f9c86;
+      border: 2px solid #aac0b6;
       border-radius: 40px;
-      background-color: #0d382e;
+      background-color: #d4e5dc;
       padding: 1rem 2rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.4rem;
       word-break: break-word;
       transition: border-color 0.15s, background-color 0.15s;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
     }
+
     .info-field:hover {
-      border-color: #9de0cf;
-      background-color: #12493b;
+      border-color: #e6f5ed;
+      background-color: #e1f0e8;
     }
+
     .label {
       font-size: 0.9rem;
       text-transform: uppercase;
-      color: #9adac8;
+      color: #2f4a40;
       opacity: 0.9;
       margin-bottom: 0.3rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
     }
+
     .value {
       font-size: 1rem;
       font-weight: 700;
       line-height: 1.3;
-      color: #dafff2;
+      color: #0b1f19;
     }
+
     .value.address { font-size: 1rem; }
     .value.mail { word-break: break-all; }
+
     .info-field:last-of-type {
       margin-bottom: 0;
     }
+
     .badge {
       display: flex;
       justify-content: center;
       margin-bottom: 1.2rem;
-      color: #6fcab2;
+      color: #1f3b32;
       font-weight: bold;
       font-size: 1.9rem;
-      border-bottom: 1px dashed #409882;
+      border-bottom: 1px dashed #6d8f81;
       padding-bottom: 0.6rem;
     }
+
     a, a:visited {
-      color: #b8f3e0;
+      color: #0d2b22;
       text-decoration: none;
-      border-bottom: 1px dotted #52b69a;
-      transition: color 0.2s, border-color 0.2s;
+      border-bottom: none;
+      transition: color 0.2s;
     }
+
     a:hover {
-      color: #ffffff;
-      border-bottom: 2px solid #95edd6;
+      color: #3d6255;
+      text-decoration: none;
+      border-bottom: none;
     }
+
     .home-link {
       margin-top: 1.8rem;
-      text-align: right;
-      border-top: 2px dotted #3f9c86;
-      padding-top: 1.2rem;
+      border-top: 2px dotted #6d8f81;
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
     }
-    .home-link a {
-      font-size: 1rem;
+
+    .home-link a:last-child {
+      font-size: 1.2rem;
       font-weight: 700;
-      border-bottom: 2px solid #47b294;
-      padding-bottom: 2px;
+      display: inline-block;
+      line-height: 1.2;
     }
-    .home-link a:hover {
-      border-bottom: 3px solid #a1f0da;
+
+    .home-link a:first-child {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      display: inline-block;
+      text-decoration: none;
+      border-bottom: none;
     }
+
+    .home-link a:first-child:hover {
+      opacity: 0.8;
+      border-bottom: none;
+    }
+
     .player-section {
       margin-top: 2rem;
-      border: 2px solid #3f9c86;
+      border: 2px solid #aac0b6;
       border-radius: 40px;
-      background-color: #0d382e;
+      background-color: #d4e5dc;
       padding: 1.4rem 2rem;
       transition: border-color 0.15s, background-color 0.15s;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
     }
+
     .player-section:hover {
-      border-color: #7cd9c0;
-      background-color: #115543;
+      border-color: #e6f5ed;
+      background-color: #e1f0e8;
     }
+
     .player-title {
       font-size: 1rem;
       text-transform: uppercase;
-      color: #abe2d2;
+      color: #1f3b32;
       margin-bottom: 1rem;
       font-weight: 700;
-      border-bottom: 1px dashed #409882;
+      border-bottom: 1px dashed #6d8f81;
       padding-bottom: 0.4rem;
     }
+
     .player-controls {
       display: flex;
       align-items: center;
       gap: 1.2rem;
       flex-wrap: wrap;
     }
+
     .play-pause-btn {
       background: none;
-      border: 2px solid #47b294;
+      border: 2px solid #698b7c;
       border-radius: 60px;
       width: 60px;
       height: 60px;
@@ -180,47 +216,61 @@
       justify-content: center;
       cursor: pointer;
       transition: 0.1s linear;
-      background-color: #288570;
+      background-color: #a6c2b6;
       color: transparent;
       text-indent: -9999px;
       font-size: 0;
       line-height: 0;
       padding: 0;
-      box-shadow: 0 0 8px #68cdb0;
+      box-shadow: 0 0 8px #c0ddd0;
     }
+
     .play-pause-btn:hover {
-      background-color: #3eb398;
-      border-color: #98edd6;
-      box-shadow: 0 0 14px #8ee6cf;
+      background-color: #bdd9cd;
+      border-color: #7fa397;
+      box-shadow: 0 0 14px #d4eee2;
     }
+
     .progress-container {
       flex: 1;
       display: flex;
       align-items: center;
     }
+
     .progress-bar {
       width: 100%;
       height: 14px;
-      background-color: #143f34;
-      border: 2px solid #3f9c86;
+      background-color: #b2ccc2;
+      border: 2px solid #698b7c;
       border-radius: 20px;
       appearance: none;
       cursor: pointer;
     }
+
     .progress-bar::-webkit-progress-bar {
-      background-color: #143f34;
+      background-color: #b2ccc2;
       border-radius: 20px;
     }
+
     .progress-bar::-webkit-progress-value {
-      background-color: #7ed9c2;
+      background-color: #3e6b5c;
       border-radius: 20px;
     }
+
     .progress-bar::-moz-progress-bar {
-      background-color: #7ed9c2;
+      background-color: #3e6b5c;
       border-radius: 20px;
     }
+
     audio {
       display: none;
+    }
+
+    * {
+      letter-spacing: 0 !important;
+    }
+    .label, .value, .badge, .home-link, .player-title, .page-title-on-image {
+      letter-spacing: 0 !important;
     }
   </style>
 </head>
@@ -230,9 +280,11 @@
       <img class="selfie-img" src="777298010_1385532809699680_3337808481119840559_n.webp" alt="Dejan selfie" onerror="this.onerror=null; this.style.opacity='0.7'; this.style.filter='grayscale(0.2)';">
       <div class="page-title-on-image">魏魔族 · 血统档案</div>
     </div>
+
     <div class="badge">
       <a href="w.html">Agent Smooth</a>
     </div>
+
     <div class="info-field">
       <div class="label">full name</div>
       <div class="value">Dejan Ilič</div>
@@ -259,9 +311,12 @@
         <a href="mailto:daedryk@proton.me">daedryk@proton.me</a>
       </div>
     </div>
+
     <div class="home-link">
-      <a style="text-decoration: none" href="MyHeritage_raw_dna_data.zip">🧬</a> <a href="si.html">UNIMATRIX ONE</a>
+      <a href="MyHeritage_raw_dna_data.zip">🧬</a>
+      <a href="si.html">UNIMATRIX ONE</a>
     </div>
+
     <div class="player-section">
       <div class="player-title">mouse trap</div>
       <div class="player-controls">
@@ -272,7 +327,9 @@
       </div>
     </div>
   </div>
+
   <audio id="track" src="trap.mp3" preload="metadata"></audio>
+
   <script>
     (function() {
       const playBtn = document.getElementById('playPauseBtn');
@@ -280,6 +337,7 @@
       const audio = document.getElementById('track');
       let animationFrame = null;
       let wasSeeking = false;
+
       const updateProgress = () => {
         if (!audio.duration || isNaN(audio.duration) || !audio.duration) {
           progressBar.value = 0;
@@ -288,9 +346,10 @@
         const percent = (audio.currentTime / audio.duration) * 100;
         progressBar.value = Math.min(100, Math.max(0, percent));
       };
+
       const whilePlaying = () => {
         if (audio.ended) {
-          playBtn.style.backgroundColor = '#288570';
+          playBtn.style.backgroundColor = '#a6c2b6';
           progressBar.value = 0;
           if (animationFrame) {
             cancelAnimationFrame(animationFrame);
@@ -308,6 +367,7 @@
           }
         }
       };
+
       const togglePlayback = () => {
         if (audio.paused) {
           if (audio.ended) {
@@ -317,24 +377,26 @@
           if (playPromise !== undefined) {
             playPromise
               .then(() => {
-                playBtn.style.backgroundColor = '#4fcbad';
+                playBtn.style.backgroundColor = '#6f9c8a';
                 if (animationFrame) cancelAnimationFrame(animationFrame);
                 animationFrame = requestAnimationFrame(whilePlaying);
               })
               .catch(() => {
-                playBtn.style.backgroundColor = '#288570';
+                playBtn.style.backgroundColor = '#a6c2b6';
               });
           }
         } else {
           audio.pause();
-          playBtn.style.backgroundColor = '#288570';
+          playBtn.style.backgroundColor = '#a6c2b6';
           if (animationFrame) {
             cancelAnimationFrame(animationFrame);
             animationFrame = null;
           }
         }
       };
+
       playBtn.addEventListener('click', togglePlayback);
+
       progressBar.addEventListener('mousedown', () => {
         if (animationFrame) {
           cancelAnimationFrame(animationFrame);
@@ -342,11 +404,13 @@
         }
         wasSeeking = true;
       });
+
       progressBar.addEventListener('input', (e) => {
         if (!audio.duration || isNaN(audio.duration)) return;
         const newTime = (progressBar.value / 100) * audio.duration;
         audio.currentTime = newTime;
       });
+
       progressBar.addEventListener('change', () => {
         if (!audio.duration) return;
         wasSeeking = false;
@@ -355,6 +419,7 @@
           animationFrame = requestAnimationFrame(whilePlaying);
         }
       });
+
       document.addEventListener('mouseup', () => {
         if (wasSeeking) {
           wasSeeking = false;
@@ -364,11 +429,13 @@
           }
         }
       });
+
       audio.addEventListener('loadedmetadata', () => {
         progressBar.value = 0;
       });
+
       audio.addEventListener('ended', () => {
-        playBtn.style.backgroundColor = '#288570';
+        playBtn.style.backgroundColor = '#a6c2b6';
         progressBar.value = 0;
         if (animationFrame) {
           cancelAnimationFrame(animationFrame);
@@ -376,9 +443,12 @@
         }
         audio.currentTime = 0;
       });
+
       audio.addEventListener('error', () => {});
-      playBtn.style.backgroundColor = '#288570';
+
+      playBtn.style.backgroundColor = '#a6c2b6';
       progressBar.value = 0;
+
       window.addEventListener('beforeunload', () => {
         if (animationFrame) {
           cancelAnimationFrame(animationFrame);
