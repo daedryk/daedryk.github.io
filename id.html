@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agent Smooth · ID Card</title>
+  <title>Agent Smooth</title>
   <style>
     * {
       margin: 0;
@@ -46,7 +46,7 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.5;
+      opacity: 0.6;
       border-radius: 40px;
       overflow: hidden;
     }
@@ -310,11 +310,6 @@
     <div class="svg-bg">
       <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.8"/>
-            <stop offset="50%" stop-color="#a8c4b8" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#c0d8ce" stop-opacity="0.7"/>
-          </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="2.5" result="blur"/>
             <feMerge>
@@ -326,207 +321,242 @@
         
         <rect width="1200" height="800" fill="#3a6a5a" opacity="0.15"/>
         
-        <g stroke="url(#metalGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+        <g stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
           
-          <path d="M 80 120 L 160 120 L 200 80 L 280 80 L 320 120 L 400 120">
+          <path d="M 120 80 L 200 80 L 250 130 L 330 130 L 380 80 L 460 80">
             <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="3.5s" repeatCount="indefinite" begin="0.2s"/>
             <animate attributeName="stroke-dashoffset" from="400" to="0" dur="3.5s" repeatCount="indefinite" begin="0.2s"/>
             <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="2.8s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#ff00ff;#800080;#00ffff" dur="6s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 200 80 L 200 40 L 260 40">
+          <path d="M 250 130 L 250 190 L 200 190">
             <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3s" repeatCount="indefinite" begin="0.7s"/>
             <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" begin="0.7s"/>
             <animate attributeName="stroke-opacity" values="0.15;1;0.15" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="260" cy="40" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="200" cy="190" r="6" fill="#00ffff" opacity="0">
             <animate attributeName="opacity" values="0;0.8;0.4;0.8" dur="2.8s" repeatCount="indefinite" begin="0.7s"/>
             <animate attributeName="r" values="4;8;4" dur="2.8s" repeatCount="indefinite" begin="0.7s"/>
+            <animate attributeName="fill" values="#00ffff;#ff00ff;#800080;#00ffff" dur="6s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 420 130 L 500 130 L 550 180 L 630 180 L 680 130 L 760 130">
+          <path d="M 520 90 L 600 90 L 650 140 L 730 140 L 780 90 L 860 90">
             <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="4s" repeatCount="indefinite" begin="1.2s"/>
             <animate attributeName="stroke-dashoffset" from="450" to="0" dur="4s" repeatCount="indefinite" begin="1.2s"/>
             <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#800080;#00ffff;#ff00ff;#800080" dur="7s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 550 180 L 550 250 L 610 250">
+          <path d="M 650 140 L 650 210 L 710 210">
             <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
             <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
             <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#00ffff;#800080;#ff00ff" dur="5.5s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="610" cy="250" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="710" cy="210" r="6" fill="#ff00ff" opacity="0">
             <animate attributeName="opacity" values="0;1;0.5;1" dur="3s" repeatCount="indefinite" begin="1.5s"/>
             <animate attributeName="r" values="4;10;4" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+            <animate attributeName="fill" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5.5s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 780 140 L 860 140 L 910 90 L 990 90 L 1040 140 L 1120 140">
-            <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="4.2s" repeatCount="indefinite" begin="2s"/>
-            <animate attributeName="stroke-dashoffset" from="450" to="0" dur="4.2s" repeatCount="indefinite" begin="2s"/>
+          <path d="M 920 100 L 1000 100 L 1050 150 L 1130 150">
+            <animate attributeName="stroke-dasharray" from="0 350" to="350 0" dur="4.2s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="stroke-dashoffset" from="350" to="0" dur="4.2s" repeatCount="indefinite" begin="2s"/>
             <animate attributeName="stroke-opacity" values="0.15;0.9;0.15" dur="3.2s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#ff00ff;#800080;#00ffff" dur="6.5s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 910 90 L 910 40 L 980 40">
-            <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.8s" repeatCount="indefinite" begin="2.3s"/>
-            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.8s" repeatCount="indefinite" begin="2.3s"/>
-            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="2.9s" repeatCount="indefinite"/>
-          </path>
-          
-          <circle cx="980" cy="40" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="1130" cy="150" r="6" fill="#800080" opacity="0">
             <animate attributeName="opacity" values="0;0.9;0.4;0.9" dur="3.2s" repeatCount="indefinite" begin="2.3s"/>
             <animate attributeName="r" values="4;9;4" dur="3.2s" repeatCount="indefinite" begin="2.3s"/>
+            <animate attributeName="fill" values="#800080;#00ffff;#ff00ff;#800080" dur="6.5s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 130 370 L 210 370 L 260 420 L 340 420 L 390 370 L 470 370">
+          <path d="M 90 330 L 170 330 L 220 380 L 300 380 L 350 330 L 430 330">
             <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="4.5s" repeatCount="indefinite" begin="0.5s"/>
             <animate attributeName="stroke-dashoffset" from="450" to="0" dur="4.5s" repeatCount="indefinite" begin="0.5s"/>
             <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5.8s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 260 420 L 260 500 L 210 500">
+          <path d="M 220 380 L 220 460 L 280 460">
             <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.5s" repeatCount="indefinite" begin="1s"/>
             <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.5s" repeatCount="indefinite" begin="1s"/>
             <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2.8s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#ff00ff;#800080;#00ffff" dur="6s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="210" cy="500" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="280" cy="460" r="6" fill="#ff00ff" opacity="0">
             <animate attributeName="opacity" values="0;1;0.4;1" dur="3.5s" repeatCount="indefinite" begin="1s"/>
             <animate attributeName="r" values="4;11;4" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="fill" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5.8s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 490 380 L 570 380 L 620 330 L 700 330 L 750 380 L 830 380">
+          <path d="M 490 340 L 570 340 L 620 390 L 700 390 L 750 340 L 830 340">
             <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="4.8s" repeatCount="indefinite" begin="1.8s"/>
             <animate attributeName="stroke-dashoffset" from="450" to="0" dur="4.8s" repeatCount="indefinite" begin="1.8s"/>
             <animate attributeName="stroke-opacity" values="0.15;0.9;0.15" dur="3.8s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#800080;#00ffff;#ff00ff;#800080" dur="7.2s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 620 330 L 620 270 L 680 270">
+          <path d="M 620 390 L 620 450 L 560 450">
             <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.8s" repeatCount="indefinite" begin="2.2s"/>
             <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.8s" repeatCount="indefinite" begin="2.2s"/>
             <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#00ffff;#800080;#ff00ff" dur="6.2s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="680" cy="270" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="560" cy="450" r="6" fill="#00ffff" opacity="0">
             <animate attributeName="opacity" values="0;0.8;0.5;0.8" dur="3.2s" repeatCount="indefinite" begin="2.2s"/>
             <animate attributeName="r" values="4;9;4" dur="3.2s" repeatCount="indefinite" begin="2.2s"/>
+            <animate attributeName="fill" values="#00ffff;#800080;#ff00ff;#00ffff" dur="6.2s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 850 390 L 930 390 L 980 440 L 1060 440 L 1110 390">
-            <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="4.3s" repeatCount="indefinite" begin="2.8s"/>
-            <animate attributeName="stroke-dashoffset" from="400" to="0" dur="4.3s" repeatCount="indefinite" begin="2.8s"/>
+          <path d="M 890 350 L 970 350 L 1020 400 L 1100 400">
+            <animate attributeName="stroke-dasharray" from="0 350" to="350 0" dur="4.3s" repeatCount="indefinite" begin="2.8s"/>
+            <animate attributeName="stroke-dashoffset" from="350" to="0" dur="4.3s" repeatCount="indefinite" begin="2.8s"/>
             <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="3.5s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#00ffff;#800080;#ff00ff" dur="5.5s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 70 600 L 150 600 L 200 550 L 280 550 L 330 600 L 410 600">
+          <path d="M 50 580 L 130 580 L 180 630 L 260 630 L 310 580 L 390 580">
             <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="5s" repeatCount="indefinite" begin="0.3s"/>
             <animate attributeName="stroke-dashoffset" from="450" to="0" dur="5s" repeatCount="indefinite" begin="0.3s"/>
             <animate attributeName="stroke-opacity" values="0.15;1;0.15" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#800080;#00ffff;#ff00ff;#800080" dur="6.8s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 200 550 L 200 620 L 150 620">
+          <path d="M 180 630 L 180 700 L 240 700">
             <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.6s" repeatCount="indefinite" begin="0.8s"/>
             <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.6s" repeatCount="indefinite" begin="0.8s"/>
             <animate attributeName="stroke-opacity" values="0.25;1;0.25" dur="2.9s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#ff00ff;#800080;#00ffff" dur="5.5s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="150" cy="620" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="240" cy="700" r="6" fill="#ff00ff" opacity="0">
             <animate attributeName="opacity" values="0;1;0.4;1" dur="3s" repeatCount="indefinite" begin="0.8s"/>
             <animate attributeName="r" values="4;10;4" dur="3s" repeatCount="indefinite" begin="0.8s"/>
+            <animate attributeName="fill" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5.5s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 430 610 L 510 610 L 560 660 L 640 660 L 690 610 L 770 610">
+          <path d="M 450 590 L 530 590 L 580 640 L 660 640 L 710 590 L 790 590">
             <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="4.6s" repeatCount="indefinite" begin="1.3s"/>
             <animate attributeName="stroke-dashoffset" from="450" to="0" dur="4.6s" repeatCount="indefinite" begin="1.3s"/>
             <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="3.6s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#800080;#ff00ff;#00ffff" dur="7s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 560 660 L 560 720 L 510 720">
+          <path d="M 580 640 L 580 710 L 520 710">
             <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.9s" repeatCount="indefinite" begin="1.8s"/>
             <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.9s" repeatCount="indefinite" begin="1.8s"/>
             <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.1s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#800080;#ff00ff;#00ffff;#800080" dur="6s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="510" cy="720" r="6" fill="#d4e8e0" opacity="0">
+          <circle cx="520" cy="710" r="6" fill="#800080" opacity="0">
             <animate attributeName="opacity" values="0;0.9;0.5;0.9" dur="3.3s" repeatCount="indefinite" begin="1.8s"/>
             <animate attributeName="r" values="4;10;4" dur="3.3s" repeatCount="indefinite" begin="1.8s"/>
+            <animate attributeName="fill" values="#800080;#00ffff;#ff00ff;#800080" dur="6s" repeatCount="indefinite"/>
           </circle>
           
-          <path d="M 790 620 L 870 620 L 920 670 L 1000 670 L 1050 620 L 1130 620">
-            <animate attributeName="stroke-dasharray" from="0 450" to="450 0" dur="4.9s" repeatCount="indefinite" begin="2.5s"/>
-            <animate attributeName="stroke-dashoffset" from="450" to="0" dur="4.9s" repeatCount="indefinite" begin="2.5s"/>
+          <path d="M 850 600 L 930 600 L 980 650 L 1060 650 L 1110 600">
+            <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="4.9s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-dashoffset" from="400" to="0" dur="4.9s" repeatCount="indefinite" begin="2.5s"/>
             <animate attributeName="stroke-opacity" values="0.15;1;0.15" dur="3.9s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="6.5s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 100 220 L 160 220 L 190 250" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.3">
+          <circle cx="1110" cy="600" r="6" fill="#00ffff" opacity="0">
+            <animate attributeName="opacity" values="0;0.8;0.4;0.8" dur="3.5s" repeatCount="indefinite" begin="2.8s"/>
+            <animate attributeName="r" values="4;9;4" dur="3.5s" repeatCount="indefinite" begin="2.8s"/>
+            <animate attributeName="fill" values="#00ffff;#ff00ff;#800080;#00ffff" dur="6.5s" repeatCount="indefinite"/>
+          </circle>
+          
+          <path d="M 160 260 L 220 260 L 250 290" stroke-width="1.5" fill="none" opacity="0.3">
             <animate attributeName="stroke-dasharray" from="0 150" to="150 0" dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
             <animate attributeName="stroke-dashoffset" from="150" to="0" dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
             <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.2s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 350 500 L 410 500 L 440 530" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.3">
+          <path d="M 400 500 L 460 500 L 490 530" stroke-width="1.5" fill="none" opacity="0.3">
             <animate attributeName="stroke-dasharray" from="0 150" to="150 0" dur="3.2s" repeatCount="indefinite" begin="1.4s"/>
             <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3.2s" repeatCount="indefinite" begin="1.4s"/>
             <animate attributeName="opacity" values="0.1;0.6;0.1" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#800080;#ff00ff;#00ffff" dur="5.5s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 680 480 L 740 480 L 770 510" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.3">
+          <path d="M 720 500 L 780 500 L 810 530" stroke-width="1.5" fill="none" opacity="0.3">
             <animate attributeName="stroke-dasharray" from="0 150" to="150 0" dur="3s" repeatCount="indefinite" begin="2.1s"/>
             <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3s" repeatCount="indefinite" begin="2.1s"/>
             <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.4s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#800080;#ff00ff;#00ffff;#800080" dur="6s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 250 700 L 310 700 L 340 730" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.3">
+          <path d="M 300 740 L 360 740 L 390 770" stroke-width="1.5" fill="none" opacity="0.3">
             <animate attributeName="stroke-dasharray" from="0 150" to="150 0" dur="3.4s" repeatCount="indefinite" begin="0.6s"/>
             <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3.4s" repeatCount="indefinite" begin="0.6s"/>
             <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.7s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#ff00ff;#00ffff;#800080;#ff00ff" dur="5.8s" repeatCount="indefinite"/>
           </path>
           
-          <path d="M 880 550 L 940 550 L 970 580" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.3">
+          <path d="M 950 550 L 1010 550 L 1040 580" stroke-width="1.5" fill="none" opacity="0.3">
             <animate attributeName="stroke-dasharray" from="0 150" to="150 0" dur="3.1s" repeatCount="indefinite" begin="1.9s"/>
             <animate attributeName="stroke-dashoffset" from="150" to="0" dur="3.1s" repeatCount="indefinite" begin="1.9s"/>
             <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="stroke" values="#00ffff;#ff00ff;#800080;#00ffff" dur="5.5s" repeatCount="indefinite"/>
           </path>
           
-          <circle cx="160" cy="120" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="220" cy="80" r="4" fill="#800080" opacity="0.5">
             <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.5s" repeatCount="indefinite" begin="0.3s"/>
             <animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite" begin="0.3s"/>
+            <animate attributeName="fill" values="#800080;#00ffff;#ff00ff;#800080" dur="6s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="500" cy="130" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="600" cy="90" r="4" fill="#ff00ff" opacity="0.5">
             <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.8s" repeatCount="indefinite" begin="1.1s"/>
             <animate attributeName="r" values="3;7;3" dur="2.8s" repeatCount="indefinite" begin="1.1s"/>
+            <animate attributeName="fill" values="#ff00ff;#800080;#00ffff;#ff00ff" dur="5.5s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="860" cy="140" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="1000" cy="100" r="4" fill="#00ffff" opacity="0.5">
             <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.6s" repeatCount="indefinite" begin="2s"/>
             <animate attributeName="r" values="3;6;3" dur="2.6s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="fill" values="#00ffff;#ff00ff;#800080;#00ffff" dur="6s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="340" cy="420" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="300" cy="380" r="4" fill="#ff00ff" opacity="0.5">
             <animate attributeName="opacity" values="0.25;0.75;0.25" dur="3s" repeatCount="indefinite" begin="0.5s"/>
             <animate attributeName="r" values="3;7;3" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="fill" values="#ff00ff;#00ffff;#800080;#ff00ff" dur="5.8s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="700" cy="330" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="700" cy="390" r="4" fill="#800080" opacity="0.5">
             <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.7s" repeatCount="indefinite" begin="1.7s"/>
             <animate attributeName="r" values="3;6;3" dur="2.7s" repeatCount="indefinite" begin="1.7s"/>
+            <animate attributeName="fill" values="#800080;#ff00ff;#00ffff;#800080" dur="6.2s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="280" cy="550" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="260" cy="630" r="4" fill="#00ffff" opacity="0.5">
             <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3.2s" repeatCount="indefinite" begin="0.2s"/>
             <animate attributeName="r" values="3;7;3" dur="3.2s" repeatCount="indefinite" begin="0.2s"/>
+            <animate attributeName="fill" values="#00ffff;#800080;#ff00ff;#00ffff" dur="5.5s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="640" cy="660" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="660" cy="640" r="4" fill="#ff00ff" opacity="0.5">
             <animate attributeName="opacity" values="0.25;0.7;0.25" dur="2.9s" repeatCount="indefinite" begin="1.4s"/>
             <animate attributeName="r" values="3;6;3" dur="2.9s" repeatCount="indefinite" begin="1.4s"/>
+            <animate attributeName="fill" values="#ff00ff;#00ffff;#800080;#ff00ff" dur="6s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="1000" cy="670" r="4" fill="#d4e8e0" opacity="0.5">
+          <circle cx="1060" cy="650" r="4" fill="#800080" opacity="0.5">
             <animate attributeName="opacity" values="0.2;0.75;0.2" dur="3.1s" repeatCount="indefinite" begin="2.6s"/>
             <animate attributeName="r" values="3;7;3" dur="3.1s" repeatCount="indefinite" begin="2.6s"/>
+            <animate attributeName="fill" values="#800080;#ff00ff;#00ffff;#800080" dur="6.5s" repeatCount="indefinite"/>
           </circle>
           
         </g>
