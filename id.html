@@ -14,30 +14,13 @@
     html, body {
       width: 100%;
       min-height: 100vh;
-      background: #1e2b2a;
+      background: linear-gradient(145deg, #1a3a2e, #0d2a1f);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0.75rem;
       position: relative;
       overflow-x: hidden;
-    }
-
-    .svg-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.7;
-    }
-
-    .svg-bg svg {
-      width: 100%;
-      height: 100%;
-      display: block;
     }
 
     .id-card {
@@ -50,6 +33,31 @@
       color: #1a2b26;
       box-shadow: 0 20px 40px -8px rgba(0, 20, 15, 0.7), inset 0 1px 4px rgba(255, 255, 245, 0.6);
       backdrop-filter: blur(1px);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .svg-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+
+    .svg-bg svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .id-card > *:not(.svg-bg) {
       position: relative;
       z-index: 1;
     }
@@ -103,17 +111,18 @@
     .info-field {
       border: 2px solid #aac0b6;
       border-radius: 40px;
-      background-color: #d4e5dc;
+      background-color: rgba(212, 229, 220, 0.85);
       padding: 1rem 2rem;
       margin-bottom: 1.4rem;
       word-break: break-word;
       transition: border-color 0.15s, background-color 0.15s;
       box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+      backdrop-filter: blur(2px);
     }
 
     .info-field:hover {
       border-color: #e6f5ed;
-      background-color: #e1f0e8;
+      background-color: rgba(225, 240, 232, 0.9);
     }
 
     .label {
@@ -198,15 +207,16 @@
       margin-top: 2rem;
       border: 2px solid #aac0b6;
       border-radius: 40px;
-      background-color: #d4e5dc;
+      background-color: rgba(212, 229, 220, 0.85);
       padding: 1.4rem 2rem;
       transition: border-color 0.15s, background-color 0.15s;
       box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+      backdrop-filter: blur(2px);
     }
 
     .player-section:hover {
       border-color: #e6f5ed;
-      background-color: #e1f0e8;
+      background-color: rgba(225, 240, 232, 0.9);
     }
 
     .player-title {
@@ -296,242 +306,216 @@
   </style>
 </head>
 <body>
-  <div class="svg-bg">
-    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.6"/>
-          <stop offset="50%" stop-color="#a8c4b8" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#c0d8ce" stop-opacity="0.5"/>
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-        <filter id="softGlow">
-          <feGaussianBlur stdDeviation="6" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      
-      <rect width="1200" height="800" fill="#1e2b2a" opacity="0.3"/>
-      
-      <g stroke="url(#metalGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
-        
-        <!-- Path 1 - top left -->
-        <path d="M 50 150 L 150 150 L 200 100 L 300 100 L 350 150 L 450 150">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="4s" repeatCount="indefinite"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4s" repeatCount="indefinite"/>
-          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 2 - branching up -->
-        <path d="M 200 100 L 200 50 L 280 50">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="2.8s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 3 - node with circle -->
-        <circle cx="280" cy="50" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.5;1" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-          <animate attributeName="r" values="5;10;5" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-        </circle>
-        
-        <!-- Path 4 - middle section -->
-        <path d="M 450 150 L 550 150 L 600 200 L 700 200 L 750 150 L 850 150">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="4.5s" repeatCount="indefinite" begin="1s"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4.5s" repeatCount="indefinite" begin="1s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.2s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 5 - vertical branch -->
-        <path d="M 600 200 L 600 280 L 660 280">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="3.8s" repeatCount="indefinite" begin="1.2s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="3.8s" repeatCount="indefinite" begin="1.2s"/>
-          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="660" cy="280" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.6;1" dur="2.8s" repeatCount="indefinite" begin="1.2s"/>
-          <animate attributeName="r" values="5;12;5" dur="2.8s" repeatCount="indefinite" begin="1.2s"/>
-        </circle>
-        
-        <!-- Path 6 - right side -->
-        <path d="M 850 150 L 950 150 L 1000 100 L 1100 100 L 1150 150">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="5s" repeatCount="indefinite" begin="2s"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="5s" repeatCount="indefinite" begin="2s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 7 - lower branch -->
-        <path d="M 1000 100 L 1000 40 L 1080 40">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.2s" repeatCount="indefinite" begin="2.2s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.2s" repeatCount="indefinite" begin="2.2s"/>
-          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="1080" cy="40" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.4;1" dur="3.5s" repeatCount="indefinite" begin="2.2s"/>
-          <animate attributeName="r" values="5;11;5" dur="3.5s" repeatCount="indefinite" begin="2.2s"/>
-        </circle>
-        
-        <!-- Path 8 - lower horizontal -->
-        <path d="M 150 400 L 250 400 L 300 450 L 400 450 L 450 400 L 550 400">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="5.5s" repeatCount="indefinite" begin="0.8s"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="5.5s" repeatCount="indefinite" begin="0.8s"/>
-          <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="4s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 9 - vertical connector -->
-        <path d="M 300 450 L 300 550 L 250 550">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4s" repeatCount="indefinite" begin="1.5s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4s" repeatCount="indefinite" begin="1.5s"/>
-          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3.2s" repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="250" cy="550" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.5;1" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
-          <animate attributeName="r" values="5;13;5" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
-        </circle>
-        
-        <!-- Path 10 - right lower -->
-        <path d="M 550 400 L 650 400 L 700 350 L 800 350 L 850 400 L 950 400">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="4.8s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4.8s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.8s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 11 - branch up -->
-        <path d="M 700 350 L 700 290 L 760 290">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.5s" repeatCount="indefinite" begin="2.8s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.5s" repeatCount="indefinite" begin="2.8s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="760" cy="290" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.6;1" dur="3s" repeatCount="indefinite" begin="2.8s"/>
-          <animate attributeName="r" values="5;10;5" dur="3s" repeatCount="indefinite" begin="2.8s"/>
-        </circle>
-        
-        <!-- Path 12 - bottom right -->
-        <path d="M 950 400 L 1050 400 L 1100 450 L 1150 450">
-          <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="5.2s" repeatCount="indefinite" begin="3.2s"/>
-          <animate attributeName="stroke-dashoffset" from="400" to="0" dur="5.2s" repeatCount="indefinite" begin="3.2s"/>
-          <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="4.2s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 13 - bottom left -->
-        <path d="M 80 650 L 180 650 L 230 600 L 330 600 L 380 650 L 480 650">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="6s" repeatCount="indefinite" begin="0.3s"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="6s" repeatCount="indefinite" begin="0.3s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="4.5s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 14 - vertical down -->
-        <path d="M 230 600 L 230 670 L 170 670">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.3s" repeatCount="indefinite" begin="1s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.3s" repeatCount="indefinite" begin="1s"/>
-          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3.3s" repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="170" cy="670" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.5;1" dur="3.5s" repeatCount="indefinite" begin="1s"/>
-          <animate attributeName="r" values="5;12;5" dur="3.5s" repeatCount="indefinite" begin="1s"/>
-        </circle>
-        
-        <!-- Path 15 - center bottom -->
-        <path d="M 480 650 L 580 650 L 630 700 L 730 700 L 780 650 L 880 650">
-          <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="5.8s" repeatCount="indefinite" begin="1.8s"/>
-          <animate attributeName="stroke-dashoffset" from="500" to="0" dur="5.8s" repeatCount="indefinite" begin="1.8s"/>
-          <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="4s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Path 16 - branch -->
-        <path d="M 630 700 L 630 760 L 580 760">
-          <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.7s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.7s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3.7s" repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="580" cy="760" r="8" fill="#d4e8e0" opacity="0">
-          <animate attributeName="opacity" values="0;1;0.4;1" dur="3.8s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="r" values="5;11;5" dur="3.8s" repeatCount="indefinite" begin="2.5s"/>
-        </circle>
-        
-        <!-- Path 17 - right bottom -->
-        <path d="M 880 650 L 980 650 L 1030 700 L 1130 700">
-          <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="5s" repeatCount="indefinite" begin="3.5s"/>
-          <animate attributeName="stroke-dashoffset" from="400" to="0" dur="5s" repeatCount="indefinite" begin="3.5s"/>
-          <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.9s" repeatCount="indefinite"/>
-        </path>
-        
-        <!-- Extra glow nodes -->
-        <circle cx="150" cy="150" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
-          <animate attributeName="r" values="4;8;4" dur="2.5s" repeatCount="indefinite"/>
-        </circle>
-        
-        <circle cx="450" cy="150" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-          <animate attributeName="r" values="4;9;4" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-        </circle>
-        
-        <circle cx="850" cy="150" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
-          <animate attributeName="r" values="4;7;4" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
-        </circle>
-        
-        <circle cx="300" cy="450" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite" begin="1s"/>
-          <animate attributeName="r" values="4;10;4" dur="3.2s" repeatCount="indefinite" begin="1s"/>
-        </circle>
-        
-        <circle cx="700" cy="350" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.4;1;0.4" dur="2.6s" repeatCount="indefinite" begin="2s"/>
-          <animate attributeName="r" values="4;8;4" dur="2.6s" repeatCount="indefinite" begin="2s"/>
-        </circle>
-        
-        <circle cx="230" cy="600" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.5s" repeatCount="indefinite" begin="0.8s"/>
-          <animate attributeName="r" values="4;9;4" dur="3.5s" repeatCount="indefinite" begin="0.8s"/>
-        </circle>
-        
-        <circle cx="630" cy="700" r="5" fill="#d4e8e0" opacity="0.6">
-          <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite" begin="2.2s"/>
-          <animate attributeName="r" values="4;7;4" dur="3s" repeatCount="indefinite" begin="2.2s"/>
-        </circle>
-        
-        <!-- Thin pulse lines -->
-        <path d="M 100 250 L 180 250 L 220 290" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.4">
-          <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3s" repeatCount="indefinite" begin="0.2s"/>
-          <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" begin="0.2s"/>
-          <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite"/>
-        </path>
-        
-        <path d="M 400 550 L 480 550 L 520 590" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.4">
-          <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.5s" repeatCount="indefinite" begin="1.3s"/>
-          <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.5s" repeatCount="indefinite" begin="1.3s"/>
-          <animate attributeName="opacity" values="0.1;0.6;0.1" dur="3s" repeatCount="indefinite"/>
-        </path>
-        
-        <path d="M 750 500 L 830 500 L 870 540" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.4">
-          <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.2s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.2s" repeatCount="indefinite" begin="2.5s"/>
-          <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.8s" repeatCount="indefinite"/>
-        </path>
-        
-      </g>
-    </svg>
-  </div>
-
   <div class="id-card">
+    <div class="svg-bg">
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.7"/>
+            <stop offset="50%" stop-color="#a8c4b8" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#c0d8ce" stop-opacity="0.6"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        
+        <rect width="1200" height="800" fill="#1a3a2e" opacity="0.3"/>
+        
+        <g stroke="url(#metalGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+          
+          <path d="M 50 150 L 150 150 L 200 100 L 300 100 L 350 150 L 450 150">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 200 100 L 200 50 L 280 50">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="3.5s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="2.8s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="280" cy="50" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.5;1" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="r" values="5;10;5" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+          </circle>
+          
+          <path d="M 450 150 L 550 150 L 600 200 L 700 200 L 750 150 L 850 150">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="4.5s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4.5s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.2s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 600 200 L 600 280 L 660 280">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="3.8s" repeatCount="indefinite" begin="1.2s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="3.8s" repeatCount="indefinite" begin="1.2s"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="660" cy="280" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.6;1" dur="2.8s" repeatCount="indefinite" begin="1.2s"/>
+            <animate attributeName="r" values="5;12;5" dur="2.8s" repeatCount="indefinite" begin="1.2s"/>
+          </circle>
+          
+          <path d="M 850 150 L 950 150 L 1000 100 L 1100 100 L 1150 150">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="5s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="5s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 1000 100 L 1000 40 L 1080 40">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.2s" repeatCount="indefinite" begin="2.2s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.2s" repeatCount="indefinite" begin="2.2s"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="1080" cy="40" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.4;1" dur="3.5s" repeatCount="indefinite" begin="2.2s"/>
+            <animate attributeName="r" values="5;11;5" dur="3.5s" repeatCount="indefinite" begin="2.2s"/>
+          </circle>
+          
+          <path d="M 150 400 L 250 400 L 300 450 L 400 450 L 450 400 L 550 400">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="5.5s" repeatCount="indefinite" begin="0.8s"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="5.5s" repeatCount="indefinite" begin="0.8s"/>
+            <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="4s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 300 450 L 300 550 L 250 550">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4s" repeatCount="indefinite" begin="1.5s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4s" repeatCount="indefinite" begin="1.5s"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3.2s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="250" cy="550" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.5;1" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
+            <animate attributeName="r" values="5;13;5" dur="3.2s" repeatCount="indefinite" begin="1.5s"/>
+          </circle>
+          
+          <path d="M 550 400 L 650 400 L 700 350 L 800 350 L 850 400 L 950 400">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="4.8s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="4.8s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.8s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 700 350 L 700 290 L 760 290">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.5s" repeatCount="indefinite" begin="2.8s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.5s" repeatCount="indefinite" begin="2.8s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="760" cy="290" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.6;1" dur="3s" repeatCount="indefinite" begin="2.8s"/>
+            <animate attributeName="r" values="5;10;5" dur="3s" repeatCount="indefinite" begin="2.8s"/>
+          </circle>
+          
+          <path d="M 950 400 L 1050 400 L 1100 450 L 1150 450">
+            <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="5.2s" repeatCount="indefinite" begin="3.2s"/>
+            <animate attributeName="stroke-dashoffset" from="400" to="0" dur="5.2s" repeatCount="indefinite" begin="3.2s"/>
+            <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="4.2s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 80 650 L 180 650 L 230 600 L 330 600 L 380 650 L 480 650">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="6s" repeatCount="indefinite" begin="0.3s"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="6s" repeatCount="indefinite" begin="0.3s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="4.5s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 230 600 L 230 670 L 170 670">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.3s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.3s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3.3s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="170" cy="670" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.5;1" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="r" values="5;12;5" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+          </circle>
+          
+          <path d="M 480 650 L 580 650 L 630 700 L 730 700 L 780 650 L 880 650">
+            <animate attributeName="stroke-dasharray" from="0 500" to="500 0" dur="5.8s" repeatCount="indefinite" begin="1.8s"/>
+            <animate attributeName="stroke-dashoffset" from="500" to="0" dur="5.8s" repeatCount="indefinite" begin="1.8s"/>
+            <animate attributeName="stroke-opacity" values="0.2;0.9;0.2" dur="4s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 630 700 L 630 760 L 580 760">
+            <animate attributeName="stroke-dasharray" from="0 300" to="300 0" dur="4.7s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-dashoffset" from="300" to="0" dur="4.7s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="3.7s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="580" cy="760" r="8" fill="#d4e8e0" opacity="0">
+            <animate attributeName="opacity" values="0;1;0.4;1" dur="3.8s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="r" values="5;11;5" dur="3.8s" repeatCount="indefinite" begin="2.5s"/>
+          </circle>
+          
+          <path d="M 880 650 L 980 650 L 1030 700 L 1130 700">
+            <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="5s" repeatCount="indefinite" begin="3.5s"/>
+            <animate attributeName="stroke-dashoffset" from="400" to="0" dur="5s" repeatCount="indefinite" begin="3.5s"/>
+            <animate attributeName="stroke-opacity" values="0.2;1;0.2" dur="3.9s" repeatCount="indefinite"/>
+          </path>
+          
+          <circle cx="150" cy="150" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="4;8;4" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          
+          <circle cx="450" cy="150" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+            <animate attributeName="r" values="4;9;4" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+          </circle>
+          
+          <circle cx="850" cy="150" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+            <animate attributeName="r" values="4;7;4" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+          </circle>
+          
+          <circle cx="300" cy="450" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite" begin="1s"/>
+            <animate attributeName="r" values="4;10;4" dur="3.2s" repeatCount="indefinite" begin="1s"/>
+          </circle>
+          
+          <circle cx="700" cy="350" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="2.6s" repeatCount="indefinite" begin="2s"/>
+            <animate attributeName="r" values="4;8;4" dur="2.6s" repeatCount="indefinite" begin="2s"/>
+          </circle>
+          
+          <circle cx="230" cy="600" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.5s" repeatCount="indefinite" begin="0.8s"/>
+            <animate attributeName="r" values="4;9;4" dur="3.5s" repeatCount="indefinite" begin="0.8s"/>
+          </circle>
+          
+          <circle cx="630" cy="700" r="5" fill="#d4e8e0" opacity="0.6">
+            <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite" begin="2.2s"/>
+            <animate attributeName="r" values="4;7;4" dur="3s" repeatCount="indefinite" begin="2.2s"/>
+          </circle>
+          
+          <path d="M 100 250 L 180 250 L 220 290" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.4">
+            <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3s" repeatCount="indefinite" begin="0.2s"/>
+            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" begin="0.2s"/>
+            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 400 550 L 480 550 L 520 590" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.4">
+            <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.5s" repeatCount="indefinite" begin="1.3s"/>
+            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.5s" repeatCount="indefinite" begin="1.3s"/>
+            <animate attributeName="opacity" values="0.1;0.6;0.1" dur="3s" repeatCount="indefinite"/>
+          </path>
+          
+          <path d="M 750 500 L 830 500 L 870 540" stroke="#d4e8e0" stroke-width="1.5" fill="none" opacity="0.4">
+            <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="3.2s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3.2s" repeatCount="indefinite" begin="2.5s"/>
+            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.8s" repeatCount="indefinite"/>
+          </path>
+          
+        </g>
+      </svg>
+    </div>
+
     <div class="selfie-container">
       <img class="selfie-img" src="777298010_1385532809699680_3337808481119840559_n.webp" alt="Dejan selfie" onerror="this.onerror=null; this.style.opacity='0.7'; this.style.filter='grayscale(0.2)';">
       <div class="page-title-on-image">魏魔族 · 血统档案</div>
