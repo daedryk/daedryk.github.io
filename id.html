@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agent Smooth · metallic</title>
+  <title>Agent Smooth</title>
   <style>
     * {
       margin: 0;
@@ -14,7 +14,7 @@
     html, body {
       width: 100%;
       min-height: 100vh;
-      background: linear-gradient(145deg, #1a3a2e, #0d2a1f);
+      background: linear-gradient(145deg, #3a6b5a, #2a5a4a);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,7 +46,7 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.5;
+      opacity: 0.6;
       border-radius: 40px;
       overflow: hidden;
     }
@@ -308,12 +308,12 @@
 <body>
   <div class="id-card">
     <div class="svg-bg">
-      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.7"/>
+            <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.8"/>
             <stop offset="50%" stop-color="#a8c4b8" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#c0d8ce" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#c0d8ce" stop-opacity="0.7"/>
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -324,7 +324,7 @@
           </filter>
         </defs>
         
-        <rect width="1200" height="800" fill="#1a3a2e" opacity="0.3"/>
+        <rect width="1200" height="800" fill="#2a5a4a" opacity="0.2"/>
         
         <g stroke="url(#metalGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
           
