@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Hayden's Stilt House</title>
-  <meta name="description" content="Explore Hayden's Stilt House (海登的柱上小屋) — a deep dive into Slovenia's UNESCO-listed prehistoric pile dwellings (kolišča). Discover ancient wooden architecture, Ljubljana marshes artifacts, and the 4,500-year-old heritage of Alpine lake dwellers.">
-  <meta name="keywords" content="Hayden's Stilt House, Slovenian pile dwellings, kolišča, Ljubljana barje, prehistoric lake dwellings, UNESCO pile dwellings Slovenia, stilt houses Europe, ancient wooden architecture, Ig pile dwellings, Neolithic Slovenia">
+  <meta name="description" content="Explore Hayden's Stilt House — a deep dive into Slovenia's UNESCO-listed prehistoric pile dwellings. Discover ancient wooden architecture, Ljubljana marshes artifacts, and the 4,500-year-old heritage of Alpine lake dwellers.">
+  <meta name="keywords" content="Hayden's Stilt House, Slovenian pile dwellings, Ljubljana barje, prehistoric lake dwellings, UNESCO pile dwellings Slovenia, stilt houses Europe, ancient wooden architecture, Ig pile dwellings, Neolithic Slovenia">
   <meta name="author" content="Hayden">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://daedryk.github.io/a.html">
   <meta property="og:title" content="Hayden's Stilt House – Slovenian Pile Dwellings | UNESCO Heritage">
-  <meta property="og:description" content="Journey into Slovenia's prehistoric stilt houses (kolišča): wooden wheels, lake dwellings, and the ancient wisdom of Ljubljana marshes.">
+  <meta property="og:description" content="Journey into Slovenia's prehistoric stilt houses: wooden wheels, lake dwellings, and the ancient wisdom of Ljubljana marshes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://daedryk.github.io/a.html">
   <meta property="og:image" content="https://daedryk.github.io/img.png">
@@ -18,12 +18,22 @@
   <meta property="og:site_name" content="Hayden's Stilt House">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hayden's Stilt House – Slovenian Prehistoric Pile Dwellings">
-  <meta name="twitter:description" content="Explore Slovenia's 4,500-year-old stilt houses (kolišča) — UNESCO world heritage.">
+  <meta name="twitter:description" content="Explore Slovenia's 4,500-year-old stilt houses — UNESCO world heritage.">
   <meta name="twitter:image" content="https://daedryk.github.io/img.png">
   <meta name="theme-color" content="#3b2a1f">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Stilt House SI">
+
   <style>
+    /* font-face for Daedra.otf – all English text will use this */
+    @font-face {
+      font-family: 'Daedra';
+      src: url('Daedra.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -32,7 +42,8 @@
 
     body {
       background-color: #3b2a1f;
-      font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'Trebuchet MS', sans-serif;
+      /* base font – Daedra for all English text */
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
       line-height: 1.5;
       padding: 2rem 1.5rem;
       min-height: 100vh;
@@ -60,8 +71,10 @@
       color: #d4ff7c;
       font-weight: 600;
       letter-spacing: -0.3px;
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
     }
 
+    /* Chinese title – keep as is, but we will keep the Chinese characters */
     .chinese-title {
       font-size: 2.6rem;
       text-align: center;
@@ -83,6 +96,7 @@
       margin: 0 auto 1.8rem auto;
       padding-top: 0.5rem;
       color: #cbae76;
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
     }
 
     .ornament-top, .ornament-bottom {
@@ -123,11 +137,13 @@
       font-weight: 700;
       display: inline-block;
       margin-right: 0.5rem;
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
     }
 
     .fact-entry p {
       margin: 0.2rem 0 0 0;
       font-size: 1rem;
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
     }
 
     .highlight {
@@ -169,6 +185,7 @@
       gap: 0.5rem;
       font-size: 1.05rem;
       border: 1px solid #b69454;
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
     }
 
     .footer-link:hover {
@@ -221,7 +238,7 @@
       font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.5px;
-      font-family: 'Courier New', 'Fira Code', monospace;
+      font-family: 'Daedra', 'Courier New', monospace;
       text-transform: lowercase;
       transition: all 0.05s linear;
       cursor: pointer;
@@ -244,7 +261,7 @@
       padding: 0.3rem 0.8rem;
       border-radius: 60px;
       color: #d4c37a;
-      font-family: monospace;
+      font-family: 'Daedra', monospace;
       font-size: 0.75rem;
       letter-spacing: 0.5px;
       font-weight: 500;
@@ -255,6 +272,7 @@
       font-size: 0.7rem;
       margin-top: 1.2rem;
       color: #9b874e;
+      font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;
     }
 
     @media (max-width: 560px) {
@@ -278,6 +296,11 @@
         gap: 0.7rem;
         padding: 0.5rem 1rem;
       }
+    }
+
+    /* Glagolitic text remains as is – we keep the original script */
+    .glagolitic {
+      font-family: 'Daedra', 'Segoe UI', system-ui, sans-serif;
     }
   </style>
 </head>
@@ -304,7 +327,7 @@
 
   <h1 class="chinese-title">海登的柱上小屋</h1>
   <div style="text-align: center; margin-bottom: 0.5rem;">
-    <span class="sub">✦ 斯洛文尼亚的古老高脚屋 ✦</span>
+    <span class="sub">✦ ancient stilt houses of slovenia ✦</span>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 0.8rem; margin: 0.2rem 0 0.6rem 0;">
@@ -316,24 +339,24 @@
 
   <div class="facts-grid">
     <div class="fact-entry">
-      <strong>🏞️ 阿尔卑斯山间的奇迹</strong>
-      <p>斯洛文尼亚的 <span class="highlight">“高脚屋” (kolišča)</span> 是史前湖岸桩居遗址的一部分，它们建于数千年前，主要集中在卢布尔雅那沼泽 (Ljubljansko barje) 地区。这些木桩房屋立于水面或潮湿土壤之上，是欧洲最重要的考古遗产之一。</p>
+      <strong>🏞️ alps miracle</strong>
+      <p>Slovenia's <span class="highlight">"stilt houses" (kolišča)</span> are part of prehistoric lake-dwelling pile settlements, built thousands of years ago, mainly in the Ljubljana Marsh (Ljubljansko barje). These wooden pile dwellings stand above water or wet soil, and are among Europe's most important archaeological heritage.</p>
     </div>
     <div class="fact-entry">
-      <strong>🗿 联合国教科文组织遗产</strong>
-      <p>2011年，包括斯洛文尼亚在内的6个阿尔卑斯山周边国家的<span class="highlight">111处史前湖岸桩居遗址</span>被列入UNESCO世界遗产名录。斯洛文尼亚境内最著名的是伊格村附近的遗址 (Ig)，出土了距今约4500-5000年的木制车轮和桦木沥青，惊艳世界。</p>
+      <strong>🗿 unesco heritage</strong>
+      <p>In 2011, <span class="highlight">111 prehistoric lake-dwelling sites</span> from six Alpine countries, including Slovenia, were inscribed as UNESCO World Heritage. The most famous Slovenian site is near the village of Ig, where wooden wheels and birch tar dating back 4,500–5,000 years were discovered, astonishing the world.</p>
     </div>
     <div class="fact-entry">
-      <strong>🌾 农耕与渔业共生</strong>
-      <p>桩上房屋不仅用来躲避洪水与野兽，也创造了湿润环境中的生活智慧。斯洛文尼亚居民在木桩平台上种植作物、饲养家畜，并利用芦苇和木材建造高脚仓房。考古发现亚麻种子、豆类以及鱼骨，再现了新石器时代至青铜时代的生存图景。</p>
+      <strong>🌾 farming & fishing symbiosis</strong>
+      <p>Stilt houses were not only built to avoid floods and wild animals, but also embodied the wisdom of living in a wetland environment. Slovenian inhabitants grew crops, raised livestock on wooden platforms, and built granaries on stilts using reeds and timber. Archaeological finds of flax seeds, beans, and fish bones recreate the lifeway from the Neolithic to the Bronze Age.</p>
     </div>
     <div class="fact-entry">
-      <strong>🪵 建筑精巧 & 可持续</strong>
-      <p>这些房屋由橡木、白蜡木等制成，木桩深深打入湖底黏土层。每栋房屋面积约15-30平米，多个房屋通过木制走道相连。通过树木年轮分析，科学家甚至还原了古人修葺高脚屋的季节规律——多数在晚春或夏季。</p>
+      <strong>🪵 refined & sustainable</strong>
+      <p>These houses were made of oak, ash, and other woods, with piles driven deep into the clay of the lakebed. Each house had a floor area of about 15–30 square metres, and several houses were connected by wooden walkways. Through tree-ring analysis, scientists have even reconstructed the seasonal rhythm of repairs — mostly in late spring or summer.</p>
     </div>
     <div class="fact-entry">
-      <strong>🏛️ 在现代重生</strong>
-      <p>如今在卢布尔雅那沼泽附近的传统村落，部分现代生态住宅依然借鉴了<span class="highlight">“高脚”结构</span>——既尊重文化遗产，又应对季节性高水位。博物馆和考古公园（如Emona/Underwater Museum）展出复原模型，让人们漫步于木桩之间，触摸数千年前斯洛文尼亚先民的家园温度。</p>
+      <strong>🏛️ reborn in modern times</strong>
+      <p>Today, in traditional villages near the Ljubljana Marsh, some modern eco-homes still draw inspiration from the <span class="highlight">"stilt" structure</span> — respecting cultural heritage while coping with seasonal high water levels. Museums and archaeological parks (such as Emona/Underwater Museum) display reconstructed models, letting visitors walk among the piles and feel the warmth of Slovenian ancestors' homes from thousands of years ago.</p>
     </div>
   </div>
 
@@ -347,8 +370,8 @@
         <rect x="13" y="16" width="6" height="8" fill="#A57C31" stroke="#7E5D20" stroke-width="0.8"/>
       </svg>
       <div>
-        <p style="font-size: 0.85rem; margin:0; color:#ddc47a;"><strong>✨ 趣味事实 ✨</strong><br>
-        在斯洛文尼亚发现的木制车轮（约公元前3150年）是世界上最古老的车轮之一，它正是来自一座柱上住宅遗址！</p>
+        <p style="font-size: 0.85rem; margin:0; color:#ddc47a; font-family: 'Daedra', 'Segoe UI', 'Roboto', system-ui, sans-serif;"><strong>✨ fun fact ✨</strong><br>
+        The wooden wheel found in Slovenia (around 3150 BC) is one of the oldest in the world — and it comes from a stilt-house settlement!</p>
       </div>
     </div>
     <svg width="60" height="30" viewBox="0 0 100 20">
@@ -364,7 +387,7 @@
       <span>ⰴⰻⱆⰹ ⱂⱃⰵⰶⱆⱈ</span>
       <span style="font-size:1rem;">👹</span>
     </a>
-    
+
     <div class="music-controls">
       <button class="heart-play-btn" id="heartPlayBtn" aria-label="Play or pause music">🧡</button>
       <div id="progressText" class="progress-text"><u>slovenian pile dwellers</u></div>
@@ -373,7 +396,7 @@
   </div>
 
   <div class="tiny-note">
-    🍄 海登的柱上小屋 · 斯洛文尼亚的呼吸与木桩记忆 🌿
+    🍄 hayden's stilt house · slovenia's breath and memory of wooden piles 🌿
   </div>
 
   <div class="ornament-bottom" style="margin-top: 1rem;">
@@ -399,21 +422,21 @@
     const audio = new Audio("red_rain.m4a");
     audio.preload = "auto";
     audio.loop = false;
-    
+
     const heartButton = document.getElementById("heartPlayBtn");
     const progressTextEl = document.getElementById("progressText");
     const timeDisplaySpan = document.getElementById("timeDisplay");
-    
+
     let isPlaying = false;
     let animationFrameId = null;
-    
+
     function formatTime(seconds) {
       if (isNaN(seconds) || !isFinite(seconds)) return "0:00";
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
       return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
-    
+
     function updateProgressAndTime() {
       if (!audio.duration || isNaN(audio.duration) || !isFinite(audio.duration)) {
         timeDisplaySpan.textContent = "0:00 / 0:00";
@@ -423,25 +446,25 @@
         progressTextEl.style.color = "transparent";
         return;
       }
-      
+
       const duration = audio.duration;
       const current = audio.currentTime;
       const percent = (current / duration) * 100;
       const progressPercent = Math.min(100, Math.max(0, percent));
-      
+
       const greenColor = "#6fbf4c";
       const redStart = "#ff4444";
       const redEnd = "#cc0000";
-      
+
       const gradient = `linear-gradient(90deg, ${redStart} 0%, ${redEnd} ${progressPercent}%, ${greenColor} ${progressPercent}%, ${greenColor} 100%)`;
       progressTextEl.style.background = gradient;
       progressTextEl.style.backgroundClip = "text";
       progressTextEl.style.webkitBackgroundClip = "text";
       progressTextEl.style.color = "transparent";
-      
+
       timeDisplaySpan.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
     }
-    
+
     function startAnimationLoop() {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       function updateLoop() {
@@ -455,7 +478,7 @@
       }
       animationFrameId = requestAnimationFrame(updateLoop);
     }
-    
+
     function stopAnimationLoop() {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -463,7 +486,7 @@
       }
       updateProgressAndTime();
     }
-    
+
     function updateHeartIcon() {
       if (isPlaying) {
         heartButton.innerHTML = "❤️";
@@ -471,7 +494,7 @@
         heartButton.innerHTML = "🧡";
       }
     }
-    
+
     function playAudio() {
       audio.play().then(() => {
         isPlaying = true;
@@ -483,7 +506,7 @@
         stopAnimationLoop();
       });
     }
-    
+
     function pauseAudio() {
       audio.pause();
       isPlaying = false;
@@ -491,7 +514,7 @@
       stopAnimationLoop();
       updateProgressAndTime();
     }
-    
+
     function togglePlayPause() {
       if (isPlaying) {
         pauseAudio();
@@ -499,7 +522,7 @@
         playAudio();
       }
     }
-    
+
     function onAudioEnded() {
       isPlaying = false;
       updateHeartIcon();
@@ -507,14 +530,14 @@
       audio.currentTime = 0;
       updateProgressAndTime();
     }
-    
+
     function onMetadataLoaded() {
       updateProgressAndTime();
       if (!isPlaying) {
         updateProgressAndTime();
       }
     }
-    
+
     audio.addEventListener("ended", onAudioEnded);
     audio.addEventListener("loadedmetadata", onMetadataLoaded);
     audio.addEventListener("canplay", () => {
@@ -529,7 +552,7 @@
         updateProgressAndTime();
       }
     });
-    
+
     function setInitialGreenMask() {
       const greenGradient = "linear-gradient(90deg, #7ed957, #3a9b1e)";
       progressTextEl.style.background = greenGradient;
@@ -539,14 +562,14 @@
       timeDisplaySpan.textContent = "0:00 / 0:00";
     }
     setInitialGreenMask();
-    
+
     audio.addEventListener("durationchange", () => {
       if (audio.duration && !isPlaying) updateProgressAndTime();
       else if (!isPlaying) setInitialGreenMask();
     });
-    
+
     heartButton.addEventListener("click", togglePlayPause);
-    
+
     progressTextEl.style.cursor = "pointer";
     progressTextEl.addEventListener("click", (e) => {
       if (!audio.duration || isNaN(audio.duration) || audio.duration === Infinity) return;
@@ -563,7 +586,7 @@
         updateProgressAndTime();
       }
     });
-    
+
     audio.load();
   })();
 </script>
