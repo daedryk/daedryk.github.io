@@ -328,6 +328,95 @@
       display: none;
     }
 
+    /* ORNATE SVG FRAME STYLES */
+    .ornate-frame-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 18px 0 6px 0;
+      border-radius: 20px;
+      background: #1a1410;
+      padding: 4px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .ornate-frame-wrapper svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fbf3e8;
+      border-radius: 18px;
+      box-shadow: 0 0 0 2px #aa8b7a, 0 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .ornate-frame-wrapper .image-placeholder {
+      fill: #d9c8b4;
+      stroke: #7f5f4a;
+      stroke-width: 1.5;
+      rx: 12;
+      ry: 12;
+    }
+
+    .ornate-frame-wrapper .image-placeholder-text {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 22px;
+      fill: #5f4030;
+      letter-spacing: 2px;
+      font-weight: 400;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .ornate-frame-wrapper .image-placeholder-sub {
+      font-family: 'Georgia', serif;
+      font-size: 14px;
+      fill: #8f6f5a;
+      letter-spacing: 1px;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    .ornate-frame-wrapper .filigree {
+      fill: none;
+      stroke: #7f5f4a;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ornate-frame-wrapper .filigree-light {
+      fill: none;
+      stroke: #b5957a;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ornate-frame-wrapper .accent-leaf {
+      fill: #b57c5a;
+      stroke: #5f4030;
+      stroke-width: 0.8;
+    }
+
+    .ornate-frame-wrapper .accent-dot {
+      fill: #c49a7a;
+      stroke: #4f3020;
+      stroke-width: 0.6;
+    }
+
+    .ornate-frame-wrapper .inner-glow {
+      fill: none;
+      stroke: #e5d4c0;
+      stroke-width: 2;
+      opacity: 0.6;
+    }
+
+    .ornate-frame-wrapper .corner-ornament {
+      fill: #b58a6a;
+      stroke: #4f3020;
+      stroke-width: 1;
+    }
+
     @media (max-width: 600px) {
       .scroll-wrapper { padding: 12px 12px 16px 12px; }
       .container { padding: 16px 12px; }
@@ -449,9 +538,149 @@
         </div>
       </div>
 
-      <p>
-        <img width="100%" src="789300574_1561542555443086_2906832940917988954_n.webp.jpg">
-      </p>
+      <!-- ORNATE SVG FRAME WITH IMAGE -->
+      <div class="ornate-frame-wrapper">
+        <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ornate SVG frame with image">
+          <defs>
+            <filter id="softShadow" x="-4%" y="-4%" width="108%" height="108%">
+              <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#2a1a0e" flood-opacity="0.5"/>
+            </filter>
+            <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#efdecb" />
+              <stop offset="50%" stop-color="#f7ede0" />
+              <stop offset="100%" stop-color="#e5d0ba" />
+            </linearGradient>
+            <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff8ef" stop-opacity="0.2" />
+              <stop offset="100%" stop-color="#dac8b4" stop-opacity="0.1" />
+            </radialGradient>
+            <clipPath id="imageClip">
+              <rect x="56" y="56" width="488" height="388" rx="12" ry="12" />
+            </clipPath>
+          </defs>
+
+          <!-- Background panel (parchment) -->
+          <rect x="0" y="0" width="600" height="500" fill="url(#frameGrad)" rx="18" ry="18" />
+
+          <!-- Outer ornate border -->
+          <rect x="16" y="16" width="568" height="468" fill="none" stroke="#7f5f4a" stroke-width="4" rx="14" ry="14" />
+          <rect x="24" y="24" width="552" height="452" fill="none" stroke="#b5957a" stroke-width="1.5" rx="12" ry="12" />
+          <rect x="30" y="30" width="540" height="440" fill="none" stroke="#5f4030" stroke-width="0.8" rx="10" ry="10" />
+
+          <!-- Corner ornaments -->
+          <g transform="translate(36,36)">
+            <circle cx="0" cy="0" r="12" fill="#b58a6a" stroke="#4f3020" stroke-width="1.2" />
+            <circle cx="0" cy="0" r="6" fill="#d9b89a" stroke="#3f2a1a" stroke-width="0.8" />
+            <path d="M-18,-8 Q-8,-18 0,-18 Q8,-18 18,-8" fill="none" stroke="#7f5f4a" stroke-width="1.5" />
+            <path d="M-8,-18 Q0,-28 8,-18" fill="none" stroke="#a5856a" stroke-width="1.2" />
+            <circle cx="-14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+            <circle cx="14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+          </g>
+          <g transform="translate(564,36) scale(-1,1)">
+            <circle cx="0" cy="0" r="12" fill="#b58a6a" stroke="#4f3020" stroke-width="1.2" />
+            <circle cx="0" cy="0" r="6" fill="#d9b89a" stroke="#3f2a1a" stroke-width="0.8" />
+            <path d="M-18,-8 Q-8,-18 0,-18 Q8,-18 18,-8" fill="none" stroke="#7f5f4a" stroke-width="1.5" />
+            <path d="M-8,-18 Q0,-28 8,-18" fill="none" stroke="#a5856a" stroke-width="1.2" />
+            <circle cx="-14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+            <circle cx="14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+          </g>
+          <g transform="translate(36,464) scale(1,-1)">
+            <circle cx="0" cy="0" r="12" fill="#b58a6a" stroke="#4f3020" stroke-width="1.2" />
+            <circle cx="0" cy="0" r="6" fill="#d9b89a" stroke="#3f2a1a" stroke-width="0.8" />
+            <path d="M-18,-8 Q-8,-18 0,-18 Q8,-18 18,-8" fill="none" stroke="#7f5f4a" stroke-width="1.5" />
+            <path d="M-8,-18 Q0,-28 8,-18" fill="none" stroke="#a5856a" stroke-width="1.2" />
+            <circle cx="-14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+            <circle cx="14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+          </g>
+          <g transform="translate(564,464) scale(-1,-1)">
+            <circle cx="0" cy="0" r="12" fill="#b58a6a" stroke="#4f3020" stroke-width="1.2" />
+            <circle cx="0" cy="0" r="6" fill="#d9b89a" stroke="#3f2a1a" stroke-width="0.8" />
+            <path d="M-18,-8 Q-8,-18 0,-18 Q8,-18 18,-8" fill="none" stroke="#7f5f4a" stroke-width="1.5" />
+            <path d="M-8,-18 Q0,-28 8,-18" fill="none" stroke="#a5856a" stroke-width="1.2" />
+            <circle cx="-14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+            <circle cx="14" cy="-14" r="3" fill="#c49a7a" stroke="#3f2a1a" stroke-width="0.6" />
+          </g>
+
+          <!-- Filigree scrolls -->
+          <g class="filigree">
+            <path d="M100,40 Q140,20 180,40 Q220,60 260,40 Q300,20 340,40 Q380,60 420,40 Q460,20 500,40" />
+            <path d="M110,48 Q150,32 190,48 Q230,64 270,48 Q310,32 350,48 Q390,64 430,48 Q470,32 490,48" class="filigree-light" />
+            <path d="M100,460 Q140,480 180,460 Q220,440 260,460 Q300,480 340,460 Q380,440 420,460 Q460,480 500,460" />
+            <path d="M110,452 Q150,468 190,452 Q230,436 270,452 Q310,468 350,452 Q390,436 430,452 Q470,468 490,452" class="filigree-light" />
+          </g>
+
+          <!-- Side ornaments -->
+          <g class="filigree">
+            <path d="M40,100 Q20,140 40,180 Q60,220 40,260 Q20,300 40,340 Q60,380 40,420" />
+            <path d="M48,110 Q32,150 48,190 Q64,230 48,270 Q32,310 48,350 Q64,390 48,430" class="filigree-light" />
+            <path d="M560,100 Q580,140 560,180 Q540,220 560,260 Q580,300 560,340 Q540,380 560,420" />
+            <path d="M552,110 Q568,150 552,190 Q536,230 552,270 Q568,310 552,350 Q536,390 552,430" class="filigree-light" />
+          </g>
+
+          <!-- Leaf accents -->
+          <g class="accent-leaf">
+            <ellipse cx="120" cy="28" rx="6" ry="10" transform="rotate(20,120,28)" />
+            <ellipse cx="240" cy="28" rx="6" ry="10" transform="rotate(-15,240,28)" />
+            <ellipse cx="360" cy="28" rx="6" ry="10" transform="rotate(25,360,28)" />
+            <ellipse cx="480" cy="28" rx="6" ry="10" transform="rotate(-10,480,28)" />
+            <ellipse cx="120" cy="472" rx="6" ry="10" transform="rotate(-20,120,472)" />
+            <ellipse cx="240" cy="472" rx="6" ry="10" transform="rotate(15,240,472)" />
+            <ellipse cx="360" cy="472" rx="6" ry="10" transform="rotate(-25,360,472)" />
+            <ellipse cx="480" cy="472" rx="6" ry="10" transform="rotate(10,480,472)" />
+            <ellipse cx="28" cy="120" rx="10" ry="6" transform="rotate(20,28,120)" />
+            <ellipse cx="28" cy="240" rx="10" ry="6" transform="rotate(-15,28,240)" />
+            <ellipse cx="28" cy="360" rx="10" ry="6" transform="rotate(25,28,360)" />
+            <ellipse cx="572" cy="120" rx="10" ry="6" transform="rotate(-20,572,120)" />
+            <ellipse cx="572" cy="240" rx="10" ry="6" transform="rotate(15,572,240)" />
+            <ellipse cx="572" cy="360" rx="10" ry="6" transform="rotate(-25,572,360)" />
+          </g>
+
+          <!-- Decorative dots -->
+          <g class="accent-dot">
+            <circle cx="80" cy="40" r="3" />
+            <circle cx="160" cy="34" r="2.5" />
+            <circle cx="280" cy="38" r="3" />
+            <circle cx="400" cy="34" r="2.5" />
+            <circle cx="520" cy="40" r="3" />
+            <circle cx="80" cy="460" r="3" />
+            <circle cx="160" cy="466" r="2.5" />
+            <circle cx="280" cy="462" r="3" />
+            <circle cx="400" cy="466" r="2.5" />
+            <circle cx="520" cy="460" r="3" />
+            <circle cx="40" cy="80" r="3" />
+            <circle cx="34" cy="200" r="2.5" />
+            <circle cx="40" cy="320" r="3" />
+            <circle cx="34" cy="420" r="2.5" />
+            <circle cx="560" cy="80" r="3" />
+            <circle cx="566" cy="200" r="2.5" />
+            <circle cx="560" cy="320" r="3" />
+            <circle cx="566" cy="420" r="2.5" />
+          </g>
+
+          <!-- Inner glow -->
+          <rect x="40" y="40" width="520" height="420" fill="url(#innerGlow)" rx="12" ry="12" />
+
+          <!-- IMAGE AREA with your image -->
+          <g filter="url(#softShadow)">
+            <rect x="56" y="56" width="488" height="388" class="image-placeholder" />
+            <rect x="62" y="62" width="476" height="376" fill="none" stroke="#b5957a" stroke-width="1.2" rx="8" ry="8" />
+            <rect x="68" y="68" width="464" height="364" fill="none" stroke="#9f7f66" stroke-width="0.8" rx="6" ry="6" />
+
+            <!-- YOUR IMAGE (replace src with your image) -->
+            <image href="789300574_1561542555443086_2906832940917988954_n.webp.jpg" x="56" y="56" width="488" height="388" preserveAspectRatio="xMidYMid slice" clip-path="url(#imageClip)" />
+
+            <!-- corner accents inside image area -->
+            <path d="M80,80 L100,80 L80,100 Z" fill="#b58a6a" opacity="0.5" />
+            <path d="M520,80 L500,80 L520,100 Z" fill="#b58a6a" opacity="0.5" />
+            <path d="M80,420 L100,420 L80,400 Z" fill="#b58a6a" opacity="0.5" />
+            <path d="M520,420 L500,420 L520,400 Z" fill="#b58a6a" opacity="0.5" />
+          </g>
+
+          <!-- fine filigree around image -->
+          <path d="M80,56 Q140,44 200,56 Q260,68 320,56 Q380,44 440,56 Q500,68 520,56" fill="none" stroke="#d5b89a" stroke-width="0.8" />
+          <path d="M80,444 Q140,456 200,444 Q260,432 320,444 Q380,456 440,444 Q500,432 520,444" fill="none" stroke="#d5b89a" stroke-width="0.8" />
+        </svg>
+      </div>
 
     </div>
 
