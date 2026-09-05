@@ -33,7 +33,6 @@
             transition: all 0.2s ease;
         }
 
-        /* ——— DNA SVG ornament (top) ——— */
         .dna-ornament {
             display: flex;
             justify-content: center;
@@ -48,12 +47,11 @@
             display: block;
         }
 
-        /* ——— title ——— */
         .title {
             text-align: center;
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             color: #f2e9ff;
             text-shadow: 0 0 10px #b27aff, 0 0 30px #6d3bd0;
             margin-bottom: 2rem;
@@ -65,7 +63,6 @@
             filter: drop-shadow(0 4px 6px #00000055);
         }
 
-        /* ——— table ——— */
         .traits-table {
             width: 100%;
             border-collapse: separate;
@@ -112,14 +109,12 @@
             letter-spacing: 0.5px;
         }
 
-        /* special emoji + text spacing */
         .traits-table td:first-child span {
             margin-right: 0.6rem;
             font-size: 2rem;
             filter: drop-shadow(0 0 5px #b27aff66);
         }
 
-        /* ——— small label for system role ——— */
         .system-role-label {
             display: inline-block;
             background: #2d254b;
@@ -134,7 +129,6 @@
             text-transform: uppercase;
         }
 
-        /* ——— footer ornament ——— */
         .dna-footer {
             margin-top: 2.5rem;
             display: flex;
@@ -148,14 +142,13 @@
             filter: drop-shadow(0 0 6px #7b5ecb77);
         }
 
-        /* responsive */
         @media (max-width: 550px) {
             .card {
                 padding: 1.8rem 1.2rem 2rem;
                 border-radius: 2.5rem;
             }
             .title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             .traits-table td {
                 font-size: 1.2rem;
@@ -186,11 +179,10 @@
 
         @media (max-width: 420px) {
             .title {
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
         }
 
-        /* tiny sparkles */
         .glow-text {
             color: #cbb5ff;
         }
@@ -199,7 +191,6 @@
 <body>
     <div class="card">
 
-        <!-- DNA helix ornament (top) -->
         <div class="dna-ornament">
             <svg viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DNA helix ornament">
                 <defs>
@@ -218,11 +209,9 @@
                     </filter>
                 </defs>
 
-                <!-- backbone curves (left + right) -->
                 <path d="M 40 10 C 70 25, 70 65, 40 80" stroke="url(#dnaGrad1)" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glowDna)" opacity="0.9" />
                 <path d="M 360 10 C 330 25, 330 65, 360 80" stroke="url(#dnaGrad1)" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glowDna)" opacity="0.9" />
 
-                <!-- rungs (pairs) -->
                 <g stroke="#b38bff" stroke-width="3.5" stroke-linecap="round" opacity="0.9">
                     <line x1="48" y1="18" x2="352" y2="18" />
                     <line x1="42" y1="30" x2="358" y2="30" />
@@ -231,7 +220,6 @@
                     <line x1="48" y1="66" x2="352" y2="66" />
                 </g>
 
-                <!-- small dots on rungs (base pairs) -->
                 <g fill="#d7beff" filter="url(#glowDna)">
                     <circle cx="100" cy="18" r="3.5" />
                     <circle cx="300" cy="18" r="3.5" />
@@ -245,7 +233,6 @@
                     <circle cx="300" cy="66" r="3.5" />
                 </g>
 
-                <!-- extra sparkle diamonds -->
                 <g fill="#dfccff" opacity="0.7">
                     <polygon points="200,8 206,14 200,20 194,14" />
                     <polygon points="200,64 206,70 200,76 194,70" />
@@ -253,28 +240,25 @@
             </svg>
         </div>
 
-        <!-- TITLE -->
         <h1 class="title">✦ Genetic traits ✦</h1>
 
-        <!-- MAIN TABLE -->
         <table class="traits-table">
             <tbody>
                 <tr>
-                    <td><span>🧬</span> ♂️</td>
+                    <td>♂️</td>
                     <td>Red Guard</td>
                 </tr>
                 <tr>
-                    <td><span>🧬</span> ♀️</td>
+                    <td>♀️</td>
                     <td>Kajiith</td>
                 </tr>
                 <tr>
-                    <td><span>⚡</span> System role</td>
+                    <td>System role</td>
                     <td>Daedra <span class="system-role-label">★ core</span></td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- DNA helix ornament (bottom, smaller) -->
         <div class="dna-footer">
             <svg viewBox="0 0 200 45" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
@@ -304,7 +288,6 @@
             </svg>
         </div>
 
-        <!-- tiny flavour text (optional) -->
         <div style="text-align: center; margin-top: 1.2rem; color: #7a6a9e; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6; border-top: 1px dashed #3d2e5e; padding-top: 1rem;">
             ⚛︎ heritage · encoded ⚛︎
         </div>
