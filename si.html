@@ -24,6 +24,15 @@
     <meta name="geo.region" content="SI">
     <meta name="language" content="English">
     <style>
+        /* === FONT DEFINITION — Triglavian Completed OTF === */
+        @font-face {
+            font-family: 'Triglavian Completed';
+            src: url('triglavian-completed.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +41,7 @@
 
         body {
             background: linear-gradient(145deg, #ffffff 0%, #fef9e6 100%);
-            font-family: 'Segoe UI', 'Roboto', 'Georgia', 'Times New Roman', serif;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', 'Georgia', 'Times New Roman', serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -86,7 +95,7 @@
             transition: opacity 0.3s ease;
             pointer-events: none;
             font-size: min(45vw, 45vh, 280px);
-            font-family: 'Segoe UI', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+            font-family: 'Segoe UI', 'Noto Color Emoji', 'Apple Color Emoji', 'Triglavian Completed', sans-serif;
             text-shadow: 0 4px 12px rgba(0,0,0,0.3);
             z-index: 10;
         }
@@ -137,7 +146,7 @@
             font-size: 1.9rem;
             font-weight: 700;
             color: #1e3a1e;
-            font-family: 'Segoe UI', 'Roboto', 'Playfair Display', serif;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', 'Playfair Display', serif;
         }
 
         .title-section .sub {
@@ -147,6 +156,7 @@
             text-transform: uppercase;
             margin-top: 6px;
             letter-spacing: 0.5px;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .timeline-block {
@@ -168,7 +178,7 @@
             font-size: 1.5rem;
             font-weight: 800;
             color: #f18f01;
-            font-family: 'Courier New', monospace;
+            font-family: 'Triglavian Completed', 'Courier New', monospace;
             display: inline-block;
             background: rgba(241, 143, 1, 0.1);
             padding: 0.1rem 0.7rem;
@@ -180,6 +190,7 @@
             font-weight: 700;
             color: #1f3b1a;
             margin: 0.3rem 0 0.6rem 0;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .event-desc {
@@ -187,6 +198,7 @@
             line-height: 1.45;
             font-size: 0.98rem;
             text-align: justify;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', 'Georgia', serif;
         }
 
         .highlight {
@@ -196,6 +208,7 @@
             margin: 0.5rem 0 0;
             font-style: normal;
             font-size: 0.92rem;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .summary-note {
@@ -211,6 +224,7 @@
             color: #1e3a1e;
             font-weight: 500;
             line-height: 1.5;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
         }
 
         .summary-note strong {
@@ -238,7 +252,7 @@
             border: 1.5px solid #f18f01;
             transition: all 0.25s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            font-family: inherit;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
             cursor: pointer;
         }
 
@@ -272,7 +286,7 @@
         marquee {
             margin-top: 0.75rem;
             font-size: 1.8rem;
-            font-family: monospace;
+            font-family: 'Triglavian Completed', monospace;
             color: #7c5f3a;
         }
         .audio-status {
@@ -281,7 +295,7 @@
             margin-top: 6px;
             color: #8b6b3c;
             letter-spacing: 0.4px;
-            font-family: monospace;
+            font-family: 'Triglavian Completed', monospace;
         }
         @media (max-width: 680px) {
             .content {
@@ -311,6 +325,7 @@
             color: transparent;
             text-shadow: 2px 2px 6px rgba(44, 95, 45, 0.3), 4px 4px 12px rgba(241, 143, 1, 0.2);
             transition: all 0.2s ease;
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
         }
         .chinese-grace:hover {
             text-shadow: 3px 3px 8px rgba(44, 95, 45, 0.5), 6px 6px 14px rgba(241, 143, 1, 0.3);
@@ -326,6 +341,7 @@
             -webkit-background-clip: text;
             color: #b8860b;
             text-shadow: 2px 2px 0 rgba(241, 143, 1, 0.5), 4px 4px 4px rgba(44, 95, 45, 0.4), 6px 6px 8px rgba(180, 90, 0, 0.3);
+            font-family: 'Triglavian Completed', 'Segoe UI', 'Roboto', sans-serif;
         }
     </style>
 </head>
@@ -982,7 +998,7 @@
                 <p>
                     <font style="font-size: 48px" color="teal">ⱃⱆⱄⰰⰾⰽⰰ</font>
                 </p>
-                <marquee behavior="scroll" direction="left">ⰲⰵⱄⰵⰾⰵ ⱂⱃⰻⰳⱁⰴⰵ ⰲⰰⱎⰽⰵ ⰳⱁⱄⱂⱁⰴⰵ ⰽⰻ ⰲⱁⰴⰻⱁ ⱆⱄⰰⰽⱁⰳⰰⱃ ⱅⱑ ⰽⰰⰿⱁⱃ ⱄⱁⰴⰻ ⱂⰰ ⰳⰴⱁⱃ ⱄⰻ ⰶⰵ ⰱⱁⰴⰻ ⁖ ⰳⱁⰾⱁ ⱂⱃⰵⰶⰻⰲⰵⱅⱗ ⱗ ⰸⰵⰾⱁ ⱂⱃⰵⱌⰵⱀⱗⱀⱁ ⁖ ⰱⱃⰵⰸ ⱁⱄⰵⰱⱀⰵⰳⰰ ⰴⱁⱄⱅⱁⱑⱀⱄⱅⰲⰰ ⰻⱀ ⱂⱃⰻⰿⰵⱃⱀⰵ ⱄⰰⰿⱁⰸⰰⰲⰵⱄⱅⰻ ⱗ ⰶⰻⱆⰾⱗⱀⱗ ⱀⰻⱍⰲⱃⰵⰴⱀⱁ ⁖ ⰸⰰⱅⱁ ⱄⱂⱁⰴⰱⱆⱑⰿ ⱄⰲⱁⰻⱁ ⰻⰸⰱⱃⰰⱀⰽⱁ ⱈ ⰽⱃⰵⱂⱁⱄⱅⰻ ⰻⱀ ⰲⰰⱃⱆⱗⰿ ⱀⱗⱀⱁ ⱍⰰⱄⱅ ⱅⰵⱃ ⰹ ⰲⰵⰴⱀⱁ ⱂⱃⰻⱄⰾⱆⱈⱀⰵⰿ ⁖ ⰽⰰⰴⰰⱃ ⰿⰵ ⱂⱁⱅⱃⰵⰱⱆⱗ ⁖ ⱄ ⱎⰵⱂⰵⱅⰰⰻⱁⱍⰻⰿ ⰳⰾⰰⱄⱁⰿ ⰹ ⱂⱃⰻⰳⱁⰲⰰⱃⱑⰿ ⱅⱆⰴⰻ ⰽⱁ ⱗ ⱀⰻ ⰸⱃⰰⰲⰵⱀ ⁖ ⱗ ⱀⰻⰽⱁⰾⰻ ⱀⰵ ⱂⱁⰿⰻⰾⱆⱗⰿ ⁖ ⰻⱀ ⰲⰰⱀⰻⱁ ⰲⰵⱃⱆⱗⰿ</marquee>
+                <marquee behavior="scroll" direction="left">ⰲⰵⱄⰵⰾⰵ ⱂⱃⰻⰳⱁⰴⰵ ⰲⰰⱎⰽⰵ ⰳⱁⱄⱂⱁⰴⰵ ⰽⰻ ⰲⱁⰴⰻⱁ ⱆⱄⰰⰽⱁⰳⰰⱃ ⱅⱑ ⰽⰰⰿⱁⱃ ⱄⱁⰴⰻ ⱂⰰ ⰳⰴⱁⱃ ⱄⰻ ⰶⰵ ⰱⱁⰴⰻ ⁖ ⰳⱁⰾⱁ ⱂⱃⰵⰶⰻⰲⰵⱅⱗ ⱗ ⰸⰵⰾⱁ ⱂⱃⰵⱌⰵⱀⱗⱀⱁ ⁖ ⰱⱃⰵⰸ ⱁⱄⰵⰱⱀⰵⰳⰰ ⰴⱁⱄⱅⱁⱑⱀⱄⱅⰲⰰ ⰻⱀ ⱂⱃⰻⰿⰵⱃⱀⰵ ⱄⰰⰿⱁⰸⰰⰲⰵⱄⱅⰻ ⱗ ⰶⰻⱆⰾⱗⱀⱗ ⱀⰻⱍⰲⱃⰵⰴⱀⱁ ⁖ ⰸⰰⱅⱁ ⱄⱂⰿⰴⰱⱆⱑⰿ ⱄⰲⱁⰻⱁ ⰻⰸⰱⱃⰰⱀⰽⱁ ⱈ ⰽⱃⰵⱂⱁⱄⱅⰻ ⰻⱀ ⰲⰰⱃⱆⱗⰿ ⱀⱗⱀⱁ ⱍⰰⱄⱅ ⱅⰵⱃ ⰹ ⰲⰵⰴⱀⱁ ⱂⱃⰻⱄⰾⱆⱈⱀⰵⰿ ⁖ ⰽⰰⰴⰰⱃ ⰿⰵ ⱂⱁⱅⱃⰵⰱⱆⱗ ⁖ ⱄ ⱎⰵⱂⰵⱅⰰⰻⱁⱍⰻⰿ ⰳⰾⰰⱄⱁⰿ ⰹ ⱂⱃⰻⰳⱁⰲⰰⱃⱑⰿ ⱅⱆⰴⰻ ⰽⱁ ⱗ ⱀⰻ ⰸⰲⰰⰲⰵⱀ ⁖ ⱗ ⱀⰻⰽⱁⰾⰻ ⱀⰵ ⱂⰵⰿⰻⰾⱆⱗⰿ ⁖ ⰻⱀ ⰲⰰⱀⰻⱁ ⰲⰵⱃⱆⱗⰿ</marquee>
             </div>
         </div>
     </div>
