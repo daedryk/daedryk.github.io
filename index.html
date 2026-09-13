@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daedryk GitHub iO</title>
     <style>
-        /* OpenType font: triglavian-completed.otf in root directory */
         @font-face {
             font-family: 'Triglavian';
             src: url('triglavian-completed.otf') format('opentype');
@@ -32,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* Main content container */
         .content {
             text-align: center;
             z-index: 10;
@@ -41,17 +39,16 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             width: 100%;
             max-width: 800px;
             padding: 2rem 1rem;
             border-radius: 2rem;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(1px);
-            box-shadow: 0 0 40px rgba(180, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(0px);
+            box-shadow: 0 0 50px rgba(180, 0, 0, 0.25);
         }
 
-        /* Common red glow style for all text */
         .glow-text {
             color: #b30000;
             text-shadow: 
@@ -64,7 +61,7 @@
         }
 
         h1.page-title {
-            font-size: clamp(1.8rem, 8vw, 3.8rem);
+            font-size: clamp(1.5rem, 6.5vw, 3rem);
             line-height: 1.2;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
@@ -75,7 +72,7 @@
         }
 
         .welcome {
-            font-size: clamp(2.5rem, 12vw, 6rem);
+            font-size: clamp(2rem, 9vw, 4.5rem);
             font-weight: 700;
             letter-spacing: 0.15em;
             margin: 0.5rem 0;
@@ -85,7 +82,7 @@
 
         .enter-link {
             display: inline-block;
-            font-size: clamp(2rem, 9vw, 4rem);
+            font-size: clamp(1.6rem, 7vw, 3rem);
             font-weight: 600;
             text-transform: uppercase;
             text-decoration: none;
@@ -96,11 +93,11 @@
                 0 0 40px #990000,
                 0 0 80px #660000;
             transition: all 0.25s ease-in-out;
-            padding: 0.5rem 1.5rem;
+            padding: 0.4rem 1.2rem;
             border: 2px solid rgba(180, 0, 0, 0.4);
             border-radius: 12px;
-            background: rgba(30, 0, 0, 0.3);
-            backdrop-filter: blur(2px);
+            background: rgba(30, 0, 0, 0.2);
+            backdrop-filter: blur(0px);
             margin-top: 1rem;
             letter-spacing: 0.2em;
         }
@@ -113,12 +110,11 @@
                 0 0 70px #cc0000,
                 0 0 100px #990000;
             border-color: #b30000;
-            background: rgba(80, 0, 0, 0.4);
+            background: rgba(80, 0, 0, 0.35);
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(200, 0, 0, 0.7);
         }
 
-        /* SVG decorations positioning */
         .svg-layer {
             position: fixed;
             top: 0;
@@ -132,30 +128,27 @@
 
         .slavic-motif {
             position: absolute;
-            opacity: 0.7;
+            opacity: 0.85;
             filter: drop-shadow(0 0 8px #a00) drop-shadow(0 0 20px #700);
             will-change: transform;
         }
 
-        /* Individual positioning of each SVG symbol – neopagan, Slavic motifs */
         .motif-1 { top: 3%; left: 2%; width: clamp(70px, 12vw, 150px); }
         .motif-2 { top: 8%; right: 3%; width: clamp(80px, 14vw, 180px); }
         .motif-3 { bottom: 5%; left: 5%; width: clamp(90px, 15vw, 200px); }
         .motif-4 { bottom: 10%; right: 6%; width: clamp(70px, 12vw, 160px); }
         .motif-5 { top: 40%; left: 1%; width: clamp(50px, 8vw, 110px); }
         .motif-6 { top: 65%; right: 2%; width: clamp(60px, 10vw, 130px); }
-        .motif-7 { top: 15%; left: 20%; width: clamp(50px, 8vw, 100px); opacity: 0.5; }
-        .motif-8 { bottom: 20%; right: 15%; width: clamp(60px, 9vw, 120px); opacity: 0.55; }
-        .motif-9 { top: 80%; left: 25%; width: clamp(55px, 9vw, 110px); opacity: 0.6; }
-        .motif-10 { top: 5%; left: 70%; width: clamp(50px, 7vw, 100px); opacity: 0.5; }
+        .motif-7 { top: 15%; left: 20%; width: clamp(50px, 8vw, 100px); opacity: 0.7; }
+        .motif-8 { bottom: 20%; right: 15%; width: clamp(60px, 9vw, 120px); opacity: 0.75; }
+        .motif-9 { top: 80%; left: 25%; width: clamp(55px, 9vw, 110px); opacity: 0.8; }
+        .motif-10 { top: 5%; left: 70%; width: clamp(50px, 7vw, 100px); opacity: 0.7; }
 
-        /* Ensure content sits above SVG layer */
         .content {
             position: relative;
             z-index: 20;
         }
 
-        /* small extra perun / rod / veles symbols via inline SVG */
         .svg-symbol {
             width: 100%;
             height: auto;
@@ -174,26 +167,24 @@
             filter: drop-shadow(0 0 6px #b00);
         }
 
-        /* Responsive tweaks */
         @media (max-width: 600px) {
             .content {
-                gap: 1.5rem;
+                gap: 1.2rem;
                 padding: 1.5rem 1rem;
+                background: rgba(0, 0, 0, 0.1);
             }
             .enter-link {
-                padding: 0.4rem 1rem;
+                padding: 0.35rem 0.9rem;
             }
             .slavic-motif {
-                opacity: 0.55;
+                opacity: 0.65;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Artistic SVG layer with Slavic neopaganistic motifs: Perun, Rod, Veles, solar symbols, etc. -->
     <div class="svg-layer">
-        <!-- Motif 1: Perun's axe / thunder mark (Slavic) -->
         <div class="slavic-motif motif-1">
             <svg viewBox="0 0 100 100" class="svg-symbol">
                 <path d="M50 10 L60 40 L90 45 L65 60 L75 90 L50 72 L25 90 L35 60 L10 45 L40 40 Z" 
@@ -202,7 +193,6 @@
                 <circle cx="50" cy="45" r="8" fill="#8b0000" stroke="#b30000" stroke-width="1.8" />
             </svg>
         </div>
-        <!-- Motif 2: Solar wheel / Kolovrat (neopagan sun symbol) -->
         <div class="slavic-motif motif-2">
             <svg viewBox="0 0 100 100" class="svg-symbol">
                 <circle cx="50" cy="50" r="35" stroke="#b30000" stroke-width="3" fill="none" />
@@ -212,7 +202,6 @@
                 <circle cx="50" cy="50" r="6" fill="#b30000" />
             </svg>
         </div>
-        <!-- Motif 3: Rod / tree of life with roots -->
         <div class="slavic-motif motif-3">
             <svg viewBox="0 0 120 120" class="svg-symbol">
                 <path d="M60 20 L60 100 M40 40 L60 20 L80 40 M30 70 L60 45 L90 70 M25 100 L40 80 L60 95 L80 80 L95 100" 
@@ -221,7 +210,6 @@
                 <path d="M45 55 L60 65 L75 55" stroke="#b30000" stroke-width="2.5" fill="none" />
             </svg>
         </div>
-        <!-- Motif 4: Veles's horn / snake symbol combined -->
         <div class="slavic-motif motif-4">
             <svg viewBox="0 0 100 100" class="svg-symbol">
                 <path d="M20 80 Q40 70 50 50 Q60 30 80 20" stroke="#b30000" stroke-width="4" fill="none" />
@@ -230,7 +218,6 @@
                 <path d="M30 45 L45 30" stroke="#b30000" stroke-width="2.5" />
             </svg>
         </div>
-        <!-- Motif 5: Small solar / thunder symbol -->
         <div class="slavic-motif motif-5">
             <svg viewBox="0 0 80 80" class="svg-symbol">
                 <path d="M40 10 L45 35 L70 35 L50 50 L60 75 L40 60 L20 75 L30 50 L10 35 L35 35 Z" 
@@ -238,7 +225,6 @@
                 <circle cx="40" cy="40" r="5" fill="#b30000" />
             </svg>
         </div>
-        <!-- Motif 6: Neopagan star / Svarog symbol -->
         <div class="slavic-motif motif-6">
             <svg viewBox="0 0 100 100" class="svg-symbol">
                 <path d="M50 15 L58 40 L85 40 L63 55 L72 80 L50 64 L28 80 L37 55 L15 40 L42 40 Z" 
@@ -246,7 +232,6 @@
                 <circle cx="50" cy="50" r="8" fill="none" stroke="#b30000" stroke-width="2.5" />
             </svg>
         </div>
-        <!-- Motif 7: Small zigzag / water symbol (Veles) -->
         <div class="slavic-motif motif-7">
             <svg viewBox="0 0 100 60" class="svg-symbol">
                 <path d="M10 30 Q25 10 40 30 Q55 50 70 30 Q85 10 95 30" 
@@ -255,14 +240,12 @@
                 <circle cx="70" cy="35" r="4" fill="#8b0000" />
             </svg>
         </div>
-        <!-- Motif 8: Perun's arrow / lightning -->
         <div class="slavic-motif motif-8">
             <svg viewBox="0 0 100 100" class="svg-symbol">
                 <path d="M55 15 L40 45 L60 40 L45 85 L70 40 L50 45 Z" 
                       fill="#8b0000" stroke="#b30000" stroke-width="2.5" />
             </svg>
         </div>
-        <!-- Motif 9: Dual faith / moon and sun (Slavic) -->
         <div class="slavic-motif motif-9">
             <svg viewBox="0 0 100 100" class="svg-symbol">
                 <circle cx="35" cy="50" r="25" stroke="#b30000" stroke-width="3" fill="none" />
@@ -272,7 +255,6 @@
                 <circle cx="65" cy="50" r="4" fill="#b30000" />
             </svg>
         </div>
-        <!-- Motif 10: Small rune-like symbol / Dažbog -->
         <div class="slavic-motif motif-10">
             <svg viewBox="0 0 80 80" class="svg-symbol">
                 <path d="M20 20 L60 20 L40 50 L20 20 M40 50 L40 70 M20 65 L60 65" 
@@ -282,7 +264,6 @@
         </div>
     </div>
 
-    <!-- Main content: page title, welcome, enter link -->
     <div class="content">
         <h1 class="page-title glow-text">Daedryk GitHub iO</h1>
         
