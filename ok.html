@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cosmic web - a digital shrine of Arbiter Daedryk, the hermit</title>
+    <meta name="title" content="Cosmic Matrix | Glagolitic Script & The Equation of God">
+    <meta name="description" content="Explore the digital universe where ancient Glagolitic symbols meet cosmic code. An interactive sacred geometry canvas with glitch aesthetics, philosophical depth, and ambient sound frequencies. The universe is a matrix. God is an equation.">
+    <meta name="keywords" content="glagolitic script, digital universe, matrix, god equation, interactive sacred geometry, glitch art, philosophical code, cosmic waveform, sound meditation, ancient symbols, futuristic design, seo meta, cyberspace">
+    <meta name="author" content="21351147">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cosmic web | Glagolitic Sigil">
+    <meta property="og:description" content="Interactive cosmic canvas featuring Glagolitic wisdom. Ancient script, sacred geometry, and sound synthesis. The universe is a matrix. God is an equation.">
+    <meta property="og:image" content="img.png">
+    <meta property="og:image:alt" content="Ruevit sacred symbol">
+    <meta property="og:url" content="https://daedryk.github.io">
+    <meta property="og:site_name" content="Daedryk GitHub iO">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cosmic web | Glagolitic Codex">
+    <meta name="twitter:description" content="Ancient Glagolitic script meets cosmic code. Interactive geometry, ambient sound & philosophical symbols.">
+    <meta name="twitter:image" content="img.png">
+    <meta name="twitter:image:alt" content="Ruevit sacred symbol">
+    <link rel="canonical" href="https://daedryk.github.io">
+    <meta name="theme-color" content="#abcdef">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="favicon.ico" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #abcdef;
+            color: #ff8000;
+            font-family: 'Arial', sans-serif;
+            display: block;
+            width: 100%;
+            min-height: 100vh;
+            padding: 10px 10px;
+        }
+
+        .eternal-universe-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #abcdef;
+            color: #ff8000;
+            --electric-red: #ff0000;
+            --electric-green: #00ff00;
+            --electric-blue: #0000ff;
+        }
+
+        .eu-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        #eu-graphCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            position: relative;
+            z-index: 3;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .canvas-hidden {
+            opacity: 0 !important;
+        }
+
+        .background-image-war {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+            opacity: 1;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .content-box {
+            width: 100%;
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 15px 20px;
+            background: #abcdef;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 20px;
+            box-shadow: inset 0 0 10px #ff0000, 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #ff8000;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .content-box a {
+            color: #ff8000;
+            text-decoration: none;
+        }
+
+        .content-box a:hover {
+            text-decoration: underline;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto 10px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #00ff00, #ff0000);
+            filter: drop-shadow(0 0 8px #000000);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff8000;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 12px 4px rgba(255, 128, 0, 0.9);
+            pointer-events: none;
+            transition: left 0.1s linear;
+        }
+
+        .paragraph {
+            text-align: center;
+            color: #ff8000;
+            text-shadow: 0 0 8px #ff0000, 0 0 16px #800000;
+            padding: 10px 10px;
+        }
+
+        .seo-hidden {
+            display: none;
+        }
+
+        .ornament-svg {
+            text-align: center;
+            margin: 25px 0 15px 0;
+            line-height: 0;
+        }
+
+        .ornament-svg svg {
+            width: 80px;
+            height: auto;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 4px #ff8000);
+        }
+
+        .glagolitic-gold-wrapper {
+            text-align: center;
+            margin: 20px 0 10px;
+        }
+        .glagolitic-gold {
+            font-size: 24pt;
+            font-family: 'Vinodolski_Zakon_NH', 'Segoe UI', 'Arial', 'Noto Sans Glagolitic', 'Everson Mono', monospace;
+            font-weight: 500;
+            display: inline-block;
+            background: linear-gradient(135deg, #f9d976, #e6b422, #ffd966, #c99400);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 12px rgba(255, 0, 0, 0.8), 0 0 25px rgba(91, 0, 0, 0.6), 0 0 5px #00000088;
+            line-height: 1.5;
+            letter-spacing: normal;
+        }
+        .glagolitic-gold-wrapper font {
+            all: unset;
+            display: inline-block;
+        }
+        .glagolitic-gold br {
+            display: block;
+        }
+
+        .early-medieval-cross-container {
+            text-align: center;
+            margin: 32px auto 28px;
+            padding: 8px 0;
+            background: radial-gradient(ellipse at center, rgba(255,128,0,0.08) 0%, rgba(255,236,219,0) 80%);
+            border-radius: 60px;
+        }
+        .early-medieval-cross-container svg {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 6px rgba(255,0,0,0.5)) drop-shadow(0 0 2px #ffaa33);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .early-medieval-cross-container svg:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 12px #ff6600) drop-shadow(0 0 4px #ffcc44);
+        }
+
+        .bottom-image-wrapper {
+            text-align: center;
+            margin: 10px auto;
+        }
+        .bottom-image-wrapper img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .copyright-notice {
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .copyright-notice a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+        .copyright-notice a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .early-medieval-cross-container svg {
+                max-width: 180px;
+            }
+            .glagolitic-gold {
+                font-size: 18pt;
+            }
+        }
+
+        @font-face {
+            font-family: 'Vinodolski_Zakon_NH';
+            src: url('/Vinodolski_Zakon_NH.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="eternal-universe-wrapper">
+        <div class="eu-image-container" id="visualizationClickArea">
+            <img src="img.png" class="background-image-war" alt="The Holy Symbol of Ruevit">
+            <canvas id="eu-graphCanvas" width="600" height="600"></canvas>
+        </div>
+    </div>
+
+    <div id="progressBar" class="progress-bar" aria-label="audio progress bar">
+        <div id="progressDot" class="progress-dot"></div>
+    </div>
+
+    <p class="paragraph"><span style="font-size: 72px"><a style="text-decoration: none; color: inherit" href="su.html">ⰸⰳⱁⰴⰱⰰ</a></span></p>
+
+    <div class="content-box">
+        <a href="id.html" title="Discover the identity behind the code">Who is this?</a>&nbsp;<a href="my.html" title="Read the digital story">My story...</a>
+    </div>
+
+    <div class="content-box">
+        <a href="g.html" title="Learn ancient Glagolitic script and its hidden frequencies">Glagolitic Script</a> <a href="m.html">Crash Course</a>
+    </div>
+
+    <div class="content-box">
+        <p class="copyright-notice"><a href="ultra_hardcore_kick.wav" style="color: #ff0000">©</a>2026 by <a href="a.html" style="color: #ff0000">Daedryk</a>. Don't <a href="k.html" style="color: #ff0000">mess</a> with my <a href="c.html" style="color: #ff0000">code</a>!</p>
+    </div>
+
+    <div class="ornament-svg">
+        <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,15 L20,8 L30,15 L20,22 Z" fill="#ff8000" stroke="#ff0000" stroke-width="0.8" opacity="0.9"/>
+            <circle cx="20" cy="15" r="2" fill="#ffecdb" stroke="#ff0000" stroke-width="0.6"/>
+            <path d="M40,15 L50,8 L60,15 L50,22 Z" fill="#ff8000" stroke="#ff0000" stroke-width="0.8" opacity="0.9"/>
+            <circle cx="50" cy="15" r="2" fill="#ffecdb" stroke="#ff0000" stroke-width="0.6"/>
+            <path d="M70,15 L80,8 L90,15 L80,22 Z" fill="#ff8000" stroke="#ff0000" stroke-width="0.8" opacity="0.9"/>
+            <circle cx="80" cy="15" r="2" fill="#ffecdb" stroke="#ff0000" stroke-width="0.6"/>
+            <path d="M30,15 L35,5 L40,15 L35,25 Z" fill="none" stroke="#ff8000" stroke-width="1" opacity="0.6"/>
+            <path d="M60,15 L65,5 L70,15 L65,25 Z" fill="none" stroke="#ff8000" stroke-width="1" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <div class="glagolitic-gold-wrapper">
+        <div class="glagolitic-gold">
+            ⰐⰀⰝⰅⰎⰑ<br>
+            ⰲⱏ ⱀⰰⱍⰵⰾⱑ ⰱⱑ ⱄⰾⱁⰲⱁ<br>
+            ⰻ ⱄⰾⱁⰲⱁ ⰱⱑ ⱆ ⰱⱁⰳⰰ<br>
+            ⰻ ⰱⱁⰳⱏ ⰱⱑ ⱄⰾⱁⰲⱁ<br>
+            ⱄⰵ ⰱⱑ ⰻⱄⰽⱁⱀⰻ ⱆ ⰱⱁⰳⰰ<br>
+            ⰲⱐⱄⱑ ⱅⱑⰿⱏ ⰱⱏⰺⱎⰰ<br>
+            ⰻ ⰱⰵⰸⱏ ⱀⰵⰳⱁ ⱀⰻⱍⱅⱁⰶⰵ ⰱⱏⱄⱅⱐ<br>
+            ⰵⰶⰵ ⰱⱏⱄⱅⱐ
+        </div>
+    </div>
+
+    <div class="early-medieval-cross-container">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Early Medieval Ornamental Cross, Insular & Carolingian inspired sacred symbol">
+            <defs>
+                <linearGradient id="crossGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#e6b422" />
+                    <stop offset="30%" stop-color="#ffd966" />
+                    <stop offset="60%" stop-color="#ffaa33" />
+                    <stop offset="100%" stop-color="#c99400" />
+                </linearGradient>
+                <linearGradient id="darkBronze" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#b87c2e" />
+                    <stop offset="100%" stop-color="#7a4a1a" />
+                </linearGradient>
+                <radialGradient id="gemRed" cx="30%" cy="30%" r="70%">
+                    <stop offset="0%" stop-color="#ff4d4d" />
+                    <stop offset="70%" stop-color="#aa2020" />
+                    <stop offset="100%" stop-color="#550000" />
+                </radialGradient>
+                <radialGradient id="gemBlue" cx="40%" cy="30%" r="60%">
+                    <stop offset="0%" stop-color="#66aaff" />
+                    <stop offset="80%" stop-color="#003399" />
+                    <stop offset="100%" stop-color="#001133" />
+                </radialGradient>
+                <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                    <feMerge>
+                        <feMergeNode in="offsetblur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <filter id="shadowCross">
+                    <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#ff4400" flood-opacity="0.5" />
+                </filter>
+            </defs>
+
+            <circle cx="200" cy="250" r="170" fill="none" stroke="rgba(255,128,0,0.2)" stroke-width="1.5" stroke-dasharray="4 6" />
+            <circle cx="200" cy="250" r="150" fill="none" stroke="rgba(255,100,0,0.12)" stroke-width="1" />
+
+            <g filter="url(#shadowCross)">
+                <path d="M185,70 L215,70 L215,190 L295,190 L295,230 L215,230 L215,420 L185,420 L185,230 L105,230 L105,190 L185,190 Z" 
+                      fill="url(#crossGold)" stroke="#a56616" stroke-width="2.5" stroke-linejoin="round" />
+                <path d="M95,190 L305,190 L305,230 L260,230 L260,210 L140,210 L140,230 L95,230 Z" 
+                      fill="url(#crossGold)" stroke="#b5721a" stroke-width="2" />
+                <circle cx="200" cy="210" r="35" fill="url(#darkBronze)" stroke="#ffcd80" stroke-width="2" />
+                <circle cx="200" cy="210" r="26" fill="none" stroke="#e6b422" stroke-width="2.5" stroke-dasharray="3 3" />
+                <circle cx="200" cy="210" r="14" fill="url(#gemRed)" stroke="#ffaa66" stroke-width="1.5" />
+                <circle cx="195" cy="205" r="3" fill="#ffcc99" opacity="0.7" />
+            </g>
+
+            <g fill="none" stroke="#ffcd7e" stroke-width="2.2" stroke-linecap="round" opacity="0.95">
+                <path d="M200,92 L208,108 L192,108 Z" fill="rgba(204,132,0,0.3)" stroke="#e6b422" />
+                <circle cx="200" cy="118" r="5" fill="url(#gemBlue)" stroke="#ffbf66" />
+                <path d="M115,210 L98,196 L112,190 L125,200 L115,210Z" fill="rgba(200,120,0,0.25)" stroke="#dba234" />
+                <circle cx="120" cy="204" r="4" fill="#ffaa66" />
+                <path d="M285,210 L302,196 L288,190 L275,200 L285,210Z" fill="rgba(200,120,0,0.25)" stroke="#dba234" />
+                <circle cx="280" cy="204" r="4" fill="#ffaa66" />
+                <path d="M200,350 Q215,370 200,410 Q185,370 200,350Z" fill="rgba(230,160,50,0.4)" stroke="#c9851a" />
+                <circle cx="200" cy="388" r="5" fill="url(#gemRed)" />
+            </g>
+
+            <g fill="none" stroke="#e6b03c" stroke-width="2">
+                <path d="M185,138 C175,125 180,110 195,110 C210,110 215,125 205,138 C195,150 180,140 185,138Z" stroke-opacity="0.8" />
+                <path d="M215,138 C225,125 220,110 205,110 C190,110 185,125 195,138 C205,150 220,140 215,138Z" stroke-opacity="0.8" />
+                <path d="M185,288 C170,275 180,260 195,260 C210,260 220,275 205,288 C195,300 178,290 185,288Z" stroke-opacity="0.7" />
+                <path d="M215,288 C230,275 220,260 205,260 C190,260 180,275 195,288 C205,300 222,290 215,288Z" stroke-opacity="0.7" />
+            </g>
+
+            <g fill="url(#crossGold)" stroke="#a55f14" stroke-width="1.8">
+                <circle cx="200" cy="62" r="12" fill="url(#crossGold)" />
+                <circle cx="200" cy="62" r="6" fill="url(#gemBlue)" stroke="#ffcc88" />
+                <path d="M188,62 L200,48 L212,62 L200,76 Z" fill="#ffcc77" stroke="none" opacity="0.4" />
+                <circle cx="200" cy="430" r="12" fill="url(#crossGold)" />
+                <circle cx="200" cy="430" r="5" fill="url(#gemRed)" />
+                <circle cx="87" cy="210" r="12" fill="url(#crossGold)" />
+                <circle cx="87" cy="210" r="5" fill="url(#gemBlue)" />
+                <circle cx="313" cy="210" r="12" fill="url(#crossGold)" />
+                <circle cx="313" cy="210" r="5" fill="url(#gemBlue)" />
+            </g>
+
+            <g stroke="#d4942b" stroke-width="1.8" fill="none" opacity="0.75">
+                <path d="M162,172 Q180,160 200,165 Q220,160 238,172" />
+                <path d="M162,248 Q180,260 200,255 Q220,260 238,248" />
+                <path d="M172,150 L172,132" stroke-width="1.5" />
+                <path d="M228,150 L228,132" stroke-width="1.5" />
+            </g>
+
+            <g font-family="'Noto Sans Glagolitic', 'Segoe UI', monospace" font-size="11" fill="#f7bc45" opacity="0.55" text-anchor="middle">
+                <text x="200" y="99" font-size="10">ⰍⰓⰠⰔⰕⰟ</text>
+                <text x="200" y="462" font-size="10">ⰔⰎⰑⰂⰑ</text>
+                <text x="64" y="215" font-size="9">ⰀⰈⰟ</text>
+                <text x="336" y="215" font-size="9">ⰋⰔⰕⰉⰐⰀ</text>
+            </g>
+
+            <g fill="none" stroke="#e6aa44" stroke-width="1.5" opacity="0.7">
+                <path d="M132,162 C140,158 144,166 138,172 C130,176 126,168 132,162Z" />
+                <path d="M268,162 C260,158 256,166 262,172 C270,176 274,168 268,162Z" />
+                <path d="M132,260 C140,264 144,256 138,250 C130,246 126,254 132,260Z" />
+                <path d="M268,260 C260,264 256,256 262,250 C270,246 274,254 268,260Z" />
+            </g>
+
+            <g stroke="#ffbe4d" stroke-width="1" opacity="0.6">
+                <line x1="200" y1="30" x2="200" y2="45" />
+                <line x1="155" y1="45" x2="165" y2="57" />
+                <line x1="245" y1="45" x2="235" y2="57" />
+                <line x1="120" y1="80" x2="135" y2="90" />
+                <line x1="280" y1="80" x2="265" y2="90" />
+                <line x1="52" y1="190" x2="70" y2="195" />
+                <line x1="348" y1="190" x2="330" y2="195" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bottom-image-wrapper">
+        <span style="font-size: 24px; color: #ff0000; text-shadow: 0px 0px 24px rgba(0, 0, 0, 0.8">
+            <p><a href="mmx.html" style="color: inherit; text-decoration: none">💥</a></p>
+            <p>ⱑⰸ ⰿⰰⰸⰻⰾⱗⱀⰻ</p>
+            <p>ⱄⰵⰿ ⱂⱁⱅ ⱃⰵⱄⱀⰻⱌⰰ</p>
+            <p>ⰻⱀ ⰶⰻⱆⰾⱗⱀⱗ</p>
+            <p>🔥 <a href="https://bnd.link/daedryk" style="color: inherit; text-decoration: none">ⰳⰾⰰⱄⱀⰻⰽ</a> 🔥</p>
+            <p><a href="ay.html" style="color: inherit; text-decoration: none">✨</a></p>
+        </span>
+        <img src="Windisch_hat.png" alt="Windisch hat">
+    </div>
+
+    <script>
+        (function() {
+            const centerX = 300;
+            const centerY = 300;
+            const canvas = document.getElementById('eu-graphCanvas');
+            let points = [];
+            let animationFrame;
+            let lastSecond = -1;
+            let lastMinute = -1;
+            let lastHour = -1;
+            let soundEnabled = false;
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+            let audioElement = null;
+            let isPlaying = false;
+            let progressInterval = null;
+            const progressBar = document.getElementById('progressBar');
+            const progressDot = document.getElementById('progressDot');
+            const visualizationArea = document.getElementById('visualizationClickArea');
+
+            const ELECTRIC_RED = '#ff0000';
+            const ELECTRIC_GREEN = '#00ff00';
+            const ELECTRIC_BLUE = '#0000ff';
+
+            function playSound(filename) {
+                if (!soundEnabled) return;
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                const audio = new Audio();
+                audio.src = filename;
+                audio.play().catch(() => {});
+            }
+
+            function generateBasePoints() {
+                const newPoints = [];
+                for (let i = 0; i <= 1000; i++) {
+                    const theta = (i / 1000) * Math.PI * 2;
+                    const x = -180 + (360 * theta / (Math.PI * 2));
+                    const y = Math.sin(x) * x * Math.cos(x);
+                    const radius = 50 + ((200) * (y + 180) / 360);
+                    const graphX = centerX + Math.cos(theta - Math.PI / 2) * radius;
+                    const graphY = centerY + Math.sin(theta - Math.PI / 2) * radius;
+                    newPoints.push({ x: graphX, y: graphY });
+                }
+                return newPoints;
+            }
+
+            function drawBackground(ctx) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = '#ff8000';
+                ctx.lineWidth = 1;
+                for (let angle = 0; angle < 360; angle += 15) {
+                    const rad = angle * Math.PI / 180;
+                    ctx.beginPath();
+                    ctx.moveTo(centerX, centerY);
+                    ctx.lineTo(
+                        centerX + Math.cos(rad) * 275,
+                        centerY + Math.sin(rad) * 275
+                    );
+                    ctx.strokeStyle = '#ff8000';
+                    ctx.stroke();
+                }
+                ctx.strokeStyle = '#ff8000';
+                for (let r = 50; r <= 250; r += 50) {
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+
+                ctx.save();
+                ctx.strokeStyle = ELECTRIC_GREEN;
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                points.forEach((p, idx) => {
+                    if (idx === 0) ctx.moveTo(p.x, p.y);
+                    else ctx.lineTo(p.x, p.y);
+                });
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            function drawStaticDots(ctx) {
+                points.forEach((point, i) => {
+                    if (i % 10 === 0) {
+                        const useRed = (Math.floor(i / 10) % 2 === 0);
+                        let coreColor = useRed ? ELECTRIC_RED : ELECTRIC_BLUE;
+                        const grad = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 12);
+                        grad.addColorStop(0, coreColor);
+                        grad.addColorStop(0.7, coreColor);
+                        grad.addColorStop(1, '#ffaa33');
+                        ctx.fillStyle = grad;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 12, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = coreColor;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = '#ffdd99';
+                        ctx.beginPath();
+                        ctx.arc(point.x - 1, point.y - 1, 1.2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    if (i % 25 === 0) {
+                        const extraColor = ELECTRIC_BLUE;
+                        const grad2 = ctx.createRadialGradient(point.x, point.y, 0, point.x, point.y, 10);
+                        grad2.addColorStop(0, extraColor);
+                        grad2.addColorStop(0.8, extraColor);
+                        grad2.addColorStop(1, '#ffaa55');
+                        ctx.fillStyle = grad2;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 10, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = extraColor;
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 2.8, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+            }
+
+            function drawSacredSymbol(ctx) {
+                ctx.save();
+                ctx.shadowBlur = 0;
+
+                for (let i = 0; i < 3; i++) {
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, 30 + i*12, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(255, 128, 0, ${0.3 - i*0.1})`;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
+
+                ctx.shadowColor = ELECTRIC_GREEN;
+                ctx.shadowBlur = 25;
+                ctx.font = 'bold 56px "KaiTi", "楷体", "STKaiti", "华文楷体", "Microsoft YaHei", serif';
+                ctx.fillStyle = ELECTRIC_GREEN;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('道', centerX, centerY);
+
+                ctx.shadowBlur = 12;
+                ctx.fillStyle = '#ffaa55';
+                for (let i = 0; i < 12; i++) {
+                    const angle = (i * 30) * Math.PI / 180;
+                    const rad = 95;
+                    const x = centerX + Math.cos(angle) * rad;
+                    const y = centerY + Math.sin(angle) * rad;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ff8000';
+                    ctx.fill();
+                }
+                ctx.shadowBlur = 0;
+                ctx.restore();
+            }
+
+            function animate() {
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                drawBackground(ctx);
+                drawStaticDots(ctx);
+                drawSacredSymbol(ctx);
+                animationFrame = requestAnimationFrame(animate);
+            }
+
+            function updateProgress() {
+                if (audioElement && isPlaying) {
+                    const percent = (audioElement.currentTime / audioElement.duration) * 100;
+                    progressDot.style.left = percent + '%';
+                }
+            }
+
+            function stopAllSounds() {
+                soundEnabled = false;
+            }
+
+            function playMusic() {
+                if (audioElement) {
+                    audioElement.pause();
+                }
+                audioElement = new Audio('skinhead.m4a');
+                audioElement.addEventListener('timeupdate', updateProgress);
+                audioElement.addEventListener('ended', () => {
+                    isPlaying = false;
+                    progressDot.style.left = '0%';
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                        progressInterval = null;
+                    }
+                    canvas.classList.remove('canvas-hidden');
+                });
+                audioElement.play();
+                isPlaying = true;
+                progressInterval = setInterval(updateProgress, 100);
+                stopAllSounds();
+                canvas.classList.add('canvas-hidden');
+            }
+
+            function toggleMusic() {
+                if (isPlaying) {
+                    audioElement.pause();
+                    isPlaying = false;
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                        progressInterval = null;
+                    }
+                    canvas.classList.remove('canvas-hidden');
+                } else {
+                    playMusic();
+                }
+            }
+
+            visualizationArea.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMusic();
+            });
+
+            progressBar.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (audioElement && isPlaying) {
+                    const rect = progressBar.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const percent = clickX / rect.width;
+                    audioElement.currentTime = percent * audioElement.duration;
+                }
+            });
+
+            points = generateBasePoints();
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    animate();
+                });
+            } else {
+                animate();
+            }
+        })();
+    </script>
+</body>
+</html>
