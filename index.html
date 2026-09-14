@@ -20,7 +20,7 @@
         }
 
         body {
-            background-color: black;
+            background: linear-gradient(to bottom, #ffeb3b 0%, #00ffff 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -44,7 +44,7 @@
             max-width: 800px;
             padding: 2rem 1rem;
             border-radius: 2rem;
-            background: rgba(80, 80, 80, 0.25);
+            background: rgba(80, 80, 80, 0.4);
             backdrop-filter: blur(4px);
             box-shadow: 0 0 50px rgba(180, 0, 0, 0.25);
         }
@@ -112,58 +112,6 @@
             box-shadow: 0 0 30px rgba(200, 0, 0, 0.7);
         }
 
-        .svg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .slavic-motif {
-            position: absolute;
-            opacity: 0.85;
-            filter: drop-shadow(0 0 8px #a00) drop-shadow(0 0 20px #700);
-            will-change: transform;
-        }
-
-        .motif-1 { top: 3%; left: 2%; width: clamp(70px, 12vw, 150px); }
-        .motif-2 { top: 8%; right: 3%; width: clamp(80px, 14vw, 180px); }
-        .motif-3 { bottom: 5%; left: 5%; width: clamp(90px, 15vw, 200px); }
-        .motif-4 { bottom: 10%; right: 6%; width: clamp(70px, 12vw, 160px); }
-        .motif-5 { top: 40%; left: 1%; width: clamp(50px, 8vw, 110px); }
-        .motif-6 { top: 65%; right: 2%; width: clamp(60px, 10vw, 130px); }
-        .motif-7 { top: 15%; left: 20%; width: clamp(50px, 8vw, 100px); opacity: 0.7; }
-        .motif-8 { bottom: 20%; right: 15%; width: clamp(60px, 9vw, 120px); opacity: 0.75; }
-        .motif-9 { top: 80%; left: 25%; width: clamp(55px, 9vw, 110px); opacity: 0.8; }
-        .motif-10 { top: 5%; left: 70%; width: clamp(50px, 7vw, 100px); opacity: 0.7; }
-
-        .content {
-            position: relative;
-            z-index: 20;
-        }
-
-        .svg-symbol {
-            width: 100%;
-            height: auto;
-            display: block;
-            stroke: #b30000;
-            fill: none;
-            stroke-width: 2.5;
-            vector-effect: non-scaling-stroke;
-            filter: drop-shadow(0 0 6px #d00);
-        }
-
-        .svg-symbol .filled {
-            fill: #8b0000;
-            stroke: #b30000;
-            stroke-width: 1.5;
-            filter: drop-shadow(0 0 6px #b00);
-        }
-
         @media (max-width: 600px) {
             .content {
                 gap: 1.2rem;
@@ -173,93 +121,10 @@
             .enter-link {
                 padding: 0.35rem 0.9rem;
             }
-            .slavic-motif {
-                opacity: 0.65;
-            }
         }
     </style>
 </head>
 <body>
-
-    <div class="svg-layer">
-        <div class="slavic-motif motif-1">
-            <svg viewBox="0 0 100 100" class="svg-symbol">
-                <path d="M50 10 L60 40 L90 45 L65 60 L75 90 L50 72 L25 90 L35 60 L10 45 L40 40 Z" 
-                      fill="none" stroke="#b30000" stroke-width="2.5" />
-                <path d="M50 25 L50 70" stroke="#b30000" stroke-width="3" />
-                <circle cx="50" cy="45" r="8" fill="#8b0000" stroke="#b30000" stroke-width="1.8" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-2">
-            <svg viewBox="0 0 100 100" class="svg-symbol">
-                <circle cx="50" cy="50" r="35" stroke="#b30000" stroke-width="3" fill="none" />
-                <path d="M50 10 L50 90 M10 50 L90 50 M25 25 L75 75 M75 25 L25 75" 
-                      stroke="#b30000" stroke-width="2.5" />
-                <circle cx="50" cy="50" r="12" fill="#8b0000" stroke="#b30000" stroke-width="2" />
-                <circle cx="50" cy="50" r="6" fill="#b30000" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-3">
-            <svg viewBox="0 0 120 120" class="svg-symbol">
-                <path d="M60 20 L60 100 M40 40 L60 20 L80 40 M30 70 L60 45 L90 70 M25 100 L40 80 L60 95 L80 80 L95 100" 
-                      stroke="#b30000" stroke-width="3" fill="none" />
-                <circle cx="60" cy="40" r="7" fill="#8b0000" stroke="#b30000" stroke-width="2" />
-                <path d="M45 55 L60 65 L75 55" stroke="#b30000" stroke-width="2.5" fill="none" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-4">
-            <svg viewBox="0 0 100 100" class="svg-symbol">
-                <path d="M20 80 Q40 70 50 50 Q60 30 80 20" stroke="#b30000" stroke-width="4" fill="none" />
-                <path d="M80 20 L75 35 L88 30 Z" fill="#8b0000" stroke="#b30000" stroke-width="1.8" />
-                <circle cx="40" cy="60" r="6" fill="#8b0000" stroke="#b30000" stroke-width="1.8" />
-                <path d="M30 45 L45 30" stroke="#b30000" stroke-width="2.5" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-5">
-            <svg viewBox="0 0 80 80" class="svg-symbol">
-                <path d="M40 10 L45 35 L70 35 L50 50 L60 75 L40 60 L20 75 L30 50 L10 35 L35 35 Z" 
-                      fill="none" stroke="#b30000" stroke-width="2.8" />
-                <circle cx="40" cy="40" r="5" fill="#b30000" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-6">
-            <svg viewBox="0 0 100 100" class="svg-symbol">
-                <path d="M50 15 L58 40 L85 40 L63 55 L72 80 L50 64 L28 80 L37 55 L15 40 L42 40 Z" 
-                      fill="none" stroke="#b30000" stroke-width="2.5" />
-                <circle cx="50" cy="50" r="8" fill="none" stroke="#b30000" stroke-width="2.5" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-7">
-            <svg viewBox="0 0 100 60" class="svg-symbol">
-                <path d="M10 30 Q25 10 40 30 Q55 50 70 30 Q85 10 95 30" 
-                      stroke="#b30000" stroke-width="4" fill="none" />
-                <circle cx="30" cy="25" r="4" fill="#8b0000" />
-                <circle cx="70" cy="35" r="4" fill="#8b0000" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-8">
-            <svg viewBox="0 0 100 100" class="svg-symbol">
-                <path d="M55 15 L40 45 L60 40 L45 85 L70 40 L50 45 Z" 
-                      fill="#8b0000" stroke="#b30000" stroke-width="2.5" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-9">
-            <svg viewBox="0 0 100 100" class="svg-symbol">
-                <circle cx="35" cy="50" r="25" stroke="#b30000" stroke-width="3" fill="none" />
-                <circle cx="65" cy="50" r="18" stroke="#b30000" stroke-width="3" fill="none" />
-                <path d="M50 30 L50 70" stroke="#b30000" stroke-width="2.5" />
-                <circle cx="35" cy="50" r="5" fill="#b30000" />
-                <circle cx="65" cy="50" r="4" fill="#b30000" />
-            </svg>
-        </div>
-        <div class="slavic-motif motif-10">
-            <svg viewBox="0 0 80 80" class="svg-symbol">
-                <path d="M20 20 L60 20 L40 50 L20 20 M40 50 L40 70 M20 65 L60 65" 
-                      stroke="#b30000" stroke-width="3" fill="none" />
-                <circle cx="40" cy="35" r="7" fill="#8b0000" stroke="#b30000" stroke-width="2" />
-            </svg>
-        </div>
-    </div>
 
     <div class="content">
         <h1 class="page-title glow-text">Daedryk GitHub iO</h1>
