@@ -411,6 +411,7 @@
 
             audio.addEventListener('ended', () => {
                 isPlaying = false;
+                audio.pause();
                 audio.currentTime = 0;
                 playIcon.style.display = 'block';
                 pauseIcon.style.display = 'none';
@@ -463,10 +464,6 @@
                 if (audio.paused && audio.currentTime === 0) {
                     updateProgressAndToggle(0);
                 }
-            });
-
-            audio.addEventListener('ended', () => {
-                updateProgressAndToggle(0);
             });
 
             audio.addEventListener('timeupdate', () => {
