@@ -108,6 +108,55 @@
             box-shadow: 0 0 30px rgba(200, 0, 0, 0.7);
         }
 
+        .music-player {
+            width: 100%;
+            max-width: 520px;
+            margin: 0.2rem auto;
+            padding: 0.2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .player-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            overflow: visible;
+        }
+
+        .progress-track {
+            stroke: #00ffff;
+            stroke-width: 6;
+            stroke-linecap: round;
+            opacity: 0.45;
+            filter: drop-shadow(0 0 5px #ff3333) drop-shadow(0 0 10px #cc0000);
+        }
+
+        .progress-fill {
+            stroke: #00ffff;
+            stroke-width: 6;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 7px #ff2222) drop-shadow(0 0 14px #aa0000);
+        }
+
+        .toggle-group {
+            filter: drop-shadow(0 0 6px #ff4444) drop-shadow(0 0 18px #cc0000);
+            transition: filter 0.2s ease;
+        }
+
+        .toggle-group:hover {
+            filter: drop-shadow(0 0 10px #ff6666) drop-shadow(0 0 28px #ff3333);
+        }
+
+        .toggle-shape {
+            fill: #ffff00;
+            stroke: none;
+        }
+
         .ornament {
             width: 100%;
             max-width: 600px;
@@ -137,6 +186,9 @@
             }
             .ornament {
                 max-width: 90%;
+            }
+            .music-player {
+                max-width: 95%;
             }
         }
 
@@ -213,6 +265,23 @@
 
         <h1 class="page-title glow-text">Daedryk GitHub iO</h1>
 
+        <div class="music-player" id="musicPlayer">
+            <svg class="player-svg" viewBox="0 0 520 60" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                <line class="progress-track" x1="30" y1="30" x2="490" y2="30" />
+                <line class="progress-fill" id="progressFill" x1="30" y1="30" x2="30" y2="30" />
+                <g id="toggleGroup" class="toggle-group" transform="translate(30, 30)">
+                    <polygon id="playIcon" class="toggle-shape" points="-7,-8 9,0 -7,8" />
+                    <g id="pauseIcon" style="display: none;">
+                        <rect class="toggle-shape" x="-6" y="-8" width="4" height="16" rx="1.5" />
+                        <rect class="toggle-shape" x="2" y="-8" width="4" height="16" rx="1.5" />
+                    </g>
+                </g>
+            </svg>
+            <audio id="bgAudio" preload="auto" loop="false">
+                <source src="generation.m4a" type="audio/mp4">
+            </audio>
+        </div>
+
         <div class="welcome glow-text">Welcome to<br>Triglavian<br>Collective<br>in real<br>life</div>
 
         <a href="ok.html" class="enter-link glow-text">ENTER</a>
@@ -284,19 +353,13 @@
     <script>
         (function() {
             const lines = document.querySelectorAll('.sway-line');
-
             const sweepRange = 240;
-
             lines.forEach(line => {
                 const baseX = parseFloat(line.dataset.baseX) || 0;
                 const initialOffset = (Math.random() * 2 - 1) * sweepRange;
                 line.style.transform = `translateX(${initialOffset}px)`;
             });
-
-            function randomBetween(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
+            function randomBetween(min, max) { return Math.random() * (max - min) + min; }
             function scheduleSway(line) {
                 const delay = randomBetween(500, 2800);
                 setTimeout(() => {
@@ -305,18 +368,124 @@
                     scheduleSway(line);
                 }, delay);
             }
-
             lines.forEach(line => {
                 const initialDelay = randomBetween(100, 1500);
-                setTimeout(() => {
-                    scheduleSway(line);
-                }, initialDelay);
+                setTimeout(() => { scheduleSway(line); }, initialDelay);
             });
-
             lines.forEach((line) => {
                 const duration = randomBetween(0.6, 1.1);
                 line.style.transition = `transform ${duration}s cubic-bezier(0.45, 0.05, 0.55, 0.95)`;
             });
+
+            const audio = document.getElementById('bgAudio');
+            const progressFill = document.getElementById('progressFill');
+            const toggleGroup = document.getElementById('toggleGroup');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const playerSvg = document.querySelector('.player-svg');
+
+            const trackStart = 30;
+            const trackEnd = 490;
+            const trackLength = trackEnd - trackStart;
+            let animationFrame = null;
+            let isPlaying = false;
+
+            audio.addEventListener('loadedmetadata', () => {
+                audio.currentTime = 0;
+                updateProgressAndToggle(0);
+            });
+
+            audio.addEventListener('play', () => {
+                isPlaying = true;
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                startRaf();
+            });
+
+            audio.addEventListener('pause', () => {
+                isPlaying = false;
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                stopRaf();
+            });
+
+            audio.addEventListener('ended', () => {
+                isPlaying = false;
+                audio.currentTime = 0;
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                stopRaf();
+                updateProgressAndToggle(0);
+            });
+
+            function updateProgressAndToggle(percent) {
+                const clamped = Math.min(1, Math.max(0, percent));
+                const fillX = trackStart + clamped * trackLength;
+                progressFill.setAttribute('x2', fillX);
+                toggleGroup.setAttribute('transform', `translate(${fillX}, 30)`);
+            }
+
+            function startRaf() {
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                function step() {
+                    if (isPlaying && !audio.paused && audio.duration) {
+                        const percent = audio.currentTime / audio.duration;
+                        updateProgressAndToggle(percent);
+                    }
+                    animationFrame = requestAnimationFrame(step);
+                }
+                animationFrame = requestAnimationFrame(step);
+            }
+
+            function stopRaf() {
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                    animationFrame = null;
+                }
+            }
+
+            playerSvg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (audio.paused) {
+                    if (audio.ended) {
+                        audio.currentTime = 0;
+                        updateProgressAndToggle(0);
+                    }
+                    audio.play().catch(err => {
+                        console.warn('Playback failed or no audio source:', err);
+                    });
+                } else {
+                    audio.pause();
+                }
+            });
+
+            audio.addEventListener('canplay', () => {
+                if (audio.paused && audio.currentTime === 0) {
+                    updateProgressAndToggle(0);
+                }
+            });
+
+            audio.addEventListener('ended', () => {
+                updateProgressAndToggle(0);
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                if (!isPlaying) {
+                    if (audio.duration) {
+                        const percent = audio.currentTime / audio.duration;
+                        updateProgressAndToggle(percent);
+                    }
+                }
+            });
+
+            audio.addEventListener('seeked', () => {
+                if (audio.duration) {
+                    const percent = audio.currentTime / audio.duration;
+                    updateProgressAndToggle(percent);
+                }
+            });
+
+            updateProgressAndToggle(0);
         })();
     </script>
 </body>
