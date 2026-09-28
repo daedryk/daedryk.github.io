@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denar, sveta vladar</title>
+    <style>
+        @font-face {
+            font-family: 'TriglavianCompleted';
+            src: url('triglavian-completed.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a2e1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem 1.5rem;
+            font-family: 'TriglavianCompleted', system-ui, -apple-system, sans-serif;
+        }
+
+        body.no-custom-font {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 880px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1 0 auto;
+        }
+
+        .paragraph-box {
+            background: #f5e56b;
+            border-left: 0.8rem solid #1a4b8c;
+            border-radius: 1.2rem;
+            padding: 1.6rem 2rem;
+            margin-bottom: 1.6rem;
+            box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3),
+                        0 0 0 0.15rem #2e7d32 inset;
+            color: #0a2f0a;
+            text-align: left;
+            width: 100%;
+            transition: background 0.2s, border-color 0.2s;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .paragraph-box p {
+            margin: 0;
+        }
+
+        .paragraph-box:hover {
+            background: #ffef8a;
+            border-left-color: #0d2b5c;
+        }
+
+        .switch-container {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .font-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 6rem;
+            line-height: 1;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1.5rem;
+            transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: normal;
+        }
+
+        .font-toggle:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.4);
+        }
+
+        .font-toggle:active {
+            transform: scale(0.98);
+        }
+
+        body, .paragraph-box, .font-toggle {
+            letter-spacing: normal;
+        }
+
+        @media (max-width: 600px) {
+            .paragraph-box {
+                padding: 1.2rem 1.2rem;
+                font-size: 1rem;
+                border-left-width: 0.6rem;
+            }
+            .font-toggle {
+                font-size: 4.5rem;
+            }
+            body {
+                padding: 1.2rem 0.8rem 1rem;
+            }
+        }
+
+        .font-toggle:focus-visible {
+            outline: 0.4rem solid #ffd966;
+            outline-offset: 0.3rem;
+        }
+
+        .paragraph-box {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.6; transform: translateY(0.3rem); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        html, body {
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="paragraph-box">
+            <p>Tako imamo med lyudmi vseh koncev sveta, da se vse začne in tudi koncha pri denaryu. Denaryu tudi zaupamo, upe polagamo vany, da nas bo reshil vseh nesrech in tegob. Celo veliko mero zdravya je danes zhe mogoče kupiti z denaryem, ali celo zhiwlyenye, che she o pravem chasu potegnemo denarce na plano (kadar jih she imamo) ter si plachamo diagnostiko in zdravlyenye preko vrste.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Tudi posli socialnega podyetnishtva se začno z denaryem, modno mu rečemo zagonski kapital, lahko pa tudi kredit, kar nayvečkrat tudi je. Posli so tvegani, pa nay bodo na kateremkoli podrochju zhe, pa tudi tisti, ki imayo denar v shtumfu, raye financirayo posle s krediti. Nekako many tvegano je na prvo zhego. Kratko potegneyo tisti, ki nimayo v shtumfu nich, za na hipoteko nich, za odhod v tuyino tudi nich, nimayo lastnega vlozhka za kandidiranye na razpisih … ti so revezhi, danes vechyi kot so bili sinoshi in manshi kot bodo yutri. Ti lyudye tudi socialnega podyetya ne moreyo zagnati, ker nimayo s chim, nimayo kreditne sposobnosti po utečenih banchnih merilih.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Spremembe so stalnica, to drzhi, zato so potrebne tudi stalne spremembe v nachinu razmishlyanya. Finančne instituciye se vprashayo, ali so interesenti za kredit plachilno sposobni; che niso, izpadeyo iz shpila in so prezrti in neuposhtevani v poslih, kot bi sploh ne obstayali. Vprashanye pa je mogoče tudi zaobrniti – ali so financhniki in banchniki vredni spooshtovanya? Niso, dokazano s taykunskimi zgodbami in stalnimi dokapitalizaciyami, prvi banki sta uradno fuch in gresta rakom zhvizhgat (v likvidaciyo). Torey banke takshne kot so niso vredne zaupanya in ni mogoče vanye polagati upanya, da bi se v posle pripustilo nayrevneshe. Treba je ustanoviti drugačne banke, s participaciyo odlochanya tudi naymanshih varčevalcev, tako bodo kreditojemalci osebno zainteresirani za poplačilo.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Shiritev banchnega kreditiranya na revne je po svoye revolucionarna, z vidika danshnye ekonomske miselnosti. Pri kreditiranyu revnih je potrebno ignorirati prepričanye, da kreditov ni mogoče dayati brez garanciye. Ekonomisti so prepričani, da je redna zaposlitev iz učbenikov edini nachin (tudi) boya proti revshchini. V ekonomski literaturi ni mesta za tiste, ki se prezhivlyayo s samostoynim delom, svoye izdelke ali storitve prodayo neposredno tistim, ki jih potrebuyeyo – v resnichnem svetu pa prav to pochnenyo revni.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Finančna izkluchenost je tesno povezana s socialno izkluchenostyo, ni dostopa do financhnih storitev. Raziskava evropske komisiye kazhe, da dva od desetih odraslih nimata dostopa do transakciyskega banchnega poslovanya. Priblizhno triye izmed petih lyudi nimayo prihrankov in shtirye izmed desetih nimayo posoyilnih sredstev, enemu od desetih je banka zhe kday zavrnila odobritev kredita. Nayboly ogrozheni so lyudye z nizkimi dohodki, brezposelni, starshi samohranilciu, bolniki oz. invalidi, priselyenci.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Zadruzhne hranilnice in posoyilnice ter kreditne zadruge so bile pri nas zhe v 19. stoletju zmozhne mobilizirati mnozhico mayhnih prihrankov, ki so jih s poceni posoyili dodeljevale kmetom in obrtnikom. Zadruzhna posoyila so bila ceneysha zaradi samopomochi in vzayemnosti. Kreditne zadruge so segale do zadnye slovenske vasi.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Zadruge niso chakale, da bi lyudye sami prishli do njih, ampak so sami prihayali do posoyilojemalcev, say so v vodstvih zadrug poznali lokalne gospodarske razmere in posamezne varčevalce, tudi njih kreditna sposobnost jim je bila znana. Mozhnosti, da bi posoyilo ne bilo vrnjeno, skoray ni bilo. Tudi taykunske zlorabe skoray ni moglo biti, ker so se lyudye osebno poznali. V tem procesu so imeli nayvechno vlogo slovenski izobrazhenci, torej učitelji in duhovniki. Prav od ugleda slednyih je bil odvisen uspeh posamezne zadruzhne hranilnice in posoyilnice.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Banchnishtvo, sociala in etika niso nuy no nezdruzhlyivi. Brezplachno vodenye transakciyskega rachuna in brezplachna prekorachitev limita, zagotavlyanye ugodnih kreditov in kreditov brez yamstva, ugodna zachetna investiciyska posoyila za tvegane proyekte in programe ter varchevanye pod posebno ugodnimi pogoyi – to je le nekay pomembnih elementov poslovanya, ki etichne oziroma socialne banke lochuyeyo od navadnih bank in so ponekod zhe zazhivele.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Pri nas smo v prednosti zaradi zadruzhnishke filozofye in bi lahko speljali banchnishtvo boly zadruzhnishko, po nashe. Donatorji bi se lahko vklyučevali direktno v poslovne proyekte, vlagatelji bi vech vedeli o svoyih vlozhkih, tudi velika podyetya bi lahko z vlaganyem v socialna podyetya zadostila druzhbeni odgovornosti na prav direkten nachin. Zamisli se she royeyo in jih she ne bodo kmalu poyenjale. V resnici so nekatere banke zhe prestopile v drugačno, boly socialno, a vseeno podyetno miselnost.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Pomembna ponudba socialnih bank so mikrokrediti, ki jih konvencionalne banke ponuyayo v manshem obsegu in se od obichaynih kreditov razlikuyeyo po tem, da so brez zavarovanya in da ob nayemu ni treba predlozhiti porochila o preteklem poslovanyu. Banke z nyimi v glavnem pomagayo manshim podyetnikom in posameznikom k izbolyshanyu socialnega polozhaya. Kriteriyi, ki so znachilni za mikrokreditiranye so omejitev kredita na 25.000 evrov, ugodneyshi nachini zavarovanya kreditov, kot je zavarovanye s hipoteko, in odobritev kreditov za boly tvegane podyeme brez sorazmerno visoke stopnye zavarovanya (sicer vchashih zaradi tega z viysho obrestno mero), gre pa za sredstva Evropskega investiciyskega sklada.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Vlada je pach glede poti iz revshchine neuchinkovita, pochasna, podvrzhena korupciyi, zbirkokratizirana, zheli obdrzhati svoy polozhay za lastne interese. Svetovna banka, ki nay bi ji bil odprava revshchine poglavitni cily, se osredotocha na gospodarsko rast. Ta rast pa je pochasna in nima uchinka na revno prebivalstvo, lahko celo poteka na rachun revnih, ker ukrepi gospodarske dinamike pach ne dosezheyo revnih. Banka vrednoti svoye uspehe na osnovi sklenyenih posoyil, ne glede na uchinak nyihovega dela, tudi pri nas je vechinoma tako.</p>
+        </div>
+
+        <div class="paragraph-box">
+            <p>Ker se vse koncha pri denaryu, che sledimo uvodni misli o denaryu, se tudi posli tam konchayo. Che je dobichek, se je treba zaradi prevelikih apetitov skregati in raziti s poslovnimi partnerji, che ga ni, se je treba skregati s svoyimi blizhnyimi in spokati. V sledenyu prvenstveno skupni dobrobiti in blagostanyu, pa denar sicer izgubi nekay na svoyem pomenu, vsay toliko, da ni vech chloveku vladar. Tako je lazhe odpreti srca in denarnice ter preiti na zaupanye in upanye v sochloveka, nayrevneshega med nami.</p>
+        </div>
+    </div>
+
+    <div class="switch-container">
+        <button class="font-toggle" id="fontToggle" aria-label="Preklopi pisavo" title="Preklopi med custom in sistemsko pisavo">
+            📖
+        </button>
+    </div>
+
+    <script>
+        (function() {
+            const body = document.body;
+            const toggleBtn = document.getElementById('fontToggle');
+
+            body.classList.remove('no-custom-font');
+
+            toggleBtn.addEventListener('click', function() {
+                body.classList.toggle('no-custom-font');
+                const isDefault = body.classList.contains('no-custom-font');
+                toggleBtn.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
+            });
+
+            toggleBtn.setAttribute('aria-pressed', 'false');
+        })();
+    </script>
+</body>
+</html>
