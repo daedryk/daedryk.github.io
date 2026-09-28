@@ -20,17 +20,48 @@
         }
 
         body {
-            background: #1a2e1a;
+            background: #fdf8f2;
+            background-image: radial-gradient(circle at 10% 20%, #ffe9e0, #f7f0e6 70%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2rem 1.2rem 1.5rem;
             font-family: 'TriglavianCompleted', system-ui, -apple-system, sans-serif;
+            color: #2a3b2a;
         }
 
         body.no-custom-font {
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 2.6rem;
+            letter-spacing: 0.02em;
+            text-align: center;
+            color: #4a3b5e;
+            background: linear-gradient(145deg, #fde9e0, #f9e3d4);
+            display: inline-block;
+            padding: 0.4rem 2.4rem 0.6rem;
+            border-radius: 60px;
+            box-shadow: 0 8px 16px -6px rgba(180, 140, 130, 0.2),
+                        0 0 0 2px #fff8f2 inset,
+                        0 0 0 3px #f0d9cc inset;
+            margin-bottom: 2rem;
+            width: fit-content;
+            max-width: 90vw;
+            line-height: 1.3;
+            transition: all 0.2s ease;
+            word-break: break-word;
+        }
+
+        h1:hover {
+            background: linear-gradient(145deg, #fce3d8, #f7daca);
+            box-shadow: 0 10px 20px -6px rgba(180, 130, 120, 0.3),
+                        0 0 0 2px #ffffff inset,
+                        0 0 0 3px #eccfbf inset;
         }
 
         .content {
@@ -43,17 +74,18 @@
         }
 
         .paragraph-box {
-            background: #f5e56b;
-            border-left: 0.8rem solid #1a4b8c;
-            border-radius: 1.2rem;
+            background: #ffe9d6;
+            border-left: 0.8rem solid #b5d8e8;
+            border-radius: 1.8rem;
             padding: 1.6rem 2rem;
             margin-bottom: 1.6rem;
-            box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.3),
-                        0 0 0 0.15rem #2e7d32 inset;
-            color: #0a2f0a;
+            box-shadow: 0 0.6rem 1rem rgba(200, 170, 150, 0.15),
+                        0 0 0 0.15rem #fce3d8 inset,
+                        0 0 0 0.25rem #ffffff inset;
+            color: #2a3b3b;
             text-align: left;
             width: 100%;
-            transition: background 0.2s, border-color 0.2s;
+            transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
             line-height: 1.6;
             font-size: 1.1rem;
         }
@@ -63,8 +95,11 @@
         }
 
         .paragraph-box:hover {
-            background: #ffef8a;
-            border-left-color: #0d2b5c;
+            background: #fff0e6;
+            border-left-color: #9bc9de;
+            box-shadow: 0 0.8rem 1.4rem rgba(170, 140, 130, 0.2),
+                        0 0 0 0.15rem #fce3d8 inset,
+                        0 0 0 0.25rem #ffffff inset;
         }
 
         .switch-container {
@@ -78,33 +113,37 @@
         }
 
         .font-toggle {
-            background: none;
+            background: #fce9dd;
             border: none;
             cursor: pointer;
-            font-size: 6rem;
+            font-size: 5.5rem;
             line-height: 1;
-            padding: 0.2rem 0.6rem;
-            border-radius: 1.5rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 2.5rem;
             transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0.5rem 1rem rgba(200, 160, 140, 0.25),
+                        0 0 0 0.15rem #ffffff inset,
+                        0 0 0 0.3rem #f5d6c6 inset;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             letter-spacing: normal;
+            color: #5e4c44;
         }
 
         .font-toggle:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.4);
+            background: #fde3d2;
+            box-shadow: 0 0.8rem 1.4rem rgba(180, 130, 110, 0.25),
+                        0 0 0 0.15rem #ffffff inset,
+                        0 0 0 0.3rem #efd0be inset;
         }
 
         .font-toggle:active {
             transform: scale(0.98);
         }
 
-        body, .paragraph-box, .font-toggle {
+        body, .paragraph-box, .font-toggle, h1 {
             letter-spacing: normal;
         }
 
@@ -113,17 +152,24 @@
                 padding: 1.2rem 1.2rem;
                 font-size: 1rem;
                 border-left-width: 0.6rem;
+                border-radius: 1.4rem;
             }
             .font-toggle {
-                font-size: 4.5rem;
+                font-size: 4rem;
+                padding: 0.1rem 0.6rem;
             }
             body {
                 padding: 1.2rem 0.8rem 1rem;
             }
+            h1 {
+                font-size: 2rem;
+                padding: 0.3rem 1.5rem 0.5rem;
+                margin-bottom: 1.5rem;
+            }
         }
 
         .font-toggle:focus-visible {
-            outline: 0.4rem solid #ffd966;
+            outline: 0.4rem solid #ffcf9a;
             outline-offset: 0.3rem;
         }
 
@@ -144,10 +190,18 @@
         .content {
             flex: 1 0 auto;
         }
+
+        .paragraph-box p::selection,
+        h1::selection {
+            background: #d4e9f2;
+            color: #1f3a3a;
+        }
     </style>
 </head>
 <body>
     <div class="content">
+        <h1>Denar, sveta vladar</h1>
+
         <div class="paragraph-box">
             <p>Tako imamo med lyudmi vseh koncev sveta, da se vse začne in tudi koncha pri denaryu. Denaryu tudi zaupamo, upe polagamo vany, da nas bo reshil vseh nesrech in tegob. Celo veliko mero zdravya je danes zhe mogoče kupiti z denaryem, ali celo zhivlyenye, che she o pravem chasu potegnemo denarce na plano (kadar yih she imamo) ter si plachamo diagnostiko in zdravlyenye preko vrste.</p>
         </div>
