@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prosto srce</title>
+  <style>
+    @font-face {
+      font-family: 'Triglavian Completed';
+      src: url('triglavian-completed.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 20% 30%, #1a1e28, #0a0c10);
+      font-family: 'Triglavian Completed', 'Times New Roman', serif;
+      padding: 2rem;
+      background-blend-mode: overlay;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 6px),
+        radial-gradient(circle at 80% 70%, rgba(180, 200, 255, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .metal-card {
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      padding: 3.5rem 2.5rem 3rem 2.5rem;
+      background: linear-gradient(145deg, #1e2128, #111317);
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 
+        0 30px 40px -15px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(220, 230, 255, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.06),
+        inset 0 -6px 12px rgba(0, 0, 0, 0.7);
+      border-bottom: 2px solid rgba(150, 170, 210, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .metal-card::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border-radius: 36px 36px 24px 24px;
+      border: 1px solid rgba(200, 215, 255, 0.08);
+      pointer-events: none;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .metallic-3d {
+      font-family: 'Triglavian Completed', 'Times New Roman', serif;
+      font-weight: normal;
+      color: #d9e0f0;
+      text-shadow: 
+        0 1px 0 #ffffff90,
+        0 2px 0 #b0b8d0,
+        0 3px 0 #9098b0,
+        0 4px 0 #707890,
+        0 5px 0 #505870,
+        0 6px 0 #303848,
+        0 7px 0 #1a1e28,
+        0 10px 15px rgba(0, 0, 0, 0.9),
+        0 15px 20px rgba(0, 0, 0, 0.6),
+        0 0 12px rgba(180, 200, 255, 0.3),
+        0 0 30px rgba(120, 150, 255, 0.2);
+      line-height: 1.2;
+      transform: perspective(800px) rotateX(1deg);
+      transition: text-shadow 0.2s ease;
+    }
+
+    h1.metallic-3d {
+      font-size: clamp(3.5rem, 12vw, 6.5rem);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      text-shadow: 
+        0 2px 0 #ffffffb0,
+        0 4px 0 #a8b0c8,
+        0 6px 0 #8088a0,
+        0 8px 0 #585e78,
+        0 10px 0 #303848,
+        0 12px 0 #181c24,
+        0 14px 0 #0c0e12,
+        0 18px 25px rgba(0, 0, 0, 0.9),
+        0 25px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(200, 220, 255, 0.4),
+        0 0 45px rgba(140, 170, 255, 0.3);
+      filter: drop-shadow(0 4px 6px black);
+    }
+
+    .poem.metallic-3d {
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      text-align: left;
+      max-width: 700px;
+      margin: 2rem auto 1rem auto;
+      padding: 1.5rem 2rem;
+      line-height: 2.2;
+      background: rgba(10, 12, 18, 0.5);
+      border-radius: 24px;
+      border-left: 4px solid rgba(180, 200, 255, 0.5);
+      border-bottom: 2px solid rgba(120, 140, 200, 0.3);
+      box-shadow: 
+        inset 0 5px 12px rgba(0, 0, 0, 0.7),
+        0 10px 20px -8px black,
+        0 0 0 1px rgba(220, 235, 255, 0.1);
+      backdrop-filter: blur(2px);
+      text-shadow: 
+        0 1px 0 #ffffff80,
+        0 2px 0 #b0b8d0,
+        0 3px 0 #888fa8,
+        0 4px 0 #606880,
+        0 5px 0 #383e50,
+        0 6px 0 #1e222e,
+        0 8px 12px rgba(0, 0, 0, 0.9),
+        0 12px 18px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(180, 200, 255, 0.3);
+    }
+
+    .poem.metallic-3d span {
+      display: block;
+    }
+
+    .metallic-3d:hover {
+      text-shadow: 
+        0 1px 0 #ffffffb0,
+        0 2px 0 #c0c8e0,
+        0 3px 0 #a0a8c0,
+        0 4px 0 #8088a0,
+        0 5px 0 #606878,
+        0 6px 0 #404858,
+        0 7px 0 #202838,
+        0 10px 15px rgba(0, 0, 0, 0.9),
+        0 18px 25px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(200, 220, 255, 0.5),
+        0 0 40px rgba(140, 170, 255, 0.4);
+      transition: text-shadow 0.2s ease;
+    }
+
+    .metal-card {
+      animation: subtle-shine 8s infinite alternate;
+    }
+
+    @keyframes subtle-shine {
+      0% { box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(220, 230, 255, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.06), inset 0 -6px 12px rgba(0, 0, 0, 0.7); }
+      100% { box-shadow: 0 30px 50px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(220, 230, 255, 0.2), inset 0 2px 10px rgba(255, 255, 255, 0.1), inset 0 -6px 18px rgba(0, 0, 0, 0.8); }
+    }
+
+    .footnote {
+      font-family: 'Triglavian Completed', serif;
+      color: #9098b0;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      text-shadow: 0 1px 2px black, 0 0 6px #304060;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 600px) {
+      .metal-card {
+        padding: 2rem 1.2rem 2rem 1.2rem;
+        border-radius: 32px 32px 24px 24px;
+      }
+      .poem.metallic-3d {
+        padding: 1rem 1rem;
+        line-height: 2;
+      }
+      h1.metallic-3d {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="metal-card">
+    <h1 class="metallic-3d">Prosto srce</h1>
+
+    <div class="poem metallic-3d">
+      <span>Sem dolgo upal in se bal,</span>
+      <span>slovo sem upu, strahu dal;</span>
+      <span>srce ye prazno, srechno ni,</span>
+      <span>nazay si up in strah zheli.</span>
+    </div>
+
+    <div class="footnote">✦ ✦ ✦</div>
+  </div>
+</body>
+</html>
