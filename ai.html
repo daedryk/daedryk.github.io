@@ -69,54 +69,40 @@
       box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
     }
 
-    .metallic-3d {
+    .burning-text {
       font-family: 'Triglavian Completed', 'Times New Roman', serif;
       font-weight: normal;
-      color: #ffe8cc;
+      color: #fff0dd;
       text-shadow: 
-        0 1px 0 #ffd9a0,
-        0 2px 0 #e0a060,
-        0 3px 0 #c08040,
-        0 4px 0 #a06030,
-        0 5px 0 #804820,
-        0 6px 0 #603818,
-        0 7px 0 #401e0c,
-        0 8px 0 #200e04,
-        0 10px 15px rgba(0, 0, 0, 0.9),
-        0 15px 20px rgba(0, 0, 0, 0.6),
-        0 0 15px rgba(255, 160, 50, 0.6),
-        0 0 30px rgba(255, 120, 20, 0.5),
-        0 0 45px rgba(255, 80, 0, 0.4),
-        0 0 70px rgba(255, 50, 0, 0.3),
-        0 0 100px rgba(255, 30, 0, 0.2);
+        0 0 6px #ffdcaa,
+        0 0 12px #ffb060,
+        0 0 20px #ff8a20,
+        0 0 32px #ff6010,
+        0 0 48px #ff4000,
+        0 0 70px #ff2000,
+        0 0 100px #cc1000,
+        0 0 140px #991000;
       line-height: 1.2;
-      transform: perspective(800px) rotateX(1deg);
-      transition: text-shadow 0.2s ease;
+      transition: text-shadow 0.3s ease;
     }
 
-    h1.metallic-3d {
+    h1.burning-text {
       font-size: clamp(3.5rem, 12vw, 6.5rem);
       text-align: center;
       margin-bottom: 0.5rem;
+      color: #fff5e6;
       text-shadow: 
-        0 2px 0 #ffddaa,
-        0 4px 0 #e8a868,
-        0 6px 0 #c08040,
-        0 8px 0 #905828,
-        0 10px 0 #603818,
-        0 12px 0 #381e0c,
-        0 14px 0 #1c0c04,
-        0 18px 25px rgba(0, 0, 0, 0.95),
-        0 25px 35px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(255, 180, 80, 0.7),
-        0 0 45px rgba(255, 120, 20, 0.6),
-        0 0 70px rgba(255, 80, 0, 0.5),
-        0 0 110px rgba(255, 40, 0, 0.35),
-        0 0 160px rgba(255, 20, 0, 0.2);
-      filter: drop-shadow(0 4px 8px black);
+        0 0 8px #ffe0b0,
+        0 0 16px #ffc070,
+        0 0 26px #ff9020,
+        0 0 40px #ff6810,
+        0 0 60px #ff4000,
+        0 0 85px #ff2000,
+        0 0 120px #cc1000,
+        0 0 170px #991000;
     }
 
-    .poem.metallic-3d {
+    .poem.burning-text {
       font-size: clamp(1.2rem, 3.5vw, 2rem);
       text-align: left;
       max-width: 700px;
@@ -133,39 +119,30 @@
         0 0 0 1px rgba(255, 180, 100, 0.1);
       backdrop-filter: blur(2px);
       text-shadow: 
-        0 1px 0 #ffdcaa,
-        0 2px 0 #e8a868,
-        0 3px 0 #c08040,
-        0 4px 0 #905828,
-        0 5px 0 #603818,
-        0 6px 0 #381e0c,
-        0 8px 12px rgba(0, 0, 0, 0.9),
-        0 12px 18px rgba(0, 0, 0, 0.5),
-        0 0 15px rgba(255, 160, 50, 0.6),
-        0 0 30px rgba(255, 120, 20, 0.5),
-        0 0 50px rgba(255, 80, 0, 0.35);
+        0 0 5px #ffdcaa,
+        0 0 10px #ffb060,
+        0 0 18px #ff8a20,
+        0 0 28px #ff6010,
+        0 0 42px #ff4000,
+        0 0 62px #ff2000,
+        0 0 90px #cc1000;
     }
 
-    .poem.metallic-3d span {
+    .poem.burning-text span {
       display: block;
     }
 
-    .metallic-3d:hover {
+    .burning-text:hover {
       text-shadow: 
-        0 1px 0 #fff0cc,
-        0 2px 0 #ffc880,
-        0 3px 0 #e8a050,
-        0 4px 0 #c08040,
-        0 5px 0 #905828,
-        0 6px 0 #603818,
-        0 7px 0 #381e0c,
-        0 10px 15px rgba(0, 0, 0, 0.95),
-        0 18px 28px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(255, 200, 100, 0.8),
-        0 0 55px rgba(255, 140, 30, 0.7),
-        0 0 90px rgba(255, 90, 0, 0.5),
-        0 0 140px rgba(255, 40, 0, 0.3);
-      transition: text-shadow 0.2s ease;
+        0 0 8px #fff0cc,
+        0 0 16px #ffc880,
+        0 0 26px #ffa040,
+        0 0 40px #ff7820,
+        0 0 58px #ff5010,
+        0 0 80px #ff3000,
+        0 0 110px #dd1800,
+        0 0 150px #aa1000;
+      transition: text-shadow 0.3s ease;
     }
 
     @keyframes subtle-shine {
@@ -179,7 +156,7 @@
       text-align: center;
       margin-top: 1.5rem;
       font-size: 0.9rem;
-      text-shadow: 0 1px 2px black, 0 0 10px rgba(255, 120, 30, 0.6), 0 0 20px rgba(255, 60, 0, 0.3);
+      text-shadow: 0 0 10px rgba(255, 120, 30, 0.6), 0 0 20px rgba(255, 60, 0, 0.3);
       opacity: 0.8;
     }
 
@@ -188,11 +165,11 @@
         padding: 2rem 1.2rem 2rem 1.2rem;
         border-radius: 32px 32px 24px 24px;
       }
-      .poem.metallic-3d {
+      .poem.burning-text {
         padding: 1rem 1rem;
         line-height: 2;
       }
-      h1.metallic-3d {
+      h1.burning-text {
         font-size: 3rem;
       }
     }
@@ -200,9 +177,9 @@
 </head>
 <body>
   <div class="metal-card">
-    <h1 class="metallic-3d">Prosto srce</h1>
+    <h1 class="burning-text">Prosto srce</h1>
 
-    <div class="poem metallic-3d">
+    <div class="poem burning-text">
       <span>Sem dolgo upal in se bal,</span>
       <span>slovo sem upu, strahu dal;</span>
       <span>srce ye prazno, srechno ni,</span>
