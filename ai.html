@@ -123,6 +123,59 @@
       display: inline-block;
     }
 
+    .player {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 1.5rem auto 0 auto;
+      padding: 0.8rem 1.2rem;
+      background: #fff8f0;
+      border-radius: 24px;
+      border-left: 4px solid #d94f3a;
+      border-bottom: 2px solid #b33a28;
+      box-shadow: 0 8px 16px -8px rgba(180, 60, 40, 0.3),
+                  inset 0 1px 6px rgba(255, 230, 220, 0.8);
+    }
+
+    .play-btn {
+      font-family: 'Triglavian Completed', 'Times New Roman', serif;
+      font-size: 2rem;
+      line-height: 1;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #a52a1a;
+      text-shadow: 0 0 8px #ffc2b0, 0 0 16px #ff7a60;
+      padding: 0;
+      width: 2.4rem;
+      text-align: center;
+    }
+
+    .play-btn:hover {
+      text-shadow: 0 0 10px #ffb09a, 0 0 20px #ff6a50;
+    }
+
+    .progress-wrap {
+      flex: 1;
+      height: 14px;
+      background: #f5d8c8;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: inset 0 2px 4px rgba(180, 60, 40, 0.25);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff5a40, #d92e18);
+      border-radius: 10px;
+      box-shadow: 0 0 8px #ff6a50;
+      pointer-events: none;
+    }
+
     @media (max-width: 600px) {
       .metal-card {
         padding: 2rem 1.2rem 2rem 1.2rem;
@@ -137,6 +190,13 @@
       }
       .footnote {
         font-size: 2.8rem;
+      }
+      .play-btn {
+        font-size: 1.6rem;
+        width: 2rem;
+      }
+      .progress-wrap {
+        height: 12px;
       }
     }
   </style>
@@ -155,6 +215,64 @@
     <div class="footnote">
       <a href="https://daedryk.github.io" aria-label="heart fire">❤️‍🔥</a>
     </div>
+
+    <div class="player">
+      <button class="play-btn" id="playBtn" aria-label="play">🤬</button>
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
   </div>
+
+  <audio id="audio" src="storm.m4a" preload="metadata"></audio>
+
+  <script>
+    (function () {
+      const audio = document.getElementById('audio');
+      const playBtn = document.getElementById('playBtn');
+      const progressWrap = document.getElementById('progressWrap');
+      const progressBar = document.getElementById('progressBar');
+
+      function setPlayIcon() {
+        playBtn.textContent = audio.paused ? '🤬' : '🫯';
+      }
+
+      playBtn.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      });
+
+      audio.addEventListener('play', setPlayIcon);
+      audio.addEventListener('pause', setPlayIcon);
+      audio.addEventListener('ended', function () {
+        setPlayIcon();
+        progressBar.style.width = '0%';
+      });
+
+      audio.addEventListener('timeupdate', function () {
+        if (audio.duration && isFinite(audio.duration)) {
+          const pct = (audio.currentTime / audio.duration) * 100;
+          progressBar.style.width = pct + '%';
+        }
+      });
+
+      audio.addEventListener('loadedmetadata', function () {
+        progressBar.style.width = '0%';
+      });
+
+      progressWrap.addEventListener('click', function (e) {
+        if (!audio.duration || !isFinite(audio.duration)) return;
+        const rect = progressWrap.getBoundingClientRect();
+        const ratio = (e.clientX - rect.left) / rect.width;
+        const clamped = Math.min(1, Math.max(0, ratio));
+        audio.currentTime = clamped * audio.duration;
+      });
+
+      setPlayIcon();
+    })();
+  </script>
 </body>
 </html>
