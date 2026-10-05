@@ -228,7 +228,7 @@
   </div>
 
   <div class="fact-sheet">
-    <h2>※ <a style="color: inherit" href="https://daedryk.github.io/">ⱄⰾⱁⰲⰵⱀⰻⱑ</a> ※</h2>
+    <h2>※ <a style="color: inherit" href="https://daedryk.github.io/">ⱄⰾⱁⰲⰵⱬⰻⱑ</a> ※</h2>
     <div>
       <img src="carantanian-panther.png" width="100%">
     </div>
@@ -239,14 +239,23 @@
       const staticStripes = document.getElementById('staticStripes');
       const amstradColors = ['#00ffff', '#ff00ff', '#ffff00', '#ffffff', '#ff8800', '#ff4444', '#44ff44'];
       staticStripes.innerHTML = '';
-      const stripeCount = 45; 
+      
+      const stripeCount = 55; 
+      const stripes = []; 
+      
+      function randomStripeProps() {
+        const color = amstradColors[Math.floor(Math.random() * amstradColors.length)];
+        const height = 2 + Math.floor(Math.random() * 16);
+        const topPos = Math.random() * 100;
+        const opacity = 0.25 + Math.random() * 0.7;
+        return { color, height, topPos, opacity };
+      }
+      
       for (let i = 0; i < stripeCount; i++) {
         const stripe = document.createElement('div');
         stripe.className = 'static-stripe';
-        const color = amstradColors[Math.floor(Math.random() * amstradColors.length)];
-        const height = 2 + Math.floor(Math.random() * 10);
-        const topPos = Math.random() * 100;
-        const opacity = 0.3 + Math.random() * 0.6;
+        const { color, height, topPos, opacity } = randomStripeProps();
+        
         stripe.style.background = color;
         stripe.style.color = color;
         stripe.style.boxShadow = `0 0 20px ${color}`;
@@ -258,10 +267,80 @@
         stripe.style.position = 'absolute';
         stripe.style.pointerEvents = 'none';
         stripe.style.zIndex = '0';
-        stripe.style.transform = 'none';
-        stripe.style.animation = 'none';
+        
         staticStripes.appendChild(stripe);
+        stripes.push({
+          el: stripe,
+          color,
+          height,
+          topPos,
+          opacity,
+          speed: 0.4 + Math.random() * 1.2,
+          phase: Math.random() * Math.PI * 2,
+        });
       }
+      
+      let lastTime = performance.now();
+      
+      function animateStripes(now) {
+        const delta = Math.min(32, now - lastTime) / 16;
+        lastTime = now;
+        
+        stripes.forEach((s) => {
+          const el = s.el;
+          
+          let topPos = s.topPos + (Math.random() - 0.45) * 1.8 * delta;
+          
+          if (topPos > 110) {
+            topPos = -5 - Math.random() * 15;
+            const newProps = randomStripeProps();
+            s.color = newProps.color;
+            s.height = newProps.height;
+            s.opacity = newProps.opacity;
+            el.style.background = s.color;
+            el.style.color = s.color;
+            el.style.boxShadow = `0 0 20px ${s.color}`;
+            el.style.height = `${s.height}px`;
+          } else if (topPos < -10) {
+            topPos = 105 + Math.random() * 10;
+            const newProps = randomStripeProps();
+            s.color = newProps.color;
+            s.height = newProps.height;
+            s.opacity = newProps.opacity;
+            el.style.background = s.color;
+            el.style.color = s.color;
+            el.style.boxShadow = `0 0 20px ${s.color}`;
+            el.style.height = `${s.height}px`;
+          }
+          
+          if (Math.random() < 0.08) {
+            const newColor = amstradColors[Math.floor(Math.random() * amstradColors.length)];
+            s.color = newColor;
+            el.style.background = newColor;
+            el.style.color = newColor;
+            el.style.boxShadow = `0 0 20px ${newColor}`;
+            
+            s.height = 2 + Math.floor(Math.random() * 18);
+            el.style.height = `${s.height}px`;
+            
+            s.opacity = 0.25 + Math.random() * 0.7;
+            el.style.opacity = s.opacity;
+          } else {
+            if (Math.random() < 0.2) {
+              const newOpacity = 0.2 + Math.random() * 0.8;
+              s.opacity = newOpacity;
+              el.style.opacity = newOpacity;
+            }
+          }
+          
+          s.topPos = topPos;
+          el.style.top = `${topPos}%`;
+        });
+        
+        requestAnimationFrame(animateStripes);
+      }
+      
+      requestAnimationFrame(animateStripes);
     })();
 
     (function() {
@@ -270,29 +349,29 @@
         { file: '2.Panther.bmx.m4a', artist: 'PANTHER', title: 'bmx' },
         { file: '3.Panther.eco.m4a', artist: 'PANTHER', title: 'eco' }
       ];
-      
+
       const audio = new Audio();
       audio.preload = 'metadata';
-      
+
       let currentTrackIndex = 0;
       let isPlaying = false;
-      
+
       const artistDisplay = document.getElementById('artistDisplay');
       const trackDisplay = document.getElementById('trackDisplay');
       const playIcon = document.getElementById('playIcon');
       const pauseIcon = document.getElementById('pauseIcon');
       const progressFill = document.getElementById('progressFill');
-      
+
       function setAudioSource(index) {
         audio.src = trackList[index].file;
         audio.load();
       }
-      
+
       function updateTrackInfo() {
         if (artistDisplay) artistDisplay.textContent = trackList[currentTrackIndex].artist;
         if (trackDisplay) trackDisplay.textContent = trackList[currentTrackIndex].title;
       }
-      
+
       function resetToFirstTrack() {
         audio.pause();
         audio.currentTime = 0;
@@ -303,7 +382,7 @@
         isPlaying = false;
         updatePlayPauseIcons();
       }
-      
+
       function playCurrentTrack() {
         audio.play().catch(e => {
           console.log('Playback error:', e);
@@ -311,7 +390,7 @@
           updatePlayPauseIcons();
         });
       }
-      
+
       function updatePlayPauseIcons() {
         if (!playIcon || !pauseIcon) return;
         if (isPlaying) {
@@ -322,14 +401,14 @@
           pauseIcon.setAttribute('display', 'none');
         }
       }
-      
+
       audio.ontimeupdate = function() {
         if (audio.duration && progressFill) {
           const percent = (audio.currentTime / audio.duration) * 100;
           progressFill.setAttribute('width', Math.min(240, (percent/100) * 240));
         }
       };
-      
+
       audio.onended = function() {
         if (currentTrackIndex === trackList.length - 1) {
           resetToFirstTrack();
@@ -337,11 +416,11 @@
           nextTrack();
         }
       };
-      
+
       audio.onerror = function() {
         console.warn('Audio file not found or unsupported:', audio.src);
       };
-      
+
       function togglePlayPause() {
         if (isPlaying) {
           audio.pause();
@@ -355,41 +434,41 @@
         }
         updatePlayPauseIcons();
       }
-      
+
       function nextTrack() {
         audio.pause();
         currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
         setAudioSource(currentTrackIndex);
         updateTrackInfo();
         if (progressFill) progressFill.setAttribute('width', 0);
-        
+
         if (isPlaying) {
           playCurrentTrack();
         } else {
           updatePlayPauseIcons();
         }
       }
-      
+
       function prevTrack() {
         audio.pause();
         currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
         setAudioSource(currentTrackIndex);
         updateTrackInfo();
         if (progressFill) progressFill.setAttribute('width', 0);
-        
+
         if (isPlaying) {
           playCurrentTrack();
         } else {
           updatePlayPauseIcons();
         }
       }
-      
+
       window.playerControls = {
         prev: prevTrack,
         next: nextTrack,
         togglePlayPause: togglePlayPause
       };
-      
+
       setAudioSource(0);
       updateTrackInfo();
       updatePlayPauseIcons();
