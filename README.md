@@ -67,6 +67,7 @@ My make. Wave sample created by me.
 * Ruevit: symbol icon *edit* by **me**
 * Windisch hut: Wikimedia
 * Orb of Obsession: my make
+* Red Moon: Celestia Mother Lode w/GIMP
 * Carantanian panther: who cares
 
 # Powered by **DeepSeek**
