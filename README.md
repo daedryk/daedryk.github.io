@@ -58,16 +58,16 @@ My make. Wave sample created by me.
 
 # SVG
 
-Ornaments etc: DeepSeek
-Coat of arms: Wikimedia
+* Ornaments etc: DeepSeek
+* Coat of arms: Wikimedia
 
 # Images
 
-Photos: Meta AI
-Ruevit: symbol icon *edit* by **me**
-Windisch hut: Wikimedia
-Orb of Obsession: my make
-Carantanian panther: who cares
+* Photos: Meta AI
+* Ruevit: symbol icon *edit* by **me**
+* Windisch hut: Wikimedia
+* Orb of Obsession: my make
+* Carantanian panther: who cares
 
 # Powered by **DeepSeek**
 
