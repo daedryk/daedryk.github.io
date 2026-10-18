@@ -54,5 +54,21 @@ This repository and its corresponding website (**daedryk.github.io**) are comple
 
 # Music
 
-My make.
+My make. Wave sample created by me.
 
+# SVG
+
+Ornaments etc: DeepSeek
+Coat of arms: Wikimedia
+
+# Images
+
+Photos: Meta AI
+Ruevit: symbol icon *edit* by **me**
+Windisch hut: Wikimedia
+Orb of Obsession: my make
+Carantanian panther: who cares
+
+# Powered by **DeepSeek**
+
+Matrix rain by **ChatGPT**, *tweaked*
