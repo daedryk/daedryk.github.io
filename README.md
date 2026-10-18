@@ -1,7 +1,4 @@
-This is beyond your scope of imagination.
-
-Legal notice:
-
+# This is beyond your scope of imagination.
 
 # Custom Web Fonts Directory 🎨
 
@@ -41,32 +38,9 @@ This repository hosts custom OpenType fonts (`.otf`) utilized for the personal f
 
 ---
 
-## 🛠️ Web Implementation Example
+## 🛠️ Web Implementation
 
-To maintain lightweight network performance and avoid hotlinking, these fonts are hosted directly inside the repository. Convert them to modern `.woff2` packages and implement them via CSS using the syntax below:
-
-```css
-@font-face {
-  font-family: 'Triglavian';
-  src: url('fonts/triglavian-completed.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Daedra';
-  src: url('fonts/Daedra.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'VinodolskiZakon';
-  src: url('fonts/Vinodolski_Zakon_NH.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-```
+To maintain lightweight network performance and avoid hotlinking, these fonts are hosted directly inside the repository.
 
 ---
 
@@ -77,4 +51,8 @@ This repository and its corresponding website (**daedryk.github.io**) are comple
 * **EVE Online Assets:** *Triglavian Completed* relies on intellectual properties owned by **CCP Games**. No copyright infringement is intended. 
 * **Elder Scrolls Assets:** *Daedra* relies on imagery and aesthetic signage owned by **Bethesda Softworks / ZeniMax Media**.
 * All rights to characters, names, places, and visual designs remain with their respective legal owners. If you are a rights holder or asset creator and wish to have an asset adjusted or removed, please open an Issue.
+
+# Music
+
+My make.
 
