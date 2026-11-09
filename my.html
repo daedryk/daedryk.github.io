@@ -12,14 +12,12 @@
         }
 
         body {
-            background-color: #5a5a5a;  
+            background-color: #5a5a5a;
             background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="transistorGrid" patternUnits="userSpaceOnUse" width="20" height="20"><path d="M 0 0 L 20 0 L 20 20 L 0 20 Z" fill="none" stroke="%23333333" stroke-width="0.7" stroke-opacity="0.22"/><path d="M 10 0 L 10 20 M 0 10 L 20 10" stroke="%23404040" stroke-width="0.5" stroke-opacity="0.28"/><circle cx="10" cy="10" r="1.8" fill="%232b2b2b" fill-opacity="0.3" stroke="none"/><circle cx="10" cy="10" r="1.0" fill="%237f7f7f" fill-opacity="0.25" stroke="none"/></pattern></defs><rect width="100" height="100" fill="url(%23transistorGrid)" /></svg>');
             background-repeat: repeat;
             background-size: 100px 100px;
             background-attachment: fixed;
 
-            font-family: 'Segoe UI', 'Arial', system-ui, sans-serif;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -31,7 +29,7 @@
             text-align: center;
             color: #000;
             text-shadow: 0 0 10px #c22, 0 0 20px #a00;
-            font-size: 2.2rem;
+            font-size: 2.8rem; /* increased from 2.2rem */
             font-weight: 800;
             letter-spacing: 2px;
             margin: 10px 0 0 0;
@@ -62,7 +60,7 @@
         .progress-time {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 1.1rem; /* increased from 0.8rem */
             font-weight: 600;
             color: #111;
             text-shadow: 0 0 5px #ff7f7f, 0 0 10px #f00;
@@ -126,7 +124,7 @@
             padding: 14px;
             color: #000;
             text-shadow: 0 0 10px #f00, 0 0 20px #f00;
-            font-size: 0.6rem;
+            font-size: 0.9rem; /* increased from 0.6rem */
             line-height: 1.7;
             text-align: center;
             word-wrap: break-word;
@@ -141,11 +139,35 @@
         }
 
         .subnote {
-            font-size: 0.7rem;
+            font-size: 0.9rem; /* increased from 0.7rem */
             margin-top: 6px;
             color: #1a0000;
             text-shadow: 0 0 3px #f99;
             text-align: center;
+        }
+
+        /* --- red outline for kanji above image --- */
+        .kanji-link {
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0 5px 0;
+        }
+
+        .kanji-outline {
+            font-size: 32px;
+            color: #323232; /* base fill */
+            /* red outline using multiple text-shadows (creates a crisp red border) */
+            text-shadow: 
+                -2px -2px 0 #d00,
+                 2px -2px 0 #d00,
+                -2px  2px 0 #d00,
+                 2px  2px 0 #d00,
+                -2px  0   0 #d00,
+                 2px  0   0 #d00,
+                 0   -2px 0 #d00,
+                 0    2px 0 #d00;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -174,7 +196,12 @@
         それから、やまとは毎日新しい冒険を楽しむことができました。<br>
     </div>
 
-    <p align="center"><a style="text-decoration: none; color: #323232" href="tragic.html" title="tragic"><font style="font-size: 32px">牴条捩</font></a></p>
+    <!-- kanji above picture – with red outline -->
+    <p align="center" style="margin: 8px 0 4px 0;">
+        <a class="kanji-link" href="tragic.html" title="tragic">
+            <span class="kanji-outline">牴条捩</span>
+        </a>
+    </p>
     <img height="216" width="216" src="img.gif" alt="Orb of Obsession">
 
     <script>
